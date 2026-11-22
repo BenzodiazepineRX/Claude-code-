@@ -1,0 +1,40 @@
+
+===== QC ROUND R2: Old_Motorola_Master_v5_16b-44k.wav =====
+ P1 PASS  no samples at/over full scale: peak -2.31 dBFS
+ P1 PASS  no clipped runs: 0 runs
+ P1 PASS  no DC offset: 7.0e-08
+ P1 PASS  sample rate 44.1k, stereo: 44100 Hz 2 ch
+ P1 PASS  length matches session: 165.042s vs 165.042s
+ P1 PASS  clean start (no dead air): 0.000s
+ P1 PASS  tail fades out cleanly: last 0.1s -96 dBFS
+ P1 PASS  no clicks/glitches added by processing: 813 spikes in master vs 816 unmastered mix vs 693 raw stem sum
+ P2 PASS  delay & pre-delay times = 96 BPM math: 1/8d 468.75, 1/4 625.00, 1/64 39.06 ms
+ P2 PASS  beat transients not shifted (1-6 kHz): 0 samples
+ P2 PASS  vocal transients not shifted (1-6 kHz): 0 samples
+ P2 PASS  stems share start point (no offset introduced): all stems summed sample-aligned from 0:00 (copied hook at 2:20 sits 10 ms late in the source take: under the 20-30 ms fix threshold, left as performed)
+ P3 PASS  lead sits clearly on top of beat (+1..+4 LU): +1.9 LU
+ P3 PASS  adlibs 4-8 dB under lead (layer order): 7.0 dB under
+ P3 PASS  hook lifts 1-3 LU above verses: +1.5 LU
+ P3 PASS  lead phrase consistency (IQR <= 2 LU): IQR 1.3 LU
+ P4 PASS  vocal presence lift within doc spec (+1..+3 dB, matched loudness): +2.5 dB
+ P4 PASS  no harsh 2-5 kHz flare-ups (vs raw vocal): flare 10.9 dB vs raw 12.2 dB
+ P4 PASS  no mud: low-mid not > mid+2.5 dB: low-mid -7.7 / mid -9.8 dB share
+ P4 PASS  sibilance spikes tamed (acapella vs raw lead): S-spike 25.6 dB vs raw 32.2 dB
+ P4 PASS  no boom: sub share sane (< -1.5 dB): sub -3.5 dB share
+ P5 PASS  words come through: phone (mono, 300 Hz-7 kHz): vocal +8.9 dB over music in 1-4 kHz (broadband +10.9 LU)
+ P5 PASS  words come through: earbuds (HP 40 Hz): vocal +9.4 dB over music in 1-4 kHz (broadband +4.4 LU)
+ P5 PASS  words come through: car (+4 dB bass bump): vocal +9.4 dB over music in 1-4 kHz (broadband +0.1 LU)
+ P5 PASS  words come through: club (+6 dB sub): vocal +9.4 dB over music in 1-4 kHz (broadband -0.5 LU)
+ P5 PASS  words come through: laptop (200 Hz-12 kHz): vocal +9.4 dB over music in 1-4 kHz (broadband +9.6 LU)
+ P5 PASS  words come through: mono fold: vocal +8.9 dB over music in 1-4 kHz (broadband +2.2 LU)
+ P5 PASS  mono fold loss <= 1 dB, correlation > 0.5: -0.31 dB, corr 0.86
+ P5 PASS  808 rhythm audible on phone (harmonics track the sub): corr 0.37
+ P5 PASS  very low volume (equal-loudness sim): lead above music: vocal +10.5 LU over music
+ P6 PASS  integrated loudness at target (-12.1 +/- 0.5): -12.1 LUFS
+ P6 PASS  true peak <= -2.0 dBTP (louder than -14 LUFS): -2.28 dBTP
+ P6 PASS  MP3 320k encode true peak < 0 dBTP: -2.25 dBTP
+ P6 PASS  M4A 256k encode true peak < 0 dBTP: -2.15 dBTP
+ P6 PASS  short-term loudness reviewed (max <= -8): max short-term -10.0 LUFS
+ P7 PASS  fresh analysis: no new technical warnings: clean (only the known lossy-source note)
+ P7 PASS  lead-only / music-only / whole-song re-measure: lead on top, hook lifts, spec met
+ => 37/37 passed, 0 failed

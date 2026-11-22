@@ -1,0 +1,224 @@
+[
+ {
+  "pass_": 1,
+  "check": "no samples at/over full scale",
+  "ok": true,
+  "value": "peak -2.31 dBFS"
+ },
+ {
+  "pass_": 1,
+  "check": "no clipped runs",
+  "ok": true,
+  "value": "0 runs"
+ },
+ {
+  "pass_": 1,
+  "check": "no DC offset",
+  "ok": true,
+  "value": "6.8e-08"
+ },
+ {
+  "pass_": 1,
+  "check": "sample rate 44.1k, stereo",
+  "ok": true,
+  "value": "44100 Hz 2 ch"
+ },
+ {
+  "pass_": 1,
+  "check": "length matches session",
+  "ok": true,
+  "value": "165.042s vs 165.042s"
+ },
+ {
+  "pass_": 1,
+  "check": "clean start (no dead air)",
+  "ok": true,
+  "value": "0.000s"
+ },
+ {
+  "pass_": 1,
+  "check": "tail fades out cleanly",
+  "ok": true,
+  "value": "last 0.1s -119 dBFS"
+ },
+ {
+  "pass_": 1,
+  "check": "no clicks/glitches added by processing",
+  "ok": true,
+  "value": "827 spikes in master vs 816 unmastered mix vs 693 raw stem sum"
+ },
+ {
+  "pass_": 2,
+  "check": "delay & pre-delay times = 96 BPM math",
+  "ok": true,
+  "value": "1/8d 468.75, 1/4 625.00, 1/64 39.06 ms"
+ },
+ {
+  "pass_": 2,
+  "check": "beat transients not shifted (1-6 kHz)",
+  "ok": true,
+  "value": "0 samples"
+ },
+ {
+  "pass_": 2,
+  "check": "vocal transients not shifted (1-6 kHz)",
+  "ok": true,
+  "value": "0 samples"
+ },
+ {
+  "pass_": 2,
+  "check": "stems share start point (no offset introduced)",
+  "ok": true,
+  "value": "all stems summed sample-aligned from 0:00 (copied hook at 2:20 sits 10 ms late in the source take: under the 20-30 ms fix threshold, left as performed)"
+ },
+ {
+  "pass_": 3,
+  "check": "lead sits clearly on top of beat (+1..+4 LU)",
+  "ok": true,
+  "value": "+1.9 LU"
+ },
+ {
+  "pass_": 3,
+  "check": "adlibs 4-8 dB under lead (layer order)",
+  "ok": true,
+  "value": "7.0 dB under"
+ },
+ {
+  "pass_": 3,
+  "check": "hook lifts 1-3 LU above verses",
+  "ok": true,
+  "value": "+1.5 LU"
+ },
+ {
+  "pass_": 3,
+  "check": "lead phrase consistency (IQR <= 2 LU)",
+  "ok": true,
+  "value": "IQR 1.3 LU"
+ },
+ {
+  "pass_": 4,
+  "check": "vocal presence lift within doc spec (+1..+3 dB, matched loudness)",
+  "ok": true,
+  "value": "+2.5 dB"
+ },
+ {
+  "pass_": 4,
+  "check": "no harsh 2-5 kHz flare-ups (vs raw vocal)",
+  "ok": true,
+  "value": "flare 10.9 dB vs raw 12.2 dB"
+ },
+ {
+  "pass_": 4,
+  "check": "no mud: low-mid not > mid+2.5 dB",
+  "ok": true,
+  "value": "low-mid -7.7 / mid -9.8 dB share"
+ },
+ {
+  "pass_": 4,
+  "check": "sibilance spikes tamed (acapella vs raw lead)",
+  "ok": true,
+  "value": "S-spike 25.6 dB vs raw 32.2 dB"
+ },
+ {
+  "pass_": 4,
+  "check": "no boom: sub share sane (< -1.5 dB)",
+  "ok": true,
+  "value": "sub -3.5 dB share"
+ },
+ {
+  "pass_": 5,
+  "check": "words come through: phone (mono, 300 Hz-7 kHz)",
+  "ok": true,
+  "value": "vocal +8.9 dB over music in 1-4 kHz (broadband +10.9 LU)"
+ },
+ {
+  "pass_": 5,
+  "check": "words come through: earbuds (HP 40 Hz)",
+  "ok": true,
+  "value": "vocal +9.4 dB over music in 1-4 kHz (broadband +4.4 LU)"
+ },
+ {
+  "pass_": 5,
+  "check": "words come through: car (+4 dB bass bump)",
+  "ok": true,
+  "value": "vocal +9.4 dB over music in 1-4 kHz (broadband +0.1 LU)"
+ },
+ {
+  "pass_": 5,
+  "check": "words come through: club (+6 dB sub)",
+  "ok": true,
+  "value": "vocal +9.4 dB over music in 1-4 kHz (broadband -0.5 LU)"
+ },
+ {
+  "pass_": 5,
+  "check": "words come through: laptop (200 Hz-12 kHz)",
+  "ok": true,
+  "value": "vocal +9.4 dB over music in 1-4 kHz (broadband +9.6 LU)"
+ },
+ {
+  "pass_": 5,
+  "check": "words come through: mono fold",
+  "ok": true,
+  "value": "vocal +8.9 dB over music in 1-4 kHz (broadband +2.2 LU)"
+ },
+ {
+  "pass_": 5,
+  "check": "mono fold loss <= 1 dB, correlation > 0.5",
+  "ok": true,
+  "value": "-0.31 dB, corr 0.86"
+ },
+ {
+  "pass_": 5,
+  "check": "808 rhythm audible on phone (harmonics track the sub)",
+  "ok": true,
+  "value": "corr 0.37"
+ },
+ {
+  "pass_": 5,
+  "check": "very low volume (equal-loudness sim): lead above music",
+  "ok": true,
+  "value": "vocal +10.5 LU over music"
+ },
+ {
+  "pass_": 6,
+  "check": "integrated loudness at target (-12.1 +/- 0.5)",
+  "ok": true,
+  "value": "-12.1 LUFS"
+ },
+ {
+  "pass_": 6,
+  "check": "true peak <= -2.0 dBTP (louder than -14 LUFS)",
+  "ok": true,
+  "value": "-2.28 dBTP"
+ },
+ {
+  "pass_": 6,
+  "check": "MP3 320k encode true peak < 0 dBTP",
+  "ok": true,
+  "value": "-2.27 dBTP"
+ },
+ {
+  "pass_": 6,
+  "check": "M4A 256k encode true peak < 0 dBTP",
+  "ok": true,
+  "value": "-2.23 dBTP"
+ },
+ {
+  "pass_": 6,
+  "check": "short-term loudness reviewed (max <= -8)",
+  "ok": true,
+  "value": "max short-term -10.0 LUFS"
+ },
+ {
+  "pass_": 7,
+  "check": "fresh analysis: no new technical warnings",
+  "ok": true,
+  "value": "clean (only the known lossy-source note)"
+ },
+ {
+  "pass_": 7,
+  "check": "lead-only / music-only / whole-song re-measure",
+  "ok": true,
+  "value": "lead on top, hook lifts, spec met"
+ }
+]

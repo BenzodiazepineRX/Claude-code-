@@ -20,6 +20,7 @@ import uuid
 
 import boto3
 from boto3.dynamodb.conditions import Key
+from botocore.config import Config
 
 import espn
 import slips as slipmath
@@ -27,7 +28,9 @@ import slips as slipmath
 TABLE = boto3.resource("dynamodb").Table(os.environ["TABLE_NAME"])
 S3 = boto3.client("s3")
 BUCKET = os.environ["UPLOAD_BUCKET"]
-BEDROCK = boto3.client("bedrock-runtime")
+# Fail fast so the phone's backup reader can take over well within the API's 30-second limit.
+BEDROCK = boto3.client("bedrock-runtime", config=Config(
+    retries={"max_attempts": 1, "mode": "standard"}, connect_timeout=4, read_timeout=12))
 MODEL_IDS = [m for m in (os.environ.get("MODEL_ID"), os.environ.get("FALLBACK_MODEL_ID")) if m]
 
 MAX_SLIPS = 2000

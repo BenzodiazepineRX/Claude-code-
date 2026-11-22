@@ -357,8 +357,19 @@ function wire() {
       msg.textContent = `Found ${r.draft.legs.length} leg(s). Check them below.`;
       openForm({ ...r.draft, placedAt: r.draft.placedAt || new Date().toISOString() });
     } catch (err) {
-      msg.textContent = err.message;
-      openForm({ legs: [blankLeg()], screenshotKey: err.data?.screenshotKey, placedAt: new Date().toISOString() });
+      // AWS AI reader unavailable: read the screenshot on this device instead.
+      const key = err.data?.screenshotKey;
+      try {
+        msg.textContent = "Using the backup reader on your phone… 0%";
+        const text = await window.backupReader.ocrImage($("#preview").src, (p) => { msg.textContent = `Using the backup reader on your phone… ${p}%`; });
+        const guess = window.backupReader.guessSlip(text);
+        if (!guess.legs.length) guess.legs = [blankLeg()];
+        msg.textContent = `Backup reader found ${guess.legs.length} leg(s). It's a best guess — please check each one carefully.`;
+        openForm({ ...guess, screenshotKey: key, placedAt: new Date().toISOString() });
+      } catch (ocrErr) {
+        msg.textContent = "Couldn't read the screenshot automatically — please type the legs in below.";
+        openForm({ legs: [blankLeg()], screenshotKey: key, placedAt: new Date().toISOString() });
+      }
     } finally { e.target.value = ""; }
   });
   $("#manual-btn").addEventListener("click", () => openForm({ legs: [blankLeg()], placedAt: new Date().toISOString() }));

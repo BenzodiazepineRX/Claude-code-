@@ -21,7 +21,7 @@ const store = {
   del(k) { try { localStorage.removeItem(k); } catch { /* ignore */ } },
 };
 
-let state = { slips: [], settings: { dailyGoal: 60, startingBankroll: 0 }, tab: "today", charts: {}, lastSync: null };
+let state = { slips: [], settings: { dailyGoal: 60, startingBankroll: 0 }, tab: "today", sport: "", charts: {}, lastSync: null };
 
 /* ------------------------------------------------------------------ auth (Cognito) */
 const auth = {
@@ -121,33 +121,82 @@ function legTitle(l) {
     default: return `${l.team || l.selection || "?"} to win${l.opponent ? ` vs ${l.opponent}` : ""}`;
   }
 }
-function chip(status) { const s = status || "pending"; return `<span class="chip ${esc(s)}">${esc(CHIP_TEXT[s] || s)}</span>`; }
-function slipStatusChip(s) {
-  if (s.status && s.status !== "open") return chip(s.status);
+const SPORT_ICO = { nba: "🏀", wnba: "🏀", ncaab: "🏀", nfl: "🏈", ncaaf: "🏈", soccer: "⚽", tennis: "🎾", other: "🎯" };
+const STAT_SHORT = { points: "PTS", rebounds: "REB", assists: "AST", threes: "3PM", pra: "PRA", pr: "P+R", pa: "P+A", ra: "R+A",
+  steals: "STL", blocks: "BLK", stocks: "STK", turnovers: "TO", passing_yards: "PASS", passing_tds: "PASS TD", completions: "CMP",
+  pass_attempts: "ATT", interceptions: "INT", rushing_yards: "RUSH", rushing_attempts: "CAR", receiving_yards: "REC YD",
+  receptions: "REC", rush_rec_yards: "R+R YD", touchdowns: "TD", goals: "GOAL", shots: "SHOTS", shots_on_target: "SOT",
+  soccer_assists: "AST", saves: "SAVES" };
+const RESULT_TEXT = { won: "Won", lost: "Lost", push: "Push", void: "Void", winning: "Winning", losing: "Losing", tied: "Tied",
+  live: "Live", pending: "Pre", unmatched: "Not found", unsupported: "Manual", error: "Retry" };
+const num = (v) => (v === null || v === undefined || v === "" ? "" : Number(v));
+const trimNum = (v) => (v === "" ? "" : String(+(+v).toFixed(1)));
+
+function legName(l) {
+  if (l.type === "player_prop") return { t: l.player || "Player", s: `${l.side === "under" ? "Under" : "Over"} ${(l.stat || "").replace(/_/g, " ")}` };
+  if (l.type === "total") return { t: [l.team, l.opponent].filter(Boolean).join(" / ") || "Game total", s: "Game total" };
+  if (l.type === "team_total") return { t: l.team || "Team", s: "Team total" };
+  if (l.type === "spread") return { t: l.team || "Team", s: l.opponent ? `vs ${l.opponent}` : "Spread" };
+  return { t: l.team || l.selection || "Pick", s: l.opponent ? `vs ${l.opponent}` : "To win" };
+}
+function lineCell(l) {
+  const ln = num(l.line);
+  let top = "ML";
+  if (l.type === "spread") top = ln === "" ? "–" : (ln > 0 ? `+${trimNum(ln)}` : trimNum(ln));
+  else if (["total", "team_total", "player_prop"].includes(l.type)) top = `${l.side === "under" ? "u" : "o"}${trimNum(ln)}`;
+  return `<div class="cell"><small>${esc(top)}</small><b>${esc(l.odds || "–")}</b></div>`;
+}
+function nowCell(l) {
+  const lv = l.live || {};
+  if (l.type === "player_prop") {
+    const need = lv.status === "live" && l.side !== "under" && lv.current !== undefined ? Math.floor(Number(l.line) - Number(lv.current)) + 1 : null;
+    return `<div class="cell"><small>${esc(STAT_SHORT[l.stat] || "STAT")}</small><b>${lv.current !== undefined ? esc(trimNum(lv.current)) : "–"}</b>${need > 0 ? `<span class="xs">needs ${need}</span>` : ""}</div>`;
+  }
+  if (["total", "team_total"].includes(l.type)) {
+    return `<div class="cell"><small>${l.type === "total" ? "Total" : "Pts"}</small><b>${lv.current !== undefined ? esc(trimNum(lv.current)) : "–"}</b></div>`;
+  }
+  const has = lv.mine !== undefined && lv.theirs !== undefined;
+  return `<div class="cell"><small>${l.sport === "tennis" ? "Sets" : "Score"}</small><b>${has ? `${trimNum(lv.mine)}-${trimNum(lv.theirs)}` : "–"}</b></div>`;
+}
+function resultCell(l) {
+  const st = l.manualResult || (l.live || {}).status || "pending";
+  return `<div class="cell res ${esc(st)}"><b>${esc(RESULT_TEXT[st] || st)}</b></div>`;
+}
+function legSub(l) {
+  const lv = l.live || {};
+  const base = legName(l).s;
+  const clock = lv.clock && lv.state !== "pre" ? lv.clock : lv.state === "pre" ? (lv.clock || "").replace(/^\d+\/\d+ - /, "") : "";
+  return [base, clock].filter(Boolean).join(" · ");
+}
+function slipTag(s) {
+  const n = (s.legs || []).length;
+  const label = n > 1 ? `⊕ ${n}-LEG` : "SINGLE";
+  if (isSettled(s)) return `<span class="tag ${esc(s.status)}">${label} · ${esc((s.status || "").toUpperCase())}</span>`;
   const ls = s.liveSummary || {};
-  if (ls.missing) return chip("losing");
-  if (ls.hitting) return chip("winning");
-  return chip("live");
+  const cls = ls.missing ? "losing" : ls.hitting ? "winning" : "live";
+  return `<span class="tag ${cls}">${label}</span>`;
 }
 
 /* ------------------------------------------------------------------ rendering */
 function slipCard(s, { actions = true } = {}) {
   const legs = (s.legs || []).map((l) => {
-    const lv = l.live || {};
-    const st = l.manualResult || lv.status || "pending";
-    return `<div class="leg">${chip(st)}<div><div class="leg-title">${esc(legTitle(l))}</div>
-      <div class="leg-detail">${esc(SPORT_NAMES[l.sport] || l.sport || "")}${l.odds ? ` · ${esc(l.odds)}` : ""}${lv.detail ? ` · ${esc(lv.detail)}` : ""}</div></div></div>`;
+    const nm = legName(l);
+    return `<div class="legrow" title="${esc((l.live || {}).detail || l.selection || "")}">
+      <div class="legname"><div class="sport-ico">${SPORT_ICO[l.sport] || "🎯"}</div>
+        <div style="min-width:0"><div class="t">${esc(nm.t)}</div><div class="s">${esc(legSub(l))}</div></div></div>
+      ${lineCell(l)}${nowCell(l)}${resultCell(l)}</div>`;
   }).join("");
   const settled = isSettled(s);
   const ls = s.liveSummary || {};
-  const headline = settled ? "" : `<div class="headline">${ls.hitting || 0}/${ls.legs || (s.legs || []).length} legs hitting${ls.missing ? ` · ${ls.missing} behind` : ""}</div>`;
-  const money = settled
-    ? `<div class="${s.profit > 0 ? "pos" : s.profit < 0 ? "neg" : ""}">${signed$(s.profit)}</div>`
-    : `<div>${fmt$(s.stake)} → ${fmt$(s.payout || 0)}</div>`;
+  const meta = settled ? `${esc(s.book || "Slip")} · ${esc(localDay(s.settledAt || s.placedAt || s.createdAt))}`
+    : `${esc(s.book || "Live")} · ${ls.hitting || 0}/${ls.legs || (s.legs || []).length} hitting`;
+  const amt = settled
+    ? `<span class="amt ${s.profit > 0 ? "pos" : s.profit < 0 ? "neg" : ""}">${signed$(s.profit)}</span>`
+    : `<span class="amt">${fmt$(s.stake)} → ${fmt$(s.payout || 0)}</span>`;
   return `<div class="slip" data-id="${esc(s.slipId)}">
-    <div class="slip-head"><div>${slipStatusChip(s)} <span class="meta">${esc(s.book || "")} · ${(s.legs || []).length}-leg · ${esc(localDay(s.placedAt || s.createdAt))}</span>${headline}</div>
-      <div class="slip-money">${money}</div></div>
+    <div class="cols"><span></span><span>Line</span><span>Now</span><span>Result</span></div>
     ${legs}
+    <div class="slip-foot">${slipTag(s)}<span class="meta">${meta}</span>${amt}</div>
     ${actions ? `<div class="slip-actions">
       <button class="btn small" data-act="edit">Edit</button>
       ${settled ? `<button class="btn small" data-act="reopen">Reopen</button>` : `<button class="btn small" data-act="won">Mark won</button><button class="btn small" data-act="lost">Mark lost</button>`}
@@ -156,15 +205,29 @@ function slipCard(s, { actions = true } = {}) {
   </div>`;
 }
 
+const bySport = (list) => list.filter((s) => !state.sport || slipSport(s) === state.sport || (s.legs || []).some((l) => l.sport === state.sport));
 function renderList(el, list, emptyText) {
-  el.innerHTML = list.length ? list.map((s) => slipCard(s)).join("") : `<div class="empty">${esc(emptyText)}</div>`;
+  const shown = bySport(list);
+  el.innerHTML = shown.length ? shown.map((s) => slipCard(s)).join("")
+    : `<div class="empty">${esc(state.sport && list.length ? `No ${SPORT_NAMES[state.sport] || state.sport} slips here.` : emptyText)}</div>`;
+}
+
+function todayNumbers() {
+  const tk = todayKey();
+  const settledToday = state.slips.filter((s) => isSettled(s) && s.settledAt && localDay(s.settledAt) === tk);
+  return { settledToday, profit: settledToday.reduce((a, s) => a + (s.profit || 0), 0), goal: Number(state.settings.dailyGoal) || 0 };
+}
+
+function renderHeader() {
+  const { profit, goal } = todayNumbers();
+  const hp = $("#hdr-profit"); hp.textContent = signed$(profit); hp.className = profit > 0 ? "pos" : profit < 0 ? "neg" : "";
+  $("#hdr-goal").textContent = `of ${fmt$(goal)}`;
+  const n = state.slips.filter((s) => !isSettled(s)).length;
+  const b = $("#live-badge"); b.textContent = n; b.classList.toggle("hidden", !n);
 }
 
 function renderToday() {
-  const tk = todayKey();
-  const settledToday = state.slips.filter((s) => isSettled(s) && s.settledAt && localDay(s.settledAt) === tk);
-  const profit = settledToday.reduce((a, s) => a + (s.profit || 0), 0);
-  const goal = Number(state.settings.dailyGoal) || 0;
+  const { settledToday, profit, goal } = todayNumbers();
   $("#today-profit").textContent = signed$(profit);
   $("#today-profit").className = "big " + (profit > 0 ? "pos" : profit < 0 ? "neg" : "");
   $("#today-goal").textContent = fmt$(goal);
@@ -175,14 +238,17 @@ function renderToday() {
   $("#goal-note").textContent = goal <= 0 ? "Set a daily goal in Settings." :
     profit >= goal ? "🎉 Goal reached for today. Nice work — protect it!" :
     `${fmt$(goal - profit)} to go.` + (open.length ? ` Open slips could add up to ${fmt$(potential)}.` : "");
-  renderList($("#live-list"), open, "No live slips. Tap ➕ Add to upload a bet slip.");
+  renderList($("#live-list"), open, "No live slips. Tap + Add slip to upload a bet slip.");
   renderList($("#today-settled"), settledToday, "Nothing settled yet today.");
 }
 
+function renderLive() {
+  renderList($("#live-all"), state.slips.filter((s) => !isSettled(s)), "No live slips right now.");
+}
+
 function renderHistory() {
-  const st = $("#f-status").value, sp = $("#f-sport").value;
-  const list = state.slips.filter((s) => (!st || (s.status || "open") === st) && (!sp || slipSport(s) === sp));
-  renderList($("#history-list"), list, "No slips match.");
+  const st = $("#f-status").value;
+  renderList($("#history-list"), state.slips.filter((s) => !st || (s.status || "open") === st), "No slips match.");
 }
 
 function table(rows, headers) {
@@ -251,10 +317,11 @@ function drawCharts(settled) {
 }
 
 function render() {
+  renderHeader();
   if (state.tab === "today") renderToday();
+  if (state.tab === "live") renderLive();
   if (state.tab === "history") renderHistory();
   if (state.tab === "stats") renderStats();
-  $("#sync").textContent = state.lastSync ? `Updated ${state.lastSync.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}` : "—";
 }
 
 /* ------------------------------------------------------------------ data */
@@ -264,10 +331,10 @@ async function loadSlips() {
 }
 async function liveRefresh(manual) {
   if (!state.slips.some((s) => !isSettled(s))) { if (manual) toast("No live slips to check."); return; }
-  const btn = $("#refresh-btn"); btn.disabled = true;
+  const btns = [$("#refresh-btn"), $("#refresh-btn-2")]; btns.forEach((b) => { b.disabled = true; });
   try { await api("POST", "/refresh"); await loadSlips(); if (manual) toast("Live scores updated."); }
   catch (e) { if (manual) toast(e.message); }
-  finally { btn.disabled = false; }
+  finally { btns.forEach((b) => { b.disabled = false; }); }
 }
 
 /* ------------------------------------------------------------------ slip form */
@@ -336,15 +403,23 @@ async function imageToDataUrl(file) {
 function switchTab(tab) {
   state.tab = tab;
   document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("hidden", t.id !== `tab-${tab}`));
-  document.querySelectorAll(".tabs button").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
+  document.querySelectorAll(".dock button, .bigtabs button").forEach((b) => b.classList.toggle("active", b.dataset.tab === tab));
+  $("#sporttabs").classList.toggle("hidden", !["today", "live", "history"].includes(tab));
   render(); window.scrollTo(0, 0);
 }
 
 function wire() {
-  document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => switchTab(b.dataset.tab)));
+  document.querySelectorAll(".dock button, .bigtabs button").forEach((b) => b.addEventListener("click", () => switchTab(b.dataset.tab)));
+  document.querySelectorAll("#sporttabs button").forEach((b) => b.addEventListener("click", () => {
+    state.sport = b.dataset.sport;
+    document.querySelectorAll("#sporttabs button").forEach((x) => x.classList.toggle("active", x === b));
+    render();
+  }));
+  $("#add-pill").addEventListener("click", () => switchTab("add"));
+  $("#settings-btn").addEventListener("click", () => switchTab("settings"));
   $("#refresh-btn").addEventListener("click", () => liveRefresh(true));
+  $("#refresh-btn-2").addEventListener("click", () => liveRefresh(true));
   $("#f-status").addEventListener("change", renderHistory);
-  $("#f-sport").addEventListener("change", renderHistory);
   $("#signout").addEventListener("click", () => auth.signOut());
 
   $("#file").addEventListener("change", async (e) => {

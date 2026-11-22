@@ -388,7 +388,7 @@ def evaluate_leg(f, leg):
             if typ == "moneyline" and norm(sel) in ("draw", "tie"):
                 diff = score_of(comps[0]) - score_of(comps[1])
                 st = ("won" if diff == 0 else "lost") if final else ("winning" if diff == 0 else "losing")
-                live.update(status=st, detail=scoreline)
+                live.update(status=st, detail=scoreline, mine=score_of(comps[0]), theirs=score_of(comps[1]))
             else:
                 mine = next((c for c in comps if competitor_matches(sel, c)), None)
                 other = next((c for c in comps if c is not mine), None)
@@ -397,6 +397,7 @@ def evaluate_leg(f, leg):
                 elif sport == "tennis":
                     sa, sb, ga, gb, txt = tennis_sets(comp)
                     me_first = mine is comps[0]
+                    live.update(mine=sa if me_first else sb, theirs=sb if me_first else sa)
                     if typ == "moneyline":
                         if final and (mine.get("winner") is not None or other.get("winner") is not None):
                             st = "won" if mine.get("winner") else "lost"
@@ -411,6 +412,7 @@ def evaluate_leg(f, leg):
                     live.update(status=over_under(val, float(leg["line"]), leg.get("side", "over"), final),
                                 current=val, detail=f"{competitor_label(mine)} {int(val)} (line {leg['line']}) · {clock}")
                 else:
+                    live.update(mine=score_of(mine), theirs=score_of(other))
                     margin = score_of(mine) - score_of(other)
                     if typ == "spread":
                         margin += float(leg.get("line") or 0)

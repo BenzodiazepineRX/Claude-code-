@@ -56,3 +56,11 @@ Read this at the start of every job.
 4. Kenshin's raw takes can be recorded much darker than his last session. Re-check presence every song instead of reusing the last EQ.
 5. Kenshin and ARMY prefer the lead **at about 0 to +0.5 LU vs the beat** and the reverb **at about 20 dB under** (dry ≥ 24 dB over reverb while singing).
 6. Raising the beat raises the mix's low-mids. Re-check mud after any beat-level change.
+
+## The big lesson (What I'm Posed To Do v16, prompted by ARMY)
+1. **Fix one measured fault with one precise move.** Eight overlapping cuts in 300–1000 Hz lowered the region, left the box hump standing out and hollowed a natural dip. A hump next to a hole = boxy.
+2. **Find resonances with the pitch-independent harmonic envelope** (scripts/harmenv.py): measure every note's harmonics and look for a hump all notes share. Plain spectra and fine notches confuse melody with resonance.
+3. **Measure articulation** (consonant punch and attack in 2–5 kHz vs raw). Dull = squashed consonants. Use one compressor with a 15 ms attack; no vocal peak limiter, no stacked de-essers, no saturation by default.
+4. **Never use a reference that has printed FX** for tone matching.
+5. **Kenshin's voice (this mic):** resonance at 480 Hz (Q 3.5, −5.5 dB), a natural dip at 600 Hz (leave it), very dark top (+2.5 dB @ 3.2k, +4 dB shelf above 6k).
+6. When collaborators (ARMY) push back with measurements, re-test assumptions from the raw. Don't keep stacking fixes on a flawed chain.

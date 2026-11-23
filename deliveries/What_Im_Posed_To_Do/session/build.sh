@@ -9,9 +9,9 @@ BUS=$(python3 -c "import soundfile as sf,numpy as np;x,_=sf.read('work/mix_raw_$
 THL=$(python3 -c "print('%.6f'%(10**($GT/20)))")
 echo "fixed chain: bus $BUS dB, glue thr $GT dB (sidechain HPF 600), limiter gain $VOL dB"
 export BUS VOL THL REF=master_$V.wav
-VOX="lead1_auto.wav:-1.9 lead2_auto.wav:-1.9 bg1_pan.wav:-1.5 bg2_pan.wav:-1.5 stack4.wav:-7.0 plate4_auto.wav:-0.5 amb_auto.wav:-6 bg_delay.wav:-6 thr3_8d.wav:-2 thr3_q.wav:-2 thr3_h.wav:0 echo_bg3.wav:8 bg_throws.wav:-1"
+VOX="lead1_auto.wav:4.0 lead2_auto.wav:4.0 bg1_pan.wav:-1.5 bg2_pan.wav:-1.5 stack5.wav:-4.0 plate5_auto.wav:4.9 amb_auto.wav:-6 bg_delay.wav:-6 thr5_8d.wav:-2 thr5_q.wav:-2 thr5_h.wav:0 echo_bg5.wav:13.4 bg_throws.wav:-1"
 FILL="fills_dry.wav:0 fills_verb.wav:-2 fills_delay.wav:-6 rev_swells.wav:-4"
-./alts.sh main beat_final2.wav:1.0 $VOX $FILL & ./alts.sh nofills beat_final2.wav:1.0 $VOX & ./alts.sh instrumental beat_final2.wav:1.0 & ./alts.sh acapella $VOX $FILL & ./alts.sh tvtrack beat_final2.wav:1.0 bg1_pan.wav:-1.5 bg2_pan.wav:-1.5 bg_delay.wav:-6 bg_throws.wav:-1 stack4.wav:-7.0 echo_bg3.wav:8 bg_plate_auto.wav:-3 & wait
+./alts.sh main beat_final2.wav:1.0 $VOX $FILL & ./alts.sh nofills beat_final2.wav:1.0 $VOX & ./alts.sh instrumental beat_final2.wav:1.0 & ./alts.sh acapella $VOX $FILL & ./alts.sh tvtrack beat_final2.wav:1.0 bg1_pan.wav:-1.5 bg2_pan.wav:-1.5 bg_delay.wav:-6 bg_throws.wav:-1 stack5.wav:-4.0 echo_bg5.wav:13.4 bg_plate_auto.wav:-3 & wait
 python3 -c "
 import numpy as np, soundfile as sf
 a,_=sf.read('work/master_$V.wav'); b,_=sf.read('work/alt_main.wav'); n=min(len(a),len(b)); d=a[:n]-b[:n]

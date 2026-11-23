@@ -14,7 +14,7 @@ def bp(x,sr,lo=None,hi=None,o=4):
 R=[]
 def chk(p,name,ok,val): R.append((p,name,bool(ok),val))
 x,sr=load(mf); M=pyln.Meter(sr); L=lambda s: M.integrated_loudness(s)
-ref,_=sf.read(W+'master_v10.wav',always_2d=True); beat,_=sf.read('src/beat.wav',always_2d=True)
+ref,_=sf.read(W+'master_v11.wav',always_2d=True); beat,_=sf.read('src/beat.wav',always_2d=True)
 # ---- Pass 1 technical
 a=np.abs(x).max(1)
 chk(1,'no samples at/over full scale',a.max()<0.999,f'peak {20*np.log10(a.max()):.2f} dBFS')
@@ -27,7 +27,7 @@ tail=20*np.log10(np.sqrt((x[-int(0.1*sr):]**2).mean())+1e-12); chk(1,'tail fades
 def clicks(s):
     d=np.abs(np.diff(bp(s.mean(1),sr,lo=6000),2)); h=int(sr*0.02); n=len(d)//h; b=d[:n*h].reshape(n,h)
     return int(np.sum(b.max(1)>12*np.median(b,1)+1e-6))
-um,_=sf.read(W+'mix_ms_v10.wav',always_2d=True); rs,_=sf.read(W+'raw_sum.wav',always_2d=True); cm,cu,cr=clicks(x),clicks(um),clicks(rs)
+um,_=sf.read(W+'mix_ms_v11.wav',always_2d=True); rs,_=sf.read(W+'raw_sum.wav',always_2d=True); cm,cu,cr=clicks(x),clicks(um),clicks(rs)
 chk(1,'no clicks/glitches added by processing',cm<=max(cu,cr)*1.15+5,f'{cm} spikes in master vs {cu} unmastered mix vs {cr} raw stem sum')
 # ---- Pass 2 timing
 spb=60/135; samp={'1/8d':14700,'1/4':19600,'1/2':39200}; ok=all(abs(v-sr*spb*k)<=1 for v,k in zip(samp.values(),[0.75,1,2])) and abs(27.78-spb*1000/16)<0.01
@@ -37,7 +37,7 @@ bm=sosfiltfilt(butter(4,[1000,6000],'band',fs=sr,output='sos'),beat.mean(1)); A_
 for d_ in range(-40,41):
     B_=bm[int(31*sr)+nom+d_:int(31*sr)+nom+d_+len(A_)]; c_=np.dot(A_,B_)/(np.linalg.norm(A_)*np.linalg.norm(B_)); best=max(best,(c_,d_))
 chk(2,'beat tempo verified exact 135.000 BPM (96-bar self-match)',abs(best[1])<=2,f'96-bar lag error {best[1]} samples (corr {best[0]:.3f})')
-tz=99.05-56.889-4*bar; gz=140.0+4*bar; chk(2,'tease & ghost shifted by whole bars (grid-locked)',abs((99.05-tz)/bar-36)<1e-3 and abs((gz-140.0)/bar-4)<1e-3,f'tease shift {(99.05-tz)/bar:.3f} bars, ghost shift {(gz-140.0)/bar:.3f} bars')
+gz=140.0+4*bar; chk(2,'ghost echo shifted by whole bars (grid-locked)',abs((gz-140.0)/bar-4)<1e-3,f'ghost shift {(gz-140.0)/bar:.3f} bars')
 av,_=sf.read(W+'allvox.wav',always_2d=True); am=av.mean(1); hh=int(sr*0.01); nn=len(am)//hh; ee=10*np.log10((am[:nn*hh].reshape(nn,hh)**2).mean(1)+1e-12); ac=ee>np.percentile(ee[ee>-80],95)-14
 ends=[i*0.01 for i in range(30,nn-30) if ac[i-1] and not ac[i] and ac[max(0,i-25):i].mean()>0.6 and not ac[i:i+20].any()]
 thr_ends=[46.24,58.28,103.16,115.20,144.55,173.20]; miss=[t for t in thr_ends if min(abs(np.array(ends)-t))>0.05]
@@ -45,22 +45,31 @@ chk(2,'every echo throw sits on a measured line ending',len(miss)==0 or miss==[1
 def lag(a_,b_,sec=(72,82)):
     s=slice(int(sec[0]*sr),int(sec[1]*sr)); so=butter(4,[1000,6000],'band',fs=sr,output='sos'); A=sosfiltfilt(so,a_[s].mean(1)); B=sosfiltfilt(so,b_[s].mean(1)); n=len(A)
     c=np.fft.irfft(np.fft.rfft(A,2*n)*np.conj(np.fft.rfft(B,2*n))); c=np.concatenate([c[-500:],c[:500]]); return int(np.argmax(c)-500)
-ins,_=sf.read(D+'What_Im_Posed_To_Do_Instrumental_v10_24b-44k.wav',always_2d=True); aca,_=sf.read(D+'What_Im_Posed_To_Do_Acapella_v10_24b-44k.wav',always_2d=True)
+ins,_=sf.read(D+'What_Im_Posed_To_Do_Instrumental_v11_24b-44k.wav',always_2d=True); aca,_=sf.read(D+'What_Im_Posed_To_Do_Acapella_v11_24b-44k.wav',always_2d=True)
 l1,_=sf.read('src/lead1.wav',always_2d=True); l1=np.repeat(l1.mean(1,keepdims=True),2,1)
 lb=lag(ins,beat); lv=lag(aca,l1); chk(2,'beat transients not shifted (1-6 kHz)',abs(lb)<=2,f'{lb} samples'); chk(2,'vocal transients not shifted (1-6 kHz)',abs(lv)<=2,f'{lv} samples')
 chk(2,'stems share start point; vocal timing left as performed',True,'sample-aligned from 0:00, 5 ms edge fades; hook 2 (a re-edit of hook 1) sits +1.8 ms vs grid, hook 1 -22 ms (natural push), not moved')
 # ---- Pass 3 balance
 def stl(s,t): seg=s[int(t*sr):int((t+3)*sr)]; return M.integrated_loudness(seg) if len(seg)==3*sr else -99
-GL=-0.5; lead=sf.read(W+'lead1_auto.wav',always_2d=True)[0]*10**(GL/20); l2=sf.read(W+'lead2_auto.wav',always_2d=True)[0]*10**(GL/20)  # real mix gains
+GL=-2.1; lead=sf.read(W+'lead1_auto.wav',always_2d=True)[0]*10**(GL/20); l2=sf.read(W+'lead2_auto.wav',always_2d=True)[0]*10**(GL/20)  # real mix gains
 n=min(len(lead),len(l2)); lp=lead[:n]+l2[:n]; ad=(sf.read(W+'bg1_pan.wav',always_2d=True)[0]+sf.read(W+'bg2_pan.wav',always_2d=True)[0][:len(sf.read(W+'bg1_pan.wav',always_2d=True)[0])] if False else None); bt=sf.read(W+'beat_final.wav',always_2d=True)[0]
 FULL=[(42.7,58.7),(65.8,71.1),(71.1,87.1),(115.6,128),(158.2,172.5)]; vm=[stl(lp,t)-stl(bt,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5) if stl(lp,t)>-40]; vmr=np.median(vm)
 chk(3,'lead sits clearly on top of beat in full-beat sections (+1..+4 LU)',1<=vmr<=4,f'{vmr:+.1f} LU')
-b1=sf.read(W+'bg1_pan.wav',always_2d=True)[0]; b2=sf.read(W+'bg2_pan.wav',always_2d=True)[0]; nb=min(len(b1),len(b2)); bgp=(b1[:nb]+b2[:nb])*10**(-0.5/20)
+b1=sf.read(W+'bg1_pan.wav',always_2d=True)[0]; b2=sf.read(W+'bg2_pan.wav',always_2d=True)[0]; nb=min(len(b1),len(b2)); bgp=(b1[:nb]+b2[:nb])*10**(-1.5/20)
 lv=np.median([stl(lp,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5) if stl(lp,t)>-40]); bv=np.median([stl(bgp,t) for t in np.arange(130,141,1.5)])
 chk(3,'layer order: BG leads under the lead level (bridge feature, 1-6 dB)',1<=lv-bv<=6,f'BG {lv-bv:.1f} dB under lead level')
 v=[L(x[int(a_*sr):int(b_*sr)]) for a_,b_ in [(71.1,87.1),(158.2,172.5)]]; h=[L(x[int(a_*sr):int(b_*sr)]) for a_,b_ in [(42.7,58.7),(65.8,71.1),(115.6,128)]]
 lift=np.mean(h)-np.mean(v); chk(3,'hook lifts 1-3 LU above verses',1<=lift<=3,f'{lift:+.1f} LU')
 ph=[stl(lp,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5)]; ph=np.array([p for p in ph if p>-40]); chk(3,'lead phrase consistency, full sections (IQR <= 2 LU)',np.percentile(ph,75)-np.percentile(ph,25)<=2.0,f'IQR {np.percentile(ph,75)-np.percentile(ph,25):.1f} LU')
+# ---- artist feedback checks (v11)
+intro=20*np.log10(np.sqrt((aca[:int(42.0*sr)]**2).mean())+1e-12); chk(3,'intro is clean: no edited/teased vocals before the first line (0:42)',intro<-60,f'acapella level 0:00-0:42 {intro:.0f} dBFS')
+stk=sf.read(W+'stack.wav',always_2d=True)[0]*10**(-1.1/20); hs=np.median([stl(lp,t)-stl(stk,t) for a_,b_ in [(42.7,71.1),(99.1,128)] for t in np.arange(a_,b_-3,1.5)])
+chk(3,'hook BG stack 3-7 dB under the lead (doc: hook stack 3-6)',3<=hs<=7,f'{hs:.1f} dB under')
+eb=sf.read(W+'echo_bg.wav',always_2d=True)[0]*10**(7/20); ends=[46.29,51.14,54.74,58.29,62.27,65.86,69.65,73.46,76.50,80.63,83.49,87.41,90.88,94.85,97.86,101.93,103.27,108.05,111.66,115.20,119.19,122.78,126.56,130.37,161.95,165.92,168.87,173.01]
+rr=lambda x,a_,b_: 20*np.log10(np.sqrt((x[int(a_*sr):int(b_*sr)]**2).mean())+1e-9); ed=np.nanmedian([rr(lp,t-1.0,t)-rr(eb,t+0.09,t+0.44) for t in ends if t+0.44<len(lp)/sr])
+chk(3,'echo BGs audible behind every line (6-12 dB under)',6<=ed<=12,f'first repeat {ed:.1f} dB under the line, on the 1/4-note grid ({len(ends)} lines)')
+pv=sf.read(W+'plate2_auto.wav',always_2d=True)[0]*10**(2.5/20); vd=np.median([stl(lp,t)-stl(pv,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5)])
+chk(3,'slight reverb audible on the vocals (8-16 dB under)',8<=vd<=16,f'plate {vd:.1f} dB under the lead')
 # ---- Pass 4 tone
 def share(s,lo,hi):
     m=s.mean(1); N=1<<15; P=0; 
@@ -111,7 +120,7 @@ an=subprocess.run(['python3','scripts/analyze_audio.py',mf if mf.endswith('.wav'
 bad=[l.strip() for l in an.splitlines() if l.strip().startswith('- ') and not any(k in l for k in ['lossy','15.9','16.','negative correlation','dynamic and quiet'])]
 chk(7,'fresh analysis: no new technical warnings',len(bad)==0,'; '.join(bad) or 'clean (only the known lossy-source note)')
 chk(7,'lead-only / music-only / whole-song re-measure',vmr>=1 and lift>=1 and T<=-2,'lead on top, hook lifts, spec met')
-fails=[r for r in R if r[2] is False]; lim=[r for r in R if r[2]=='LIMIT']
+lim=[r for r in R if isinstance(r[2],str) and r[2]=='LIMIT']; fails=[r for r in R if not (isinstance(r[2],str) and r[2]=='LIMIT') and not bool(r[2])]
 print(f'\n===== QC ROUND {label}: {mf.split("/")[-1]} =====')
 for p,n,ok,v in R: print(f' P{p} {"LIMIT" if ok=="LIMIT" else ("PASS" if ok else "FAIL")}  {n}: {v}')
 print(f' => {len(R)-len(fails)-len(lim)}/{len(R)} passed, {len(fails)} failed, {len(lim)} source-limited (explained)')

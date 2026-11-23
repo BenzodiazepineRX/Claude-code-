@@ -1,6 +1,16 @@
-# "What I'm Posed To Do" — Mix & Master Report (v10)
+# "What I'm Posed To Do" — Mix & Master Report (v11)
 
-**Status:** v10 passed the 7-pass QC gauntlet **3 rounds in a row (24-bit WAV, 16-bit WAV, decoded MP3): 39/40 checks, 0 failures, 1 source-limit explained below.**
+**Status:** v11 (your feedback on v10 applied). QC: **3 rounds in a row (24-bit, 16-bit, decoded MP3), 43/44 checks each.** The 1 open item is the phone-speaker 808 check. It's a beat limit, handled under the doc's 5-round loop rule (see section 5).
+
+## v11: what you asked for and what changed
+| You said | What I did | Measured |
+|---|---|---|
+| Edited vocals before the lyrics are off-beat and "cut in" | **Removed** the intro tease and the reverse swell into 0:42. The intro is clean, and your first line starts exactly as you recorded it. Your own regions are **not** chopped: every region starts softly (−47 to −58 dBFS in the first ms). | vocals before 0:42: −148 dBFS (silence) |
+| Main vocals too loud | Lead −1.6 dB overall, and −3 dB in the beat breakdowns | lead vs beat: **+1.3 LU** in full sections (was +2.9); breakdowns +4.9 (was up to +9) |
+| No reverb like I wanted | Plate (1 bar, 27.78 ms pre-delay) made audible: return −11.5 dB, ducking reduced to 2 dB | plate **10.8 dB under** the lead (audible but slight) |
+| Missing background vocals with echo throws | **New hook stack:** 2 doubles built from your takes (±9 cents, 21/29 ms, darker, extra de-essed), 100% L/R. **New echo BGs:** the last word of **all 28 lines** repeats as a 1/4-note (444.44 ms) ping-pong echo. **Bridge BG:** wider (60%), louder, with its own 1/4-note throws on each line end | stack **6.0 dB under** in hooks, 10.9 dB in verses; echo BGs **9.7 dB under** each line; bridge BG 2.3 dB under |
+| Stream ready | −13.7 LUFS integrated, −2.4 dBTP true peak (Spotify asks under −2 dBTP when louder than −14), MP3/AAC encodes stay under 0 dBTP | limiter 3.8 dB on the loudest hits |
+
 It stays "draft, not final" until you listen and approve.
 
 ![Before / after](What_Im_Posed_To_Do_Before_After.png)
@@ -16,10 +26,10 @@ It stays "draft, not final" until you listen and approve.
 
 | Time | Section | What's there |
 |---|---|---|
-| 0:00–0:42 | Intro | beat; **new:** hook tease at 0:35, reverse swell into 0:42 |
-| 0:42–1:11 | **Hook 1** | LEAD 1 ↔ LEAD 2 call-and-response, stereo doubler |
+| 0:00–0:42 | Intro | beat only, clean (v11: tease and swell removed at your request) |
+| 0:42–1:11 | **Hook 1** | LEAD 1 ↔ LEAD 2 call-and-response + BG stack + echo BGs |
 | 1:11–1:39 | Verse 1 | drier and closer; second half over the beat breakdown |
-| 1:39–2:08 | **Hook 2** | a re-edit of Hook 1 (same melody), doubler |
+| 1:39–2:08 | **Hook 2** | a re-edit of Hook 1 (same melody) + BG stack + echo BGs |
 | 2:08–2:24 | Bridge | BG 1 and BG 2 in a round, panned left/right |
 | 2:24–2:37 | Gap | **new:** half-note throw, ghost echo of the last BG line, reverse swell |
 | 2:37–2:54 | Verse 2 | |
@@ -71,11 +81,14 @@ Glue 2:1 with a **sidechain high-pass at 600 Hz** so the 808 can't make it pump 
 | Round | File | Result |
 |---|---|---|
 | Dev (v6) | 24-bit | 35/39: flagged a "30 ms timing" issue, lead too loud, 808 on phone |
-| **R1 (v10)** | 24-bit WAV | **39/40, 0 fail, 1 source-limit** |
-| **R2 (v10)** | 16-bit WAV | **39/40, 0 fail, 1 source-limit** |
-| **R3 (v10)** | MP3, decoded | **39/40, 0 fail, 1 source-limit** |
+| v10 (all 3 rounds) | | 39/40: you then heard the intro, level, reverb and BG issues |
+| **R1 (v11)** | 24-bit WAV | **43/44**: only the phone-808 check open |
+| **R2 (v11)** | 16-bit WAV | **43/44** |
+| **R3 (v11)** | MP3, decoded | **43/44** |
 
-**Source-limited: the 808 on phone speakers.** Translation went 0.17 → 0.26 (+51% over the original beat), short of my 0.3 target. I tried 7 fixes: three enhancer strengths, sidechain at 150 / 600 / 1000 Hz, and sub clipping at 3 / 5 dB. Pushing further added low-mid mud over your voice. Fix at the source: the beat's trackout stems, or an 808 sample with more harmonics.
+v11 adds 4 checks from your feedback: clean intro, BG stack depth, echo BGs on every line, and audible reverb. All pass.
+
+**Open item, source-limited: the 808 on phone speakers.** In v11, translation is 0.24 vs the original beat's 0.17 (+35%; v10 was 0.26). It's still marked FAIL, not hidden. The final limiter flattens the 808 the most, and the remaining fixes (more 808 distortion, or less sub) would hurt the song on real speakers. Per the doc's rule, I stopped after 8 attempts, short of my 0.3 target. I tried 7 fixes: three enhancer strengths, sidechain at 150 / 600 / 1000 Hz, and sub clipping at 3 / 5 dB. Pushing further added low-mid mud over your voice. Fix at the source: the beat's trackout stems, or an 808 sample with more harmonics.
 
 **About timing ("perfectly timed"):** Hook 2 is a re-edit of Hook 1 placed 23 ms later. I measured both against the beat grid before touching anything. **Hook 2 lands right on the grid (+1.8 ms) and Hook 1 pushes slightly ahead (−22 ms, a natural singer's push).** Both are natural, so per your doc I did **not** move your vocals. Every effect is grid-locked: delays are exact sample counts, and the tease and ghost moved by whole bars on a beat verified at exactly 135.000 BPM.
 
@@ -91,13 +104,13 @@ Buy the beat's WAV or trackout stems. Keep the vocals dry like you did, which wa
 ## 8. Files
 | File | Use |
 |---|---|
-| `…_Master_v10_24b-44k.wav` | **main master** for your distributor |
-| `…_Master_v10_16b-44k.wav` / `…_Master_v10_320k.mp3` | 16-bit / sharing |
-| `…_Master_NoFills_v10_24b-44k.wav` (+ MP3) | same master **without** the tease, ghost echo and swells |
-| `…_Instrumental_v10`, `…_Acapella_v10`, `…_TV_Track_v10` | alternates through the identical chain (null test −89.4 dBFS) |
-| `…_Unmastered_Mix_v10_24b-44k.wav` | for future remasters |
-| `…_AB_IntroIntoHook_RoughVsMaster.mp3` | **listen first**: 0:33–0:50 rough, a pause, then master, at equal loudness |
+| `…_Master_v11_24b-44k.wav` | **main master** for your distributor |
+| `…_Master_v11_16b-44k.wav` / `…_Master_v11_320k.mp3` | 16-bit / sharing |
+| `…_Master_NoFills_v11_24b-44k.wav` (+ MP3) | same master **without** the gap's ghost echo and swell |
+| `…_Instrumental_v11`, `…_Acapella_v11`, `…_TV_Track_v11` (beat + all BG layers, no lead) | alternates through the identical chain (null test −89.3 dBFS) |
+| `…_Unmastered_Mix_v11_24b-44k.wav` | for future remasters |
+| `…_AB_IntroIntoHook_RoughVsMaster_v11.mp3` | **listen first**: 0:36–0:58 rough, a pause, then master, at equal loudness |
 | `…_Before_After.png` | song map with every fill and throw marked |
 | `session/` | all scripts and settings |
 
-**Listen for:** 0:35 (tease), 0:42 (swell into Hook 1), 0:46 and 0:58 (throws), 1:43 (Hook 2 doubler width), 2:24–2:37 (gap fill), 2:53 (final throw into the outro).
+**Listen for:** 0:42 (clean entry into Hook 1 with the BG stack), the echo BGs after every line (0:46, 0:51, 0:55…), 0:58 (half-note throw into the break), 2:08–2:24 (wider bridge BG with throws), 2:24–2:37 (gap fill), 2:53 (final throw).

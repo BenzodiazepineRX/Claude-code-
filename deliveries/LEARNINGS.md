@@ -43,4 +43,4 @@ Read this at the start of every job.
 
 ## Artist feedback
 - **Old Motorola v5:** "absolutely amazing… I loved it." Keep this approach: measured, vocal-forward, light space when FX are printed.
-- **What I'm Posed To Do v10:** pending. Asked for perfect timing, echo throws, "pop" and filled gaps.
+- **What I'm Posed To Do v10 → v11:** the intro tease sounded off-beat and "cut in" → **don't add teases/chops without asking first**. Lead too loud at +2.9 LU → **Kenshin likes the lead about +1.3 LU over the beat**, not on top. Wants **audible slight reverb** (about 10–11 dB under the lead, light ducking). Wants **background vocal layers with echo throws**: build doubles from the takes (−6 dB in hooks) plus a 1/4-note echo on every line end (about 10 dB under).

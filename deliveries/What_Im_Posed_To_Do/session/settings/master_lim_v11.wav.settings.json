@@ -1,0 +1,27 @@
+{
+  "input": "mix_ms_v11.wav",
+  "output": "master_lim_v11.wav",
+  "sample_rate": 44100,
+  "chain": "highpass=f=20:poles=2",
+  "full_filtergraph": "highpass=f=20:poles=2,volume=13.200dB,aresample=176400:resampler=soxr,alimiter=limit=-2.500dB:attack=5.0:release=60.0:level=disabled:latency=true,aresample=44100:resampler=soxr,ebur128=peak=true",
+  "gain_into_limiter_db": 13.2,
+  "limiter": {
+    "limit_db": -2.5,
+    "attack_ms": 5.0,
+    "release_ms": 60.0,
+    "oversampling": 4
+  },
+  "target_lufs": -13.4,
+  "ceiling_dbtp": -2.3,
+  "measured_before_limiter": {
+    "integrated_lufs": -25.8,
+    "loudness_range_lu": 9.0,
+    "true_peak_dbtp": -8.8
+  },
+  "measured_output": {
+    "integrated_lufs": -13.5,
+    "loudness_range_lu": 7.7,
+    "true_peak_dbtp": -2.5
+  },
+  "limiter_loudness_reduction_lu": 0.9
+}

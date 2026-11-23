@@ -43,4 +43,8 @@ Read this at the start of every job.
 
 ## Artist feedback
 - **Old Motorola v5:** "absolutely amazing… I loved it." Keep this approach: measured, vocal-forward, light space when FX are printed.
-- **What I'm Posed To Do v10 → v11:** the intro tease sounded off-beat and "cut in" → **don't add teases/chops without asking first**. Lead too loud at +2.9 LU → **Kenshin likes the lead about +1.3 LU over the beat**, not on top. Wants **audible slight reverb** (about 10–11 dB under the lead, light ducking). Wants **background vocal layers with echo throws**: build doubles from the takes (−6 dB in hooks) plus a 1/4-note echo on every line end (about 10 dB under).
+- **What I'm Posed To Do v10 → v11:** the intro tease sounded off-beat and "cut in" → **don't add teases/chops without asking first**. Lead too loud at +2.9 LU → **Kenshin likes the lead about +1.3 LU over the beat**, not on top. Wanted audible reverb, but at 10.8 dB under with 2 dB ducking and a 27 ms pre-delay he heard it as **boxy / "tunnel"** → his "clear pro reverb": **pre-delay 1/32 (≈55 ms), send HP 600 Hz / LP 7.5 kHz, decay about 3 beats, duck 6 dB, about 18 dB under, dry ≥ 20 dB over reverb while singing**. Wants **background vocal layers with echo throws**: build doubles from the takes (**11/17 ms, ±10 cents, HP 350, about −9 dB, hooks only**; 21/29 ms at −6 dB sounded phasey/boxy) plus a 1/4-note echo on every line end (about 10 dB under).
+
+## Rule of thumb: synthetic doubles and reverb
+- Keep doublers inside the doc spec (10–20 ms, 5–12 cents) and check stereo correlation ≥ 0.9 on the vocal bus.
+- Before calling reverb "audible", measure **direct-to-reverb while singing** (aim ≥ 18–20 dB) and the reverb's 250–600 Hz share vs the dry voice. A box-heavy reverb = tunnel.

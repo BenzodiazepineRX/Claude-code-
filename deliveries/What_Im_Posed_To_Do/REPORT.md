@@ -1,8 +1,25 @@
-# "What I'm Posed To Do" — Mix & Master Report (v11)
+# "What I'm Posed To Do" — Mix & Master Report (v13)
 
-**Status:** v11 (your feedback on v10 applied). QC: **3 rounds in a row (24-bit, 16-bit, decoded MP3), 43/44 checks each.** The 1 open item is the phone-speaker 808 check. It's a beat limit, handled under the doc's 5-round loop rule (see section 5).
+**Status:** v13. Your "too much reverb, boxy, tunnel" feedback is applied. QC: **3 rounds in a row (24-bit, 16-bit, decoded MP3), 45/46 checks each.** The 1 open item is the phone-speaker 808 check, a beat limit (section 5).
 
-## v11: what you asked for and what changed
+## v13: "clear, pro reverb" (your feedback on v11)
+**Measured cause of the tunnel:** in v11 your dry voice was only **13.2 dB** above its reverb while singing. The reverb was relatively heavier in the boxy 250–600 Hz range than your voice, its short 27 ms pre-delay smeared into the words, and the BG doubles (21/29 ms) were outside the doc's doubler spec.
+
+| | v11 | **v13** |
+|---|---|---|
+| Plate pre-delay | 27.78 ms (1/64) | **55.56 ms (1/32)**: the word lands, then the space blooms |
+| Plate send EQ | 300 Hz–8 kHz | **600 Hz–7.5 kHz**: no low-mid box |
+| Plate decay | 1.78 s (1 bar) | **1.333 s (3 beats)**: clears before the next line |
+| Plate ducking | 2 dB | **6 dB** |
+| Reverb level | 10.8 dB under lead | **17.8 dB under** (doc: 12–18) |
+| Dry over reverb while singing | 13.2 dB | **21.1 dB** (8.3 dB in gaps, so you still hear the space) |
+| Lead "box" zone 300–600 Hz | — | **−1.9 dB vs your raw take** (extra −1.5 dB @ 420 Hz) |
+| BG stack | 21/29 ms, ±9 c, −6 dB, hooks + verses | **11/17 ms, ±10 c (doc spec)**, −9 dB, **hooks only**, cut below 350 Hz |
+| Vocal stereo correlation | 0.82 | **0.90** |
+| Lead vs beat | +1.3 LU | +1.3 LU (beat −0.5 dB to keep it after the de-boxing) |
+| Loudness | −13.7 LUFS | **−14.0 LUFS**: Spotify's playback level, so it isn't turned down at all; −2.4 dBTP |
+
+## v11: earlier feedback (intro, level, reverb, BG layers)
 | You said | What I did | Measured |
 |---|---|---|
 | Edited vocals before the lyrics are off-beat and "cut in" | **Removed** the intro tease and the reverse swell into 0:42. The intro is clean, and your first line starts exactly as you recorded it. Your own regions are **not** chopped: every region starts softly (−47 to −58 dBFS in the first ms). | vocals before 0:42: −148 dBFS (silence) |
@@ -82,13 +99,16 @@ Glue 2:1 with a **sidechain high-pass at 600 Hz** so the 808 can't make it pump 
 |---|---|---|
 | Dev (v6) | 24-bit | 35/39: flagged a "30 ms timing" issue, lead too loud, 808 on phone |
 | v10 (all 3 rounds) | | 39/40: you then heard the intro, level, reverb and BG issues |
-| **R1 (v11)** | 24-bit WAV | **43/44**: only the phone-808 check open |
-| **R2 (v11)** | 16-bit WAV | **43/44** |
-| **R3 (v11)** | MP3, decoded | **43/44** |
+| v11 (3 rounds) | | 43/44: you then heard the reverb as boxy / tunnel |
+| **R1 (v13)** | 24-bit WAV | **45/46**: only the phone-808 check open |
+| **R2 (v13)** | 16-bit WAV | **45/46** |
+| **R3 (v13)** | MP3, decoded | **45/46** |
+
+v13 adds clarity checks: reverb in doc range, dry ≥ 18 dB over reverb while singing, no added boxiness. All pass.
 
 v11 adds 4 checks from your feedback: clean intro, BG stack depth, echo BGs on every line, and audible reverb. All pass.
 
-**Open item, source-limited: the 808 on phone speakers.** In v11, translation is 0.24 vs the original beat's 0.17 (+35%; v10 was 0.26). It's still marked FAIL, not hidden. The final limiter flattens the 808 the most, and the remaining fixes (more 808 distortion, or less sub) would hurt the song on real speakers. Per the doc's rule, I stopped after 8 attempts, short of my 0.3 target. I tried 7 fixes: three enhancer strengths, sidechain at 150 / 600 / 1000 Hz, and sub clipping at 3 / 5 dB. Pushing further added low-mid mud over your voice. Fix at the source: the beat's trackout stems, or an 808 sample with more harmonics.
+**Open item, source-limited: the 808 on phone speakers.** In v13, translation is 0.22 vs the original beat's 0.17 (+26%; v10 0.26, v11 0.24). It's still marked FAIL, not hidden. The final limiter flattens the 808 the most, and the remaining fixes (more 808 distortion, or less sub) would hurt the song on real speakers. Per the doc's rule, I stopped after 8 attempts, short of my 0.3 target. I tried 7 fixes: three enhancer strengths, sidechain at 150 / 600 / 1000 Hz, and sub clipping at 3 / 5 dB. Pushing further added low-mid mud over your voice. Fix at the source: the beat's trackout stems, or an 808 sample with more harmonics.
 
 **About timing ("perfectly timed"):** Hook 2 is a re-edit of Hook 1 placed 23 ms later. I measured both against the beat grid before touching anything. **Hook 2 lands right on the grid (+1.8 ms) and Hook 1 pushes slightly ahead (−22 ms, a natural singer's push).** Both are natural, so per your doc I did **not** move your vocals. Every effect is grid-locked: delays are exact sample counts, and the tease and ghost moved by whole bars on a beat verified at exactly 135.000 BPM.
 
@@ -104,12 +124,12 @@ Buy the beat's WAV or trackout stems. Keep the vocals dry like you did, which wa
 ## 8. Files
 | File | Use |
 |---|---|
-| `…_Master_v11_24b-44k.wav` | **main master** for your distributor |
-| `…_Master_v11_16b-44k.wav` / `…_Master_v11_320k.mp3` | 16-bit / sharing |
-| `…_Master_NoFills_v11_24b-44k.wav` (+ MP3) | same master **without** the gap's ghost echo and swell |
-| `…_Instrumental_v11`, `…_Acapella_v11`, `…_TV_Track_v11` (beat + all BG layers, no lead) | alternates through the identical chain (null test −89.3 dBFS) |
-| `…_Unmastered_Mix_v11_24b-44k.wav` | for future remasters |
-| `…_AB_IntroIntoHook_RoughVsMaster_v11.mp3` | **listen first**: 0:36–0:58 rough, a pause, then master, at equal loudness |
+| `…_Master_v13_24b-44k.wav` | **main master** for your distributor |
+| `…_Master_v13_16b-44k.wav` / `…_Master_v13_320k.mp3` | 16-bit / sharing |
+| `…_Master_NoFills_v13_24b-44k.wav` (+ MP3) | same master **without** the gap's ghost echo and swell |
+| `…_Instrumental_v13`, `…_Acapella_v13`, `…_TV_Track_v13` (beat + all BG layers, no lead) | alternates through the identical chain (null test −89.5 dBFS) |
+| `…_Unmastered_Mix_v13_24b-44k.wav` | for future remasters |
+| `…_AB_Hook1_v11-Tunnel_vs_v13-Clear.mp3` | **listen first**: Hook 1 (0:42–1:00) v11, a pause, then v13, at equal loudness |
 | `…_Before_After.png` | song map with every fill and throw marked |
 | `session/` | all scripts and settings |
 

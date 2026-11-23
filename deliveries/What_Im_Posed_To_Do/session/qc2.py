@@ -14,7 +14,7 @@ def bp(x,sr,lo=None,hi=None,o=4):
 R=[]
 def chk(p,name,ok,val): R.append((p,name,bool(ok),val))
 x,sr=load(mf); M=pyln.Meter(sr); L=lambda s: M.integrated_loudness(s)
-ref,_=sf.read(W+'master_v11.wav',always_2d=True); beat,_=sf.read('src/beat.wav',always_2d=True)
+ref,_=sf.read(W+'master_v13.wav',always_2d=True); beat,_=sf.read('src/beat.wav',always_2d=True)
 # ---- Pass 1 technical
 a=np.abs(x).max(1)
 chk(1,'no samples at/over full scale',a.max()<0.999,f'peak {20*np.log10(a.max()):.2f} dBFS')
@@ -27,7 +27,7 @@ tail=20*np.log10(np.sqrt((x[-int(0.1*sr):]**2).mean())+1e-12); chk(1,'tail fades
 def clicks(s):
     d=np.abs(np.diff(bp(s.mean(1),sr,lo=6000),2)); h=int(sr*0.02); n=len(d)//h; b=d[:n*h].reshape(n,h)
     return int(np.sum(b.max(1)>12*np.median(b,1)+1e-6))
-um,_=sf.read(W+'mix_ms_v11.wav',always_2d=True); rs,_=sf.read(W+'raw_sum.wav',always_2d=True); cm,cu,cr=clicks(x),clicks(um),clicks(rs)
+um,_=sf.read(W+'mix_ms_v13.wav',always_2d=True); rs,_=sf.read(W+'raw_sum.wav',always_2d=True); cm,cu,cr=clicks(x),clicks(um),clicks(rs)
 chk(1,'no clicks/glitches added by processing',cm<=max(cu,cr)*1.15+5,f'{cm} spikes in master vs {cu} unmastered mix vs {cr} raw stem sum')
 # ---- Pass 2 timing
 spb=60/135; samp={'1/8d':14700,'1/4':19600,'1/2':39200}; ok=all(abs(v-sr*spb*k)<=1 for v,k in zip(samp.values(),[0.75,1,2])) and abs(27.78-spb*1000/16)<0.01
@@ -45,14 +45,14 @@ chk(2,'every echo throw sits on a measured line ending',len(miss)==0 or miss==[1
 def lag(a_,b_,sec=(72,82)):
     s=slice(int(sec[0]*sr),int(sec[1]*sr)); so=butter(4,[1000,6000],'band',fs=sr,output='sos'); A=sosfiltfilt(so,a_[s].mean(1)); B=sosfiltfilt(so,b_[s].mean(1)); n=len(A)
     c=np.fft.irfft(np.fft.rfft(A,2*n)*np.conj(np.fft.rfft(B,2*n))); c=np.concatenate([c[-500:],c[:500]]); return int(np.argmax(c)-500)
-ins,_=sf.read(D+'What_Im_Posed_To_Do_Instrumental_v11_24b-44k.wav',always_2d=True); aca,_=sf.read(D+'What_Im_Posed_To_Do_Acapella_v11_24b-44k.wav',always_2d=True)
+ins,_=sf.read(D+'What_Im_Posed_To_Do_Instrumental_v13_24b-44k.wav',always_2d=True); aca,_=sf.read(D+'What_Im_Posed_To_Do_Acapella_v13_24b-44k.wav',always_2d=True)
 l1,_=sf.read('src/lead1.wav',always_2d=True); l1=np.repeat(l1.mean(1,keepdims=True),2,1)
 lb=lag(ins,beat); lv=lag(aca,l1); chk(2,'beat transients not shifted (1-6 kHz)',abs(lb)<=2,f'{lb} samples'); chk(2,'vocal transients not shifted (1-6 kHz)',abs(lv)<=2,f'{lv} samples')
 chk(2,'stems share start point; vocal timing left as performed',True,'sample-aligned from 0:00, 5 ms edge fades; hook 2 (a re-edit of hook 1) sits +1.8 ms vs grid, hook 1 -22 ms (natural push), not moved')
 # ---- Pass 3 balance
 def stl(s,t): seg=s[int(t*sr):int((t+3)*sr)]; return M.integrated_loudness(seg) if len(seg)==3*sr else -99
 GL=-2.1; lead=sf.read(W+'lead1_auto.wav',always_2d=True)[0]*10**(GL/20); l2=sf.read(W+'lead2_auto.wav',always_2d=True)[0]*10**(GL/20)  # real mix gains
-n=min(len(lead),len(l2)); lp=lead[:n]+l2[:n]; ad=(sf.read(W+'bg1_pan.wav',always_2d=True)[0]+sf.read(W+'bg2_pan.wav',always_2d=True)[0][:len(sf.read(W+'bg1_pan.wav',always_2d=True)[0])] if False else None); bt=sf.read(W+'beat_final.wav',always_2d=True)[0]
+n=min(len(lead),len(l2)); lp=lead[:n]+l2[:n]; ad=(sf.read(W+'bg1_pan.wav',always_2d=True)[0]+sf.read(W+'bg2_pan.wav',always_2d=True)[0][:len(sf.read(W+'bg1_pan.wav',always_2d=True)[0])] if False else None); bt=sf.read(W+'beat_final.wav',always_2d=True)[0]*10**(-0.5/20)
 FULL=[(42.7,58.7),(65.8,71.1),(71.1,87.1),(115.6,128),(158.2,172.5)]; vm=[stl(lp,t)-stl(bt,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5) if stl(lp,t)>-40]; vmr=np.median(vm)
 chk(3,'lead sits clearly on top of beat in full-beat sections (+1..+4 LU)',1<=vmr<=4,f'{vmr:+.1f} LU')
 b1=sf.read(W+'bg1_pan.wav',always_2d=True)[0]; b2=sf.read(W+'bg2_pan.wav',always_2d=True)[0]; nb=min(len(b1),len(b2)); bgp=(b1[:nb]+b2[:nb])*10**(-1.5/20)
@@ -63,13 +63,18 @@ lift=np.mean(h)-np.mean(v); chk(3,'hook lifts 1-3 LU above verses',1<=lift<=3,f'
 ph=[stl(lp,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5)]; ph=np.array([p for p in ph if p>-40]); chk(3,'lead phrase consistency, full sections (IQR <= 2 LU)',np.percentile(ph,75)-np.percentile(ph,25)<=2.0,f'IQR {np.percentile(ph,75)-np.percentile(ph,25):.1f} LU')
 # ---- artist feedback checks (v11)
 intro=20*np.log10(np.sqrt((aca[:int(42.0*sr)]**2).mean())+1e-12); chk(3,'intro is clean: no edited/teased vocals before the first line (0:42)',intro<-60,f'acapella level 0:00-0:42 {intro:.0f} dBFS')
-stk=sf.read(W+'stack.wav',always_2d=True)[0]*10**(-1.1/20); hs=np.median([stl(lp,t)-stl(stk,t) for a_,b_ in [(42.7,71.1),(99.1,128)] for t in np.arange(a_,b_-3,1.5)])
-chk(3,'hook BG stack 3-7 dB under the lead (doc: hook stack 3-6)',3<=hs<=7,f'{hs:.1f} dB under')
+stk=sf.read(W+'stack2.wav',always_2d=True)[0]*10**(-4.1/20); hs=np.median([stl(lp,t)-stl(stk,t) for a_,b_ in [(42.7,71.1),(99.1,128)] for t in np.arange(a_,b_-3,1.5)])
+chk(3,'hook BG stack 7-11 dB under the lead (lowered after artist heard it boxy)',7<=hs<=11,f'{hs:.1f} dB under (doubler 11/17 ms, +/-10 cents: inside doc 10-20 ms / 5-12 cents)')
 eb=sf.read(W+'echo_bg.wav',always_2d=True)[0]*10**(7/20); ends=[46.29,51.14,54.74,58.29,62.27,65.86,69.65,73.46,76.50,80.63,83.49,87.41,90.88,94.85,97.86,101.93,103.27,108.05,111.66,115.20,119.19,122.78,126.56,130.37,161.95,165.92,168.87,173.01]
 rr=lambda x,a_,b_: 20*np.log10(np.sqrt((x[int(a_*sr):int(b_*sr)]**2).mean())+1e-9); ed=np.nanmedian([rr(lp,t-1.0,t)-rr(eb,t+0.09,t+0.44) for t in ends if t+0.44<len(lp)/sr])
 chk(3,'echo BGs audible behind every line (6-12 dB under)',6<=ed<=12,f'first repeat {ed:.1f} dB under the line, on the 1/4-note grid ({len(ends)} lines)')
-pv=sf.read(W+'plate2_auto.wav',always_2d=True)[0]*10**(2.5/20); vd=np.median([stl(lp,t)-stl(pv,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5)])
-chk(3,'slight reverb audible on the vocals (8-16 dB under)',8<=vd<=16,f'plate {vd:.1f} dB under the lead')
+pv=sf.read(W+'plate3_auto.wav',always_2d=True)[0]*10**(2.5/20); vd=np.median([stl(lp,t)-stl(pv,t) for a_,b_ in FULL for t in np.arange(a_,b_-3,1.5)])
+chk(3,'reverb present but in doc range (12-18 dB under the lead)',12<=vd<=18,f'plate {vd:.1f} dB under the lead')
+mm=lp.mean(1); hh2=int(sr*0.05); nn2=min(len(mm),len(pv))//hh2; el=10*np.log10((mm[:nn2*hh2].reshape(nn2,hh2)**2).mean(1)+1e-12); ev=10*np.log10((pv.mean(1)[:nn2*hh2].reshape(nn2,hh2)**2).mean(1)+1e-12); a2=el>np.percentile(el[el>-80],95)-12
+dr=np.median((el-ev)[a2]); gp=np.median((el-ev)[(~a2)&(el>-60)]); chk(3,'clarity: dry voice >= 18 dB over its reverb while singing (reverb opens in gaps)',dr>=18,f'{dr:.1f} dB while singing, {gp:.1f} dB in gaps (pre-delay 1/32 = 55.56 ms, send 600 Hz-7.5 kHz)')
+rv=sum(sf.read(W+f'{v}_01gs.wav',always_2d=True)[0][:7000000] for v in ['lead1','lead2']); pc=sf.read(W+'lead1_12clr.wav',always_2d=True)[0][:7000000]+sf.read(W+'lead2_12clr.wav',always_2d=True)[0][:7000000]
+pc=pc*10**((M.integrated_loudness(rv)-M.integrated_loudness(pc))/20); sb=butter(4,[300,600],'band',fs=sr,output='sos'); bx=10*np.log10((sosfiltfilt(sb,pc,axis=0)**2).mean()/(sosfiltfilt(sb,rv,axis=0)**2).mean())
+chk(4,'no boxiness: lead 300-600 Hz not above raw (matched loudness)',bx<=0,f'{bx:+.1f} dB vs raw take')
 # ---- Pass 4 tone
 def share(s,lo,hi):
     m=s.mean(1); N=1<<15; P=0; 

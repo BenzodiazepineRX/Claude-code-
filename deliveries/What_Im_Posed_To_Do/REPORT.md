@@ -1,8 +1,24 @@
-# "What I'm Posed To Do" — Mix & Master Report (v13)
+# "What I'm Posed To Do" — Mix & Master Report (v15)
 
-**Status:** v13. Your "too much reverb, boxy, tunnel" feedback is applied. QC: **3 rounds in a row (24-bit, 16-bit, decoded MP3), 45/46 checks each.** The 1 open item is the phone-speaker 808 check, a beat limit (section 5).
+**Status:** v15. Kenshin's "boxy and dull" note and ARMY's notes (lead too loud, too much reverb, box) are applied. QC: **3 rounds (24-bit, 16-bit, decoded MP3), 45/46 each.** The 1 open item is the phone-speaker 808 check, a beat limit.
 
-## v13: "clear, pro reverb" (your feedback on v11)
+## v14–v15: the box and the dullness (Kenshin + ARMY feedback on v13)
+**Root cause, measured:** the raw take has a **tonal bump at 500–630 Hz (+3.8 dB vs the Old Motorola raw take)** and was recorded **up to 8 dB darker at 4–5 kHz**. My earlier box cuts (350–470 Hz) missed the bump, and my +1 dB presence lift was far too small.
+
+**Is the box "baked in" as room sound?** Tested on breaths and S/SH sounds only, which have no pitch, so any repeating pattern can only be a reflection. A sanity test detects a known 3 ms echo (0.356) and reads 0.006 with none. **No room reflections in the 2–15 ms small-box range.** There's a small 0.09 blip at about 1 ms, which the Old Motorola take shares, so it's the natural shape of those sounds. So the box is a **tonal bump in the take**, fixable by surgical EQ without thinning; it isn't room sound, which EQ couldn't fix.
+
+| Change | Detail | Measured |
+|---|---|---|
+| **Reference match EQ on the lead** (linear phase) | match to the Old Motorola vocal Kenshin approved, 500 Hz–10 kHz only. **Surgical box cuts:** 500 −2.5 / 630 −2 / 800 −1.5 / 1k −1 dB. **Presence:** +1.4 to +2.3 dB at 1.6–3.2 kHz, +2.6 / +3.2 dB at 4 / 5 kHz, +0.6 / +1.2 dB at 8 / 10 kHz. **No new cuts below 500 Hz; HPF stays 65 Hz** | tone within **±1.7 dB** of the reference (box zone 0.0, presence −0.2); 300–600 Hz −2.8 dB vs raw (gentle) |
+| Re-de-ess after the brightening | 5.5–9 kHz, max 6 dB, on S's only (14–21% of the time) | harsh flare-ups lower than raw (11.4 vs 13.6 dB); S-spikes 25 vs 33 dB raw |
+| All vocal FX rebuilt from the corrected voice | stack, echo BGs, throws, plate | — |
+| Lead −1.5 dB vs beat (ARMY) | beat +1.5 dB, every vocal layer keeps its balance | lead **+0.3 LU** (sits *in* the beat); words still **6.2 dB** clear in 1–4 kHz on phone, earbuds, car, club, laptop and mono |
+| Reverb −3 dB (ARMY) | same clear plate design | **20.7 dB** under; dry over reverb **24.2 dB** while singing, 11.5 dB in gaps |
+| BG stack −3 dB, **HP 600 Hz on the stack only** (not the lead) | it was the boxiest layer | 13.6 dB under the lead in hooks |
+| Beat −1.5 dB @ 400 Hz | the louder beat made the mix low-mid heavy | low-mid back within limit; limiter 3.5 dB |
+| Loudness | | **−14.2 LUFS**, −2.4 dBTP |
+
+## v13: "clear, pro reverb" (feedback on v11, kept in v15 at lower level)
 **Measured cause of the tunnel:** in v11 your dry voice was only **13.2 dB** above its reverb while singing. The reverb was relatively heavier in the boxy 250–600 Hz range than your voice, its short 27 ms pre-delay smeared into the words, and the BG doubles (21/29 ms) were outside the doc's doubler spec.
 
 | | v11 | **v13** |
@@ -100,15 +116,19 @@ Glue 2:1 with a **sidechain high-pass at 600 Hz** so the 808 can't make it pump 
 | Dev (v6) | 24-bit | 35/39: flagged a "30 ms timing" issue, lead too loud, 808 on phone |
 | v10 (all 3 rounds) | | 39/40: you then heard the intro, level, reverb and BG issues |
 | v11 (3 rounds) | | 43/44: you then heard the reverb as boxy / tunnel |
-| **R1 (v13)** | 24-bit WAV | **45/46**: only the phone-808 check open |
-| **R2 (v13)** | 16-bit WAV | **45/46** |
-| **R3 (v13)** | MP3, decoded | **45/46** |
+| v13 (3 rounds) | | 45/46: Kenshin heard it boxy and dull, ARMY heard it too loud with too much reverb |
+| v15 dev round | | 44/46: low-mid heavy after the beat went up → beat −1.5 dB @ 400 Hz |
+| **R1 (v15)** | 24-bit WAV | **45/46**: only the phone-808 check open |
+| **R2 (v15)** | 16-bit WAV | **45/46** |
+| **R3 (v15)** | MP3, decoded | **45/46** |
+
+v15 replaces the old "presence +1..+3 dB vs raw" rule (this take was recorded too dark for that rule) with **"tone matches the approved Old Motorola vocal within ±2 dB"**. Lead-level and reverb ranges follow the artist's requests, and the word-clarity and dry-over-reverb checks still guard both.
 
 v13 adds clarity checks: reverb in doc range, dry ≥ 18 dB over reverb while singing, no added boxiness. All pass.
 
 v11 adds 4 checks from your feedback: clean intro, BG stack depth, echo BGs on every line, and audible reverb. All pass.
 
-**Open item, source-limited: the 808 on phone speakers.** In v13, translation is 0.22 vs the original beat's 0.17 (+26%; v10 0.26, v11 0.24). It's still marked FAIL, not hidden. The final limiter flattens the 808 the most, and the remaining fixes (more 808 distortion, or less sub) would hurt the song on real speakers. Per the doc's rule, I stopped after 8 attempts, short of my 0.3 target. I tried 7 fixes: three enhancer strengths, sidechain at 150 / 600 / 1000 Hz, and sub clipping at 3 / 5 dB. Pushing further added low-mid mud over your voice. Fix at the source: the beat's trackout stems, or an 808 sample with more harmonics.
+**Open item, source-limited: the 808 on phone speakers.** In v15, translation is 0.22 vs the original beat's 0.17 (+27%). It's still marked FAIL, not hidden. The final limiter flattens the 808 the most, and the remaining fixes (more 808 distortion, or less sub) would hurt the song on real speakers. Per the doc's rule, I stopped after 8 attempts, short of my 0.3 target. I tried 7 fixes: three enhancer strengths, sidechain at 150 / 600 / 1000 Hz, and sub clipping at 3 / 5 dB. Pushing further added low-mid mud over your voice. Fix at the source: the beat's trackout stems, or an 808 sample with more harmonics.
 
 **About timing ("perfectly timed"):** Hook 2 is a re-edit of Hook 1 placed 23 ms later. I measured both against the beat grid before touching anything. **Hook 2 lands right on the grid (+1.8 ms) and Hook 1 pushes slightly ahead (−22 ms, a natural singer's push).** Both are natural, so per your doc I did **not** move your vocals. Every effect is grid-locked: delays are exact sample counts, and the tease and ghost moved by whole bars on a beat verified at exactly 135.000 BPM.
 
@@ -124,12 +144,13 @@ Buy the beat's WAV or trackout stems. Keep the vocals dry like you did, which wa
 ## 8. Files
 | File | Use |
 |---|---|
-| `…_Master_v13_24b-44k.wav` | **main master** for your distributor |
-| `…_Master_v13_16b-44k.wav` / `…_Master_v13_320k.mp3` | 16-bit / sharing |
-| `…_Master_NoFills_v13_24b-44k.wav` (+ MP3) | same master **without** the gap's ghost echo and swell |
-| `…_Instrumental_v13`, `…_Acapella_v13`, `…_TV_Track_v13` (beat + all BG layers, no lead) | alternates through the identical chain (null test −89.5 dBFS) |
-| `…_Unmastered_Mix_v13_24b-44k.wav` | for future remasters |
-| `…_AB_Hook1_v11-Tunnel_vs_v13-Clear.mp3` | **listen first**: Hook 1 (0:42–1:00) v11, a pause, then v13, at equal loudness |
+| `…_Master_v15_24b-44k.wav` | **main master** for your distributor |
+| `…_Master_v15_16b-44k.wav` / `…_Master_v15_320k.mp3` | 16-bit / sharing |
+| `…_Master_NoFills_v15_24b-44k.wav` (+ MP3) | same master **without** the gap's ghost echo and swell |
+| `…_Instrumental_v15`, `…_Acapella_v15`, `…_TV_Track_v15` (beat + all BG layers, no lead) | alternates through the identical chain (null test −89.7 dBFS) |
+| `…_Unmastered_Mix_v15_24b-44k.wav` | for future remasters |
+| `…_AB_VocalOnly_v13_vs_v15.mp3` | **listen first**: the vocal alone, v13 (boxy/dull) then v15, at equal loudness |
+| `…_AB_Hook1_v13_vs_v15.mp3` | Hook 1 full mix, v13 then v15, at equal loudness |
 | `…_Before_After.png` | song map with every fill and throw marked |
 | `session/` | all scripts and settings |
 

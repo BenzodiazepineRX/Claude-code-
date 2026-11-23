@@ -3,7 +3,7 @@
   "pass_": 1,
   "check": "no samples at/over full scale",
   "ok": true,
-  "value": "peak -2.39 dBFS"
+  "value": "peak -2.40 dBFS"
  },
  {
   "pass_": 1,
@@ -15,7 +15,7 @@
   "pass_": 1,
   "check": "no DC offset",
   "ok": true,
-  "value": "3.7e-09"
+  "value": "4.4e-09"
  },
  {
   "pass_": 1,
@@ -27,7 +27,7 @@
   "pass_": 1,
   "check": "length matches session",
   "ok": true,
-  "value": "188.795s vs 188.795s"
+  "value": "188.804s vs 188.804s"
  },
  {
   "pass_": 1,
@@ -45,7 +45,7 @@
   "pass_": 1,
   "check": "no clicks/glitches added by processing",
   "ok": true,
-  "value": "1221 spikes in master vs 1232 unmastered mix vs 1786 raw stem sum"
+  "value": "1249 spikes in master vs 1249 unmastered mix vs 1786 raw stem sum"
  },
  {
   "pass_": 2,
@@ -91,9 +91,9 @@
  },
  {
   "pass_": 3,
-  "check": "lead sits clearly on top of beat in full-beat sections (+1..+4 LU)",
+  "check": "lead level in the artist-requested range (-1..+2 LU over beat, full sections)",
   "ok": true,
-  "value": "+1.3 LU"
+  "value": "+0.3 LU (lowered at Kenshin & ARMY request; word-clarity checks in P5 guard it)"
  },
  {
   "pass_": 3,
@@ -105,13 +105,13 @@
   "pass_": 3,
   "check": "hook lifts 1-3 LU above verses",
   "ok": true,
-  "value": "+1.4 LU"
+  "value": "+1.3 LU"
  },
  {
   "pass_": 3,
   "check": "lead phrase consistency, full sections (IQR <= 2 LU)",
   "ok": true,
-  "value": "IQR 1.3 LU"
+  "value": "IQR 1.7 LU"
  },
  {
   "pass_": 3,
@@ -121,123 +121,123 @@
  },
  {
   "pass_": 3,
-  "check": "hook BG stack 7-11 dB under the lead (lowered after artist heard it boxy)",
+  "check": "hook BG stack 10-15 dB under the lead, HP 600 Hz (lowered after box feedback)",
   "ok": true,
-  "value": "9.0 dB under (doubler 11/17 ms, +/-10 cents: inside doc 10-20 ms / 5-12 cents)"
+  "value": "13.6 dB under (doubler 11/17 ms, +/-10 cents: inside doc 10-20 ms / 5-12 cents)"
  },
  {
   "pass_": 3,
   "check": "echo BGs audible behind every line (6-12 dB under)",
   "ok": true,
-  "value": "first repeat 9.2 dB under the line, on the 1/4-note grid (28 lines)"
+  "value": "first repeat 9.4 dB under the line, on the 1/4-note grid (28 lines)"
  },
  {
   "pass_": 3,
-  "check": "reverb present but in doc range (12-18 dB under the lead)",
+  "check": "reverb subtle per artist (18-24 dB under the lead)",
   "ok": true,
-  "value": "plate 17.8 dB under the lead"
+  "value": "plate 20.7 dB under the lead"
  },
  {
   "pass_": 3,
   "check": "clarity: dry voice >= 18 dB over its reverb while singing (reverb opens in gaps)",
   "ok": true,
-  "value": "21.1 dB while singing, 8.3 dB in gaps (pre-delay 1/32 = 55.56 ms, send 600 Hz-7.5 kHz)"
+  "value": "24.2 dB while singing, 11.5 dB in gaps (pre-delay 1/32 = 55.56 ms, send 600 Hz-7.5 kHz)"
  },
  {
   "pass_": 4,
   "check": "no boxiness: lead 300-600 Hz not above raw (matched loudness)",
   "ok": true,
-  "value": "-1.9 dB vs raw take"
+  "value": "-2.8 dB vs raw take"
  },
  {
   "pass_": 4,
-  "check": "vocal presence lift within doc spec (+1..+3 dB, matched loudness)",
+  "check": "vocal tone matches approved reference (Old Motorola) within +/-2 dB, 500 Hz-10 kHz",
   "ok": true,
-  "value": "+2.3 dB"
+  "value": "max deviation 1.7 dB (box 500-1000 Hz -0.0, presence 2-5 kHz -0.2)"
  },
  {
   "pass_": 4,
   "check": "no harsh 2-5 kHz flare-ups (vs raw vocal)",
   "ok": true,
-  "value": "flare 13.1 dB vs raw 13.6 dB"
+  "value": "flare 11.4 dB vs raw 13.6 dB"
  },
  {
   "pass_": 4,
   "check": "no mud: low-mid not > mid+2.5 dB",
   "ok": true,
-  "value": "low-mid -6.2 / mid -8.4 dB share"
+  "value": "low-mid -6.9 / mid -9.4 dB share"
  },
  {
   "pass_": 4,
   "check": "sibilance spikes tamed (acapella vs raw lead)",
   "ok": true,
-  "value": "S-spike 27.9 dB vs raw 33.2 dB"
+  "value": "S-spike 25.4 dB vs raw 33.2 dB"
  },
  {
   "pass_": 4,
   "check": "no boom: sub share sane (< -1.5 dB)",
   "ok": true,
-  "value": "sub -8.1 dB share"
+  "value": "sub -7.2 dB share"
  },
  {
   "pass_": 5,
   "check": "words come through: phone (mono, 300 Hz-7 kHz)",
   "ok": true,
-  "value": "vocal +5.6 dB over music in 1-4 kHz (broadband +5.5 LU)"
+  "value": "vocal +6.3 dB over music in 1-4 kHz (broadband +4.9 LU)"
  },
  {
   "pass_": 5,
   "check": "words come through: earbuds (HP 40 Hz)",
   "ok": true,
-  "value": "vocal +5.9 dB over music in 1-4 kHz (broadband +2.0 LU)"
+  "value": "vocal +6.2 dB over music in 1-4 kHz (broadband +1.0 LU)"
  },
  {
   "pass_": 5,
   "check": "words come through: car (+4 dB bass bump)",
   "ok": true,
-  "value": "vocal +5.9 dB over music in 1-4 kHz (broadband +0.4 LU)"
+  "value": "vocal +6.2 dB over music in 1-4 kHz (broadband -0.8 LU)"
  },
  {
   "pass_": 5,
   "check": "words come through: club (+6 dB sub)",
   "ok": true,
-  "value": "vocal +5.9 dB over music in 1-4 kHz (broadband +0.2 LU)"
+  "value": "vocal +6.2 dB over music in 1-4 kHz (broadband -0.9 LU)"
  },
  {
   "pass_": 5,
   "check": "words come through: laptop (200 Hz-12 kHz)",
   "ok": true,
-  "value": "vocal +5.9 dB over music in 1-4 kHz (broadband +4.3 LU)"
+  "value": "vocal +6.2 dB over music in 1-4 kHz (broadband +3.3 LU)"
  },
  {
   "pass_": 5,
   "check": "words come through: mono fold",
   "ok": true,
-  "value": "vocal +5.6 dB over music in 1-4 kHz (broadband +1.3 LU)"
+  "value": "vocal +6.3 dB over music in 1-4 kHz (broadband +0.5 LU)"
  },
  {
   "pass_": 5,
   "check": "mono fold loss <= 1 dB, correlation > 0.5",
   "ok": true,
-  "value": "-0.22 dB, corr 0.90"
+  "value": "-0.15 dB, corr 0.93"
  },
  {
   "pass_": 5,
   "check": "808 rhythm audible on phone (target corr > 0.3)",
   "ok": false,
-  "value": "corr 0.22 vs original beat 0.17 (+26%) \u2014 SOURCE-LIMITED: beat 808 is a near-pure sine; 7 fixes tried, see report"
+  "value": "corr 0.22 vs original beat 0.17 (+27%) \u2014 SOURCE-LIMITED: beat 808 is a near-pure sine; 7 fixes tried, see report"
  },
  {
   "pass_": 5,
   "check": "very low volume (equal-loudness sim): lead above music",
   "ok": true,
-  "value": "vocal +5.4 LU over music"
+  "value": "vocal +4.7 LU over music"
  },
  {
   "pass_": 6,
-  "check": "integrated loudness at target (-13.8 +/- 0.5)",
+  "check": "integrated loudness at target (-14.0 +/- 0.5)",
   "ok": true,
-  "value": "-14.0 LUFS"
+  "value": "-14.2 LUFS"
  },
  {
   "pass_": 6,
@@ -249,19 +249,19 @@
   "pass_": 6,
   "check": "MP3 320k encode true peak < 0 dBTP",
   "ok": true,
-  "value": "-2.32 dBTP"
+  "value": "-2.31 dBTP"
  },
  {
   "pass_": 6,
   "check": "M4A 256k encode true peak < 0 dBTP",
   "ok": true,
-  "value": "-1.46 dBTP"
+  "value": "-1.16 dBTP"
  },
  {
   "pass_": 6,
   "check": "short-term loudness reviewed (max <= -8)",
   "ok": true,
-  "value": "max short-term -11.4 LUFS"
+  "value": "max short-term -11.8 LUFS"
  },
  {
   "pass_": 7,
@@ -273,6 +273,6 @@
   "pass_": 7,
   "check": "lead-only / music-only / whole-song re-measure",
   "ok": true,
-  "value": "lead on top, hook lifts, spec met"
+  "value": "lead at requested level, hook lifts, spec met"
  }
 ]

@@ -48,3 +48,11 @@ Read this at the start of every job.
 ## Rule of thumb: synthetic doubles and reverb
 - Keep doublers inside the doc spec (10–20 ms, 5–12 cents) and check stereo correlation ≥ 0.9 on the vocal bus.
 - Before calling reverb "audible", measure **direct-to-reverb while singing** (aim ≥ 18–20 dB) and the reverb's 250–600 Hz share vs the dry voice. A box-heavy reverb = tunnel.
+
+## Process lessons (What I'm Posed To Do v14–v15, with ARMY)
+1. **"Boxy" or "dull" → compare the vocal tone, band by band, to an approved reference of the same voice (Old Motorola)** before adding more cuts or boosts. That found the real box bump (500–630 Hz) that three earlier versions missed.
+2. **ARMY's rule: keep box fixes surgical (500–630 Hz); never cut "everything below 600" on a lead.** Broad cuts thin the voice and add dullness. Broad high-passes belong on BG layers only.
+3. Ask whether the box is baked in: test for room reflections on **noise-like frames only** (breaths and S's, no pitch), with a known-echo sanity test. A tonal bump is fixable by EQ; reflections are not.
+4. Kenshin's raw takes can be recorded much darker than his last session. Re-check presence every song instead of reusing the last EQ.
+5. Kenshin and ARMY prefer the lead **at about 0 to +0.5 LU vs the beat** and the reverb **at about 20 dB under** (dry ≥ 24 dB over reverb while singing).
+6. Raising the beat raises the mix's low-mids. Re-check mud after any beat-level change.

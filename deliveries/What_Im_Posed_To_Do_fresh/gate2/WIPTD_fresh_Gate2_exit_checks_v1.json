@@ -1,0 +1,1112 @@
+{
+ "status": "draft, not final",
+ "thresholds_fixed_before_results": {
+  "dry_to_reverb_while_singing_min_db": 24.0,
+  "bg_under_lead_tol_db": 1.0,
+  "mono_corr_vocal_bus_min": 0.6,
+  "mono_fold_loss_max_db": 1.0,
+  "lead_shift_max_samples": 2,
+  "bg_sync_max_samples": 2,
+  "tail_max_dbfs": -60.0,
+  "dc_max": 0.0001,
+  "throw_audibility_min_db": -10.0,
+  "reverb_lowmid_excess_max_db": 0.0
+ },
+ "n_pass": 116,
+ "n_fail": 3,
+ "fails": [
+  "throw4_rep3_audibility_vs_everything",
+  "throw5_rep2_audibility_vs_everything",
+  "throw5_rep3_audibility_vs_everything"
+ ],
+ "checks": [
+  {
+   "check": "format_VocalsDry",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_BG_light",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_Rev_light",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_BG_fuller",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_Rev_fuller",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_Throws_main",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_Throws_alt",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "format_Throws_grid",
+   "pass": true,
+   "value": [
+    10742755,
+    "PCM_24"
+   ],
+   "threshold": "beat length, 24-bit, 44.1k, stereo",
+   "note": ""
+  },
+  {
+   "check": "no_clip_VocalsDry",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_VocalsDry",
+   "pass": true,
+   "value": 1.2135404152424848e-05,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_BG_light",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_BG_light",
+   "pass": true,
+   "value": 3.447610612669502e-08,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_Rev_light",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_Rev_light",
+   "pass": true,
+   "value": 2.8967796717292877e-08,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_BG_fuller",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_BG_fuller",
+   "pass": true,
+   "value": 3.966984586191343e-08,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_Rev_fuller",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_Rev_fuller",
+   "pass": true,
+   "value": 2.8986505778626084e-08,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_Throws_main",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_Throws_main",
+   "pass": true,
+   "value": 2.1947970480263138e-09,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_Throws_alt",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_Throws_alt",
+   "pass": true,
+   "value": 2.2114088302420974e-09,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "no_clip_Throws_grid",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples >= 0.999",
+   "note": ""
+  },
+  {
+   "check": "dc_Throws_grid",
+   "pass": true,
+   "value": 2.1901142343355584e-09,
+   "threshold": 0.0001,
+   "note": ""
+  },
+  {
+   "check": "lead_passthrough_identical",
+   "pass": true,
+   "value": 0.0,
+   "threshold": "< 1 LSB (24-bit)",
+   "note": ""
+  },
+  {
+   "check": "lead_no_transient_shift",
+   "pass": true,
+   "value": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "threshold": "<= 2 samples (1-6 kHz xcorr)",
+   "note": ""
+  },
+  {
+   "check": "bg_light_sync_0_offset",
+   "pass": true,
+   "value": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "threshold": "<= 2 samples vs lead (1-2 kHz xcorr)",
+   "note": ""
+  },
+  {
+   "check": "bg_fuller_sync_0_offset",
+   "pass": true,
+   "value": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "threshold": "<= 2 samples vs lead (1-2 kHz xcorr)",
+   "note": ""
+  },
+  {
+   "check": "bg_light_db_under_lead_1to4k",
+   "pass": true,
+   "value": 20.0,
+   "threshold": "20.0 +-1 dB",
+   "note": "broadband: 24.35 dB under"
+  },
+  {
+   "check": "bg_fuller_db_under_lead_1to4k",
+   "pass": true,
+   "value": 15.0,
+   "threshold": "15.0 +-1 dB",
+   "note": "broadband: 19.35 dB under"
+  },
+  {
+   "check": "dry_to_reverb_while_singing_light",
+   "pass": true,
+   "value": {
+    "all_singing": 30.0,
+    "bg_sections": 29.92
+   },
+   "threshold": ">= 24 dB",
+   "note": ""
+  },
+  {
+   "check": "reverb_light_blooms_in_gaps",
+   "pass": true,
+   "value": 0.81,
+   "threshold": "> 0 dB (gap level above singing level)",
+   "note": "info: duck + tail"
+  },
+  {
+   "check": "reverb_light_lowmid_share_vs_dry",
+   "pass": true,
+   "value": -7.87,
+   "threshold": "<= 0 dB (reverb not box-heavier than the voice)",
+   "note": ""
+  },
+  {
+   "check": "dry_to_reverb_while_singing_fuller",
+   "pass": true,
+   "value": {
+    "all_singing": 25.0,
+    "bg_sections": 24.92
+   },
+   "threshold": ">= 24 dB",
+   "note": ""
+  },
+  {
+   "check": "reverb_fuller_blooms_in_gaps",
+   "pass": true,
+   "value": 0.81,
+   "threshold": "> 0 dB (gap level above singing level)",
+   "note": "info: duck + tail"
+  },
+  {
+   "check": "reverb_fuller_lowmid_share_vs_dry",
+   "pass": true,
+   "value": -7.87,
+   "threshold": "<= 0 dB (reverb not box-heavier than the voice)",
+   "note": ""
+  },
+  {
+   "check": "tail_ReverbBus_Light",
+   "pass": true,
+   "value": {
+    "stem": "ReverbBus_Light",
+    "padded_buffer_last_200ms_dbfs": -240.0,
+    "level_at_song_end_dbfs": -240.0
+   },
+   "threshold": "< -60 dBFS (buffer end and song end)",
+   "note": ""
+  },
+  {
+   "check": "tail_ReverbBus_Fuller",
+   "pass": true,
+   "value": {
+    "stem": "ReverbBus_Fuller",
+    "padded_buffer_last_200ms_dbfs": -240.0,
+    "level_at_song_end_dbfs": -240.0
+   },
+   "threshold": "< -60 dBFS (buffer end and song end)",
+   "note": ""
+  },
+  {
+   "check": "tail_ThrowsBus_Main",
+   "pass": true,
+   "value": {
+    "stem": "ThrowsBus_Main",
+    "padded_buffer_last_200ms_dbfs": -240.0,
+    "level_at_song_end_dbfs": -240.0
+   },
+   "threshold": "< -60 dBFS (buffer end and song end)",
+   "note": ""
+  },
+  {
+   "check": "tail_ThrowsBus_AltNote",
+   "pass": true,
+   "value": {
+    "stem": "ThrowsBus_AltNote",
+    "padded_buffer_last_200ms_dbfs": -240.0,
+    "level_at_song_end_dbfs": -240.0
+   },
+   "threshold": "< -60 dBFS (buffer end and song end)",
+   "note": ""
+  },
+  {
+   "check": "tail_ThrowsBus_GridLocked",
+   "pass": true,
+   "value": {
+    "stem": "ThrowsBus_GridLocked",
+    "padded_buffer_last_200ms_dbfs": -240.0,
+    "level_at_song_end_dbfs": -240.0
+   },
+   "threshold": "< -60 dBFS (buffer end and song end)",
+   "note": ""
+  },
+  {
+   "check": "throw0_main_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4",
+    "samples": 19600,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw0_main_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 46.18,
+    "repeat1_pc": 46.4302,
+    "next_onset": 46.68
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw0_main_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw0_rep1_audibility_vs_everything",
+   "pass": true,
+   "value": -5.85,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw1_main_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4d",
+    "samples": 29400,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw1_main_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 58.16,
+    "repeat1_pc": 58.4815,
+    "next_onset": 58.66
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw1_main_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw1_rep1_audibility_vs_everything",
+   "pass": true,
+   "value": -9.02,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw2_main_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4",
+    "samples": 19600,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw2_main_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 103.1,
+    "repeat1_pc": 103.3475,
+    "next_onset": 103.6
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw2_main_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw2_rep1_audibility_vs_everything",
+   "pass": true,
+   "value": -3.54,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw3_main_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4d",
+    "samples": 29400,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw3_main_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 115.07,
+    "repeat1_pc": 115.3942,
+    "next_onset": 115.58
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw3_main_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw3_rep1_audibility_vs_everything",
+   "pass": true,
+   "value": -6.09,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw4_main_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/2d",
+    "samples": 58800,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw4_main_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 144.49,
+    "repeat1_pc": 144.9343,
+    "next_onset": 158.19
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw4_main_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw4_rep1_audibility_vs_everything",
+   "pass": true,
+   "value": -0.74,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw4_rep2_audibility_vs_everything",
+   "pass": true,
+   "value": -3.55,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw4_rep3_audibility_vs_everything",
+   "pass": false,
+   "value": -11.61,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw5_main_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/1",
+    "samples": 78400,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw5_main_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 172.9,
+    "repeat1_pc": 173.265,
+    "next_onset": 243.6
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw5_main_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw5_rep1_audibility_vs_everything",
+   "pass": true,
+   "value": -7.92,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw5_rep2_audibility_vs_everything",
+   "pass": false,
+   "value": -13.01,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw5_rep3_audibility_vs_everything",
+   "pass": false,
+   "value": -18.37,
+   "threshold": ">= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)",
+   "note": ""
+  },
+  {
+   "check": "throw0_alt_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/8d",
+    "samples": 14700,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw0_alt_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 46.18,
+    "repeat1_pc": 46.3191,
+    "next_onset": 46.68
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw0_alt_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw1_alt_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4",
+    "samples": 19600,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw1_alt_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 58.16,
+    "repeat1_pc": 58.2593,
+    "next_onset": 58.66
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw1_alt_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw2_alt_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/8d",
+    "samples": 14700,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw2_alt_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 103.1,
+    "repeat1_pc": 103.2364,
+    "next_onset": 103.6
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw2_alt_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw3_alt_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4",
+    "samples": 19600,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw3_alt_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 115.07,
+    "repeat1_pc": 115.172,
+    "next_onset": 115.58
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw3_alt_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw4_alt_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/1",
+    "samples": 78400,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw4_alt_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 144.49,
+    "repeat1_pc": 145.3788,
+    "next_onset": 158.19
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw4_alt_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw5_alt_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/1",
+    "samples": 78400,
+    "grid_offset": 0,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw5_alt_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 172.9,
+    "repeat1_pc": 173.265,
+    "next_onset": 243.6
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw5_alt_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw0_grid_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4",
+    "samples": 19600,
+    "grid_offset": 809,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw0_grid_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 46.18,
+    "repeat1_pc": 46.4486,
+    "next_onset": 46.68
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw0_grid_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw1_grid_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4d",
+    "samples": 29400,
+    "grid_offset": -1451,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw1_grid_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 58.16,
+    "repeat1_pc": 58.4486,
+    "next_onset": 58.66
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw1_grid_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw2_grid_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4",
+    "samples": 19600,
+    "grid_offset": -442,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw2_grid_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 103.1,
+    "repeat1_pc": 103.3375,
+    "next_onset": 103.6
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw2_grid_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw3_grid_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/4d",
+    "samples": 29400,
+    "grid_offset": 2398,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw3_grid_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 115.07,
+    "repeat1_pc": 115.4486,
+    "next_onset": 115.58
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw3_grid_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw4_grid_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/2d",
+    "samples": 58800,
+    "grid_offset": -1822,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw4_grid_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 144.49,
+    "repeat1_pc": 144.893,
+    "next_onset": 158.19
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw4_grid_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "throw5_grid_delay_math",
+   "pass": true,
+   "value": {
+    "note": "1/1",
+    "samples": 78400,
+    "grid_offset": -1704,
+    "realized_lag_vs_expected": 0
+   },
+   "threshold": "exact samples; measured lag 0 (+-1)",
+   "note": ""
+  },
+  {
+   "check": "throw5_grid_first_repeat_in_gap",
+   "pass": true,
+   "value": {
+    "line_end": 172.9,
+    "repeat1_pc": 173.2263,
+    "next_onset": 243.6
+   },
+   "threshold": "line end <= repeat-1 P-center <= next onset - 50 ms",
+   "note": ""
+  },
+  {
+   "check": "throw5_grid_no_collision",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 wet frames over an active dry word",
+   "note": ""
+  },
+  {
+   "check": "vocal_bus_light_mono_corr",
+   "pass": true,
+   "value": 0.9976,
+   "threshold": ">= 0.6",
+   "note": ""
+  },
+  {
+   "check": "vocal_bus_light_mono_fold_loss",
+   "pass": true,
+   "value": -0.005,
+   "threshold": "<= 1 dB",
+   "note": ""
+  },
+  {
+   "check": "vocal_bus_fuller_mono_corr",
+   "pass": true,
+   "value": 0.9931,
+   "threshold": ">= 0.6",
+   "note": ""
+  },
+  {
+   "check": "vocal_bus_fuller_mono_fold_loss",
+   "pass": true,
+   "value": -0.015,
+   "threshold": "<= 1 dB",
+   "note": ""
+  },
+  {
+   "check": "bg_first_words_dry_A1",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples of the lead1 copy between 43.15 s and word 5 (these) at 44.867 s",
+   "note": ""
+  },
+  {
+   "check": "bg_first_words_dry_B1",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples of the lead1 copy between 72.90 s and word 5 (do) at 73.777 s",
+   "note": "info: copy of ['lead2'] still finishing the previous section's last phrase in this window"
+  },
+  {
+   "check": "bg_first_words_dry_B2",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples of the lead1 copy between 87.12 s and word 5 (do) at 87.997 s",
+   "note": "info: copy of ['lead2'] still finishing the previous section's last phrase in this window"
+  },
+  {
+   "check": "bg_first_words_dry_A2",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples of the lead1 copy between 100.49 s and word 6 (blunts) at 102.187 s",
+   "note": "info: copy of ['lead2'] still finishing the previous section's last phrase in this window"
+  },
+  {
+   "check": "bg_first_words_dry_Bridge",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples of the bg1 copy between 129.38 s and word 5 (no) at 130.637 s",
+   "note": "info: copy of ['lead2'] still finishing the previous section's last phrase in this window"
+  },
+  {
+   "check": "bg_first_words_dry_B3",
+   "pass": true,
+   "value": 0,
+   "threshold": "0 samples of the lead1 copy between 157.55 s and word 5 (do) at 159.067 s",
+   "note": ""
+  },
+  {
+   "check": "reverb_light_tail_after_Bridge_below_-60",
+   "pass": true,
+   "value": {
+    "layer_end_sec": 144.9281,
+    "below_-60_at_sec": 144.93,
+    "decay_s": 0.0,
+    "next_vocal_sec": 158.19
+   },
+   "threshold": "< -60 dBFS before the next vocal / song end",
+   "note": ""
+  },
+  {
+   "check": "reverb_light_tail_after_B3_below_-60",
+   "pass": true,
+   "value": {
+    "layer_end_sec": 173.273,
+    "below_-60_at_sec": 173.29,
+    "decay_s": 0.02,
+    "next_vocal_sec": 243.0
+   },
+   "threshold": "< -60 dBFS before the next vocal / song end",
+   "note": ""
+  },
+  {
+   "check": "reverb_fuller_tail_after_Bridge_below_-60",
+   "pass": true,
+   "value": {
+    "layer_end_sec": 144.9281,
+    "below_-60_at_sec": 145.03,
+    "decay_s": 0.1,
+    "next_vocal_sec": 158.19
+   },
+   "threshold": "< -60 dBFS before the next vocal / song end",
+   "note": ""
+  },
+  {
+   "check": "reverb_fuller_tail_after_B3_below_-60",
+   "pass": true,
+   "value": {
+    "layer_end_sec": 173.273,
+    "below_-60_at_sec": 173.48,
+    "decay_s": 0.21,
+    "next_vocal_sec": 243.0
+   },
+   "threshold": "< -60 dBFS before the next vocal / song end",
+   "note": ""
+  }
+ ]
+}

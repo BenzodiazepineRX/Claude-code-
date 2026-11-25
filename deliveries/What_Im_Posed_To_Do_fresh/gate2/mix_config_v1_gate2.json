@@ -1,0 +1,3549 @@
+{
+ "_readme": "One file per song per version: deliveries/<Song>/session/mix_config_vN.json. EVERY parameter needs value + why (the measurement that justified it, on THIS song) + source (measured | reference | artist_request | carried_from_vN) + since (version it was set/changed). Values here are placeholders (null) on purpose: never copy numbers from another song.",
+ "song": {
+  "title": {
+   "value": "What I'm Posed To Do",
+   "why": "Kenshin named the song in the group chat (fresh run)",
+   "source": "artist_request",
+   "since": "v1 (Gate 1)"
+  },
+  "artist": "Kenshin",
+  "version": "v1",
+  "status": "draft, not final",
+  "bpm": {
+   "value": 135.0,
+   "why": "tempo_key.py on the beat: 135.00 (alts 67.5/90). Long self-match of the beat (1-6 kHz band) at 8-96 bars: 96-bar drift -0.01..0.00 samples (corr 0.92-0.97), fit 135.0000. Snare on beat 3 = half-time feel; counted as 135 (trap convention), 67.5 is the same grid at half speed. Beat = 19600 samples, bar = 78400 samples exactly at 44.1 kHz",
+   "source": "measured"
+  },
+  "grid_t0_sec": {
+   "value": 0.004127,
+   "samples": 182,
+   "why": "snare (1.5-4 kHz crack, beat 3) 50%-attack offset, median over 75 full-drum bars, IQR 182-183 samples. Detector bias on a synthetic snare +85 samples and kick body rise gives ~236 after bias correction, so true T0 is ~100-240 samples (2-5 ms). Not from hats",
+   "source": "measured"
+  },
+  "key": {
+   "value": "F major note set (relative D minor); tonic ambiguous F major vs G minor/Dorian",
+   "why": "beat chroma best F major 0.83 (next G minor 0.68); tempo_key.py D minor 0.813 vs F major 0.810 (low conf). 808 loop G-Bb-F-C, 2 bars each (Gm-Bb-F-C), starts on G. Sung pitch classes mostly Bb/G/A/C/F, no Eb, no E. Confidence: medium on notes, low on tonic",
+   "source": "measured"
+  },
+  "sections": [
+   {
+    "name": "Intro (instrumental)",
+    "bars": [
+     1,
+     24
+    ],
+    "start_sec": 0.0,
+    "end_sec": 42.671,
+    "beat": "1-9 keys only; 10-17 +808; 18-24 full drums"
+   },
+   {
+    "name": "A1 (hook candidate)",
+    "bars": [
+     25,
+     41
+    ],
+    "start_sec": 42.671,
+    "end_sec": 72.893,
+    "beat": "25-33 full; 34-37 drums out; 38-41 full"
+   },
+   {
+    "name": "B1",
+    "bars": [
+     42,
+     49
+    ],
+    "start_sec": 72.893,
+    "end_sec": 87.115,
+    "beat": "full"
+   },
+   {
+    "name": "B2 (B1 melody repeated)",
+    "bars": [
+     50,
+     56
+    ],
+    "start_sec": 87.115,
+    "end_sec": 99.56,
+    "beat": "hats/drums, no 808"
+   },
+   {
+    "name": "A2 (repeat of A1; 65-73 pasted)",
+    "bars": [
+     57,
+     73
+    ],
+    "start_sec": 99.56,
+    "end_sec": 129.782,
+    "beat": "57 hats/no 808; 58-65 drums out; 66-73 full"
+   },
+   {
+    "name": "Bridge: Background lead / BG2 trade 2 bars",
+    "bars": [
+     74,
+     82
+    ],
+    "start_sec": 129.782,
+    "end_sec": 145.782,
+    "beat": "74-81 full; 82 drums out"
+   },
+   {
+    "name": "Vocal gap",
+    "bars": [
+     83,
+     89
+    ],
+    "start_sec": 145.782,
+    "end_sec": 158.226,
+    "beat": "drums out"
+   },
+   {
+    "name": "B3 (B melody; 89-91 pasted from 41-43)",
+    "bars": [
+     90,
+     98
+    ],
+    "start_sec": 158.226,
+    "end_sec": 174.226,
+    "beat": "full; 98 variant"
+   },
+   {
+    "name": "Outro (instrumental, beat runs on)",
+    "bars": [
+     99,
+     137
+    ],
+    "start_sec": 174.226,
+    "end_sec": 243.56,
+    "beat": "99-105 variant; 106-113 no hats; 114-129 full; 130-137 outro"
+   }
+  ],
+  "reference_tracks": [
+   {
+    "title": "W.O.W (Walkin On Water) - Chris Travis",
+    "file": "/workspace/wipd_refs/kenshin/WOW_Chris_Travis.wav",
+    "integrated_lufs": -11.14,
+    "band_shares_db": {
+     "sub_lt60": -3.85,
+     "body_50_250": -5.58,
+     "presence_1_4k": -12.47,
+     "air_gt6k": -22.0,
+     "bright_5_10k_vs_1_2k": -10.1
+    },
+    "source": "Kenshin-supplied WAV (lossy-origin)",
+    "valid_reason": "16-bit/44.1k but spectrum stops ~15-16 kHz (made from lossy sources): used loosely for top end; no vocal stems, so no vocal-pocket delta can be read from them",
+    "since": "v1 (Gate 1)"
+   },
+   {
+    "title": "FijiFalls - Chris Travis x Bones",
+    "file": "/workspace/wipd_refs/kenshin/FijiFalls.wav",
+    "integrated_lufs": -11.82,
+    "band_shares_db": {
+     "sub_lt60": -4.34,
+     "body_50_250": -1.98,
+     "presence_1_4k": -14.23,
+     "air_gt6k": -19.74,
+     "bright_5_10k_vs_1_2k": -2.83
+    },
+    "source": "Kenshin-supplied WAV (lossy-origin)",
+    "valid_reason": "16-bit/44.1k but spectrum stops ~15-16 kHz (made from lossy sources): used loosely for top end; no vocal stems, so no vocal-pocket delta can be read from them",
+    "since": "v1 (Gate 1)"
+   },
+   {
+    "title": "I Don't Wanna Do This Anymore - XXXTENTACION",
+    "file": "/workspace/wipd_refs/kenshin/I_Dont_Wanna_Do_This_Anymore_XXXTENTACION.wav",
+    "integrated_lufs": -9.15,
+    "band_shares_db": {
+     "sub_lt60": -8.32,
+     "body_50_250": -4.4,
+     "presence_1_4k": -13.39,
+     "air_gt6k": -15.52,
+     "bright_5_10k_vs_1_2k": 0.04
+    },
+    "source": "Kenshin-supplied WAV (lossy-origin)",
+    "valid_reason": "16-bit/44.1k but spectrum stops ~15-16 kHz (made from lossy sources): used loosely for top end; no vocal stems, so no vocal-pocket delta can be read from them",
+    "since": "v1 (Gate 1)"
+   }
+  ],
+  "working_title": "Untitled_2026-11-25 (title not given yet)",
+  "tuning_a4_hz": {
+   "value": 439.5,
+   "why": "tempo_key.py tuning estimate -2.0 cents",
+   "source": "measured"
+  },
+  "echoes": {
+   "value": {
+    "approach": "throws only on line ends followed by a measured gap, timed from the stressed-vowel P-center + exact note value (main) with grid-locked A/B, 2-3 repeats fading where the gap allows",
+    "approved": false
+   },
+   "why": "Kenshin (group chat 2026-11-25): \"not too many, not too little\", \"not too late, not too early, just right\"; previews pending his ear",
+   "source": "artist_request",
+   "since": "v1 (Gate 2)"
+  },
+  "tempo_math_samples_at_44k1": {
+   "1/1 bar": 78400,
+   "1/2": 39200,
+   "1/4": 19600,
+   "1/8 dotted": 14700,
+   "1/8": 9800,
+   "1/8 triplet": 6533.33,
+   "1/16": 4900,
+   "1/32": 2450,
+   "1/64": 1225,
+   "ms": {
+    "1/4": 444.444,
+    "1/8": 222.222,
+    "1/16": 111.111,
+    "1/32": 55.556
+   }
+  }
+ },
+ "intake_findings": {
+  "printed_fx_on_vocals": {
+   "value": true,
+   "why": "pooled post-phrase envelope: -23 dB re phrase at 50 ms, still -45 dB at ~600 ms (~40 dB/s, ~RT60 1.5 s) vs a dry known-answer test that falls 30 dB in 10 ms; median time to -40 dB 510-640 ms (leads/bg1), 340 ms (bg2). Tails are then truncated to digital zero 0.4-0.65 s after the phrase (region ends). Vocals are dual-mono (L=R), so no printed stereo FX"
+  },
+  "lossy_source": {
+   "value": true,
+   "why": "beat bandwidth 15.6 kHz (-40 dB) / 16.6 kHz (-60 dB), filename 'Y2Mate...160k'; ALL vocals stop at 16.0-16.5 kHz too (lossy export path)"
+  },
+  "copy_pasted_regions": [
+   {
+    "what": "lead1+lead2 bars 33-41 -> bars 65-73 (+32 bars)",
+    "corr": "0.95-1.00",
+    "offset_vs_exact_grid_samples": 1023,
+    "offset_ms": 23.2
+   },
+   {
+    "what": "lead1 bars 41-43 -> bars 89-91 (+48 bars)",
+    "corr": "0.93-0.999",
+    "offset_vs_exact_grid_samples": -1714,
+    "offset_ms": -38.9
+   },
+   {
+    "what": "lead2 bar 54 -> bar 98 (+44 bars)",
+    "corr": 0.96,
+    "offset_vs_exact_grid_samples": -2868,
+    "offset_ms": -65.0
+   },
+   {
+    "what": "beat: whole arrangement is a repeated loop",
+    "corr": "0.92-0.97 at 96 bars, drift 0.0 samples"
+   }
+  ],
+  "timing_vs_grid_ms_by_section": {
+   "_note": "raw librosa onset medians vs the 1/16 grid; detector read +10 ms late on a known-answer test, so subtract ~10 ms; IQRs 25-40 ms",
+   "A1 (bars 25-41)": {
+    "lead1": {
+     "n": 36,
+     "median_ms": -7.4,
+     "iqr_ms": [
+      -25.3,
+      8.8
+     ]
+    },
+    "lead2": {
+     "n": 37,
+     "median_ms": -7.2,
+     "iqr_ms": [
+      -23.2,
+      3.5
+     ]
+    }
+   },
+   "A1 first half (25-32)": {
+    "lead1": {
+     "n": 18,
+     "median_ms": -1.4,
+     "iqr_ms": [
+      -20.3,
+      18.5
+     ]
+    },
+    "lead2": {
+     "n": 18,
+     "median_ms": -5.0,
+     "iqr_ms": [
+      -19.2,
+      4.0
+     ]
+    }
+   },
+   "A1 second half (33-41)": {
+    "lead1": {
+     "n": 18,
+     "median_ms": -9.4,
+     "iqr_ms": [
+      -31.9,
+      -0.6
+     ]
+    },
+    "lead2": {
+     "n": 19,
+     "median_ms": -12.5,
+     "iqr_ms": [
+      -26.9,
+      -1.6
+     ]
+    }
+   },
+   "B1 (42-49)": {
+    "lead1": {
+     "n": 16,
+     "median_ms": -15.2,
+     "iqr_ms": [
+      -22.9,
+      -8.1
+     ]
+    },
+    "lead2": {
+     "n": 16,
+     "median_ms": -13.4,
+     "iqr_ms": [
+      -27.7,
+      -6.1
+     ]
+    }
+   },
+   "B2 (50-57)": {
+    "lead1": {
+     "n": 21,
+     "median_ms": -11.0,
+     "iqr_ms": [
+      -17.6,
+      5.3
+     ]
+    },
+    "lead2": {
+     "n": 14,
+     "median_ms": -23.9,
+     "iqr_ms": [
+      -38.4,
+      -8.3
+     ]
+    }
+   },
+   "A2 (58-73)": {
+    "lead1": {
+     "n": 34,
+     "median_ms": 10.5,
+     "iqr_ms": [
+      -8.9,
+      22.7
+     ]
+    },
+    "lead2": {
+     "n": 37,
+     "median_ms": 10.7,
+     "iqr_ms": [
+      -2.3,
+      22.7
+     ]
+    }
+   },
+   "A2 second half (65-73)": {
+    "lead1": {
+     "n": 19,
+     "median_ms": 0.4,
+     "iqr_ms": [
+      -16.2,
+      17.7
+     ]
+    },
+    "lead2": {
+     "n": 19,
+     "median_ms": 4.6,
+     "iqr_ms": [
+      -12.6,
+      18.9
+     ]
+    }
+   },
+   "B3 (89-98)": {
+    "lead1": {
+     "n": 18,
+     "median_ms": -24.4,
+     "iqr_ms": [
+      -42.1,
+      44.8
+     ]
+    },
+    "lead2": {
+     "n": 14,
+     "median_ms": 4.3,
+     "iqr_ms": [
+      -45.4,
+      23.3
+     ]
+    }
+   },
+   "BG bridge (74-82)": {
+    "bg1": {
+     "n": 15,
+     "median_ms": 22.4,
+     "iqr_ms": [
+      8.5,
+      41.6
+     ]
+    },
+    "bg2": {
+     "n": 21,
+     "median_ms": 32.0,
+     "iqr_ms": [
+      9.7,
+      39.8
+     ]
+    }
+   }
+  },
+  "lowest_sung_note_hz_by_vocal": {
+   "lead1": {
+    "p05_hz": 96.3,
+    "p05_note": "G2",
+    "lowest_stable_hz": 86.8,
+    "lowest_stable_note": "F2",
+    "highest_stable_note": "C3",
+    "voiced_s_confident": 11.9
+   },
+   "lead2": {
+    "p05_hz": 89.4,
+    "p05_note": "F2",
+    "lowest_stable_hz": 97.4,
+    "lowest_stable_note": "G2",
+    "highest_stable_note": "C3",
+    "voiced_s_confident": 12.4
+   },
+   "bg1": {
+    "p05_hz": 97.6,
+    "p05_note": "G2",
+    "lowest_stable_hz": 106.9,
+    "lowest_stable_note": "G\u266f2",
+    "highest_stable_note": "A\u266f2",
+    "voiced_s_confident": 1.5
+   },
+   "bg2": {
+    "p05_hz": 89.3,
+    "p05_note": "F2",
+    "lowest_stable_hz": 115.9,
+    "lowest_stable_note": "A\u266f2",
+    "highest_stable_note": "A\u266f2",
+    "voiced_s_confident": 1.5
+   }
+  },
+  "blockers": [
+   "lossy beat (YouTube 160k rip) and lossy vocals (16 kHz bandwidth); air cannot be restored",
+   "printed reverb on all vocals, truncated to digital zero 0.4-0.65 s after phrases",
+   "808 fundamentals F1 43.7 / G1 49.1 / Bb1 58.5 / C2 65.9 Hz: 3 of 4 notes under 60 Hz, no 808 stem; 100-400 Hz envelope follows the 808 weakly (r=0.29)",
+   "copy-pasted vocal sections placed off the exact bar grid (+23.2 ms bars 65-73; -38.9 ms bars 89-91)",
+   "no clipping (0 runs), no DC issue (<1e-5), beat not mastered (-20.45 LUFS, PLR 17.1 dB, no flat tops)",
+   "possible producer tag / leaked vocals in the beat: not tested reliably",
+   "free type beat: lease/licence needed before release (not an audio check)"
+  ],
+  "inventory": {
+   "beat": {
+    "file": "Y2Mateis__FREE_Post_Malone_x_Juice_WRLD_Type_Beat__Hold_OnMwiQuMOtxfA160k1660061758082.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 243.6,
+    "samples": 10742755,
+    "start_silence_s": 0.004,
+    "end_silence_s": 0.392,
+    "sample_peak_dbfs": -3.47,
+    "true_peak_dbtp": -3.34,
+    "integrated_lufs": -20.45,
+    "active_rms_dbfs": -21.64,
+    "active_pct": 98.9,
+    "crest_active_db": 18.17,
+    "dc": [
+     -8.83e-06,
+     8.73e-06
+    ],
+    "lr_corr": 0.9492,
+    "side_to_mid_db": -15.7,
+    "bandwidth_hz_40": 15590,
+    "bandwidth_hz_60": 16570,
+    "exact_zero_pct": 0.08,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "lead1": {
+    "file": "Lead 1.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 169.125,
+    "samples": 7458400,
+    "start_silence_s": 42.225,
+    "end_silence_s": 0.001,
+    "sample_peak_dbfs": -5.2,
+    "true_peak_dbtp": -5.2,
+    "integrated_lufs": -23.6,
+    "active_rms_dbfs": -25.77,
+    "active_pct": 29.1,
+    "crest_active_db": 20.57,
+    "dc": [
+     2.28e-06,
+     2.28e-06
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -208.9,
+    "bandwidth_hz_40": 16015,
+    "bandwidth_hz_60": 16489,
+    "exact_zero_pct": 58.32,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "lead2": {
+    "file": "Lead 2.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 173.43,
+    "samples": 7648252,
+    "start_silence_s": 44.424,
+    "end_silence_s": 0.245,
+    "sample_peak_dbfs": -5.87,
+    "true_peak_dbtp": -5.86,
+    "integrated_lufs": -23.37,
+    "active_rms_dbfs": -25.62,
+    "active_pct": 32.3,
+    "crest_active_db": 19.75,
+    "dc": [
+     1.71e-06,
+     1.71e-06
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -209.5,
+    "bandwidth_hz_40": 16096,
+    "bandwidth_hz_60": 16548,
+    "exact_zero_pct": 58.03,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "bg1": {
+    "file": "Background lead.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 141.599,
+    "samples": 6244507,
+    "start_silence_s": 128.308,
+    "end_silence_s": 0.307,
+    "sample_peak_dbfs": -10.26,
+    "true_peak_dbtp": -10.25,
+    "integrated_lufs": -25.67,
+    "active_rms_dbfs": -27.81,
+    "active_pct": 5.1,
+    "crest_active_db": 17.55,
+    "dc": [
+     -9.53e-08,
+     -9.53e-08
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -199.2,
+    "bandwidth_hz_40": 16005,
+    "bandwidth_hz_60": 16284,
+    "exact_zero_pct": 91.94,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "bg2": {
+    "file": "Background lead 2.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 145.154,
+    "samples": 6401307,
+    "start_silence_s": 133.323,
+    "end_silence_s": 0.306,
+    "sample_peak_dbfs": -10.62,
+    "true_peak_dbtp": -10.59,
+    "integrated_lufs": -26.0,
+    "active_rms_dbfs": -28.18,
+    "active_pct": 5.1,
+    "crest_active_db": 17.56,
+    "dc": [
+     -1.37e-07,
+     -1.37e-07
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -198.9,
+    "bandwidth_hz_40": 16005,
+    "bandwidth_hz_60": 16101,
+    "exact_zero_pct": 93.89,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   }
+  },
+  "dry_vs_gated": "regions/gated: 58% (leads) and 92-94% (BGs) of samples are exact digital zero; region edges are quiet (max -59 dBFS), but printed tails are cut to zero ~-45 dB below the phrase",
+  "vocal_roles": {
+   "lead1_vs_lead2": "call-and-response: alternate every 2 bars; only 10-12% of active frames overlap (hand-offs)",
+   "bg1_vs_bg2": "call-and-response with each other in bars 74-82 only (3% overlap)",
+   "bg_vs_leads": "not doubles or backing: 0-1% overlap with the leads; the 'Background lead' stems are a separate 9-bar bridge section sung on their own"
+  },
+  "tuning": {
+   "lead1": {
+    "pct_within_10c": 50.7,
+    "median_abs_cents_dev": 10.0
+   },
+   "lead2": {
+    "pct_within_10c": 38.7,
+    "median_abs_cents_dev": 10.0
+   },
+   "bg1": {
+    "pct_within_10c": 20.3,
+    "median_abs_cents_dev": 20.0
+   },
+   "bg2": {
+    "pct_within_10c": 19.2,
+    "median_abs_cents_dev": 20.0
+   },
+   "_calibration": "known answers: snapped synthetic 92%, untuned drift 23%. Leads look partly pitch-corrected (Lead 1 more), BGs untuned; based on only ~12 s of confident pitch per lead"
+  },
+  "resonance_preview": {
+   "lead1": "+4.2..+5.6 dB hump 440-520 Hz (peak 480), dip 580-620 Hz -2.5..-2.9",
+   "lead2": "+3.6..+5.7 dB hump 440-520 Hz (peak 480), dip 560 Hz -5.9",
+   "tool": "harmenv.py (What_Im_Posed_To_Do) pitch-independent harmonic envelope; Gate 1 must re-measure per section"
+  },
+  "beat": {
+   "short_term_max_lufs": -16.86,
+   "flat_top_runs": 0,
+   "plr_db": 17.11,
+   "full_bars": 76,
+   "full_section_lufs": -18.8,
+   "full_section_crest_db": 16.17,
+   "low_peaks_hz_db": [
+    [
+     43.7,
+     -0.6
+    ],
+    [
+     49.8,
+     -0.2
+    ],
+    [
+     58.5,
+     -0.3
+    ],
+    [
+     65.9,
+     0.0
+    ],
+    [
+     67.3,
+     -1.0
+    ],
+    [
+     69.3,
+     -5.1
+    ],
+    [
+     72.0,
+     -3.7
+    ],
+    [
+     76.7,
+     -5.2
+    ]
+   ],
+   "band_db": {
+    "sub20-60": -5.3,
+    "low60-120": -3.9,
+    "120-250": -8.6,
+    "250-500": -10.6,
+    "500-2k": -14.3,
+    "2k-6k": -17.2,
+    "6k-16k": -19.4
+   },
+   "808_harmonic_band_vs_fund_db": -3.4,
+   "808_env_corr_100_400": 0.293,
+   "sub_side_vs_mid_db": -20.1
+  },
+  "vocal_cleanup_candidates": {
+   "lead1": {
+    "hf_click_candidates": {
+     "n": 12,
+     "times_s": [
+      45.08,
+      52.64,
+      52.66,
+      61.32,
+      66.62,
+      89.3,
+      90.2,
+      97.08,
+      101.36,
+      110.46,
+      118.24,
+      123.54
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -58.8,
+    "hum50_prom_db": 4.2,
+    "hum60_prom_db": 5.2
+   },
+   "lead2": {
+    "hf_click_candidates": {
+     "n": 13,
+     "times_s": [
+      47.78,
+      56.2,
+      56.32,
+      57.18,
+      84.4,
+      92.88,
+      104.68,
+      112.92,
+      113.22,
+      114.1,
+      162.04,
+      163.96,
+      171.04
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -62.2,
+    "hum50_prom_db": 5.7,
+    "hum60_prom_db": 4.9
+   },
+   "bg1": {
+    "hf_click_candidates": {
+     "n": 1,
+     "times_s": [
+      137.8
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -65.2,
+    "hum50_prom_db": 10.2,
+    "hum60_prom_db": 8.7
+   },
+   "bg2": {
+    "hf_click_candidates": {
+     "n": 1,
+     "times_s": [
+      143.58
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -59.6,
+    "hum50_prom_db": 12.0,
+    "hum60_prom_db": 4.2
+   }
+  },
+  "song_length": {
+   "beat_s": 243.6,
+   "first_vocal_s": 42.23,
+   "last_vocal_end_s": 173.18,
+   "instrumental_after_last_vocal_s": 70.4,
+   "intro_before_first_vocal_s": 42.2
+  }
+ },
+ "gate1_vocals": {
+  "pocket": {
+   "lead_vs_beat_lu_target": {
+    "value": -1.0,
+    "why": "no vocal stems for the references, so no reference delta. Artist taste: Wild Side -0.43 LU was 'too loud, not clean enough' (latest note), v9 at about -1.6 not yet approved; older WIPTD 0..+0.5 LU superseded. -1.0 sits inside the beat between the rejected and the untested value; measured on full-beat bars only. Vocal measured as the delivered dual-mono file",
+    "source": "artist_preference (LEARNINGS)",
+    "since": "v1 (Gate 1)"
+   },
+   "lead_vs_beat_lu_range": {
+    "value": [
+     -1.5,
+     -0.5
+    ],
+    "why": "target +-0.5 LU, set before the render",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "midband_delta_db_target": {
+    "value": [
+     3.0,
+     9.0
+    ],
+    "why": "800 Hz-4 kHz vocal minus beat during singing: words clearly above the beat mids while the LU sits inside the beat; upper bound keeps it from sitting on top",
+    "source": "measured + artist preference",
+    "since": "v1 (Gate 1)"
+   },
+   "lead_gain_db": {
+    "value": -0.84,
+    "why": "common gain on both leads (after -18 dBFS gain staging) so the median full-beat section (A1/B1/A2/B3) lands on -1.0 LU vs the pocketed beat",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "bg_gain_db": {
+    "value": -0.93,
+    "why": "bridge at -1.0 LU (lead-style, pending Kenshin)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "beat_mid_dip": {
+    "hz": 2540,
+    "q": 1.41,
+    "max_db": 1.85,
+    "attack_ms": 13.9,
+    "release_ms": 222.2,
+    "channel": "beat MID only (sides untouched)",
+    "key": "all vocals summed; depth = max * clip((env - (p95 - 20 dB))/10 dB, 0, 1)",
+    "structure": "Regalia-Mitra dynamic bell (x + (G-1)*bandpass), causal, zero latency",
+    "engaged_over_half_depth_pct_of_song": 47.4,
+    "why": "masking (singing frames, after vocal gain): vocal-over-beat-mid margin by 1/3 octave {800: 9.5, 1008: 7.1, 1270: 5.9, 1600: 7.3, 2016: 3.3, 2540: 3.3, 3200: 2.2, 4032: -11.8}; 2-3.2 kHz sits 2.6-3.7 dB below the median margin, 4 kHz excluded (vocal source hole). Centre/width = those bands; depth = half the worst deficit (small move, cap 3 dB). Attack 1/128 note (13.9 ms), release 1/8 note (222.2 ms) so it closes in gaps. Note: the leads trade lines almost continuously, so inside vocal sections the dip is open most of the time (acts close to a static 1.8 dB cut there)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "bus_offset_db": {
+    "value": -6.0,
+    "why": "all frozen Gate 1 files (vocals and beat) carry one common -6 dB offset for headroom (attempt 2 clipped at 0 dBFS); balance unchanged; Gate 3 gain-stages the bus",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "why": "lead vs beat per section and midband measured from the frozen files in gate1_exit_checks_v1.json",
+   "source": "measured + artist_preference"
+  },
+  "Lead 1": {
+   "role": "lead (call-and-response A)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 720 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -30.4 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -25.40 dBFS -> gain +7.40 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": {
+     "type": "turn-level clip gain (gain steps sit in digital silence between turns)",
+     "correct_frac": 0.5,
+     "max_db": 1.5,
+     "per_turn_db": [
+      0.68,
+      0.49,
+      0.07,
+      0.47,
+      -0.07,
+      0.86,
+      -1.5,
+      -0.55,
+      -0.71,
+      -0.89,
+      0.08,
+      0.3,
+      -1.5,
+      -0.58
+     ]
+    },
+    "why": "turn-level spread p90-p10 3.89 dB overall (within sections up to 4.7 dB, lead1 B1). A 250-400 ms RMS rider would ride inside turns and lift the printed reverb, so half the deviation from the stem's median turn level is corrected per whole turn, capped +-1.5 dB.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 69.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 86.8 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 86.8
+   },
+   "eq_cuts": [
+    {
+     "hz": 474,
+     "q": 4.2,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw harmonic envelope: pooled hump +5.56 dB at 480 Hz (half-height ~430-530 Hz), every section +5.0..+6.2 (B1 peaks at 460). Sweep 1 (483/Q5) left the 440 Hz shoulder; sweep 2 (bell only) chose 472/Q3.8/-6; exit checks through the full chain then read pooled +2.62 and B1 +3.66. Sweep 3 (through the chain, depth fixed at the 6 dB cap, centre 466/474/482 x Q 3.4/4.2/5.0): 474 Hz Q4.2 brings B1 to ~2.2 and every section <= 3.0; NO centre/Q reaches the pooled +2.5 target at <= 6 dB (best ~2.67) -> documented as a limit, not deepened.",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.96,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.39,
+     "p95_gr_db": 3.16,
+     "why": "raw crest while singing 19.0 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     6000,
+     10091
+    ],
+    "detector_bell_hz": 7781.1,
+    "q": 1.9,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -13.33,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 10.3,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -18.6 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": null,
+    "why": "leads: reference level",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -0.84,
+    "why": "pocket gain (see pocket)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "section_trim_db": {
+    "value": {
+     "B3": -0.67
+    },
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  },
+  "Lead 2": {
+   "role": "lead (call-and-response B)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 90 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -33.5 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -25.39 dBFS -> gain +7.39 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": {
+     "type": "turn-level clip gain (gain steps sit in digital silence between turns)",
+     "correct_frac": 0.5,
+     "max_db": 1.5,
+     "per_turn_db": [
+      1.23,
+      0.47,
+      -0.18,
+      1.5,
+      -0.0,
+      1.1,
+      -0.01,
+      0.0,
+      -0.18,
+      0.47,
+      -0.18,
+      1.39,
+      -0.0,
+      -0.0
+     ]
+    },
+    "why": "turn-level spread p90-p10 3.04 dB overall (within sections up to 4.7 dB, lead1 B1). A 250-400 ms RMS rider would ride inside turns and lift the printed reverb, so half the deviation from the stem's median turn level is corrected per whole turn, capped +-1.5 dB.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 72.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 89.4 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 89.4
+   },
+   "eq_cuts": [
+    {
+     "hz": 474,
+     "q": 5.0,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw harmonic envelope: pooled hump +5.74 dB at 480 Hz (half-height ~430-530 Hz). Sweep 3 through the chain at the 6 dB cap: 474 Hz Q5.0 is the only setting reaching pooled <= +2.5 (2.45, thin margin vs ~0.3 dB method jitter) with every section <= 3.0 and no dip deepened.",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.01,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.37,
+     "p95_gr_db": 3.14,
+     "why": "raw crest while singing 18.7 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     7135,
+     10091
+    ],
+    "detector_bell_hz": 8485.2,
+    "q": 2.87,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -12.43,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 9.3,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -17.5 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": null,
+    "why": "leads: reference level",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -0.84,
+    "why": "pocket gain (see pocket)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "section_trim_db": {
+    "value": {
+     "B3": -0.67
+    },
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  },
+  "Background lead": {
+   "role": "bridge vocal, bars 74-82 (trades with BG2)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 1450 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -40.4 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -27.57 dBFS -> gain +9.57 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": null,
+    "why": "2 turns, spread 0.33 dB: no rider needed (ATL lesson: never ride BG tails up)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 78.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 97.6 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 97.6
+   },
+   "eq_cuts": [
+    {
+     "hz": 450,
+     "q": 3.8,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw hump +4.74 dB at 480 Hz (sweep 2 chose 465/Q3.8/-4). Exit checks could only measure the BGs once min_cnt was set to 10: through the chain they read pooled=Bridge +4.33 (limit 2.5/3.0). sweep_bell_bg (430-495 Hz x Q2.5-6.5 x 5/6 dB, through the chain): 450 Hz Q3.8 at the 6 dB cap is best (+3.03 sweep, +3.08 exit check, mean +1.73), dip not deepened. Nothing reaches +2.5; peak bin jumps 440<->480 Hz between settings = two-turn measurement noise -> residual documented as a limit. LOW CONFIDENCE (~1.5 s voiced, 10-31 harmonics per bin).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.7,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.43,
+     "p95_gr_db": 3.15,
+     "why": "raw crest while singing 17.2 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     8485,
+     14270
+    ],
+    "detector_bell_hz": 11003.7,
+    "q": 1.9,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -16.97,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 13.8,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -21.2 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": "set to the same lead-vs-beat LU as the leads (-1.0 LU in the bridge)",
+    "why": "Gate 0: bridge voices sing alone and need lead-style treatment; FINAL level/depth waits on Kenshin (featured vs distant)",
+    "source": "plan / pending artist",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -0.93,
+    "why": "pocket gain (see pocket)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "section_trim_db": {
+    "value": {},
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  },
+  "Background lead 2": {
+   "role": "bridge vocal, bars 74-82 (trades with BG1)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 90 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -41.6 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -28.10 dBFS -> gain +10.10 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": null,
+    "why": "2 turns, spread 0.28 dB: no rider needed (ATL lesson: never ride BG tails up)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 71.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 89.3 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 89.3
+   },
+   "eq_cuts": [
+    {
+     "hz": 450,
+     "q": 5.0,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw hump +4.67 dB at 480 Hz (sweep 2 chose 465/Q3.8/-5). Exit checks at min_cnt 10 read pooled=Bridge +4.84. sweep_bell_bg: 450 Hz Q5.0 at the 6 dB cap is best (+3.19 sweep, +3.15 exit check, mean +2.26), dip not deepened. Nothing reaches +2.5 -> residual documented as a limit; low confidence (~1.5 s voiced).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.36,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.38,
+     "p95_gr_db": 3.16,
+     "why": "raw crest while singing 17.1 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     7135,
+     10091
+    ],
+    "detector_bell_hz": 8485.2,
+    "q": 2.87,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -19.34,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 10.8,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -20.0 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": "set to the same lead-vs-beat LU as the leads (-1.0 LU in the bridge)",
+    "why": "Gate 0: bridge voices sing alone and need lead-style treatment; FINAL level/depth waits on Kenshin (featured vs distant)",
+    "source": "plan / pending artist",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -0.93,
+    "why": "pocket gain (see pocket)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "section_trim_db": {
+    "value": {},
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  }
+ },
+ "gate2_space": {
+  "input_stems": {
+   "value": {
+    "lead1": "gate1/WIPTD_fresh_G1_Lead1_v2_24b-44k.wav",
+    "lead2": "gate1/WIPTD_fresh_G1_Lead2_v2_24b-44k.wav",
+    "bg1": "gate1/WIPTD_fresh_G1_BackgroundLead_v2_24b-44k.wav",
+    "bg2": "gate1/WIPTD_fresh_G1_BackgroundLead2_v2_24b-44k.wav"
+   },
+   "why": "Alpha Gate 1 v2 DRY stems (all four vocals -1.5 dB vs v1 after Kenshin said the vocals were too loud and the beat hard to hear). NOT the v3 leads (they carry a printed lead plate). Gate 1 stems are frozen; nothing re-processed",
+   "source": "artist_request + team",
+   "since": "v1 (Gate 2)"
+  },
+  "depth_plan": {
+   "value": {
+    "front": "dry lead (Lead 1/Lead 2, bridge voices), kick/snare/808 centre - NO reverb added to the lead (Kenshin + printed reverb already on stems)",
+    "middle": "BG copy (telephone, centre, 15-20 dB under in 1-4 kHz)",
+    "back": "BG reverb (1-bar hall, ducked), throws (band-passed, 30% L/R ping-pong)"
+   },
+   "why": "Gate 2 depth plan, same in every vocal section",
+   "source": "artist_request",
+   "since": "v1 (Gate 2)"
+  },
+  "word_timing": {
+   "value": {
+    "method": "faster-whisper medium.en word timestamps per Gate 0 section chunk (summed Gate 1 vocals), deduped; lyric word count done against the ASR line (ASR dropped some words, e.g. \"been\" in A1). Throw-word starts and line ends from 10 ms energy envelopes (word activity = 300 Hz-4 kHz within 20 dB of the stem p95; the printed tail is -23 dB at 50 ms so it is excluded)",
+    "accuracy_check": {
+     "n": 345,
+     "median_abs_ms": 51.3,
+     "p90_abs_ms": 76.5,
+     "within_40ms_pct": 35.4
+    },
+    "accuracy_note": "ASR starts are only ~50 ms accurate (median |ASR - energy onset| 51 ms), so every timing that matters (BG entry dips, throw word starts, P-centers, line ends) is taken from the audio envelope, not from ASR. AUDIO ENGINEER & DAW timing_vs_grid.json was NOT used (known ~10 ms late detector, 25-40 ms spread). Lyrics are ASR, Kenshin must confirm",
+    "files": [
+     "gate2/words/words_sections_medium_v1.json",
+     "gate2/words/words_by_section_v1.json"
+    ],
+    "analysis_words_folder": "analysis/words/ (AUDIO ENGINEER & DAW) only had a 6-word low-confidence lead1 file when checked, so it was not used"
+   },
+   "why": "no word timing existed; needed for BG entry at word 5/6 and line ends",
+   "source": "measured",
+   "since": "v1 (Gate 2)"
+  },
+  "bg_layer": {
+   "built_from": {
+    "value": "copy of the Gate 1 v2 dry vocals of each section (Lead 1 + Lead 2; bridge: Background lead 1 + 2), 0 samples offset",
+    "why": "Kenshin: perfectly in sync, repeating the main vocal; no 10-30 ms offset (LEARNINGS tunnel)",
+    "source": "artist_request",
+    "since": "v1 (Gate 2)"
+   },
+   "entries": {
+    "value": [
+     {
+      "section": "A1",
+      "source_stems": [
+       "lead1",
+       "lead2"
+      ],
+      "entry_word_index": 5,
+      "entry_word": "these",
+      "entry_global_idx": 1978648,
+      "entry_global_sec": 44.8673,
+      "candidates": [
+       {
+        "word_index": 5,
+        "word": "these",
+        "asr_start_sec": 44.98,
+        "asr_prob": 0.677,
+        "onset_det_sec": 44.9598,
+        "dip_sec": 44.8673,
+        "dip_db": -65.1,
+        "window_median_db": -32.4
+       },
+       {
+        "word_index": 6,
+        "word": "blunts",
+        "asr_start_sec": 45.26,
+        "asr_prob": 0.957,
+        "onset_det_sec": 45.317,
+        "dip_sec": 45.277,
+        "dip_db": -64.2,
+        "window_median_db": -42.6
+       }
+      ],
+      "end_per_stem": {
+       "lead1": {
+        "end_global_idx": 3212023,
+        "end_global_sec": 72.835,
+        "rule": "sings the next section first word: fade out ends at the energy dip before it (B1 \"What\" (lead1 activity onset 72.90))"
+       },
+       "lead2": {
+        "end_global_idx": 3252955,
+        "end_global_sec": 73.7632,
+        "rule": "finishes its own phrase across the boundary: word end + printed tail to digital zero (<=0.65 s, measured tail length)"
+       }
+      },
+      "fade_in_ms": 10,
+      "fade_out_ms": 15
+     },
+     {
+      "section": "B1",
+      "source_stems": [
+       "lead1",
+       "lead2"
+      ],
+      "entry_word_index": 5,
+      "entry_word": "do",
+      "entry_global_idx": 3253566,
+      "entry_global_sec": 73.777,
+      "candidates": [
+       {
+        "word_index": 5,
+        "word": "do",
+        "asr_start_sec": 73.8,
+        "asr_prob": 0.994,
+        "onset_det_sec": 73.7903,
+        "dip_sec": 73.777,
+        "dip_db": -69.1,
+        "window_median_db": -58.7
+       },
+       {
+        "word_index": 6,
+        "word": "when",
+        "asr_start_sec": 74.06,
+        "asr_prob": 0.768,
+        "onset_det_sec": 74.1195,
+        "dip_sec": 73.9572,
+        "dip_db": -30.4,
+        "window_median_db": -30.0
+       }
+      ],
+      "end_per_stem": {
+       "lead1": {
+        "end_global_idx": 3839126,
+        "end_global_sec": 87.055,
+        "rule": "sings the next section first word: fade out ends at the energy dip before it (B2 first word (lead1 activity onset 87.12))"
+       },
+       "lead2": {
+        "end_global_idx": 3874185,
+        "end_global_sec": 87.85,
+        "rule": "finishes its own phrase across the boundary: word end + printed tail to digital zero (<=0.65 s, measured tail length)"
+       }
+      },
+      "fade_in_ms": 10,
+      "fade_out_ms": 15
+     },
+     {
+      "section": "B2",
+      "source_stems": [
+       "lead1",
+       "lead2"
+      ],
+      "entry_word_index": 5,
+      "entry_word": "do",
+      "entry_global_idx": 3880668,
+      "entry_global_sec": 87.997,
+      "candidates": [
+       {
+        "word_index": 5,
+        "word": "do",
+        "asr_start_sec": 88.02,
+        "asr_prob": 0.995,
+        "onset_det_sec": 88.014,
+        "dip_sec": 87.997,
+        "dip_db": -67.9,
+        "window_median_db": -57.6
+       },
+       {
+        "word_index": 6,
+        "word": "when",
+        "asr_start_sec": 88.3,
+        "asr_prob": 0.855,
+        "onset_det_sec": 88.2654,
+        "dip_sec": 88.1972,
+        "dip_db": -29.9,
+        "window_median_db": -29.4
+       }
+      ],
+      "end_per_stem": {
+       "lead1": {
+        "end_global_idx": 4428302,
+        "end_global_sec": 100.415,
+        "rule": "sings the next section first word: fade out ends at the energy dip before it (A2 \"I've\" (lead1 activity onset 100.49))"
+       },
+       "lead2": {
+        "end_global_idx": 4506906,
+        "end_global_sec": 102.1974,
+        "rule": "finishes its own phrase across the boundary: word end + printed tail to digital zero (<=0.65 s, measured tail length)"
+       }
+      },
+      "fade_in_ms": 10,
+      "fade_out_ms": 15
+     },
+     {
+      "section": "A2",
+      "source_stems": [
+       "lead1",
+       "lead2"
+      ],
+      "entry_word_index": 6,
+      "entry_word": "blunts",
+      "entry_global_idx": 4506442,
+      "entry_global_sec": 102.1869,
+      "candidates": [
+       {
+        "word_index": 5,
+        "word": "these",
+        "asr_start_sec": 101.88,
+        "asr_prob": 0.483,
+        "onset_det_sec": 101.8126,
+        "dip_sec": 101.7972,
+        "dip_db": -38.5,
+        "window_median_db": -31.6
+       },
+       {
+        "word_index": 6,
+        "word": "blunts",
+        "asr_start_sec": 102.16,
+        "asr_prob": 0.945,
+        "onset_det_sec": 102.084,
+        "dip_sec": 102.1869,
+        "dip_db": -63.6,
+        "window_median_db": -36.8
+       }
+      ],
+      "end_per_stem": {
+       "lead1": {
+        "end_global_idx": 5605961,
+        "end_global_sec": 127.1193,
+        "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+       },
+       "lead2": {
+        "end_global_idx": 5762593,
+        "end_global_sec": 130.671,
+        "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+       }
+      },
+      "fade_in_ms": 10,
+      "fade_out_ms": 15
+     },
+     {
+      "section": "Bridge",
+      "source_stems": [
+       "bg1",
+       "bg2"
+      ],
+      "entry_word_index": 5,
+      "entry_word": "no",
+      "entry_global_idx": 5761092,
+      "entry_global_sec": 130.637,
+      "candidates": [
+       {
+        "word_index": 5,
+        "word": "no",
+        "asr_start_sec": 130.62,
+        "asr_prob": 0.975,
+        "onset_det_sec": 130.6491,
+        "dip_sec": 130.637,
+        "dip_db": -40.6,
+        "window_median_db": -39.7
+       },
+       {
+        "word_index": 6,
+        "word": "good",
+        "asr_start_sec": 131.0,
+        "asr_prob": 0.991,
+        "onset_det_sec": 131.0122,
+        "dip_sec": 131.0269,
+        "dip_db": -31.2,
+        "window_median_db": -28.3
+       }
+      ],
+      "end_per_stem": {
+       "bg1": {
+        "end_global_idx": 6234185,
+        "end_global_sec": 141.3647,
+        "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+       },
+       "bg2": {
+        "end_global_idx": 6391331,
+        "end_global_sec": 144.9281,
+        "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+       }
+      },
+      "fade_in_ms": 10,
+      "fade_out_ms": 15
+     },
+     {
+      "section": "B3",
+      "source_stems": [
+       "lead1",
+       "lead2"
+      ],
+      "entry_word_index": 5,
+      "entry_word": "do",
+      "entry_global_idx": 7014855,
+      "entry_global_sec": 159.067,
+      "candidates": [
+       {
+        "word_index": 5,
+        "word": "do",
+        "asr_start_sec": 159.06,
+        "asr_prob": 0.994,
+        "onset_det_sec": 159.0844,
+        "dip_sec": 159.067,
+        "dip_db": -68.5,
+        "window_median_db": -58.5
+       },
+       {
+        "word_index": 6,
+        "word": "when",
+        "asr_start_sec": 159.38,
+        "asr_prob": 0.785,
+        "onset_det_sec": 159.4476,
+        "dip_sec": 159.402,
+        "dip_db": -31.0,
+        "window_median_db": -30.1
+       }
+      ],
+      "end_per_stem": {
+       "lead1": {
+        "end_global_idx": 7458400,
+        "end_global_sec": 169.1247,
+        "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+       },
+       "lead2": {
+        "end_global_idx": 7641340,
+        "end_global_sec": 173.273,
+        "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+       }
+      },
+      "fade_in_ms": 10,
+      "fade_out_ms": 15
+     }
+    ],
+    "why": "Kenshin: comes in about the 5th or 6th word of each verse and follows word for word to the end of the section; of words 5/6 the one with the deeper energy dip before it is used (cleanest fade-in, no word cut)",
+    "source": "artist_request + measured",
+    "since": "v1 (Gate 2)"
+   },
+   "telephone": {
+    "value": {
+     "hp_hz": 600.0,
+     "lp_hz": 2000.0,
+     "type": "Butterworth 2nd order each, applied forward-backward (zero phase) -> 24 dB/oct, -6 dB at the corners",
+     "why": {
+      "hp": "Gate 1 harmonic envelope: box hump 430-530 Hz (peak 474-480). 600 Hz zero-phase HP puts 480 Hz at about -10.7 dB on the layer, so the copy adds no box (anti-tunnel)",
+      "lp": "Gate 1 masking scan: the beat covers the lead most at 2.0-3.2 kHz (beat over vocal +2.7..+4.0 dB) and the lead presence bell is at 2.8 kHz, so the layer rolls off from 2.0 kHz (2.5 kHz -8.6 dB, 3.2 kHz -16 dB) and leaves the lead words that range",
+      "zero_phase": "a causal band-pass would delay the copy by its group delay (~10-20 samples) = comb with the lead; filtfilt keeps it at 0 samples (verified by xcorr). Gentle 2nd-order sections keep pre-ringing small; checked as the layer is 15-20 dB under the lead",
+      "band_center_hz": 1095.0
+     }
+    },
+    "why": "telephone tone requested; band derived from this voice (box) and the masking scan",
+    "source": "measured",
+    "since": "v1 (Gate 2)"
+   },
+   "ducker": {
+    "value": {
+     "depth_db": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.111,
+     "key": "all dry vocals, 1-4 kHz, depth = 3 dB * clip((env - (p95-20 dB))/10 dB,0,1)",
+     "why": "Kenshin: dip the layer whenever the lead is active. LEARNINGS echo rule 8: duck lightly and fast (3-4 dB, release 80-120 ms); release = 1/16 note (111.1 ms). Capped at 3 dB because ATL showed riding a BG stem lifted tails/breaths ~12 dB (a ducker lifts tails relative to words by at most its depth)"
+    },
+    "why": "Kenshin: dip the layer whenever the lead is active. LEARNINGS echo rule 8: duck lightly and fast (3-4 dB, release 80-120 ms); release = 1/16 note (111.1 ms). Capped at 3 dB because ATL showed riding a BG stem lifted tails/breaths ~12 dB (a ducker lifts tails relative to words by at most its depth)",
+    "source": "artist_request + LEARNINGS",
+    "since": "v1 (Gate 2)"
+   },
+   "level_db_under_lead_1to4k": {
+    "value": {
+     "light": 20.0,
+     "fuller": 15.0
+    },
+    "why": "LEARNINGS (ATL): Kenshin called BGs too loud at 7, 11 and 14 dB under the lead; v4 sat 18 dB under in 1-4 kHz (last version, not rejected). Brief: start LOW. Light = 20 dB (2 dB below the last unrejected value), fuller = 15 dB (5 dB step = clearly different by ear, still under the rejected 14 dB). Measured in 1-4 kHz, the band where he hears them (ATL lesson)",
+    "source": "LEARNINGS + brief",
+    "since": "v1 (Gate 2)"
+   },
+   "gain_db_applied": {
+    "value": {
+     "light": -13.85,
+     "fuller": -8.85
+    },
+    "why": "gain that puts the ducked telephone copy at the target under the v2 lead (relative, so it follows any later lead change)",
+    "source": "measured",
+    "since": "v1 (Gate 2)"
+   },
+   "pan": {
+    "value": "centre (dual mono)",
+    "why": "one copy of a centred lead; keeps vocal-bus mono correlation ~0.98-0.99",
+    "source": "measured",
+    "since": "v1 (Gate 2)"
+   }
+  },
+  "reverb": {
+   "value": {
+    "type": "synthetic stereo hall (decorrelated exponential noise IR, L/R seeds 11/23), on the BG layer ONLY; lead stays dry",
+    "rt60_s": 1.7778,
+    "rt60_note": "1 bar (78400 samples)",
+    "predelay_samples": 4900,
+    "predelay_ms": 111.111,
+    "predelay_note": "1/16",
+    "ir_band_hz": [
+     600.0,
+     3000
+    ],
+    "ir_length_s": 2.422,
+    "why": {
+     "decay": "Kenshin asked for dreamy/long: 1 bar (1.78 s) is longer than a 1/2-note plate but the tail is 60 dB down within one bar, so it never stacks over more than one 2-bar call-and-response turn (leads alternate every 2 bars, Gate 0)",
+     "predelay": "printed reverb on the stems is -23 dB at 50 ms and -28 dB at 150 ms (Gate 0 tails.json); 1/32 (55.6 ms) would land on the densest printed tail, 1/16 (111.1 ms) lands after it so words stay ahead of the bloom",
+     "band": "HP 600 Hz keeps the reverb out of the 430-530 Hz box (LEARNINGS v13: box-heavy reverb = tunnel); LP 3 kHz keeps it out of the S zone (de-esser bands 6-10 kHz) and the lead consonant zone",
+     "printed_fx": "stems carry printed ~1.5 s reverb -> the added reverb is on the low BG copy only, not on the lead (far less than for dry vocals)"
+    },
+    "return_duck_sweep_attempt1": [
+     {
+      "duck_db": 6.0,
+      "fuller_dr": 20.24
+     },
+     {
+      "duck_db": 8.0,
+      "fuller_dr": 20.73
+     },
+     {
+      "duck_db": 10.0,
+      "fuller_dr": 21.22
+     },
+     {
+      "duck_db": 12.0,
+      "fuller_dr": 21.71
+     },
+     {
+      "duck_db": 14.0,
+      "fuller_dr": 22.2
+     },
+     {
+      "duck_db": 16.0,
+      "fuller_dr": 22.7
+     }
+    ],
+    "return_gain_db": -4.42,
+    "return_rule": "clarity first: return gain chosen so the FULLER version measures 25 dB dry-to-reverb while singing (target >= 24 dB from LEARNINGS \"slight reverb\" + Kenshin pro clarity, +1 dB margin); light is then 30 dB. Attempt-1 rule (bloom = BG level) was too wet (fuller 20.2 dB)",
+    "return_ducker": {
+     "depth_db": 6.0,
+     "attack_ms": 10.0,
+     "release_ms": 222.222,
+     "why": "release 1/8 note (222 ms) so the tail opens inside the 0.1-0.5 s turn gaps; 6 dB = clear bloom contrast; deeper ducking did not buy clarity at a fixed bloom level (attempt-1 sweep)"
+    }
+   },
+   "why": "dreamy reverb on the BG copy ONLY (Kenshin + team: no reverb on the main lead, printed reverb already on the stems)",
+   "source": "artist_request + measured",
+   "since": "v1 (Gate 2)"
+  },
+  "throws": {
+   "value": {
+    "list": [
+     {
+      "idx": 0,
+      "stem": "lead1",
+      "word_asr_label": "enough",
+      "word_start_idx": 2017354,
+      "word_start_sec": 45.745,
+      "word_start_rule": "deepest 10 ms envelope point in the inspected window (45.7, 45.8) s (between previous word and first phoneme of the throw word)",
+      "line_end_sec": 46.18,
+      "word_end_idx": 2036538,
+      "next_onset_sec": 46.68,
+      "gap_sec": 0.5,
+      "p_center_idx": 2027973,
+      "p_center_sec": 45.9858,
+      "p_center_vs_grid16_ms": -18.3,
+      "note_fit": {
+       "1/2": {
+        "repeat1_pc_sec": 46.8747,
+        "in_gap": false,
+        "after_line_end_ms": 695,
+        "before_next_ms": -195
+       },
+       "1/4d": {
+        "repeat1_pc_sec": 46.6524,
+        "in_gap": false,
+        "after_line_end_ms": 472,
+        "before_next_ms": 28
+       },
+       "1/4": {
+        "repeat1_pc_sec": 46.4302,
+        "in_gap": true,
+        "after_line_end_ms": 250,
+        "before_next_ms": 250
+       },
+       "1/8d": {
+        "repeat1_pc_sec": 46.3191,
+        "in_gap": true,
+        "after_line_end_ms": 139,
+        "before_next_ms": 361
+       },
+       "1/8": {
+        "repeat1_pc_sec": 46.208,
+        "in_gap": true,
+        "after_line_end_ms": 28,
+        "before_next_ms": 472
+       },
+       "1/16d": {
+        "repeat1_pc_sec": 46.1524,
+        "in_gap": false,
+        "after_line_end_ms": -28,
+        "before_next_ms": 528
+       },
+       "1/16": {
+        "repeat1_pc_sec": 46.0969,
+        "in_gap": false,
+        "after_line_end_ms": -83,
+        "before_next_ms": 583
+       },
+       "1/2d": {
+        "repeat1_pc_sec": 47.3191,
+        "in_gap": false,
+        "after_line_end_ms": 1139,
+        "before_next_ms": -639
+       },
+       "1/1": {
+        "repeat1_pc_sec": 47.7636,
+        "in_gap": false,
+        "after_line_end_ms": 1584,
+        "before_next_ms": -1084
+       }
+      },
+      "main_note": "1/4",
+      "alt_note": "1/8d",
+      "note_rule": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+     },
+     {
+      "idx": 1,
+      "stem": "lead2",
+      "word_asr_label": "song",
+      "word_start_idx": 2545232,
+      "word_start_sec": 57.715,
+      "word_start_rule": "deepest 10 ms envelope point in the inspected window (57.68, 57.72) s (between previous word and first phoneme of the throw word)",
+      "line_end_sec": 58.16,
+      "word_end_idx": 2564856,
+      "next_onset_sec": 58.66,
+      "gap_sec": 0.5,
+      "p_center_idx": 2549633,
+      "p_center_sec": 57.8148,
+      "p_center_vs_grid16_ms": 32.9,
+      "note_fit": {
+       "1/2": {
+        "repeat1_pc_sec": 58.7037,
+        "in_gap": false,
+        "after_line_end_ms": 544,
+        "before_next_ms": -44
+       },
+       "1/4d": {
+        "repeat1_pc_sec": 58.4815,
+        "in_gap": true,
+        "after_line_end_ms": 321,
+        "before_next_ms": 179
+       },
+       "1/4": {
+        "repeat1_pc_sec": 58.2593,
+        "in_gap": true,
+        "after_line_end_ms": 99,
+        "before_next_ms": 401
+       },
+       "1/8d": {
+        "repeat1_pc_sec": 58.1481,
+        "in_gap": false,
+        "after_line_end_ms": -12,
+        "before_next_ms": 512
+       },
+       "1/8": {
+        "repeat1_pc_sec": 58.037,
+        "in_gap": false,
+        "after_line_end_ms": -123,
+        "before_next_ms": 623
+       },
+       "1/16d": {
+        "repeat1_pc_sec": 57.9815,
+        "in_gap": false,
+        "after_line_end_ms": -179,
+        "before_next_ms": 679
+       },
+       "1/16": {
+        "repeat1_pc_sec": 57.9259,
+        "in_gap": false,
+        "after_line_end_ms": -234,
+        "before_next_ms": 734
+       },
+       "1/2d": {
+        "repeat1_pc_sec": 59.1481,
+        "in_gap": false,
+        "after_line_end_ms": 988,
+        "before_next_ms": -488
+       },
+       "1/1": {
+        "repeat1_pc_sec": 59.5926,
+        "in_gap": false,
+        "after_line_end_ms": 1433,
+        "before_next_ms": -933
+       }
+      },
+      "main_note": "1/4d",
+      "alt_note": "1/4",
+      "note_rule": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+     },
+     {
+      "idx": 2,
+      "stem": "lead1",
+      "word_asr_label": "ain't",
+      "word_start_idx": 4527526,
+      "word_start_sec": 102.665,
+      "word_start_rule": "deepest 10 ms envelope point in the inspected window (102.62, 102.72) s (between previous word and first phoneme of the throw word)",
+      "line_end_sec": 103.1,
+      "word_end_idx": 4546710,
+      "next_onset_sec": 103.6,
+      "gap_sec": 0.5,
+      "p_center_idx": 4538024,
+      "p_center_sec": 102.903,
+      "p_center_vs_grid16_ms": 10.0,
+      "note_fit": {
+       "1/2": {
+        "repeat1_pc_sec": 103.7919,
+        "in_gap": false,
+        "after_line_end_ms": 692,
+        "before_next_ms": -192
+       },
+       "1/4d": {
+        "repeat1_pc_sec": 103.5697,
+        "in_gap": false,
+        "after_line_end_ms": 470,
+        "before_next_ms": 30
+       },
+       "1/4": {
+        "repeat1_pc_sec": 103.3475,
+        "in_gap": true,
+        "after_line_end_ms": 247,
+        "before_next_ms": 253
+       },
+       "1/8d": {
+        "repeat1_pc_sec": 103.2364,
+        "in_gap": true,
+        "after_line_end_ms": 136,
+        "before_next_ms": 364
+       },
+       "1/8": {
+        "repeat1_pc_sec": 103.1253,
+        "in_gap": true,
+        "after_line_end_ms": 25,
+        "before_next_ms": 475
+       },
+       "1/16d": {
+        "repeat1_pc_sec": 103.0697,
+        "in_gap": false,
+        "after_line_end_ms": -30,
+        "before_next_ms": 530
+       },
+       "1/16": {
+        "repeat1_pc_sec": 103.0141,
+        "in_gap": false,
+        "after_line_end_ms": -86,
+        "before_next_ms": 586
+       },
+       "1/2d": {
+        "repeat1_pc_sec": 104.2364,
+        "in_gap": false,
+        "after_line_end_ms": 1136,
+        "before_next_ms": -636
+       },
+       "1/1": {
+        "repeat1_pc_sec": 104.6808,
+        "in_gap": false,
+        "after_line_end_ms": 1581,
+        "before_next_ms": -1081
+       }
+      },
+      "main_note": "1/4",
+      "alt_note": "1/8d",
+      "note_rule": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+     },
+     {
+      "idx": 3,
+      "stem": "lead2",
+      "word_asr_label": "song",
+      "word_start_idx": 5054522,
+      "word_start_sec": 114.615,
+      "word_start_rule": "deepest 10 ms envelope point in the inspected window (114.59, 114.63) s (between previous word and first phoneme of the throw word)",
+      "line_end_sec": 115.07,
+      "word_end_idx": 5074587,
+      "next_onset_sec": 115.58,
+      "gap_sec": 0.51,
+      "p_center_idx": 5059484,
+      "p_center_sec": 114.7275,
+      "p_center_vs_grid16_ms": -54.4,
+      "note_fit": {
+       "1/2": {
+        "repeat1_pc_sec": 115.6164,
+        "in_gap": false,
+        "after_line_end_ms": 546,
+        "before_next_ms": -36
+       },
+       "1/4d": {
+        "repeat1_pc_sec": 115.3942,
+        "in_gap": true,
+        "after_line_end_ms": 324,
+        "before_next_ms": 186
+       },
+       "1/4": {
+        "repeat1_pc_sec": 115.172,
+        "in_gap": true,
+        "after_line_end_ms": 102,
+        "before_next_ms": 408
+       },
+       "1/8d": {
+        "repeat1_pc_sec": 115.0609,
+        "in_gap": false,
+        "after_line_end_ms": -9,
+        "before_next_ms": 519
+       },
+       "1/8": {
+        "repeat1_pc_sec": 114.9498,
+        "in_gap": false,
+        "after_line_end_ms": -120,
+        "before_next_ms": 630
+       },
+       "1/16d": {
+        "repeat1_pc_sec": 114.8942,
+        "in_gap": false,
+        "after_line_end_ms": -176,
+        "before_next_ms": 686
+       },
+       "1/16": {
+        "repeat1_pc_sec": 114.8386,
+        "in_gap": false,
+        "after_line_end_ms": -231,
+        "before_next_ms": 741
+       },
+       "1/2d": {
+        "repeat1_pc_sec": 116.0609,
+        "in_gap": false,
+        "after_line_end_ms": 991,
+        "before_next_ms": -481
+       },
+       "1/1": {
+        "repeat1_pc_sec": 116.5053,
+        "in_gap": false,
+        "after_line_end_ms": 1435,
+        "before_next_ms": -925
+       }
+      },
+      "main_note": "1/4d",
+      "alt_note": "1/4",
+      "note_rule": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+     },
+     {
+      "idx": 4,
+      "stem": "bg2",
+      "word_asr_label": "all",
+      "word_start_idx": 6331657,
+      "word_start_sec": 143.575,
+      "word_start_rule": "deepest 10 ms envelope point in the inspected window (143.53, 143.59) s (between previous word and first phoneme of the throw word)",
+      "line_end_sec": 144.49,
+      "word_end_idx": 6372009,
+      "next_onset_sec": 158.19,
+      "gap_sec": 13.7,
+      "p_center_idx": 6332804,
+      "p_center_sec": 143.601,
+      "p_center_vs_grid16_ms": 41.3,
+      "note_fit": {
+       "1/2": {
+        "repeat1_pc_sec": 144.4899,
+        "in_gap": false,
+        "after_line_end_ms": 0,
+        "before_next_ms": 13700
+       },
+       "1/4d": {
+        "repeat1_pc_sec": 144.2677,
+        "in_gap": false,
+        "after_line_end_ms": -222,
+        "before_next_ms": 13922
+       },
+       "1/4": {
+        "repeat1_pc_sec": 144.0454,
+        "in_gap": false,
+        "after_line_end_ms": -445,
+        "before_next_ms": 14145
+       },
+       "1/8d": {
+        "repeat1_pc_sec": 143.9343,
+        "in_gap": false,
+        "after_line_end_ms": -556,
+        "before_next_ms": 14256
+       },
+       "1/8": {
+        "repeat1_pc_sec": 143.8232,
+        "in_gap": false,
+        "after_line_end_ms": -667,
+        "before_next_ms": 14367
+       },
+       "1/16d": {
+        "repeat1_pc_sec": 143.7677,
+        "in_gap": false,
+        "after_line_end_ms": -722,
+        "before_next_ms": 14422
+       },
+       "1/16": {
+        "repeat1_pc_sec": 143.7121,
+        "in_gap": false,
+        "after_line_end_ms": -778,
+        "before_next_ms": 14478
+       },
+       "1/2d": {
+        "repeat1_pc_sec": 144.9343,
+        "in_gap": true,
+        "after_line_end_ms": 444,
+        "before_next_ms": 13256
+       },
+       "1/1": {
+        "repeat1_pc_sec": 145.3788,
+        "in_gap": true,
+        "after_line_end_ms": 889,
+        "before_next_ms": 12811
+       }
+      },
+      "main_note": "1/2d",
+      "alt_note": "1/1",
+      "note_rule": "gap > 2 s: smallest note value whose first repeat P-center lands after the held word ends (not too late); alt = next longer fitting value"
+     },
+     {
+      "idx": 5,
+      "stem": "lead2",
+      "word_asr_label": "Adderall",
+      "word_start_idx": 7561166,
+      "word_start_sec": 171.455,
+      "word_start_rule": "deepest 10 ms envelope point in the inspected window (171.37, 171.47) s (between previous word and first phoneme of the throw word)",
+      "line_end_sec": 172.9,
+      "word_end_idx": 7624890,
+      "next_onset_sec": 243.6,
+      "gap_sec": 70.7,
+      "p_center_idx": 7562586,
+      "p_center_sec": 171.4872,
+      "p_center_vs_grid16_ms": 38.6,
+      "note_fit": {
+       "1/2": {
+        "repeat1_pc_sec": 172.3761,
+        "in_gap": false,
+        "after_line_end_ms": -524,
+        "before_next_ms": 71224
+       },
+       "1/4d": {
+        "repeat1_pc_sec": 172.1539,
+        "in_gap": false,
+        "after_line_end_ms": -746,
+        "before_next_ms": 71446
+       },
+       "1/4": {
+        "repeat1_pc_sec": 171.9317,
+        "in_gap": false,
+        "after_line_end_ms": -968,
+        "before_next_ms": 71668
+       },
+       "1/8d": {
+        "repeat1_pc_sec": 171.8205,
+        "in_gap": false,
+        "after_line_end_ms": -1079,
+        "before_next_ms": 71779
+       },
+       "1/8": {
+        "repeat1_pc_sec": 171.7094,
+        "in_gap": false,
+        "after_line_end_ms": -1191,
+        "before_next_ms": 71891
+       },
+       "1/16d": {
+        "repeat1_pc_sec": 171.6539,
+        "in_gap": false,
+        "after_line_end_ms": -1246,
+        "before_next_ms": 71946
+       },
+       "1/16": {
+        "repeat1_pc_sec": 171.5983,
+        "in_gap": false,
+        "after_line_end_ms": -1302,
+        "before_next_ms": 72002
+       },
+       "1/2d": {
+        "repeat1_pc_sec": 172.8205,
+        "in_gap": false,
+        "after_line_end_ms": -79,
+        "before_next_ms": 70779
+       },
+       "1/1": {
+        "repeat1_pc_sec": 173.265,
+        "in_gap": true,
+        "after_line_end_ms": 365,
+        "before_next_ms": 70335
+       }
+      },
+      "main_note": "1/1",
+      "alt_note": "1/1",
+      "note_rule": "gap > 2 s: smallest note value whose first repeat P-center lands after the held word ends (not too late); alt = next longer fitting value"
+     }
+    ],
+    "renders": {
+     "main": [
+      {
+       "throw": 0,
+       "note": "1/4",
+       "note_samples": 19600,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        2017354,
+        2036954
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 2036954,
+         "start_sec": 46.1894,
+         "p_center_idx": 2047573,
+         "p_center_sec": 46.4302,
+         "delay_samples_from_source": 19600,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 46.6339,
+         "collision_scan_sec": [
+          46.039,
+          46.634
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 1,
+       "note": "1/4d",
+       "note_samples": 29400,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        2545232,
+        2569266
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 2574632,
+         "start_sec": 58.3817,
+         "p_center_idx": 2579033,
+         "p_center_sec": 58.4815,
+         "delay_samples_from_source": 29400,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": true,
+         "end_sec": 58.64,
+         "collision_scan_sec": [
+          58.232,
+          58.64
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 2,
+       "note": "1/4",
+       "note_samples": 19600,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        4527526,
+        4547126
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 4547126,
+         "start_sec": 103.1094,
+         "p_center_idx": 4557624,
+         "p_center_sec": 103.3475,
+         "delay_samples_from_source": 19600,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 103.5539,
+         "collision_scan_sec": [
+          102.959,
+          103.554
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 3,
+       "note": "1/4d",
+       "note_samples": 29400,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        5054522,
+        5078997
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 5083922,
+         "start_sec": 115.2817,
+         "p_center_idx": 5088884,
+         "p_center_sec": 115.3942,
+         "delay_samples_from_source": 29400,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": true,
+         "end_sec": 115.56,
+         "collision_scan_sec": [
+          115.132,
+          115.56
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 4,
+       "note": "1/2d",
+       "note_samples": 58800,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        6331657,
+        6376419
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 6390457,
+         "start_sec": 144.9083,
+         "p_center_idx": 6391604,
+         "p_center_sec": 144.9343,
+         "delay_samples_from_source": 58800,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 145.9233,
+         "collision_scan_sec": [
+          144.758,
+          145.923
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": true,
+         "start_idx": 6449257,
+         "start_sec": 146.2417,
+         "p_center_idx": 6450404,
+         "p_center_sec": 146.2677,
+         "delay_samples_from_source": 117600,
+         "level_db_re_word_band": -17.0,
+         "lp_hz": 2550.0,
+         "pan": 0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 147.2567,
+         "collision_scan_sec": [
+          146.092,
+          147.257
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 3,
+         "kept": true,
+         "start_idx": 6508057,
+         "start_sec": 147.575,
+         "p_center_idx": 6509204,
+         "p_center_sec": 147.601,
+         "delay_samples_from_source": 176400,
+         "level_db_re_word_band": -22.0,
+         "lp_hz": 1800.0,
+         "pan": 0.0,
+         "truncated_before_next_word": false,
+         "end_sec": 148.59,
+         "collision_scan_sec": [
+          147.425,
+          148.59
+         ],
+         "collision": "none"
+        }
+       ]
+      },
+      {
+       "throw": 5,
+       "note": "1/1",
+       "note_samples": 78400,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        7561166,
+        7629300
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 7639566,
+         "start_sec": 173.2328,
+         "p_center_idx": 7640986,
+         "p_center_sec": 173.265,
+         "delay_samples_from_source": 78400,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 174.7778,
+         "collision_scan_sec": [
+          173.083,
+          174.778
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": true,
+         "start_idx": 7717966,
+         "start_sec": 175.0106,
+         "p_center_idx": 7719386,
+         "p_center_sec": 175.0428,
+         "delay_samples_from_source": 156800,
+         "level_db_re_word_band": -17.0,
+         "lp_hz": 2550.0,
+         "pan": 0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 176.5556,
+         "collision_scan_sec": [
+          174.861,
+          176.556
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 3,
+         "kept": true,
+         "start_idx": 7796366,
+         "start_sec": 176.7883,
+         "p_center_idx": 7797786,
+         "p_center_sec": 176.8205,
+         "delay_samples_from_source": 235200,
+         "level_db_re_word_band": -22.0,
+         "lp_hz": 1800.0,
+         "pan": 0.0,
+         "truncated_before_next_word": false,
+         "end_sec": 178.3333,
+         "collision_scan_sec": [
+          176.638,
+          178.333
+         ],
+         "collision": "none"
+        }
+       ]
+      }
+     ],
+     "alt": [
+      {
+       "throw": 0,
+       "note": "1/8d",
+       "note_samples": 14700,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        2017354,
+        2032054
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 2032054,
+         "start_sec": 46.0783,
+         "p_center_idx": 2042673,
+         "p_center_sec": 46.3191,
+         "delay_samples_from_source": 14700,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 46.4117,
+         "collision_scan_sec": [
+          45.928,
+          46.412
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 1,
+       "note": "1/4",
+       "note_samples": 19600,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        2545232,
+        2564832
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 2564832,
+         "start_sec": 58.1595,
+         "p_center_idx": 2569233,
+         "p_center_sec": 58.2593,
+         "delay_samples_from_source": 19600,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 58.6039,
+         "collision_scan_sec": [
+          58.009,
+          58.604
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 2,
+       "note": "1/8d",
+       "note_samples": 14700,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        4527526,
+        4542226
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 4542226,
+         "start_sec": 102.9983,
+         "p_center_idx": 4552724,
+         "p_center_sec": 103.2364,
+         "delay_samples_from_source": 14700,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 103.3317,
+         "collision_scan_sec": [
+          102.848,
+          103.332
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 3,
+       "note": "1/4",
+       "note_samples": 19600,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        5054522,
+        5074122
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 5074122,
+         "start_sec": 115.0595,
+         "p_center_idx": 5079084,
+         "p_center_sec": 115.172,
+         "delay_samples_from_source": 19600,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 115.5039,
+         "collision_scan_sec": [
+          114.909,
+          115.504
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 4,
+       "note": "1/1",
+       "note_samples": 78400,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        6331657,
+        6376419
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 6410057,
+         "start_sec": 145.3528,
+         "p_center_idx": 6411204,
+         "p_center_sec": 145.3788,
+         "delay_samples_from_source": 78400,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 146.3678,
+         "collision_scan_sec": [
+          145.203,
+          146.368
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": true,
+         "start_idx": 6488457,
+         "start_sec": 147.1305,
+         "p_center_idx": 6489604,
+         "p_center_sec": 147.1566,
+         "delay_samples_from_source": 156800,
+         "level_db_re_word_band": -17.0,
+         "lp_hz": 2550.0,
+         "pan": 0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 148.1456,
+         "collision_scan_sec": [
+          146.981,
+          148.146
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 3,
+         "kept": true,
+         "start_idx": 6566857,
+         "start_sec": 148.9083,
+         "p_center_idx": 6568004,
+         "p_center_sec": 148.9343,
+         "delay_samples_from_source": 235200,
+         "level_db_re_word_band": -22.0,
+         "lp_hz": 1800.0,
+         "pan": 0.0,
+         "truncated_before_next_word": false,
+         "end_sec": 149.9233,
+         "collision_scan_sec": [
+          148.758,
+          149.923
+         ],
+         "collision": "none"
+        }
+       ]
+      },
+      {
+       "throw": 5,
+       "note": "1/1",
+       "note_samples": 78400,
+       "grid_offset_samples": 0,
+       "copy_samples": [
+        7561166,
+        7629300
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 7639566,
+         "start_sec": 173.2328,
+         "p_center_idx": 7640986,
+         "p_center_sec": 173.265,
+         "delay_samples_from_source": 78400,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 174.7778,
+         "collision_scan_sec": [
+          173.083,
+          174.778
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": true,
+         "start_idx": 7717966,
+         "start_sec": 175.0106,
+         "p_center_idx": 7719386,
+         "p_center_sec": 175.0428,
+         "delay_samples_from_source": 156800,
+         "level_db_re_word_band": -17.0,
+         "lp_hz": 2550.0,
+         "pan": 0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 176.5556,
+         "collision_scan_sec": [
+          174.861,
+          176.556
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 3,
+         "kept": true,
+         "start_idx": 7796366,
+         "start_sec": 176.7883,
+         "p_center_idx": 7797786,
+         "p_center_sec": 176.8205,
+         "delay_samples_from_source": 235200,
+         "level_db_re_word_band": -22.0,
+         "lp_hz": 1800.0,
+         "pan": 0.0,
+         "truncated_before_next_word": false,
+         "end_sec": 178.3333,
+         "collision_scan_sec": [
+          176.638,
+          178.333
+         ],
+         "collision": "none"
+        }
+       ]
+      }
+     ],
+     "grid": [
+      {
+       "throw": 0,
+       "note": "1/4",
+       "note_samples": 19600,
+       "grid_offset_samples": 809,
+       "copy_samples": [
+        2017354,
+        2036954
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 2037763,
+         "start_sec": 46.2078,
+         "p_center_idx": 2048382,
+         "p_center_sec": 46.4486,
+         "delay_samples_from_source": 20409,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 46.6522,
+         "collision_scan_sec": [
+          46.058,
+          46.652
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 1,
+       "note": "1/4d",
+       "note_samples": 29400,
+       "grid_offset_samples": -1451,
+       "copy_samples": [
+        2545232,
+        2569266
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 2573181,
+         "start_sec": 58.3488,
+         "p_center_idx": 2577582,
+         "p_center_sec": 58.4486,
+         "delay_samples_from_source": 27949,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": true,
+         "end_sec": 58.64,
+         "collision_scan_sec": [
+          58.199,
+          58.64
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 2,
+       "note": "1/4",
+       "note_samples": 19600,
+       "grid_offset_samples": -442,
+       "copy_samples": [
+        4527526,
+        4547126
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 4546684,
+         "start_sec": 103.0994,
+         "p_center_idx": 4557182,
+         "p_center_sec": 103.3375,
+         "delay_samples_from_source": 19158,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 103.5439,
+         "collision_scan_sec": [
+          102.949,
+          103.544
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 3,
+       "note": "1/4d",
+       "note_samples": 29400,
+       "grid_offset_samples": 2398,
+       "copy_samples": [
+        5054522,
+        5078997
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 5086320,
+         "start_sec": 115.3361,
+         "p_center_idx": 5091282,
+         "p_center_sec": 115.4486,
+         "delay_samples_from_source": 31798,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": true,
+         "end_sec": 115.56,
+         "collision_scan_sec": [
+          115.186,
+          115.56
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": false,
+         "why": "P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)"
+        }
+       ]
+      },
+      {
+       "throw": 4,
+       "note": "1/2d",
+       "note_samples": 58800,
+       "grid_offset_samples": -1822,
+       "copy_samples": [
+        6331657,
+        6376419
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 6388635,
+         "start_sec": 144.867,
+         "p_center_idx": 6389782,
+         "p_center_sec": 144.893,
+         "delay_samples_from_source": 56978,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 145.882,
+         "collision_scan_sec": [
+          144.717,
+          145.882
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": true,
+         "start_idx": 6447435,
+         "start_sec": 146.2003,
+         "p_center_idx": 6448582,
+         "p_center_sec": 146.2263,
+         "delay_samples_from_source": 115778,
+         "level_db_re_word_band": -17.0,
+         "lp_hz": 2550.0,
+         "pan": 0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 147.2154,
+         "collision_scan_sec": [
+          146.05,
+          147.215
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 3,
+         "kept": true,
+         "start_idx": 6506235,
+         "start_sec": 147.5337,
+         "p_center_idx": 6507382,
+         "p_center_sec": 147.5597,
+         "delay_samples_from_source": 174578,
+         "level_db_re_word_band": -22.0,
+         "lp_hz": 1800.0,
+         "pan": 0.0,
+         "truncated_before_next_word": false,
+         "end_sec": 148.5487,
+         "collision_scan_sec": [
+          147.384,
+          148.549
+         ],
+         "collision": "none"
+        }
+       ]
+      },
+      {
+       "throw": 5,
+       "note": "1/1",
+       "note_samples": 78400,
+       "grid_offset_samples": -1704,
+       "copy_samples": [
+        7561166,
+        7629300
+       ],
+       "repeats": [
+        {
+         "r": 1,
+         "kept": true,
+         "start_idx": 7637862,
+         "start_sec": 173.1941,
+         "p_center_idx": 7639282,
+         "p_center_sec": 173.2263,
+         "delay_samples_from_source": 76696,
+         "level_db_re_word_band": -12.0,
+         "lp_hz": 3600.0,
+         "pan": -0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 174.7391,
+         "collision_scan_sec": [
+          173.044,
+          174.739
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 2,
+         "kept": true,
+         "start_idx": 7716262,
+         "start_sec": 174.9719,
+         "p_center_idx": 7717682,
+         "p_center_sec": 175.0041,
+         "delay_samples_from_source": 155096,
+         "level_db_re_word_band": -17.0,
+         "lp_hz": 2550.0,
+         "pan": 0.3,
+         "truncated_before_next_word": false,
+         "end_sec": 176.5169,
+         "collision_scan_sec": [
+          174.822,
+          176.517
+         ],
+         "collision": "none"
+        },
+        {
+         "r": 3,
+         "kept": true,
+         "start_idx": 7794662,
+         "start_sec": 176.7497,
+         "p_center_idx": 7796082,
+         "p_center_sec": 176.7819,
+         "delay_samples_from_source": 233496,
+         "level_db_re_word_band": -22.0,
+         "lp_hz": 1800.0,
+         "pan": 0.0,
+         "truncated_before_next_word": false,
+         "end_sec": 178.2947,
+         "collision_scan_sec": [
+          176.6,
+          178.295
+         ],
+         "collision": "none"
+        }
+       ]
+      }
+     ]
+    },
+    "band": {
+     "hp_hz": 600.0,
+     "lp_hz_per_repeat": [
+      3600.0,
+      2550.0,
+      1800.0
+     ],
+     "type": "2nd-order Butterworth forward-backward (zero phase, keeps the delay sample-exact)"
+    },
+    "levels": "repeat 1 = -12 dB re the source word (600 Hz-3.6 kHz band RMS), then -5 dB and darker per repeat"
+   },
+   "why": {
+    "band": "HP 600 Hz above the 430-530 Hz box; LP 3.6 kHz = top of this source's usable band (lossy hole 3.6-5 kHz, Gate 1) so repeats sit behind the voice; each later repeat darker (LEARNINGS echo rule 7)",
+    "level": "LEARNINGS: echoes 13-32 dB under the word went unheard (Interstate/Driftin), BG/echo too loud on ATL; -12 dB is the quiet edge of the 3-12 dB audible range = start low, then ask more/less",
+    "copy": "whole word from its real start (LEARNINGS: copies that start mid-word \"don't catch the words\"), capped at one repeat interval so repeats never overlap (echo rule 3)",
+    "pan": "repeat 1 30% L, repeat 2 30% R, repeat 3 centre (melodic-rap band-passed ping-pong; mono-checked)",
+    "collision": "scan [t-0.15 s, t+repeat length] of all dry vocals (word activity, printed tails excluded) except the source word itself; a repeat whose P-center would reach the next word is omitted, a repeat whose tail would reach it is faded out 20 ms before the word"
+   },
+   "source": "artist_request + measured",
+   "since": "v1 (Gate 2)"
+  },
+  "throw_summary": [
+   {
+    "global_sec_word": [
+     45.745,
+     46.18
+    ],
+    "word_asr": "enough",
+    "stem": "lead1",
+    "p_center_sec": 45.9858,
+    "p_center_vs_grid16_ms": -18.3,
+    "gap_sec": 0.5,
+    "note_main": "1/4",
+    "samples_main": 19600,
+    "note_alt": "1/8d",
+    "repeats_kept": 1,
+    "repeat_pcs_sec": [
+     46.4302
+    ],
+    "collision": "none (scan [t-0.15 s, t+len])",
+    "why": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+   },
+   {
+    "global_sec_word": [
+     57.715,
+     58.16
+    ],
+    "word_asr": "song",
+    "stem": "lead2",
+    "p_center_sec": 57.8148,
+    "p_center_vs_grid16_ms": 32.9,
+    "gap_sec": 0.5,
+    "note_main": "1/4d",
+    "samples_main": 29400,
+    "note_alt": "1/4",
+    "repeats_kept": 1,
+    "repeat_pcs_sec": [
+     58.4815
+    ],
+    "collision": "none (scan [t-0.15 s, t+len])",
+    "why": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+   },
+   {
+    "global_sec_word": [
+     102.665,
+     103.1
+    ],
+    "word_asr": "ain't",
+    "stem": "lead1",
+    "p_center_sec": 102.903,
+    "p_center_vs_grid16_ms": 10.0,
+    "gap_sec": 0.5,
+    "note_main": "1/4",
+    "samples_main": 19600,
+    "note_alt": "1/8d",
+    "repeats_kept": 1,
+    "repeat_pcs_sec": [
+     103.3475
+    ],
+    "collision": "none (scan [t-0.15 s, t+len])",
+    "why": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+   },
+   {
+    "global_sec_word": [
+     114.615,
+     115.07
+    ],
+    "word_asr": "song",
+    "stem": "lead2",
+    "p_center_sec": 114.7275,
+    "p_center_vs_grid16_ms": -54.4,
+    "gap_sec": 0.51,
+    "note_main": "1/4d",
+    "samples_main": 29400,
+    "note_alt": "1/4",
+    "repeats_kept": 1,
+    "repeat_pcs_sec": [
+     115.3942
+    ],
+    "collision": "none (scan [t-0.15 s, t+len])",
+    "why": "gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best"
+   },
+   {
+    "global_sec_word": [
+     143.575,
+     144.49
+    ],
+    "word_asr": "all",
+    "stem": "bg2",
+    "p_center_sec": 143.601,
+    "p_center_vs_grid16_ms": 41.3,
+    "gap_sec": 13.7,
+    "note_main": "1/2d",
+    "samples_main": 58800,
+    "note_alt": "1/1",
+    "repeats_kept": 3,
+    "repeat_pcs_sec": [
+     144.9343,
+     146.2677,
+     147.601
+    ],
+    "collision": "none (scan [t-0.15 s, t+len])",
+    "why": "gap > 2 s: smallest note value whose first repeat P-center lands after the held word ends (not too late); alt = next longer fitting value"
+   },
+   {
+    "global_sec_word": [
+     171.455,
+     172.9
+    ],
+    "word_asr": "Adderall",
+    "stem": "lead2",
+    "p_center_sec": 171.4872,
+    "p_center_vs_grid16_ms": 38.6,
+    "gap_sec": 70.7,
+    "note_main": "1/1",
+    "samples_main": 78400,
+    "note_alt": "1/1",
+    "repeats_kept": 3,
+    "repeat_pcs_sec": [
+     173.265,
+     175.0428,
+     176.8205
+    ],
+    "collision": "none (scan [t-0.15 s, t+len])",
+    "why": "gap > 2 s: smallest note value whose first repeat P-center lands after the held word ends (not too late); alt = next longer fitting value"
+   }
+  ],
+  "previews": {
+   "value": {
+    "window_sec": [
+     42.0,
+     72.0
+    ],
+    "matched_lufs": -20.0,
+    "lead_level_note": "vocals = Alpha Gate 1 v2 stems (lead -1.5 dB vs v1 after Kenshin said the vocals were too loud); every Gate 2 layer is set in dB relative to that lead, so it moves with any later lead change",
+    "clips": {
+     "a_BGlight_ThrowsWordTimed": {
+      "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_a_BGlight_ThrowsWordTimed_0m42-1m12_v1_24b-44k.wav",
+      "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_a_BGlight_ThrowsWordTimed_0m42-1m12_v1.mp3",
+      "lufs_wav": -20.0,
+      "lufs_mp3": -20.0,
+      "gain_applied_db": 3.18,
+      "tp_wav_dbtp": -2.0,
+      "tp_mp3_dbtp": -1.99,
+      "clip_samples": 0
+     },
+     "b_BGfuller_ThrowsWordTimed": {
+      "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_b_BGfuller_ThrowsWordTimed_0m42-1m12_v1_24b-44k.wav",
+      "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_b_BGfuller_ThrowsWordTimed_0m42-1m12_v1.mp3",
+      "lufs_wav": -20.0,
+      "lufs_mp3": -20.0,
+      "gain_applied_db": 3.05,
+      "tp_wav_dbtp": -2.0,
+      "tp_mp3_dbtp": -2.0,
+      "clip_samples": 0
+     },
+     "c_BGlight_ThrowsAltNote": {
+      "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_c_BGlight_ThrowsAltNote_0m42-1m12_v1_24b-44k.wav",
+      "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_c_BGlight_ThrowsAltNote_0m42-1m12_v1.mp3",
+      "lufs_wav": -20.0,
+      "lufs_mp3": -20.0,
+      "gain_applied_db": 3.18,
+      "tp_wav_dbtp": -2.0,
+      "tp_mp3_dbtp": -1.99,
+      "clip_samples": 0
+     },
+     "d_BGlight_ThrowsGridLocked": {
+      "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_d_BGlight_ThrowsGridLocked_0m42-1m12_v1_24b-44k.wav",
+      "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_d_BGlight_ThrowsGridLocked_0m42-1m12_v1.mp3",
+      "lufs_wav": -20.0,
+      "lufs_mp3": -20.0,
+      "gain_applied_db": 3.18,
+      "tp_wav_dbtp": -2.0,
+      "tp_mp3_dbtp": -1.99,
+      "clip_samples": 0
+     },
+     "ref_NoEffects_Gate1v2": {
+      "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_ref_NoEffects_Gate1v2_0m42-1m12_v1_24b-44k.wav",
+      "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_ref_NoEffects_Gate1v2_0m42-1m12_v1.mp3",
+      "lufs_wav": -20.0,
+      "lufs_mp3": -20.0,
+      "gain_applied_db": 3.33,
+      "tp_wav_dbtp": -1.96,
+      "tp_mp3_dbtp": -1.96,
+      "clip_samples": 0
+     }
+    }
+   },
+   "why": "15-30 s of the A1 hook, all at the same integrated loudness; every clip uses the v2 DRY lead",
+   "source": "measured",
+   "since": "v1 (Gate 2)"
+  },
+  "exit_checks": {
+   "file": "gate2/WIPTD_fresh_Gate2_exit_checks_v1.json",
+   "n_pass": 116,
+   "n_fail": 3,
+   "fails": [
+    "throw4_rep3_audibility_vs_everything",
+    "throw5_rep2_audibility_vs_everything",
+    "throw5_rep3_audibility_vs_everything"
+   ]
+  }
+ },
+ "gate3_balance": {
+  "section_automation": [
+   {
+    "target": null,
+    "range_sec": [
+     null,
+     null
+    ],
+    "db": null,
+    "why": null
+   }
+  ],
+  "hook_lift_lu_target": null,
+  "beat_processing": [
+   {
+    "process": null,
+    "settings": {},
+    "why": null
+   }
+  ],
+  "mix_bus": {
+   "gain_stage_peak_dbfs": -6,
+   "glue": {
+    "ratio": null,
+    "threshold_db": null,
+    "attack_ms": null,
+    "release_ms": null,
+    "sidechain_hpf_hz": null,
+    "avg_gr_db": null
+   },
+   "side_hpf_hz": null,
+   "why": null
+  }
+ },
+ "gate4_master": {
+  "corrective_eq": [],
+  "loudness_target_lufs": {
+   "value": null,
+   "why": "loudest target with limiter GR <= 3-4 dB on loudest 1% hits; matched-loudness reference comparison"
+  },
+  "true_peak_ceiling_dbtp": {
+   "value": null,
+   "why": "-1.0, or -2.0 if louder than -14 LUFS; margin for post-limit stages"
+  },
+  "limiter": {
+   "input_gain_db": null,
+   "attack_ms": null,
+   "release_ms": null,
+   "oversampling": 4,
+   "measured_gr_top1pct_db": null
+  },
+  "post_limit": {
+   "dc_block_hz": null,
+   "verse_dip_db": null,
+   "fade_out": null
+  }
+ },
+ "qc_thresholds_song_specific": {
+  "_note": "Set BEFORE seeing results. Any later change needs a written reason in the report.",
+  "lead_vs_beat_lu_range": [
+   -1.5,
+   -0.5
+  ],
+  "pocket_midband_db_range": [
+   3.0,
+   9.0
+  ],
+  "hook_lift_lu_range": [
+   null,
+   null
+  ],
+  "reverb_db_under_lead_range": [
+   null,
+   null
+  ],
+  "dry_to_reverb_while_singing_min_db": 24.0,
+  "stack_db_under_lead_range": [
+   14.0,
+   21.0
+  ],
+  "echo_bg_db_under_line_range": [
+   12.0,
+   22.0
+  ],
+  "resonance_hump_max_db": 2.5,
+  "brightness_target_db": null,
+  "integrated_lufs_target": null,
+  "_gate1_note": "Set before the Gate 1 render (S 2026-11-25, Alpha): hump pooled <= +2.5 dB, per section <= +3.0 dB (harmonic envelope at matched level); dip mean not below raw - 0.5 dB; punch +-1 dB, attack >= 90%; flare <= raw + 1 dB; S-spike <= raw; de-esser active 5-20%; printed-room tail and within-turn room <= raw + 1 dB; transient alignment <= 2 samples; brightness >= raw and <= raw + 3 dB.",
+  "_gate2_note": "Set before the Gate 2 render (Plugin/Effect Pro): dry-to-reverb while singing >= 24 dB at both BG levels; BG copy 20 (light) / 15 (fuller) +-1 dB under the lead in 1-4 kHz; throw repeat-1 12 dB under its word, later repeats -5 dB each; every repeat >= -10 dB vs beat+dry in its band (audibility); vocal-bus mono corr >= 0.6, fold loss <= 1 dB; BG/lead transient shift <= 2 samples; tails < -60 dBFS."
+ },
+ "revision_log": [
+  {
+   "version": "v1",
+   "requested_by": null,
+   "request": "Gate 0 only: intake, forensics, plan. No processing values set.",
+   "changed_keys": [],
+   "frozen_confirmed": true
+  },
+  {
+   "version": "v1 Gate 1",
+   "requested_by": "Kenshin (fresh run, Claude-code rules)",
+   "request": "Gate 1 vocal cleanup, tone and pocket",
+   "changed_keys": [
+    {
+     "key": "gate1_vocals",
+     "before": null,
+     "after": "filled (see above)",
+     "why": "Gate 1 measurements"
+    }
+   ],
+   "frozen_confirmed": true,
+   "by": "Pro Mix & Master Agent Alpha",
+   "status": "draft, not final"
+  },
+  {
+   "version": "v1 (Gate 2)",
+   "requested_by": "Kenshin",
+   "request": "BG copy of the lead from word 5-6 with telephone + dreamy reverb, low and ducked; a few echo throws timed just right; main vocal dry and clear",
+   "changed_keys": [
+    {
+     "key": "gate2_space",
+     "before": "empty",
+     "after": "filled (see above)",
+     "why": "Gate 2 build"
+    }
+   ],
+   "frozen_confirmed": true,
+   "gate1_input": "v2 dry stems"
+  }
+ ],
+ "gate1_exit_checks": {
+  "file": "gate1_exit_checks_v1.json",
+  "n_pass": 65,
+  "n_fail": 5,
+  "fails": [
+   {
+    "stem": "lead1",
+    "check": "resonance hump 440-520 Hz pooled <= +2.5 dB",
+    "pass_": false,
+    "value": "peak +5.56 -> +2.68 dB, mean +4.84 -> +2.34"
+   },
+   {
+    "stem": "bg1",
+    "check": "resonance hump 440-520 Hz pooled <= +2.5 dB",
+    "pass_": false,
+    "value": "peak +5.49 -> +3.08 dB, mean +4.55 -> +1.73"
+   },
+   {
+    "stem": "bg1",
+    "check": "hump Bridge <= +3.0 dB and dip not deepened",
+    "pass_": false,
+    "value": "peak +5.49 -> +3.08, dip -2.57 -> -1.77 (min harmonics/bin 10)"
+   },
+   {
+    "stem": "bg2",
+    "check": "resonance hump 440-520 Hz pooled <= +2.5 dB",
+    "pass_": false,
+    "value": "peak +6.63 -> +3.15 dB, mean +4.76 -> +2.26"
+   },
+   {
+    "stem": "bg2",
+    "check": "hump Bridge <= +3.0 dB and dip not deepened",
+    "pass_": false,
+    "value": "peak +6.63 -> +3.15, dip -2.41 -> -1.73 (min harmonics/bin 19)"
+   }
+  ],
+  "pocket": {
+   "A1": {
+    "lu": -1.399258518767649,
+    "midband": 4.629643185044056
+   },
+   "B1": {
+    "lu": -0.8651123065994284,
+    "midband": 5.102011776870711
+   },
+   "A2": {
+    "lu": -1.1349094130744604,
+    "midband": 5.02203984237358
+   },
+   "B3": {
+    "lu": -1.001855484427189,
+    "midband": 5.153721858245689
+   },
+   "Bridge": {
+    "lu": -1.0000050541776915,
+    "midband": 5.736492086722741
+   },
+   "B2_no808": {
+    "lu": 4.281573462178738,
+    "midband": 5.698849723564685
+   },
+   "A1_drums_out": {
+    "lu": 6.267673362107686,
+    "midband": 12.08738195746631
+   },
+   "A2_drums_out": {
+    "lu": 6.600849724069036,
+    "midband": 13.491432541938256
+   }
+  }
+ }
+}

@@ -1,0 +1,1972 @@
+{
+ "_readme": "One file per song per version: deliveries/<Song>/session/mix_config_vN.json. EVERY parameter needs value + why (the measurement that justified it, on THIS song) + source (measured | reference | artist_request | carried_from_vN) + since (version it was set/changed). Values here are placeholders (null) on purpose: never copy numbers from another song.",
+ "song": {
+  "title": {
+   "value": "What I'm Posed To Do",
+   "why": "Kenshin named the song in the group chat (fresh run)",
+   "source": "artist_request",
+   "since": "v1 (Gate 1)"
+  },
+  "artist": "Kenshin",
+  "version": "v1",
+  "status": "draft, not final",
+  "bpm": {
+   "value": 135.0,
+   "why": "tempo_key.py on the beat: 135.00 (alts 67.5/90). Long self-match of the beat (1-6 kHz band) at 8-96 bars: 96-bar drift -0.01..0.00 samples (corr 0.92-0.97), fit 135.0000. Snare on beat 3 = half-time feel; counted as 135 (trap convention), 67.5 is the same grid at half speed. Beat = 19600 samples, bar = 78400 samples exactly at 44.1 kHz",
+   "source": "measured"
+  },
+  "grid_t0_sec": {
+   "value": 0.004127,
+   "samples": 182,
+   "why": "snare (1.5-4 kHz crack, beat 3) 50%-attack offset, median over 75 full-drum bars, IQR 182-183 samples. Detector bias on a synthetic snare +85 samples and kick body rise gives ~236 after bias correction, so true T0 is ~100-240 samples (2-5 ms). Not from hats",
+   "source": "measured"
+  },
+  "key": {
+   "value": "F major note set (relative D minor); tonic ambiguous F major vs G minor/Dorian",
+   "why": "beat chroma best F major 0.83 (next G minor 0.68); tempo_key.py D minor 0.813 vs F major 0.810 (low conf). 808 loop G-Bb-F-C, 2 bars each (Gm-Bb-F-C), starts on G. Sung pitch classes mostly Bb/G/A/C/F, no Eb, no E. Confidence: medium on notes, low on tonic",
+   "source": "measured"
+  },
+  "sections": [
+   {
+    "name": "Intro (instrumental)",
+    "bars": [
+     1,
+     24
+    ],
+    "start_sec": 0.0,
+    "end_sec": 42.671,
+    "beat": "1-9 keys only; 10-17 +808; 18-24 full drums"
+   },
+   {
+    "name": "A1 (hook candidate)",
+    "bars": [
+     25,
+     41
+    ],
+    "start_sec": 42.671,
+    "end_sec": 72.893,
+    "beat": "25-33 full; 34-37 drums out; 38-41 full"
+   },
+   {
+    "name": "B1",
+    "bars": [
+     42,
+     49
+    ],
+    "start_sec": 72.893,
+    "end_sec": 87.115,
+    "beat": "full"
+   },
+   {
+    "name": "B2 (B1 melody repeated)",
+    "bars": [
+     50,
+     56
+    ],
+    "start_sec": 87.115,
+    "end_sec": 99.56,
+    "beat": "hats/drums, no 808"
+   },
+   {
+    "name": "A2 (repeat of A1; 65-73 pasted)",
+    "bars": [
+     57,
+     73
+    ],
+    "start_sec": 99.56,
+    "end_sec": 129.782,
+    "beat": "57 hats/no 808; 58-65 drums out; 66-73 full"
+   },
+   {
+    "name": "Bridge: Background lead / BG2 trade 2 bars",
+    "bars": [
+     74,
+     82
+    ],
+    "start_sec": 129.782,
+    "end_sec": 145.782,
+    "beat": "74-81 full; 82 drums out"
+   },
+   {
+    "name": "Vocal gap",
+    "bars": [
+     83,
+     89
+    ],
+    "start_sec": 145.782,
+    "end_sec": 158.226,
+    "beat": "drums out"
+   },
+   {
+    "name": "B3 (B melody; 89-91 pasted from 41-43)",
+    "bars": [
+     90,
+     98
+    ],
+    "start_sec": 158.226,
+    "end_sec": 174.226,
+    "beat": "full; 98 variant"
+   },
+   {
+    "name": "Outro (instrumental, beat runs on)",
+    "bars": [
+     99,
+     137
+    ],
+    "start_sec": 174.226,
+    "end_sec": 243.56,
+    "beat": "99-105 variant; 106-113 no hats; 114-129 full; 130-137 outro"
+   }
+  ],
+  "reference_tracks": [
+   {
+    "title": "W.O.W (Walkin On Water) - Chris Travis",
+    "file": "/workspace/wipd_refs/kenshin/WOW_Chris_Travis.wav",
+    "integrated_lufs": -11.14,
+    "band_shares_db": {
+     "sub_lt60": -3.85,
+     "body_50_250": -5.58,
+     "presence_1_4k": -12.47,
+     "air_gt6k": -22.0,
+     "bright_5_10k_vs_1_2k": -10.1
+    },
+    "source": "Kenshin-supplied WAV (lossy-origin)",
+    "valid_reason": "16-bit/44.1k but spectrum stops ~15-16 kHz (made from lossy sources): used loosely for top end; no vocal stems, so no vocal-pocket delta can be read from them",
+    "since": "v1 (Gate 1)"
+   },
+   {
+    "title": "FijiFalls - Chris Travis x Bones",
+    "file": "/workspace/wipd_refs/kenshin/FijiFalls.wav",
+    "integrated_lufs": -11.82,
+    "band_shares_db": {
+     "sub_lt60": -4.34,
+     "body_50_250": -1.98,
+     "presence_1_4k": -14.23,
+     "air_gt6k": -19.74,
+     "bright_5_10k_vs_1_2k": -2.83
+    },
+    "source": "Kenshin-supplied WAV (lossy-origin)",
+    "valid_reason": "16-bit/44.1k but spectrum stops ~15-16 kHz (made from lossy sources): used loosely for top end; no vocal stems, so no vocal-pocket delta can be read from them",
+    "since": "v1 (Gate 1)"
+   },
+   {
+    "title": "I Don't Wanna Do This Anymore - XXXTENTACION",
+    "file": "/workspace/wipd_refs/kenshin/I_Dont_Wanna_Do_This_Anymore_XXXTENTACION.wav",
+    "integrated_lufs": -9.15,
+    "band_shares_db": {
+     "sub_lt60": -8.32,
+     "body_50_250": -4.4,
+     "presence_1_4k": -13.39,
+     "air_gt6k": -15.52,
+     "bright_5_10k_vs_1_2k": 0.04
+    },
+    "source": "Kenshin-supplied WAV (lossy-origin)",
+    "valid_reason": "16-bit/44.1k but spectrum stops ~15-16 kHz (made from lossy sources): used loosely for top end; no vocal stems, so no vocal-pocket delta can be read from them",
+    "since": "v1 (Gate 1)"
+   }
+  ],
+  "working_title": "Untitled_2026-11-25 (title not given yet)",
+  "tuning_a4_hz": {
+   "value": 439.5,
+   "why": "tempo_key.py tuning estimate -2.0 cents",
+   "source": "measured"
+  },
+  "echoes": {
+   "value": null,
+   "why": "NOT DECIDED: ask Kenshin how he wants echoes on this song (no default)",
+   "source": "artist_request pending"
+  },
+  "tempo_math_samples_at_44k1": {
+   "1/1 bar": 78400,
+   "1/2": 39200,
+   "1/4": 19600,
+   "1/8 dotted": 14700,
+   "1/8": 9800,
+   "1/8 triplet": 6533.33,
+   "1/16": 4900,
+   "1/32": 2450,
+   "1/64": 1225,
+   "ms": {
+    "1/4": 444.444,
+    "1/8": 222.222,
+    "1/16": 111.111,
+    "1/32": 55.556
+   }
+  },
+  "references_pocket_measured": {
+   "value": {
+    "method": "demucs htdemucs two-stem separation of each Kenshin WAV; metric = LUFS(vocal) - LUFS(instrumental) over 3 s windows where the vocal sings and the instrumental is full; calibrated on our own v1 mix (true -1.02 LU, separated -0.89 -> bias +0.13 LU; midband bias +0.72 dB)",
+    "WOW_Chris_Travis_lu": -0.19,
+    "FijiFalls_lu": -1.9,
+    "XXXTENTACION_lu": 0.43,
+    "median_lu": -0.19,
+    "midband_800_4k_db": {
+     "WOW_Chris_Travis": 5.91,
+     "FijiFalls": 9.05,
+     "I_Dont_Wanna_Do_This_Anymore_XXXTENTACION": 6.35
+    }
+   },
+   "why": "requested measurement of the lead-vs-beat relationship in the 3 references. They sit LOUDER than our v1 (median -0.19 LU vs v1 -1.0), so they argue against a cut; noted honestly; the v2 cut follows Kenshin's direct ear note. Low-to-medium confidence (separation on lossy mastered mixes).",
+   "source": "measured (Kenshin-supplied WAV, lossy-origin)",
+   "since": "v2 (Gate 1, level only)"
+  }
+ },
+ "intake_findings": {
+  "printed_fx_on_vocals": {
+   "value": true,
+   "why": "pooled post-phrase envelope: -23 dB re phrase at 50 ms, still -45 dB at ~600 ms (~40 dB/s, ~RT60 1.5 s) vs a dry known-answer test that falls 30 dB in 10 ms; median time to -40 dB 510-640 ms (leads/bg1), 340 ms (bg2). Tails are then truncated to digital zero 0.4-0.65 s after the phrase (region ends). Vocals are dual-mono (L=R), so no printed stereo FX"
+  },
+  "lossy_source": {
+   "value": true,
+   "why": "beat bandwidth 15.6 kHz (-40 dB) / 16.6 kHz (-60 dB), filename 'Y2Mate...160k'; ALL vocals stop at 16.0-16.5 kHz too (lossy export path)"
+  },
+  "copy_pasted_regions": [
+   {
+    "what": "lead1+lead2 bars 33-41 -> bars 65-73 (+32 bars)",
+    "corr": "0.95-1.00",
+    "offset_vs_exact_grid_samples": 1023,
+    "offset_ms": 23.2
+   },
+   {
+    "what": "lead1 bars 41-43 -> bars 89-91 (+48 bars)",
+    "corr": "0.93-0.999",
+    "offset_vs_exact_grid_samples": -1714,
+    "offset_ms": -38.9
+   },
+   {
+    "what": "lead2 bar 54 -> bar 98 (+44 bars)",
+    "corr": 0.96,
+    "offset_vs_exact_grid_samples": -2868,
+    "offset_ms": -65.0
+   },
+   {
+    "what": "beat: whole arrangement is a repeated loop",
+    "corr": "0.92-0.97 at 96 bars, drift 0.0 samples"
+   }
+  ],
+  "timing_vs_grid_ms_by_section": {
+   "_note": "raw librosa onset medians vs the 1/16 grid; detector read +10 ms late on a known-answer test, so subtract ~10 ms; IQRs 25-40 ms",
+   "A1 (bars 25-41)": {
+    "lead1": {
+     "n": 36,
+     "median_ms": -7.4,
+     "iqr_ms": [
+      -25.3,
+      8.8
+     ]
+    },
+    "lead2": {
+     "n": 37,
+     "median_ms": -7.2,
+     "iqr_ms": [
+      -23.2,
+      3.5
+     ]
+    }
+   },
+   "A1 first half (25-32)": {
+    "lead1": {
+     "n": 18,
+     "median_ms": -1.4,
+     "iqr_ms": [
+      -20.3,
+      18.5
+     ]
+    },
+    "lead2": {
+     "n": 18,
+     "median_ms": -5.0,
+     "iqr_ms": [
+      -19.2,
+      4.0
+     ]
+    }
+   },
+   "A1 second half (33-41)": {
+    "lead1": {
+     "n": 18,
+     "median_ms": -9.4,
+     "iqr_ms": [
+      -31.9,
+      -0.6
+     ]
+    },
+    "lead2": {
+     "n": 19,
+     "median_ms": -12.5,
+     "iqr_ms": [
+      -26.9,
+      -1.6
+     ]
+    }
+   },
+   "B1 (42-49)": {
+    "lead1": {
+     "n": 16,
+     "median_ms": -15.2,
+     "iqr_ms": [
+      -22.9,
+      -8.1
+     ]
+    },
+    "lead2": {
+     "n": 16,
+     "median_ms": -13.4,
+     "iqr_ms": [
+      -27.7,
+      -6.1
+     ]
+    }
+   },
+   "B2 (50-57)": {
+    "lead1": {
+     "n": 21,
+     "median_ms": -11.0,
+     "iqr_ms": [
+      -17.6,
+      5.3
+     ]
+    },
+    "lead2": {
+     "n": 14,
+     "median_ms": -23.9,
+     "iqr_ms": [
+      -38.4,
+      -8.3
+     ]
+    }
+   },
+   "A2 (58-73)": {
+    "lead1": {
+     "n": 34,
+     "median_ms": 10.5,
+     "iqr_ms": [
+      -8.9,
+      22.7
+     ]
+    },
+    "lead2": {
+     "n": 37,
+     "median_ms": 10.7,
+     "iqr_ms": [
+      -2.3,
+      22.7
+     ]
+    }
+   },
+   "A2 second half (65-73)": {
+    "lead1": {
+     "n": 19,
+     "median_ms": 0.4,
+     "iqr_ms": [
+      -16.2,
+      17.7
+     ]
+    },
+    "lead2": {
+     "n": 19,
+     "median_ms": 4.6,
+     "iqr_ms": [
+      -12.6,
+      18.9
+     ]
+    }
+   },
+   "B3 (89-98)": {
+    "lead1": {
+     "n": 18,
+     "median_ms": -24.4,
+     "iqr_ms": [
+      -42.1,
+      44.8
+     ]
+    },
+    "lead2": {
+     "n": 14,
+     "median_ms": 4.3,
+     "iqr_ms": [
+      -45.4,
+      23.3
+     ]
+    }
+   },
+   "BG bridge (74-82)": {
+    "bg1": {
+     "n": 15,
+     "median_ms": 22.4,
+     "iqr_ms": [
+      8.5,
+      41.6
+     ]
+    },
+    "bg2": {
+     "n": 21,
+     "median_ms": 32.0,
+     "iqr_ms": [
+      9.7,
+      39.8
+     ]
+    }
+   }
+  },
+  "lowest_sung_note_hz_by_vocal": {
+   "lead1": {
+    "p05_hz": 96.3,
+    "p05_note": "G2",
+    "lowest_stable_hz": 86.8,
+    "lowest_stable_note": "F2",
+    "highest_stable_note": "C3",
+    "voiced_s_confident": 11.9
+   },
+   "lead2": {
+    "p05_hz": 89.4,
+    "p05_note": "F2",
+    "lowest_stable_hz": 97.4,
+    "lowest_stable_note": "G2",
+    "highest_stable_note": "C3",
+    "voiced_s_confident": 12.4
+   },
+   "bg1": {
+    "p05_hz": 97.6,
+    "p05_note": "G2",
+    "lowest_stable_hz": 106.9,
+    "lowest_stable_note": "G\u266f2",
+    "highest_stable_note": "A\u266f2",
+    "voiced_s_confident": 1.5
+   },
+   "bg2": {
+    "p05_hz": 89.3,
+    "p05_note": "F2",
+    "lowest_stable_hz": 115.9,
+    "lowest_stable_note": "A\u266f2",
+    "highest_stable_note": "A\u266f2",
+    "voiced_s_confident": 1.5
+   }
+  },
+  "blockers": [
+   "lossy beat (YouTube 160k rip) and lossy vocals (16 kHz bandwidth); air cannot be restored",
+   "printed reverb on all vocals, truncated to digital zero 0.4-0.65 s after phrases",
+   "808 fundamentals F1 43.7 / G1 49.1 / Bb1 58.5 / C2 65.9 Hz: 3 of 4 notes under 60 Hz, no 808 stem; 100-400 Hz envelope follows the 808 weakly (r=0.29)",
+   "copy-pasted vocal sections placed off the exact bar grid (+23.2 ms bars 65-73; -38.9 ms bars 89-91)",
+   "no clipping (0 runs), no DC issue (<1e-5), beat not mastered (-20.45 LUFS, PLR 17.1 dB, no flat tops)",
+   "possible producer tag / leaked vocals in the beat: not tested reliably",
+   "free type beat: lease/licence needed before release (not an audio check)"
+  ],
+  "inventory": {
+   "beat": {
+    "file": "Y2Mateis__FREE_Post_Malone_x_Juice_WRLD_Type_Beat__Hold_OnMwiQuMOtxfA160k1660061758082.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 243.6,
+    "samples": 10742755,
+    "start_silence_s": 0.004,
+    "end_silence_s": 0.392,
+    "sample_peak_dbfs": -3.47,
+    "true_peak_dbtp": -3.34,
+    "integrated_lufs": -20.45,
+    "active_rms_dbfs": -21.64,
+    "active_pct": 98.9,
+    "crest_active_db": 18.17,
+    "dc": [
+     -8.83e-06,
+     8.73e-06
+    ],
+    "lr_corr": 0.9492,
+    "side_to_mid_db": -15.7,
+    "bandwidth_hz_40": 15590,
+    "bandwidth_hz_60": 16570,
+    "exact_zero_pct": 0.08,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "lead1": {
+    "file": "Lead 1.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 169.125,
+    "samples": 7458400,
+    "start_silence_s": 42.225,
+    "end_silence_s": 0.001,
+    "sample_peak_dbfs": -5.2,
+    "true_peak_dbtp": -5.2,
+    "integrated_lufs": -23.6,
+    "active_rms_dbfs": -25.77,
+    "active_pct": 29.1,
+    "crest_active_db": 20.57,
+    "dc": [
+     2.28e-06,
+     2.28e-06
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -208.9,
+    "bandwidth_hz_40": 16015,
+    "bandwidth_hz_60": 16489,
+    "exact_zero_pct": 58.32,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "lead2": {
+    "file": "Lead 2.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 173.43,
+    "samples": 7648252,
+    "start_silence_s": 44.424,
+    "end_silence_s": 0.245,
+    "sample_peak_dbfs": -5.87,
+    "true_peak_dbtp": -5.86,
+    "integrated_lufs": -23.37,
+    "active_rms_dbfs": -25.62,
+    "active_pct": 32.3,
+    "crest_active_db": 19.75,
+    "dc": [
+     1.71e-06,
+     1.71e-06
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -209.5,
+    "bandwidth_hz_40": 16096,
+    "bandwidth_hz_60": 16548,
+    "exact_zero_pct": 58.03,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "bg1": {
+    "file": "Background lead.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 141.599,
+    "samples": 6244507,
+    "start_silence_s": 128.308,
+    "end_silence_s": 0.307,
+    "sample_peak_dbfs": -10.26,
+    "true_peak_dbtp": -10.25,
+    "integrated_lufs": -25.67,
+    "active_rms_dbfs": -27.81,
+    "active_pct": 5.1,
+    "crest_active_db": 17.55,
+    "dc": [
+     -9.53e-08,
+     -9.53e-08
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -199.2,
+    "bandwidth_hz_40": 16005,
+    "bandwidth_hz_60": 16284,
+    "exact_zero_pct": 91.94,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   },
+   "bg2": {
+    "file": "Background lead 2.wav",
+    "sr": 44100,
+    "subtype": "PCM_16",
+    "channels": 2,
+    "duration_s": 145.154,
+    "samples": 6401307,
+    "start_silence_s": 133.323,
+    "end_silence_s": 0.306,
+    "sample_peak_dbfs": -10.62,
+    "true_peak_dbtp": -10.59,
+    "integrated_lufs": -26.0,
+    "active_rms_dbfs": -28.18,
+    "active_pct": 5.1,
+    "crest_active_db": 17.56,
+    "dc": [
+     -1.37e-07,
+     -1.37e-07
+    ],
+    "lr_corr": 1.0,
+    "side_to_mid_db": -198.9,
+    "bandwidth_hz_40": 16005,
+    "bandwidth_hz_60": 16101,
+    "exact_zero_pct": 93.89,
+    "clip_runs_ge3": 0,
+    "samples_ge_0999": 0
+   }
+  },
+  "dry_vs_gated": "regions/gated: 58% (leads) and 92-94% (BGs) of samples are exact digital zero; region edges are quiet (max -59 dBFS), but printed tails are cut to zero ~-45 dB below the phrase",
+  "vocal_roles": {
+   "lead1_vs_lead2": "call-and-response: alternate every 2 bars; only 10-12% of active frames overlap (hand-offs)",
+   "bg1_vs_bg2": "call-and-response with each other in bars 74-82 only (3% overlap)",
+   "bg_vs_leads": "not doubles or backing: 0-1% overlap with the leads; the 'Background lead' stems are a separate 9-bar bridge section sung on their own"
+  },
+  "tuning": {
+   "lead1": {
+    "pct_within_10c": 50.7,
+    "median_abs_cents_dev": 10.0
+   },
+   "lead2": {
+    "pct_within_10c": 38.7,
+    "median_abs_cents_dev": 10.0
+   },
+   "bg1": {
+    "pct_within_10c": 20.3,
+    "median_abs_cents_dev": 20.0
+   },
+   "bg2": {
+    "pct_within_10c": 19.2,
+    "median_abs_cents_dev": 20.0
+   },
+   "_calibration": "known answers: snapped synthetic 92%, untuned drift 23%. Leads look partly pitch-corrected (Lead 1 more), BGs untuned; based on only ~12 s of confident pitch per lead"
+  },
+  "resonance_preview": {
+   "lead1": "+4.2..+5.6 dB hump 440-520 Hz (peak 480), dip 580-620 Hz -2.5..-2.9",
+   "lead2": "+3.6..+5.7 dB hump 440-520 Hz (peak 480), dip 560 Hz -5.9",
+   "tool": "harmenv.py (What_Im_Posed_To_Do) pitch-independent harmonic envelope; Gate 1 must re-measure per section"
+  },
+  "beat": {
+   "short_term_max_lufs": -16.86,
+   "flat_top_runs": 0,
+   "plr_db": 17.11,
+   "full_bars": 76,
+   "full_section_lufs": -18.8,
+   "full_section_crest_db": 16.17,
+   "low_peaks_hz_db": [
+    [
+     43.7,
+     -0.6
+    ],
+    [
+     49.8,
+     -0.2
+    ],
+    [
+     58.5,
+     -0.3
+    ],
+    [
+     65.9,
+     0.0
+    ],
+    [
+     67.3,
+     -1.0
+    ],
+    [
+     69.3,
+     -5.1
+    ],
+    [
+     72.0,
+     -3.7
+    ],
+    [
+     76.7,
+     -5.2
+    ]
+   ],
+   "band_db": {
+    "sub20-60": -5.3,
+    "low60-120": -3.9,
+    "120-250": -8.6,
+    "250-500": -10.6,
+    "500-2k": -14.3,
+    "2k-6k": -17.2,
+    "6k-16k": -19.4
+   },
+   "808_harmonic_band_vs_fund_db": -3.4,
+   "808_env_corr_100_400": 0.293,
+   "sub_side_vs_mid_db": -20.1
+  },
+  "vocal_cleanup_candidates": {
+   "lead1": {
+    "hf_click_candidates": {
+     "n": 12,
+     "times_s": [
+      45.08,
+      52.64,
+      52.66,
+      61.32,
+      66.62,
+      89.3,
+      90.2,
+      97.08,
+      101.36,
+      110.46,
+      118.24,
+      123.54
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -58.8,
+    "hum50_prom_db": 4.2,
+    "hum60_prom_db": 5.2
+   },
+   "lead2": {
+    "hf_click_candidates": {
+     "n": 13,
+     "times_s": [
+      47.78,
+      56.2,
+      56.32,
+      57.18,
+      84.4,
+      92.88,
+      104.68,
+      112.92,
+      113.22,
+      114.1,
+      162.04,
+      163.96,
+      171.04
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -62.2,
+    "hum50_prom_db": 5.7,
+    "hum60_prom_db": 4.9
+   },
+   "bg1": {
+    "hf_click_candidates": {
+     "n": 1,
+     "times_s": [
+      137.8
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -65.2,
+    "hum50_prom_db": 10.2,
+    "hum60_prom_db": 8.7
+   },
+   "bg2": {
+    "hf_click_candidates": {
+     "n": 1,
+     "times_s": [
+      143.58
+     ]
+    },
+    "plosive_events": 0,
+    "noise_floor_median_dbfs": -59.6,
+    "hum50_prom_db": 12.0,
+    "hum60_prom_db": 4.2
+   }
+  },
+  "song_length": {
+   "beat_s": 243.6,
+   "first_vocal_s": 42.23,
+   "last_vocal_end_s": 173.18,
+   "instrumental_after_last_vocal_s": 70.4,
+   "intro_before_first_vocal_s": 42.2
+  }
+ },
+ "gate1_vocals": {
+  "pocket": {
+   "lead_vs_beat_lu_target": {
+    "value": -2.5,
+    "why": "Kenshin on the v1 preview (2026-11-25 9:09): 'This sounds really good. Just add a slight reverb and either turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals) can't really hear the beat'. v1 target -1.0 LU -> -2.5 LU (vocals -1.5 dB). Amount capped by the Gate 1 clarity guard (800 Hz-4 kHz margin >= +3 dB in every full-beat section; smallest v1 margin A1 +4.63 dB -> max cut 1.63 dB). References do not support a cut (see references_pocket_measured); Kenshin's ear note wins.",
+    "source": "artist_request",
+    "since": "v2 (Gate 1, level only)"
+   },
+   "lead_vs_beat_lu_range": {
+    "value": [
+     -3.0,
+     -2.0
+    ],
+    "why": "target +-0.5 LU, set before the v2 render",
+    "source": "qc",
+    "since": "v2 (Gate 1, level only)"
+   },
+   "midband_delta_db_target": {
+    "value": [
+     3.0,
+     9.0
+    ],
+    "why": "800 Hz-4 kHz vocal minus beat during singing: words clearly above the beat mids while the LU sits inside the beat; upper bound keeps it from sitting on top",
+    "source": "measured + artist preference",
+    "since": "v1 (Gate 1)"
+   },
+   "lead_gain_db": {
+    "value": -0.84,
+    "why": "common gain on both leads (after -18 dBFS gain staging) so the median full-beat section (A1/B1/A2/B3) lands on -1.0 LU vs the pocketed beat",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "bg_gain_db": {
+    "value": -0.93,
+    "why": "bridge at -1.0 LU (lead-style, pending Kenshin)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "beat_mid_dip": {
+    "hz": 2540,
+    "q": 1.41,
+    "max_db": 1.85,
+    "attack_ms": 13.9,
+    "release_ms": 222.2,
+    "channel": "beat MID only (sides untouched)",
+    "key": "all vocals summed; depth = max * clip((env - (p95 - 20 dB))/10 dB, 0, 1)",
+    "structure": "Regalia-Mitra dynamic bell (x + (G-1)*bandpass), causal, zero latency",
+    "engaged_over_half_depth_pct_of_song": 47.4,
+    "why": "masking (singing frames, after vocal gain): vocal-over-beat-mid margin by 1/3 octave {800: 9.5, 1008: 7.1, 1270: 5.9, 1600: 7.3, 2016: 3.3, 2540: 3.3, 3200: 2.2, 4032: -11.8}; 2-3.2 kHz sits 2.6-3.7 dB below the median margin, 4 kHz excluded (vocal source hole). Centre/width = those bands; depth = half the worst deficit (small move, cap 3 dB). Attack 1/128 note (13.9 ms), release 1/8 note (222.2 ms) so it closes in gaps. Note: the leads trade lines almost continuously, so inside vocal sections the dip is open most of the time (acts close to a static 1.8 dB cut there)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "bus_offset_db": {
+    "value": -6.0,
+    "why": "all frozen Gate 1 files (vocals and beat) carry one common -6 dB offset for headroom (attempt 2 clipped at 0 dBFS); balance unchanged; Gate 3 gain-stages the bus",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "why": "lead vs beat per section and midband measured from the frozen files in gate1_exit_checks_v1.json",
+   "source": "measured + artist_preference",
+   "beat_mid_dip_note": {
+    "value": "unchanged from v1 (beat file not re-rendered)",
+    "why": "only vocal gains moved, so the -6 dB bus headroom and the v1 vocal-keyed beat dip stay valid; the dip was keyed by the v1 vocal level, so at -1.5 dB it would engage slightly less if re-keyed (not done: diff-only)",
+    "source": "plan",
+    "since": "v2 (Gate 1, level only)"
+   }
+  },
+  "Lead 1": {
+   "role": "lead (call-and-response A)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 720 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -30.4 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -25.40 dBFS -> gain +7.40 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": {
+     "type": "turn-level clip gain (gain steps sit in digital silence between turns)",
+     "correct_frac": 0.5,
+     "max_db": 1.5,
+     "per_turn_db": [
+      0.68,
+      0.49,
+      0.07,
+      0.47,
+      -0.07,
+      0.86,
+      -1.5,
+      -0.55,
+      -0.71,
+      -0.89,
+      0.08,
+      0.3,
+      -1.5,
+      -0.58
+     ]
+    },
+    "why": "turn-level spread p90-p10 3.89 dB overall (within sections up to 4.7 dB, lead1 B1). A 250-400 ms RMS rider would ride inside turns and lift the printed reverb, so half the deviation from the stem's median turn level is corrected per whole turn, capped +-1.5 dB.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 69.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 86.8 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 86.8
+   },
+   "eq_cuts": [
+    {
+     "hz": 474,
+     "q": 4.2,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw harmonic envelope: pooled hump +5.56 dB at 480 Hz (half-height ~430-530 Hz), every section +5.0..+6.2 (B1 peaks at 460). Sweep 1 (483/Q5) left the 440 Hz shoulder; sweep 2 (bell only) chose 472/Q3.8/-6; exit checks through the full chain then read pooled +2.62 and B1 +3.66. Sweep 3 (through the chain, depth fixed at the 6 dB cap, centre 466/474/482 x Q 3.4/4.2/5.0): 474 Hz Q4.2 brings B1 to ~2.2 and every section <= 3.0; NO centre/Q reaches the pooled +2.5 target at <= 6 dB (best ~2.67) -> documented as a limit, not deepened.",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.96,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.39,
+     "p95_gr_db": 3.16,
+     "why": "raw crest while singing 19.0 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     6000,
+     10091
+    ],
+    "detector_bell_hz": 7781.1,
+    "q": 1.9,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -13.33,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 10.3,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -18.6 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": null,
+    "why": "leads: reference level",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -2.34,
+    "why": "v1 pocket gain -0.84 dB, then -1.5 dB (v2 level move, same on all four vocals so the bridge-vs-lead relationship is unchanged). Kenshin on the v1 preview (2026-11-25): 'turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals), can't really hear the beat.' Vocals moved (not the beat) so the -6 dB headroom offset and the vocal-keyed beat dip stay valid. Amount = the largest cut inside the 1.5-2.5 dB 'a tad' window that keeps every full-beat section's 800 Hz-4 kHz vocal-over-beat margin >= +3.0 dB (the Gate 1 clarity guard, set before v1): smallest v1 margin A1 +4.63 -> max cut 1.63 dB -> 1.5 dB. References (demucs-separated, calibrated on our v1 mix: bias +0.13 LU) put the vocal at -0.19 LU median (-1.9..+0.43) and midband +5.9..+9.1 dB, i.e. LOUDER than v1, so they do not support a cut; Kenshin's direct ear note and history (Wild Side -0.43 LU 'too loud', v1 -1.0 LU 'kinda loud') win, and the clarity guard caps the move.",
+    "source": "artist_request + measured",
+    "since": "v2 (Gate 1, level only)"
+   },
+   "section_trim_db": {
+    "value": {
+     "B3": -0.67
+    },
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  },
+  "Lead 2": {
+   "role": "lead (call-and-response B)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 90 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -33.5 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -25.39 dBFS -> gain +7.39 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": {
+     "type": "turn-level clip gain (gain steps sit in digital silence between turns)",
+     "correct_frac": 0.5,
+     "max_db": 1.5,
+     "per_turn_db": [
+      1.23,
+      0.47,
+      -0.18,
+      1.5,
+      -0.0,
+      1.1,
+      -0.01,
+      0.0,
+      -0.18,
+      0.47,
+      -0.18,
+      1.39,
+      -0.0,
+      -0.0
+     ]
+    },
+    "why": "turn-level spread p90-p10 3.04 dB overall (within sections up to 4.7 dB, lead1 B1). A 250-400 ms RMS rider would ride inside turns and lift the printed reverb, so half the deviation from the stem's median turn level is corrected per whole turn, capped +-1.5 dB.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 72.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 89.4 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 89.4
+   },
+   "eq_cuts": [
+    {
+     "hz": 474,
+     "q": 5.0,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw harmonic envelope: pooled hump +5.74 dB at 480 Hz (half-height ~430-530 Hz). Sweep 3 through the chain at the 6 dB cap: 474 Hz Q5.0 is the only setting reaching pooled <= +2.5 (2.45, thin margin vs ~0.3 dB method jitter) with every section <= 3.0 and no dip deepened.",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.01,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.37,
+     "p95_gr_db": 3.14,
+     "why": "raw crest while singing 18.7 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     7135,
+     10091
+    ],
+    "detector_bell_hz": 8485.2,
+    "q": 2.87,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -12.43,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 9.3,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -17.5 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": null,
+    "why": "leads: reference level",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -2.34,
+    "why": "v1 pocket gain -0.84 dB, then -1.5 dB (v2 level move, same on all four vocals so the bridge-vs-lead relationship is unchanged). Kenshin on the v1 preview (2026-11-25): 'turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals), can't really hear the beat.' Vocals moved (not the beat) so the -6 dB headroom offset and the vocal-keyed beat dip stay valid. Amount = the largest cut inside the 1.5-2.5 dB 'a tad' window that keeps every full-beat section's 800 Hz-4 kHz vocal-over-beat margin >= +3.0 dB (the Gate 1 clarity guard, set before v1): smallest v1 margin A1 +4.63 -> max cut 1.63 dB -> 1.5 dB. References (demucs-separated, calibrated on our v1 mix: bias +0.13 LU) put the vocal at -0.19 LU median (-1.9..+0.43) and midband +5.9..+9.1 dB, i.e. LOUDER than v1, so they do not support a cut; Kenshin's direct ear note and history (Wild Side -0.43 LU 'too loud', v1 -1.0 LU 'kinda loud') win, and the clarity guard caps the move.",
+    "source": "artist_request + measured",
+    "since": "v2 (Gate 1, level only)"
+   },
+   "section_trim_db": {
+    "value": {
+     "B3": -0.67
+    },
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  },
+  "Background lead": {
+   "role": "bridge vocal, bars 74-82 (trades with BG2)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 1450 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -40.4 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -27.57 dBFS -> gain +9.57 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": null,
+    "why": "2 turns, spread 0.33 dB: no rider needed (ATL lesson: never ride BG tails up)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 78.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 97.6 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 97.6
+   },
+   "eq_cuts": [
+    {
+     "hz": 450,
+     "q": 3.8,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw hump +4.74 dB at 480 Hz (sweep 2 chose 465/Q3.8/-4). Exit checks could only measure the BGs once min_cnt was set to 10: through the chain they read pooled=Bridge +4.33 (limit 2.5/3.0). sweep_bell_bg (430-495 Hz x Q2.5-6.5 x 5/6 dB, through the chain): 450 Hz Q3.8 at the 6 dB cap is best (+3.03 sweep, +3.08 exit check, mean +1.73), dip not deepened. Nothing reaches +2.5; peak bin jumps 440<->480 Hz between settings = two-turn measurement noise -> residual documented as a limit. LOW CONFIDENCE (~1.5 s voiced, 10-31 harmonics per bin).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.7,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.43,
+     "p95_gr_db": 3.15,
+     "why": "raw crest while singing 17.2 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     8485,
+     14270
+    ],
+    "detector_bell_hz": 11003.7,
+    "q": 1.9,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -16.97,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 13.8,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -21.2 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": "set to the same lead-vs-beat LU as the leads (-1.0 LU in the bridge)",
+    "why": "Gate 0: bridge voices sing alone and need lead-style treatment; FINAL level/depth waits on Kenshin (featured vs distant)",
+    "source": "plan / pending artist",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -2.43,
+    "why": "v1 pocket gain -0.93 dB, then -1.5 dB (v2 level move, same on all four vocals so the bridge-vs-lead relationship is unchanged). Kenshin on the v1 preview (2026-11-25): 'turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals), can't really hear the beat.' Vocals moved (not the beat) so the -6 dB headroom offset and the vocal-keyed beat dip stay valid. Amount = the largest cut inside the 1.5-2.5 dB 'a tad' window that keeps every full-beat section's 800 Hz-4 kHz vocal-over-beat margin >= +3.0 dB (the Gate 1 clarity guard, set before v1): smallest v1 margin A1 +4.63 -> max cut 1.63 dB -> 1.5 dB. References (demucs-separated, calibrated on our v1 mix: bias +0.13 LU) put the vocal at -0.19 LU median (-1.9..+0.43) and midband +5.9..+9.1 dB, i.e. LOUDER than v1, so they do not support a cut; Kenshin's direct ear note and history (Wild Side -0.43 LU 'too loud', v1 -1.0 LU 'kinda loud') win, and the clarity guard caps the move.",
+    "source": "artist_request + measured",
+    "since": "v2 (Gate 1, level only)"
+   },
+   "section_trim_db": {
+    "value": {},
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  },
+  "Background lead 2": {
+   "role": "bridge vocal, bars 74-82 (trades with BG1)",
+   "edge_fades_ms": {
+    "value": {
+     "fade_in": 10,
+     "fade_out": 15,
+     "shape": "raised cosine",
+     "where": "every region (turn) edge; 14 turns per lead, 2 per BG"
+    },
+    "why": "region starts are <= -59 dBFS and the first loud frame is >= 90 ms in, so 10 ms in touches nothing; region ends are chopped printed-reverb tails at -41.6 dB re the turn RMS (abrupt), so the longest allowed fade (15 ms) out. No breath gating.",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "working_level_rms_dbfs": {
+    "value": -18.0,
+    "why": "standard starting point for predictable processors; raw active RMS -28.10 dBFS -> gain +10.10 dB",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "rider": {
+    "value": null,
+    "why": "2 turns, spread 0.28 dB: no rider needed (ATL lesson: never ride BG tails up)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "hpf": {
+    "hz": 71.0,
+    "slope_db_oct": 24,
+    "type": "Butterworth, causal sosfilt",
+    "why": "lowest sung fundamental 89.3 Hz (min of Gate 0 lowest-stable and p05 pitch); fc = 20% below (middle of the 15-25% guidance); 24 dB/oct because 12 dB/oct would cost >1 dB at the lowest note at any fc that still clears the 44-59 Hz 808 zone. Verified loss at lowest note in exit checks",
+    "source": "measured",
+    "since": "v1 (Gate 1)",
+    "lowest_note_hz": 89.3
+   },
+   "eq_cuts": [
+    {
+     "hz": 450,
+     "q": 5.0,
+     "db": -6.0,
+     "type": "peaking (RBJ), causal",
+     "why": "raw hump +4.67 dB at 480 Hz (sweep 2 chose 465/Q3.8/-5). Exit checks at min_cnt 10 read pooled=Bridge +4.84. sweep_bell_bg: 450 Hz Q5.0 at the 6 dB cap is best (+3.19 sweep, +3.15 exit check, mean +2.26), dip not deepened. Nothing reaches +2.5 -> residual documented as a limit; low confidence (~1.5 s voiced).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "compressor_stages": [
+    {
+     "threshold_dbfs": -19.36,
+     "threshold_rule": "= measured active RMS of the compressor input (+0 dB)",
+     "ratio": 3.0,
+     "attack_ms": 10.0,
+     "release_ms": 111.1,
+     "knee_db": 6.0,
+     "detector": "RMS 5 ms, feed-forward, no lookahead",
+     "avg_gr_db_while_singing": 1.38,
+     "p95_gr_db": 3.16,
+     "why": "raw crest while singing 17.1 dB (spiky) but turn spread small; 18-setting sweep (thr -6/-3/0 re RMS, 2:1/3:1, 10/20/30 ms) under pre-set limits (punch +-1 dB, attack >= 90%, printed room <= raw+1 dB): this was the largest crest reduction that passed on both leads. Release = 1/16 note at 135 BPM (111.1 ms). BG chains use the same rule on their own RMS (verified in exit checks).",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "deesser": {
+    "band_hz": [
+     7135,
+     10091
+    ],
+    "detector_bell_hz": 8485.2,
+    "q": 2.87,
+    "threshold": "97th percentile of the S-ness detector (band env - broadband env) over singing frames",
+    "threshold_measured_db": -19.34,
+    "ratio": 4.0,
+    "max_cut_db": 6.0,
+    "attack_ms": 1.0,
+    "release_ms": 55.6,
+    "active_pct": 10.8,
+    "placement": "after compressor and tone EQ (LEARNINGS: de-ess last)",
+    "why": "band = 1/4-octave bands whose p99 band-relative level is within ~1 dB of the stem maximum (raw scan); p90/p93 thresholds kept it on >20% of singing (sweep), p97 gives ~9-14%; release = 1/32 note (55.6 ms)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "tone_boosts": [
+    {
+     "type": "high_shelf",
+     "hz": 6000,
+     "db": 1.5,
+     "slope_S": 0.7,
+     "why": "take is very dark: 5-10 kHz vs 1-2 kHz = -20.0 dB vs beat -1.9 dB and refs -10.1/-2.8/0.0 dB (Kenshin WAVs). Closing that gap would lift lossy artifacts and sibilance (Kenshin hates harsh/scratchy), so a modest lift capped for a lossy 16 kHz source; flare and S-spike verified not above raw",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    },
+    {
+     "type": "bell",
+     "hz": 2800,
+     "q": 1.0,
+     "db": 1.0,
+     "why": "voiced frames have a source hole at 3.6-5 kHz (-36 dB re 1 kHz in the median spectrum; lossy/printed processing) so presence is placed just below it, where the beat masks the vocal most (2-3.2 kHz margin lowest); +1 dB only (Kenshin: no harsh)",
+     "source": "measured",
+     "since": "v1 (Gate 1)"
+    }
+   ],
+   "saturation": {
+    "value": false,
+    "why": "not needed: no measured phone-translation gain justifies it; Kenshin dislikes saturation/ampy vocals",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "pan": {
+    "value": "centre (dual-mono)",
+    "why": "call-and-response leads and the bridge pair are single voices taking turns; no stereo width measured or requested",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   },
+   "level_vs_lead_db": {
+    "value": "set to the same lead-vs-beat LU as the leads (-1.0 LU in the bridge)",
+    "why": "Gate 0: bridge voices sing alone and need lead-style treatment; FINAL level/depth waits on Kenshin (featured vs distant)",
+    "source": "plan / pending artist",
+    "since": "v1 (Gate 1)"
+   },
+   "output_gain_db": {
+    "value": -2.43,
+    "why": "v1 pocket gain -0.93 dB, then -1.5 dB (v2 level move, same on all four vocals so the bridge-vs-lead relationship is unchanged). Kenshin on the v1 preview (2026-11-25): 'turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals), can't really hear the beat.' Vocals moved (not the beat) so the -6 dB headroom offset and the vocal-keyed beat dip stay valid. Amount = the largest cut inside the 1.5-2.5 dB 'a tad' window that keeps every full-beat section's 800 Hz-4 kHz vocal-over-beat margin >= +3.0 dB (the Gate 1 clarity guard, set before v1): smallest v1 margin A1 +4.63 -> max cut 1.63 dB -> 1.5 dB. References (demucs-separated, calibrated on our v1 mix: bias +0.13 LU) put the vocal at -0.19 LU median (-1.9..+0.43) and midband +5.9..+9.1 dB, i.e. LOUDER than v1, so they do not support a cut; Kenshin's direct ear note and history (Wild Side -0.43 LU 'too loud', v1 -1.0 LU 'kinda loud') win, and the clarity guard caps the move.",
+    "source": "artist_request + measured",
+    "since": "v2 (Gate 1, level only)"
+   },
+   "section_trim_db": {
+    "value": {},
+    "why": "B3 is sung ~2.5 dB hotter than A1; render attempt 1 put B3 at -0.34 LU, outside the pre-set range; trim applied to the B3 turns only (gain steps in digital silence)",
+    "source": "measured",
+    "since": "v1 (Gate 1)"
+   }
+  }
+ },
+ "gate2_space": {
+  "reverb": {
+   "scope": "Lead 1 + Lead 2 only (shared send); bridge voices, beat and the background-copy/telephone layer untouched",
+   "type": {
+    "value": "synthetic dark plate (stereo, decorrelated exponentially decaying noise IR; highs decay faster)",
+    "why": "brief: short dark plate or room; highs above 4 kHz decay at 0.6x the RT60 + 7.5 kHz low-pass: no added harshness or S wash on a lossy, already de-essed source (Kenshin dislikes harsh/scratchy).",
+    "source": "artist_request + plan",
+    "since": "v3 (Gate 1 + slight lead reverb)"
+   },
+   "decay_s": {
+    "value": 0.3333,
+    "why": "dotted 1/8 note = 333.3 ms RT60 (below 4 kHz; highs 0.6x). Attempt 2 used 1/2 note (888.9 ms): turn-end decay +25% on Lead 1 (600 -> 750 ms) and lead attack 86%/90% of v2. Sweep 3 (1/2, dotted 1/4, 1/4, dotted 1/8 x 23/24/26 dB under): attack loss comes from the reverb filling the quiet 2-5 kHz frames before onsets and falls with shorter decay; dotted 1/8 and 1/4 add 0% to the turn-end decay (Kenshin dislikes stacked reverb; parent target <= +15%). Dotted 1/8 at 24 dB under keeps the best articulation at an audible level (Lead1 92%, Lead2 95% of v2). The leads are near-continuous (22 gaps >= 50 ms, median 70 ms), so a long tail would only stack under the next words.",
+    "source": "measured",
+    "since": "v3 (Gate 1 + slight lead reverb)",
+    "note_value": "dotted 1/8",
+    "measured_rt60_ms": 326.4,
+    "highs_above_4k_factor": 0.6
+   },
+   "predelay_ms": {
+    "value": 55.556,
+    "why": "1/32 note at 135 BPM = 55.6 ms = 2450 samples: keeps each consonant ahead of the tail; it is the pre-delay of Kenshin's own 'clear pro reverb' on this song (LEARNINGS, WIPTD v11), where 27 ms read as boxy.",
+    "source": "measured + artist history",
+    "since": "v3 (Gate 1 + slight lead reverb)",
+    "samples": 2450,
+    "note_value": "1/32"
+   },
+   "send_hpf_hz": {
+    "value": 600,
+    "why": "600 Hz (4th order), not the 300-400 Hz suggested in the brief: this voice's box zone is 440-520 Hz (Lead1 residual hump +2.68 dB after Gate 1), and the standard says the send high-pass goes ABOVE the box zone; Kenshin heard a box-heavy reverb as 'tunnel' on this song (v10) and his approved 'clear pro reverb' used HP 600 Hz. At 474 Hz the 4th-order 600 Hz HPF is ~-9 dB.",
+    "source": "measured + artist history",
+    "since": "v3 (Gate 1 + slight lead reverb)",
+    "order": 4
+   },
+   "send_lpf_hz": {
+    "value": 7500,
+    "why": "7.5 kHz: below the de-essed S bands (Lead1 6-10 kHz, Lead2 7.1-10.1 kHz) and inside the 6-8 kHz brief; same as his 'clear pro reverb'.",
+    "source": "measured + artist history",
+    "since": "v3 (Gate 1 + slight lead reverb)",
+    "order": 4
+   },
+   "duck_db": {
+    "value": 6.0,
+    "why": "6 dB, attack 1/128 (13.9 ms), release 1/8 (222.2 ms): the reverb stays under the words and blooms only at turn ends / gaps; 6 dB = his 'clear pro reverb' value (2 dB ducking read as tunnel). Sweep 1: on these near-continuous leads the duck is engaged almost all the time, so it mainly shapes the turn-end bloom; depth 6/9/12 dB changed nothing measurable once the return level is normalised.",
+    "source": "artist history",
+    "since": "v3 (Gate 1 + slight lead reverb)",
+    "attack_ms": 13.889,
+    "release_ms": 222.222,
+    "key": "dry Lead1+Lead2 bus (v2), 5/50 ms envelope; full duck when the key is within 10 dB of (p95 - 20 dB) and above"
+   },
+   "stereo": {
+    "value": {
+     "lr_correlation": 0.4
+    },
+    "why": "L/R correlation 0.4 (shared noise component): fully decorrelated IR lost 3.08 dB in mono (attempt 2, limit 3.0); 0.4 -> -1.76 dB.",
+    "source": "measured",
+    "since": "v3 (Gate 1 + slight lead reverb)"
+   },
+   "return_db_under_lead": {
+    "value": 24.0,
+    "why": "Kenshin: 'just add a slight reverb'. Standard dictionary: 'slight reverb' = about 20 dB under the dry voice, dry-to-reverb >= about 24 dB while singing. The vocals already carry printed reverb (~1.5 s-like tails, cut 0.4-0.65 s after phrases), and the standard says add far less when FX are printed, so the return sits further down: 24 dB under (attempt 2 at 22 dB gave dry-to-reverb while singing 23.0 dB < the 24 dB target; on these near-continuous leads D/R while singing ~= return-under + 1 dB, so ducking cannot buy it back).",
+    "source": "artist_request + measured",
+    "since": "v3 (Gate 1 + slight lead reverb)",
+    "send_gain_db": -16.2
+   },
+   "dry_to_reverb_while_singing_db": {
+    "value": 25.0,
+    "why": "target >= 24 dB (Kenshin's slight reverb); in gaps/tails 1.9 dB (blooms there)",
+    "source": "measured",
+    "since": "v3 (Gate 1 + slight lead reverb)"
+   },
+   "turn_end_decay": {
+    "value": {
+     "lead1 T20": {
+      "rt60_equiv_v2_ms": 600,
+      "rt60_equiv_v3_ms": 600,
+      "stretch_pct": 0.0,
+      "turns": [
+       14,
+       14
+      ]
+     },
+     "lead1 T30": {
+      "rt60_equiv_v2_ms": 960,
+      "rt60_equiv_v3_ms": 960,
+      "stretch_pct": 0.0,
+      "turns": [
+       13,
+       14
+      ]
+     },
+     "lead1 late -25..-40 dB": {
+      "rt60_equiv_v2_ms": 920,
+      "rt60_equiv_v3_ms": 820,
+      "stretch_pct": -10.9,
+      "turns": [
+       13,
+       14
+      ]
+     },
+     "lead2 T20": {
+      "rt60_equiv_v2_ms": 570,
+      "rt60_equiv_v3_ms": 570,
+      "stretch_pct": 0.0,
+      "turns": [
+       14,
+       14
+      ]
+     },
+     "lead2 T30": {
+      "rt60_equiv_v2_ms": 480,
+      "rt60_equiv_v3_ms": 480,
+      "stretch_pct": 0.0,
+      "turns": [
+       14,
+       14
+      ]
+     },
+     "lead2 late -25..-40 dB": {
+      "rt60_equiv_v2_ms": 220,
+      "rt60_equiv_v3_ms": 220,
+      "stretch_pct": 0.0,
+      "turns": [
+       14,
+       14
+      ]
+     }
+    },
+    "why": "parent steering 9:29 (Kenshin dislikes stacked reverb): decay increase <= 15%. Measured 0% (T20/T30) on both leads: at 24 dB under with a 333 ms decay the plate sits below the printed tail's decay window. Lead 1 late window -10.9% is a turn-count change (13 -> 14 measurable turns), not a real shortening.",
+    "source": "measured",
+    "since": "v3 (Gate 1 + slight lead reverb)"
+   },
+   "files": {
+    "return_": "stems/v3/WIPTD_fresh_G1_LeadReverbReturn_v3_24b-44k.flac",
+    "printed": [
+     "stems/v3/WIPTD_fresh_G1_Lead1_v3_24b-44k.flac",
+     "stems/v3/WIPTD_fresh_G1_Lead2_v3_24b-44k.flac"
+    ],
+    "length": "longer lead + 4 s tail pad (7824652 samples)"
+   },
+   "attempts": [
+    {
+     "n": 1,
+     "what": "RT60 1/2 note, 22 dB under, decorrelated",
+     "result": "IR check bug (dB conversion commented out) -> files moved to versions/v3_attempt1_rt60_check_bug, not used"
+    },
+    {
+     "n": 2,
+     "what": "same settings, check fixed",
+     "result": "18/22: FAIL D/R singing 23.0, mono -3.08, attack 86/90% of v2; turn-end decay +25% Lead1 (sweep 3)"
+    },
+    {
+     "n": 3,
+     "what": "dotted 1/8 RT60, 24 dB under, L/R correlation 0.4",
+     "result": "22/24 pass; attack vs v2 below the pre-set 95% (see fails)"
+    }
+   ],
+   "why": "Kenshin: \"just add a slight reverb\""
+  },
+  "delays": [
+   {
+    "name": null,
+    "note": null,
+    "ms": null,
+    "samples": null,
+    "feedback": null,
+    "band_hz": [
+     null,
+     null
+    ],
+    "duck_db": null,
+    "why": null
+   }
+  ],
+  "throws": [
+   {
+    "global_sec_range": [
+     null,
+     null
+    ],
+    "note": null,
+    "p_center_sec": null,
+    "collision_check": "pass|fail",
+    "why": "measured line end + gap length"
+   }
+  ],
+  "layers": [
+   {
+    "name": null,
+    "built_from": null,
+    "level_db_under_lead": null,
+    "hpf_hz": null,
+    "detune_cents": null,
+    "delay_ms": null,
+    "pan": null,
+    "sections": [],
+    "approved_by_artist": null
+   }
+  ],
+  "creative_fills": [
+   {
+    "name": null,
+    "approved_by_artist": false,
+    "grid_shift_bars": null
+   }
+  ],
+  "lead_background_copy": {
+   "value": {
+    "source_stems_box": [
+     "/workspace/songs/Untitled_2026-11-25/gate1/WIPTD_fresh_G1_Lead1_v2_24b-44k.wav",
+     "/workspace/songs/Untitled_2026-11-25/gate1/WIPTD_fresh_G1_Lead2_v2_24b-44k.wav"
+    ],
+    "source_stems_repo": [
+     "deliveries/What_Im_Posed_To_Do_fresh/stems/v2/WIPTD_fresh_G1_Lead1_v2_24b-44k.flac",
+     "deliveries/What_Im_Posed_To_Do_fresh/stems/v2/WIPTD_fresh_G1_Lead2_v2_24b-44k.flac"
+    ],
+    "entry": "about 5-6 words into each verse, runs underneath",
+    "treatment": "telephone tone, dreamy reverb, a few echo throws (Gate 2, Plugin/Effect Pro)",
+    "notes": "Gate 1 stems carry the -6 dB common bus offset and the pocket gain; full length, sample-aligned to the source/beat (lag -1 sample); duplicate them, do not re-process the dry lead. Beat to set level against: WIPTD_fresh_G1_Beat_pocket_v1_24b-44k (already has the vocal-keyed mid dip, keyed by the main vocals only). v2: use the v2 DRY leads (same cleanup as v1, -1.5 dB); never the v3 printed leads (they carry the new plate)."
+   },
+   "why": "Kenshin request (new since Gate 1 started): quiet background copy of the cleaned lead",
+   "source": "artist_request",
+   "since": "v2 (Gate 1, level only)",
+   "status": "pending Gate 2"
+  }
+ },
+ "gate3_balance": {
+  "section_automation": [
+   {
+    "target": null,
+    "range_sec": [
+     null,
+     null
+    ],
+    "db": null,
+    "why": null
+   }
+  ],
+  "hook_lift_lu_target": null,
+  "beat_processing": [
+   {
+    "process": null,
+    "settings": {},
+    "why": null
+   }
+  ],
+  "mix_bus": {
+   "gain_stage_peak_dbfs": -6,
+   "glue": {
+    "ratio": null,
+    "threshold_db": null,
+    "attack_ms": null,
+    "release_ms": null,
+    "sidechain_hpf_hz": null,
+    "avg_gr_db": null
+   },
+   "side_hpf_hz": null,
+   "why": null
+  },
+  "section_automation_note_v2": {
+   "value": {
+    "B2_no808": 2.78,
+    "A1_drums_out": 4.77,
+    "A2_drums_out": 5.1
+   },
+   "why": "lead vs beat LU in v2 where the beat thins out (v1: +4.28 / +6.27 / +6.60). Still +2.8 to +5.1 LU over the beat: left for Gate 3 automation (not ridden now, per instruction).",
+   "source": "measured",
+   "since": "v2 (Gate 1, level only)"
+  }
+ },
+ "gate4_master": {
+  "corrective_eq": [],
+  "loudness_target_lufs": {
+   "value": null,
+   "why": "loudest target with limiter GR <= 3-4 dB on loudest 1% hits; matched-loudness reference comparison"
+  },
+  "true_peak_ceiling_dbtp": {
+   "value": null,
+   "why": "-1.0, or -2.0 if louder than -14 LUFS; margin for post-limit stages"
+  },
+  "limiter": {
+   "input_gain_db": null,
+   "attack_ms": null,
+   "release_ms": null,
+   "oversampling": 4,
+   "measured_gr_top1pct_db": null
+  },
+  "post_limit": {
+   "dc_block_hz": null,
+   "verse_dip_db": null,
+   "fade_out": null
+  }
+ },
+ "qc_thresholds_song_specific": {
+  "_note": "Set BEFORE seeing results. Any later change needs a written reason in the report.",
+  "lead_vs_beat_lu_range": [
+   -1.5,
+   -0.5
+  ],
+  "pocket_midband_db_range": [
+   3.0,
+   9.0
+  ],
+  "hook_lift_lu_range": [
+   null,
+   null
+  ],
+  "reverb_db_under_lead_range": [
+   null,
+   null
+  ],
+  "dry_to_reverb_while_singing_min_db": null,
+  "stack_db_under_lead_range": [
+   null,
+   null
+  ],
+  "echo_bg_db_under_line_range": [
+   null,
+   null
+  ],
+  "resonance_hump_max_db": 2.5,
+  "brightness_target_db": null,
+  "integrated_lufs_target": null,
+  "_gate1_note": "Set before the Gate 1 render (S 2026-11-25, Alpha): hump pooled <= +2.5 dB, per section <= +3.0 dB (harmonic envelope at matched level); dip mean not below raw - 0.5 dB; punch +-1 dB, attack >= 90%; flare <= raw + 1 dB; S-spike <= raw; de-esser active 5-20%; printed-room tail and within-turn room <= raw + 1 dB; transient alignment <= 2 samples; brightness >= raw and <= raw + 3 dB.",
+  "v3_reverb": {
+   "_set": "BEFORE the v3 render (attempt 1/2); attempt 3: return range re-centred to the new 24 dB target (design value, not a quality limit) and the parent's decay-stretch limit (<= +15%, steering 9:29) added. Quality limits (D/R >= 24, attack >= 95% of v2, tail/room lifts, flare, S) unchanged.",
+   "predelay_exact_samples": 2450,
+   "rt60_tolerance_pct": 5,
+   "tail_below_dbfs_at_buffer_end": -60,
+   "return_db_under_lead_range": [
+    23.0,
+    25.0
+   ],
+   "dry_to_reverb_while_singing_min_db": 24.0,
+   "reverb_250_600_share_vs_dry_max_db": -3.0,
+   "printed_lead_vs_v2": {
+    "turn_end_tail_lift_max_db": 3.0,
+    "within_turn_room_lift_max_db": 1.5,
+    "flare_2_5k_abs_change_max_db": 0.5,
+    "punch_abs_change_max_db": 0.5,
+    "attack_min_pct_of_v2": 95,
+    "s_spike_lift_max_db": 0.5
+   },
+   "pocket_lu_change_vs_v2_max": 0.3,
+   "lead_vs_beat_lu_range": [
+    -3.0,
+    -2.0
+   ],
+   "midband_800_4k_vocal_minus_beat_db_range": [
+    3.0,
+    9.0
+   ],
+   "return_mono_sum_loss_max_db": 3.0,
+   "turn_end_decay_stretch_max_pct": 15
+  }
+ },
+ "revision_log": [
+  {
+   "version": "v1",
+   "requested_by": null,
+   "request": "Gate 0 only: intake, forensics, plan. No processing values set.",
+   "changed_keys": [],
+   "frozen_confirmed": true
+  },
+  {
+   "version": "v1 Gate 1",
+   "requested_by": "Kenshin (fresh run, Claude-code rules)",
+   "request": "Gate 1 vocal cleanup, tone and pocket",
+   "changed_keys": [
+    {
+     "key": "gate1_vocals",
+     "before": null,
+     "after": "filled (see above)",
+     "why": "Gate 1 measurements"
+    }
+   ],
+   "frozen_confirmed": true,
+   "by": "Pro Mix & Master Agent Alpha",
+   "status": "draft, not final"
+  },
+  {
+   "version": "v2 Gate 1",
+   "requested_by": "Kenshin",
+   "request": "Kenshin on the v1 preview (2026-11-25 9:09): 'This sounds really good. Just add a slight reverb and either turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals) can't really hear the beat'",
+   "changed_keys": [
+    {
+     "key": "gate1_vocals.Lead 1.output_gain_db",
+     "before": -0.84,
+     "after": -2.34,
+     "why": "Kenshin: vocals kinda loud, can't hear the beat"
+    },
+    {
+     "key": "gate1_vocals.Lead 2.output_gain_db",
+     "before": -0.84,
+     "after": -2.34,
+     "why": "Kenshin: vocals kinda loud, can't hear the beat"
+    },
+    {
+     "key": "gate1_vocals.Background lead.output_gain_db",
+     "before": -0.93,
+     "after": -2.43,
+     "why": "Kenshin: vocals kinda loud, can't hear the beat"
+    },
+    {
+     "key": "gate1_vocals.Background lead 2.output_gain_db",
+     "before": -0.93,
+     "after": -2.43,
+     "why": "Kenshin: vocals kinda loud, can't hear the beat"
+    },
+    {
+     "key": "gate1_vocals.pocket.lead_vs_beat_lu_target",
+     "before": -1.0,
+     "after": -2.5,
+     "why": "same move"
+    },
+    {
+     "key": "gate1_vocals.pocket.lead_vs_beat_lu_range",
+     "before": [
+      -1.5,
+      -0.5
+     ],
+     "after": [
+      -3.0,
+      -2.0
+     ],
+     "why": "re-centred on the new target before the render"
+    }
+   ],
+   "frozen_confirmed": true,
+   "by": "Pro Mix & Master Agent Alpha",
+   "status": "draft, not final",
+   "note": "one change: vocal level only; beat, dip, chain unchanged"
+  },
+  {
+   "version": "v3 Gate 1",
+   "requested_by": "Kenshin",
+   "request": "Kenshin on the v1 preview (2026-11-25 9:09): 'This sounds really good. Just add a slight reverb and either turn the main vocals down a tad or turn the beat up. It seems kinda loud (the vocals) can't really hear the beat' (reverb part); parent steering 9:29: decay increase <= 15%",
+   "changed_keys": [
+    {
+     "key": "gate2_space.reverb",
+     "before": "null (none added)",
+     "after": "slight dark plate on the leads (see gate2_space.reverb)",
+     "why": "Kenshin: just add a slight reverb"
+    }
+   ],
+   "frozen_confirmed": true,
+   "by": "Pro Mix & Master Agent Alpha",
+   "status": "draft, not final",
+   "built_on": "v2"
+  }
+ ],
+ "gate1_exit_checks": {
+  "file": "gate1_exit_checks_v2.json",
+  "n_pass": 70,
+  "n_fail": 5,
+  "fails": [
+   {
+    "stem": "lead1",
+    "check": "resonance hump 440-520 Hz pooled <= +2.5 dB",
+    "pass_": false,
+    "value": "peak +5.56 -> +2.68 dB, mean +4.84 -> +2.34"
+   },
+   {
+    "stem": "bg1",
+    "check": "resonance hump 440-520 Hz pooled <= +2.5 dB",
+    "pass_": false,
+    "value": "peak +5.49 -> +3.08 dB, mean +4.55 -> +1.73"
+   },
+   {
+    "stem": "bg1",
+    "check": "hump Bridge <= +3.0 dB and dip not deepened",
+    "pass_": false,
+    "value": "peak +5.49 -> +3.08, dip -2.57 -> -1.77 (min harmonics/bin 10)"
+   },
+   {
+    "stem": "bg2",
+    "check": "resonance hump 440-520 Hz pooled <= +2.5 dB",
+    "pass_": false,
+    "value": "peak +6.63 -> +3.15 dB, mean +4.76 -> +2.26"
+   },
+   {
+    "stem": "bg2",
+    "check": "hump Bridge <= +3.0 dB and dip not deepened",
+    "pass_": false,
+    "value": "peak +6.63 -> +3.15, dip -2.41 -> -1.73 (min harmonics/bin 19)"
+   }
+  ],
+  "pocket": {
+   "A1": {
+    "lu": -2.899258519957005,
+    "midband": 3.1296431916412075
+   },
+   "B1": {
+    "lu": -2.3651123121309965,
+    "midband": 3.6020118083237875
+   },
+   "A2": {
+    "lu": -2.63490943243697,
+    "midband": 3.522039832837706
+   },
+   "B3": {
+    "lu": -2.501855513019134,
+    "midband": 3.6537218407804595
+   },
+   "Bridge": {
+    "lu": -2.5000050394367648,
+    "midband": 4.236492140831771
+   },
+   "B2_no808": {
+    "lu": 2.7815734379892056,
+    "midband": 4.198849707047582
+   },
+   "A1_drums_out": {
+    "lu": 4.767673327498073,
+    "midband": 10.587381906219807
+   },
+   "A2_drums_out": {
+    "lu": 5.100849738323721,
+    "midband": 11.991432551602784
+   }
+  },
+  "note": "per-stem checks are gain-invariant and identical to v1 (same 5 residual box-hump limits); v2 = v1 x -1.5 dB proven to 1 LSB"
+ },
+ "gate1_exit_checks_v3": {
+  "file": "gate1_exit_checks_v3.json",
+  "n_pass": 22,
+  "n_fail": 2,
+  "fails": [
+   {
+    "stem": "lead1",
+    "check": "articulation vs v2: punch within +-0.5 dB, attack >= 95%",
+    "pass_": false,
+    "value": "punch 12.71 -> 12.66, attack 14.15 -> 13.02 (92%)"
+   },
+   {
+    "stem": "lead2",
+    "check": "articulation vs v2: punch within +-0.5 dB, attack >= 95%",
+    "pass_": false,
+    "value": "punch 12.03 -> 11.89, attack 12.14 -> 11.50 (95%)"
+   }
+  ],
+  "pocket": {
+   "A1": {
+    "lu_v2": -2.899258519957005,
+    "lu_v3": -2.8837313090298977,
+    "midband_v3": 3.1426820297428613
+   },
+   "B1": {
+    "lu_v2": -2.3651123121309965,
+    "lu_v3": -2.348278088417864,
+    "midband_v3": 3.6147005897979056
+   },
+   "A2": {
+    "lu_v2": -2.63490943243697,
+    "lu_v3": -2.618483912669145,
+    "midband_v3": 3.5410161878521684
+   },
+   "B3": {
+    "lu_v2": -2.501855513019134,
+    "lu_v3": -2.4837012020698737,
+    "midband_v3": 3.6645040304402414
+   },
+   "B2_no808": {
+    "lu_v2": 2.7815734379892056,
+    "lu_v3": 2.7951321760700054,
+    "midband_v3": 4.212179233987872
+   },
+   "A1_drums_out": {
+    "lu_v2": 4.767673327498073,
+    "lu_v3": 4.781534811903576,
+    "midband_v3": 10.574137847915104
+   },
+   "A2_drums_out": {
+    "lu_v2": 5.100849738323721,
+    "lu_v3": 5.113642590738021,
+    "midband_v3": 12.009091434148209
+   }
+  },
+  "fail_explanation": "attack (mean of the top 5% of 2-5 kHz onset rises) vs v2: Lead1 92%, Lead2 94.7% (pre-set >= 95% of v2, stricter than the standard's >= 90% of RAW, which both pass: 13.02/14.10 = 92%, 11.50/12.12 = 95%). Cause measured: the reverb fills the very quiet frames before onsets (pre-onset 2-5 kHz level -70.4 -> -65.2 dB at the 100 biggest v2 onsets). Shorter decay helps (sweep 3); only 26 dB under + dotted 1/8 approaches 95% (94/96%), judged too quiet to be the requested audible \"slight\" reverb. Punch unchanged (-0.05 / -0.14 dB), flare and S unchanged."
+ }
+}

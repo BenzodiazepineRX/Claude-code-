@@ -1,0 +1,1157 @@
+{
+  "_readme": "One file per song per version: deliveries/<Song>/session/mix_config_vN.json. EVERY parameter needs value + why (the measurement that justified it, on THIS song) + source (measured | reference | artist_request | carried_from_vN) + since (version it was set/changed). Values here are placeholders (null) on purpose: never copy numbers from another song.",
+  "song": {
+    "title": null,
+    "artist": "Kenshin",
+    "version": "v1",
+    "status": "draft, not final",
+    "bpm": {
+      "value": 135.0,
+      "why": "tempo_key.py on the beat: 135.00 (alts 67.5/90). Long self-match of the beat (1-6 kHz band) at 8-96 bars: 96-bar drift -0.01..0.00 samples (corr 0.92-0.97), fit 135.0000. Snare on beat 3 = half-time feel; counted as 135 (trap convention), 67.5 is the same grid at half speed. Beat = 19600 samples, bar = 78400 samples exactly at 44.1 kHz",
+      "source": "measured"
+    },
+    "grid_t0_sec": {
+      "value": 0.004127,
+      "samples": 182,
+      "why": "snare (1.5-4 kHz crack, beat 3) 50%-attack offset, median over 75 full-drum bars, IQR 182-183 samples. Detector bias on a synthetic snare +85 samples and kick body rise gives ~236 after bias correction, so true T0 is ~100-240 samples (2-5 ms). Not from hats",
+      "source": "measured"
+    },
+    "key": {
+      "value": "F major note set (relative D minor); tonic ambiguous F major vs G minor/Dorian",
+      "why": "beat chroma best F major 0.83 (next G minor 0.68); tempo_key.py D minor 0.813 vs F major 0.810 (low conf). 808 loop G-Bb-F-C, 2 bars each (Gm-Bb-F-C), starts on G. Sung pitch classes mostly Bb/G/A/C/F, no Eb, no E. Confidence: medium on notes, low on tonic",
+      "source": "measured"
+    },
+    "sections": [
+      {
+        "name": "Intro (instrumental)",
+        "bars": [
+          1,
+          24
+        ],
+        "start_sec": 0.0,
+        "end_sec": 42.671,
+        "beat": "1-9 keys only; 10-17 +808; 18-24 full drums"
+      },
+      {
+        "name": "A1 (hook candidate)",
+        "bars": [
+          25,
+          41
+        ],
+        "start_sec": 42.671,
+        "end_sec": 72.893,
+        "beat": "25-33 full; 34-37 drums out; 38-41 full"
+      },
+      {
+        "name": "B1",
+        "bars": [
+          42,
+          49
+        ],
+        "start_sec": 72.893,
+        "end_sec": 87.115,
+        "beat": "full"
+      },
+      {
+        "name": "B2 (B1 melody repeated)",
+        "bars": [
+          50,
+          56
+        ],
+        "start_sec": 87.115,
+        "end_sec": 99.56,
+        "beat": "hats/drums, no 808"
+      },
+      {
+        "name": "A2 (repeat of A1; 65-73 pasted)",
+        "bars": [
+          57,
+          73
+        ],
+        "start_sec": 99.56,
+        "end_sec": 129.782,
+        "beat": "57 hats/no 808; 58-65 drums out; 66-73 full"
+      },
+      {
+        "name": "Bridge: Background lead / BG2 trade 2 bars",
+        "bars": [
+          74,
+          82
+        ],
+        "start_sec": 129.782,
+        "end_sec": 145.782,
+        "beat": "74-81 full; 82 drums out"
+      },
+      {
+        "name": "Vocal gap",
+        "bars": [
+          83,
+          89
+        ],
+        "start_sec": 145.782,
+        "end_sec": 158.226,
+        "beat": "drums out"
+      },
+      {
+        "name": "B3 (B melody; 89-91 pasted from 41-43)",
+        "bars": [
+          90,
+          98
+        ],
+        "start_sec": 158.226,
+        "end_sec": 174.226,
+        "beat": "full; 98 variant"
+      },
+      {
+        "name": "Outro (instrumental, beat runs on)",
+        "bars": [
+          99,
+          137
+        ],
+        "start_sec": 174.226,
+        "end_sec": 243.56,
+        "beat": "99-105 variant; 106-113 no hats; 114-129 full; 130-137 outro"
+      }
+    ],
+    "reference_tracks": [
+      {
+        "title": null,
+        "integrated_lufs": null,
+        "hook_short_term_lufs": null,
+        "vocal_pocket_delta_db": null,
+        "valid_reason": "NOT CHOSEN: ask Kenshin (no default reference)"
+      }
+    ],
+    "working_title": "Untitled_2026-11-25 (title not given yet)",
+    "tuning_a4_hz": {
+      "value": 439.5,
+      "why": "tempo_key.py tuning estimate -2.0 cents",
+      "source": "measured"
+    },
+    "echoes": {
+      "value": null,
+      "why": "NOT DECIDED: ask Kenshin how he wants echoes on this song (no default)",
+      "source": "artist_request pending"
+    },
+    "tempo_math_samples_at_44k1": {
+      "1/1 bar": 78400,
+      "1/2": 39200,
+      "1/4": 19600,
+      "1/8 dotted": 14700,
+      "1/8": 9800,
+      "1/8 triplet": 6533.33,
+      "1/16": 4900,
+      "1/32": 2450,
+      "1/64": 1225,
+      "ms": {
+        "1/4": 444.444,
+        "1/8": 222.222,
+        "1/16": 111.111,
+        "1/32": 55.556
+      }
+    }
+  },
+  "intake_findings": {
+    "printed_fx_on_vocals": {
+      "value": true,
+      "why": "pooled post-phrase envelope: -23 dB re phrase at 50 ms, still -45 dB at ~600 ms (~40 dB/s, ~RT60 1.5 s) vs a dry known-answer test that falls 30 dB in 10 ms; median time to -40 dB 510-640 ms (leads/bg1), 340 ms (bg2). Tails are then truncated to digital zero 0.4-0.65 s after the phrase (region ends). Vocals are dual-mono (L=R), so no printed stereo FX"
+    },
+    "lossy_source": {
+      "value": true,
+      "why": "beat bandwidth 15.6 kHz (-40 dB) / 16.6 kHz (-60 dB), filename 'Y2Mate...160k'; ALL vocals stop at 16.0-16.5 kHz too (lossy export path)"
+    },
+    "copy_pasted_regions": [
+      {
+        "what": "lead1+lead2 bars 33-41 -> bars 65-73 (+32 bars)",
+        "corr": "0.95-1.00",
+        "offset_vs_exact_grid_samples": 1023,
+        "offset_ms": 23.2
+      },
+      {
+        "what": "lead1 bars 41-43 -> bars 89-91 (+48 bars)",
+        "corr": "0.93-0.999",
+        "offset_vs_exact_grid_samples": -1714,
+        "offset_ms": -38.9
+      },
+      {
+        "what": "lead2 bar 54 -> bar 98 (+44 bars)",
+        "corr": 0.96,
+        "offset_vs_exact_grid_samples": -2868,
+        "offset_ms": -65.0
+      },
+      {
+        "what": "beat: whole arrangement is a repeated loop",
+        "corr": "0.92-0.97 at 96 bars, drift 0.0 samples"
+      }
+    ],
+    "timing_vs_grid_ms_by_section": {
+      "_note": "raw librosa onset medians vs the 1/16 grid; detector read +10 ms late on a known-answer test, so subtract ~10 ms; IQRs 25-40 ms",
+      "A1 (bars 25-41)": {
+        "lead1": {
+          "n": 36,
+          "median_ms": -7.4,
+          "iqr_ms": [
+            -25.3,
+            8.8
+          ]
+        },
+        "lead2": {
+          "n": 37,
+          "median_ms": -7.2,
+          "iqr_ms": [
+            -23.2,
+            3.5
+          ]
+        }
+      },
+      "A1 first half (25-32)": {
+        "lead1": {
+          "n": 18,
+          "median_ms": -1.4,
+          "iqr_ms": [
+            -20.3,
+            18.5
+          ]
+        },
+        "lead2": {
+          "n": 18,
+          "median_ms": -5.0,
+          "iqr_ms": [
+            -19.2,
+            4.0
+          ]
+        }
+      },
+      "A1 second half (33-41)": {
+        "lead1": {
+          "n": 18,
+          "median_ms": -9.4,
+          "iqr_ms": [
+            -31.9,
+            -0.6
+          ]
+        },
+        "lead2": {
+          "n": 19,
+          "median_ms": -12.5,
+          "iqr_ms": [
+            -26.9,
+            -1.6
+          ]
+        }
+      },
+      "B1 (42-49)": {
+        "lead1": {
+          "n": 16,
+          "median_ms": -15.2,
+          "iqr_ms": [
+            -22.9,
+            -8.1
+          ]
+        },
+        "lead2": {
+          "n": 16,
+          "median_ms": -13.4,
+          "iqr_ms": [
+            -27.7,
+            -6.1
+          ]
+        }
+      },
+      "B2 (50-57)": {
+        "lead1": {
+          "n": 21,
+          "median_ms": -11.0,
+          "iqr_ms": [
+            -17.6,
+            5.3
+          ]
+        },
+        "lead2": {
+          "n": 14,
+          "median_ms": -23.9,
+          "iqr_ms": [
+            -38.4,
+            -8.3
+          ]
+        }
+      },
+      "A2 (58-73)": {
+        "lead1": {
+          "n": 34,
+          "median_ms": 10.5,
+          "iqr_ms": [
+            -8.9,
+            22.7
+          ]
+        },
+        "lead2": {
+          "n": 37,
+          "median_ms": 10.7,
+          "iqr_ms": [
+            -2.3,
+            22.7
+          ]
+        }
+      },
+      "A2 second half (65-73)": {
+        "lead1": {
+          "n": 19,
+          "median_ms": 0.4,
+          "iqr_ms": [
+            -16.2,
+            17.7
+          ]
+        },
+        "lead2": {
+          "n": 19,
+          "median_ms": 4.6,
+          "iqr_ms": [
+            -12.6,
+            18.9
+          ]
+        }
+      },
+      "B3 (89-98)": {
+        "lead1": {
+          "n": 18,
+          "median_ms": -24.4,
+          "iqr_ms": [
+            -42.1,
+            44.8
+          ]
+        },
+        "lead2": {
+          "n": 14,
+          "median_ms": 4.3,
+          "iqr_ms": [
+            -45.4,
+            23.3
+          ]
+        }
+      },
+      "BG bridge (74-82)": {
+        "bg1": {
+          "n": 15,
+          "median_ms": 22.4,
+          "iqr_ms": [
+            8.5,
+            41.6
+          ]
+        },
+        "bg2": {
+          "n": 21,
+          "median_ms": 32.0,
+          "iqr_ms": [
+            9.7,
+            39.8
+          ]
+        }
+      }
+    },
+    "lowest_sung_note_hz_by_vocal": {
+      "lead1": {
+        "p05_hz": 96.3,
+        "p05_note": "G2",
+        "lowest_stable_hz": 86.8,
+        "lowest_stable_note": "F2",
+        "highest_stable_note": "C3",
+        "voiced_s_confident": 11.9
+      },
+      "lead2": {
+        "p05_hz": 89.4,
+        "p05_note": "F2",
+        "lowest_stable_hz": 97.4,
+        "lowest_stable_note": "G2",
+        "highest_stable_note": "C3",
+        "voiced_s_confident": 12.4
+      },
+      "bg1": {
+        "p05_hz": 97.6,
+        "p05_note": "G2",
+        "lowest_stable_hz": 106.9,
+        "lowest_stable_note": "G\u266f2",
+        "highest_stable_note": "A\u266f2",
+        "voiced_s_confident": 1.5
+      },
+      "bg2": {
+        "p05_hz": 89.3,
+        "p05_note": "F2",
+        "lowest_stable_hz": 115.9,
+        "lowest_stable_note": "A\u266f2",
+        "highest_stable_note": "A\u266f2",
+        "voiced_s_confident": 1.5
+      }
+    },
+    "blockers": [
+      "lossy beat (YouTube 160k rip) and lossy vocals (16 kHz bandwidth); air cannot be restored",
+      "printed reverb on all vocals, truncated to digital zero 0.4-0.65 s after phrases",
+      "808 fundamentals F1 43.7 / G1 49.1 / Bb1 58.5 / C2 65.9 Hz: 3 of 4 notes under 60 Hz, no 808 stem; 100-400 Hz envelope follows the 808 weakly (r=0.29)",
+      "copy-pasted vocal sections placed off the exact bar grid (+23.2 ms bars 65-73; -38.9 ms bars 89-91)",
+      "no clipping (0 runs), no DC issue (<1e-5), beat not mastered (-20.45 LUFS, PLR 17.1 dB, no flat tops)",
+      "possible producer tag / leaked vocals in the beat: not tested reliably",
+      "free type beat: lease/licence needed before release (not an audio check)"
+    ],
+    "inventory": {
+      "beat": {
+        "file": "Y2Mateis__FREE_Post_Malone_x_Juice_WRLD_Type_Beat__Hold_OnMwiQuMOtxfA160k1660061758082.wav",
+        "sr": 44100,
+        "subtype": "PCM_16",
+        "channels": 2,
+        "duration_s": 243.6,
+        "samples": 10742755,
+        "start_silence_s": 0.004,
+        "end_silence_s": 0.392,
+        "sample_peak_dbfs": -3.47,
+        "true_peak_dbtp": -3.34,
+        "integrated_lufs": -20.45,
+        "active_rms_dbfs": -21.64,
+        "active_pct": 98.9,
+        "crest_active_db": 18.17,
+        "dc": [
+          -8.83e-06,
+          8.73e-06
+        ],
+        "lr_corr": 0.9492,
+        "side_to_mid_db": -15.7,
+        "bandwidth_hz_40": 15590,
+        "bandwidth_hz_60": 16570,
+        "exact_zero_pct": 0.08,
+        "clip_runs_ge3": 0,
+        "samples_ge_0999": 0
+      },
+      "lead1": {
+        "file": "Lead 1.wav",
+        "sr": 44100,
+        "subtype": "PCM_16",
+        "channels": 2,
+        "duration_s": 169.125,
+        "samples": 7458400,
+        "start_silence_s": 42.225,
+        "end_silence_s": 0.001,
+        "sample_peak_dbfs": -5.2,
+        "true_peak_dbtp": -5.2,
+        "integrated_lufs": -23.6,
+        "active_rms_dbfs": -25.77,
+        "active_pct": 29.1,
+        "crest_active_db": 20.57,
+        "dc": [
+          2.28e-06,
+          2.28e-06
+        ],
+        "lr_corr": 1.0,
+        "side_to_mid_db": -208.9,
+        "bandwidth_hz_40": 16015,
+        "bandwidth_hz_60": 16489,
+        "exact_zero_pct": 58.32,
+        "clip_runs_ge3": 0,
+        "samples_ge_0999": 0
+      },
+      "lead2": {
+        "file": "Lead 2.wav",
+        "sr": 44100,
+        "subtype": "PCM_16",
+        "channels": 2,
+        "duration_s": 173.43,
+        "samples": 7648252,
+        "start_silence_s": 44.424,
+        "end_silence_s": 0.245,
+        "sample_peak_dbfs": -5.87,
+        "true_peak_dbtp": -5.86,
+        "integrated_lufs": -23.37,
+        "active_rms_dbfs": -25.62,
+        "active_pct": 32.3,
+        "crest_active_db": 19.75,
+        "dc": [
+          1.71e-06,
+          1.71e-06
+        ],
+        "lr_corr": 1.0,
+        "side_to_mid_db": -209.5,
+        "bandwidth_hz_40": 16096,
+        "bandwidth_hz_60": 16548,
+        "exact_zero_pct": 58.03,
+        "clip_runs_ge3": 0,
+        "samples_ge_0999": 0
+      },
+      "bg1": {
+        "file": "Background lead.wav",
+        "sr": 44100,
+        "subtype": "PCM_16",
+        "channels": 2,
+        "duration_s": 141.599,
+        "samples": 6244507,
+        "start_silence_s": 128.308,
+        "end_silence_s": 0.307,
+        "sample_peak_dbfs": -10.26,
+        "true_peak_dbtp": -10.25,
+        "integrated_lufs": -25.67,
+        "active_rms_dbfs": -27.81,
+        "active_pct": 5.1,
+        "crest_active_db": 17.55,
+        "dc": [
+          -9.53e-08,
+          -9.53e-08
+        ],
+        "lr_corr": 1.0,
+        "side_to_mid_db": -199.2,
+        "bandwidth_hz_40": 16005,
+        "bandwidth_hz_60": 16284,
+        "exact_zero_pct": 91.94,
+        "clip_runs_ge3": 0,
+        "samples_ge_0999": 0
+      },
+      "bg2": {
+        "file": "Background lead 2.wav",
+        "sr": 44100,
+        "subtype": "PCM_16",
+        "channels": 2,
+        "duration_s": 145.154,
+        "samples": 6401307,
+        "start_silence_s": 133.323,
+        "end_silence_s": 0.306,
+        "sample_peak_dbfs": -10.62,
+        "true_peak_dbtp": -10.59,
+        "integrated_lufs": -26.0,
+        "active_rms_dbfs": -28.18,
+        "active_pct": 5.1,
+        "crest_active_db": 17.56,
+        "dc": [
+          -1.37e-07,
+          -1.37e-07
+        ],
+        "lr_corr": 1.0,
+        "side_to_mid_db": -198.9,
+        "bandwidth_hz_40": 16005,
+        "bandwidth_hz_60": 16101,
+        "exact_zero_pct": 93.89,
+        "clip_runs_ge3": 0,
+        "samples_ge_0999": 0
+      }
+    },
+    "dry_vs_gated": "regions/gated: 58% (leads) and 92-94% (BGs) of samples are exact digital zero; region edges are quiet (max -59 dBFS), but printed tails are cut to zero ~-45 dB below the phrase",
+    "vocal_roles": {
+      "lead1_vs_lead2": "call-and-response: alternate every 2 bars; only 10-12% of active frames overlap (hand-offs)",
+      "bg1_vs_bg2": "call-and-response with each other in bars 74-82 only (3% overlap)",
+      "bg_vs_leads": "not doubles or backing: 0-1% overlap with the leads; the 'Background lead' stems are a separate 9-bar bridge section sung on their own"
+    },
+    "tuning": {
+      "lead1": {
+        "pct_within_10c": 50.7,
+        "median_abs_cents_dev": 10.0
+      },
+      "lead2": {
+        "pct_within_10c": 38.7,
+        "median_abs_cents_dev": 10.0
+      },
+      "bg1": {
+        "pct_within_10c": 20.3,
+        "median_abs_cents_dev": 20.0
+      },
+      "bg2": {
+        "pct_within_10c": 19.2,
+        "median_abs_cents_dev": 20.0
+      },
+      "_calibration": "known answers: snapped synthetic 92%, untuned drift 23%. Leads look partly pitch-corrected (Lead 1 more), BGs untuned; based on only ~12 s of confident pitch per lead"
+    },
+    "resonance_preview": {
+      "lead1": "+4.2..+5.6 dB hump 440-520 Hz (peak 480), dip 580-620 Hz -2.5..-2.9",
+      "lead2": "+3.6..+5.7 dB hump 440-520 Hz (peak 480), dip 560 Hz -5.9",
+      "tool": "harmenv.py (What_Im_Posed_To_Do) pitch-independent harmonic envelope; Gate 1 must re-measure per section"
+    },
+    "beat": {
+      "short_term_max_lufs": -16.86,
+      "flat_top_runs": 0,
+      "plr_db": 17.11,
+      "full_bars": 76,
+      "full_section_lufs": -18.8,
+      "full_section_crest_db": 16.17,
+      "low_peaks_hz_db": [
+        [
+          43.7,
+          -0.6
+        ],
+        [
+          49.8,
+          -0.2
+        ],
+        [
+          58.5,
+          -0.3
+        ],
+        [
+          65.9,
+          0.0
+        ],
+        [
+          67.3,
+          -1.0
+        ],
+        [
+          69.3,
+          -5.1
+        ],
+        [
+          72.0,
+          -3.7
+        ],
+        [
+          76.7,
+          -5.2
+        ]
+      ],
+      "band_db": {
+        "sub20-60": -5.3,
+        "low60-120": -3.9,
+        "120-250": -8.6,
+        "250-500": -10.6,
+        "500-2k": -14.3,
+        "2k-6k": -17.2,
+        "6k-16k": -19.4
+      },
+      "808_harmonic_band_vs_fund_db": -3.4,
+      "808_env_corr_100_400": 0.293,
+      "sub_side_vs_mid_db": -20.1
+    },
+    "vocal_cleanup_candidates": {
+      "lead1": {
+        "hf_click_candidates": {
+          "n": 12,
+          "times_s": [
+            45.08,
+            52.64,
+            52.66,
+            61.32,
+            66.62,
+            89.3,
+            90.2,
+            97.08,
+            101.36,
+            110.46,
+            118.24,
+            123.54
+          ]
+        },
+        "plosive_events": 0,
+        "noise_floor_median_dbfs": -58.8,
+        "hum50_prom_db": 4.2,
+        "hum60_prom_db": 5.2
+      },
+      "lead2": {
+        "hf_click_candidates": {
+          "n": 13,
+          "times_s": [
+            47.78,
+            56.2,
+            56.32,
+            57.18,
+            84.4,
+            92.88,
+            104.68,
+            112.92,
+            113.22,
+            114.1,
+            162.04,
+            163.96,
+            171.04
+          ]
+        },
+        "plosive_events": 0,
+        "noise_floor_median_dbfs": -62.2,
+        "hum50_prom_db": 5.7,
+        "hum60_prom_db": 4.9
+      },
+      "bg1": {
+        "hf_click_candidates": {
+          "n": 1,
+          "times_s": [
+            137.8
+          ]
+        },
+        "plosive_events": 0,
+        "noise_floor_median_dbfs": -65.2,
+        "hum50_prom_db": 10.2,
+        "hum60_prom_db": 8.7
+      },
+      "bg2": {
+        "hf_click_candidates": {
+          "n": 1,
+          "times_s": [
+            143.58
+          ]
+        },
+        "plosive_events": 0,
+        "noise_floor_median_dbfs": -59.6,
+        "hum50_prom_db": 12.0,
+        "hum60_prom_db": 4.2
+      }
+    },
+    "song_length": {
+      "beat_s": 243.6,
+      "first_vocal_s": 42.23,
+      "last_vocal_end_s": 173.18,
+      "instrumental_after_last_vocal_s": 70.4,
+      "intro_before_first_vocal_s": 42.2
+    }
+  },
+  "gate1_vocals": {
+    "pocket": {
+      "lead_vs_beat_lu_target": null,
+      "midband_delta_db_target": null,
+      "beat_mid_dip": {
+        "hz": null,
+        "q": null,
+        "max_db": null,
+        "attack_ms": null,
+        "release_ms": null
+      },
+      "why": "reference delta / artist preference",
+      "source": null
+    },
+    "Lead 1": {
+      "role": "lead (call-and-response A)",
+      "edge_fades_ms": {
+        "value": null,
+        "why": null
+      },
+      "working_level_rms_dbfs": {
+        "value": null,
+        "why": null
+      },
+      "rider": {
+        "window_ms": null,
+        "max_db": null,
+        "why": "phrase spread before/after"
+      },
+      "hpf": {
+        "hz": null,
+        "slope_db_oct": null,
+        "why": "lowest sung fundamental = ? Hz",
+        "source": "measured"
+      },
+      "eq_cuts": [
+        {
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "harmonic-envelope hump peak/width; persists across sections",
+          "source": "measured"
+        }
+      ],
+      "compressor_stages": [
+        {
+          "threshold_db": null,
+          "ratio": null,
+          "attack_ms": null,
+          "release_ms": null,
+          "avg_gr_db": null,
+          "why": "phrase spread + articulation check"
+        }
+      ],
+      "deesser": {
+        "band_hz": [
+          null,
+          null
+        ],
+        "threshold": null,
+        "max_cut_db": null,
+        "active_pct": null,
+        "why": "S-spike stats"
+      },
+      "tone_boosts": [
+        {
+          "type": "bell|shelf",
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "brightness vs beat/reference"
+        }
+      ],
+      "saturation": {
+        "enabled": false,
+        "why": null
+      },
+      "pan": {
+        "value": null,
+        "why": null
+      },
+      "level_vs_lead_db": {
+        "value": null,
+        "why": null
+      }
+    },
+    "Lead 2": {
+      "role": "lead (call-and-response B)",
+      "edge_fades_ms": {
+        "value": null,
+        "why": null
+      },
+      "working_level_rms_dbfs": {
+        "value": null,
+        "why": null
+      },
+      "rider": {
+        "window_ms": null,
+        "max_db": null,
+        "why": "phrase spread before/after"
+      },
+      "hpf": {
+        "hz": null,
+        "slope_db_oct": null,
+        "why": "lowest sung fundamental = ? Hz",
+        "source": "measured"
+      },
+      "eq_cuts": [
+        {
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "harmonic-envelope hump peak/width; persists across sections",
+          "source": "measured"
+        }
+      ],
+      "compressor_stages": [
+        {
+          "threshold_db": null,
+          "ratio": null,
+          "attack_ms": null,
+          "release_ms": null,
+          "avg_gr_db": null,
+          "why": "phrase spread + articulation check"
+        }
+      ],
+      "deesser": {
+        "band_hz": [
+          null,
+          null
+        ],
+        "threshold": null,
+        "max_cut_db": null,
+        "active_pct": null,
+        "why": "S-spike stats"
+      },
+      "tone_boosts": [
+        {
+          "type": "bell|shelf",
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "brightness vs beat/reference"
+        }
+      ],
+      "saturation": {
+        "enabled": false,
+        "why": null
+      },
+      "pan": {
+        "value": null,
+        "why": null
+      },
+      "level_vs_lead_db": {
+        "value": null,
+        "why": null
+      }
+    },
+    "Background lead": {
+      "role": "bridge vocal, bars 74-82 (trades with BG2)",
+      "edge_fades_ms": {
+        "value": null,
+        "why": null
+      },
+      "working_level_rms_dbfs": {
+        "value": null,
+        "why": null
+      },
+      "rider": {
+        "window_ms": null,
+        "max_db": null,
+        "why": "phrase spread before/after"
+      },
+      "hpf": {
+        "hz": null,
+        "slope_db_oct": null,
+        "why": "lowest sung fundamental = ? Hz",
+        "source": "measured"
+      },
+      "eq_cuts": [
+        {
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "harmonic-envelope hump peak/width; persists across sections",
+          "source": "measured"
+        }
+      ],
+      "compressor_stages": [
+        {
+          "threshold_db": null,
+          "ratio": null,
+          "attack_ms": null,
+          "release_ms": null,
+          "avg_gr_db": null,
+          "why": "phrase spread + articulation check"
+        }
+      ],
+      "deesser": {
+        "band_hz": [
+          null,
+          null
+        ],
+        "threshold": null,
+        "max_cut_db": null,
+        "active_pct": null,
+        "why": "S-spike stats"
+      },
+      "tone_boosts": [
+        {
+          "type": "bell|shelf",
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "brightness vs beat/reference"
+        }
+      ],
+      "saturation": {
+        "enabled": false,
+        "why": null
+      },
+      "pan": {
+        "value": null,
+        "why": null
+      },
+      "level_vs_lead_db": {
+        "value": null,
+        "why": null
+      }
+    },
+    "Background lead 2": {
+      "role": "bridge vocal, bars 74-82 (trades with BG1)",
+      "edge_fades_ms": {
+        "value": null,
+        "why": null
+      },
+      "working_level_rms_dbfs": {
+        "value": null,
+        "why": null
+      },
+      "rider": {
+        "window_ms": null,
+        "max_db": null,
+        "why": "phrase spread before/after"
+      },
+      "hpf": {
+        "hz": null,
+        "slope_db_oct": null,
+        "why": "lowest sung fundamental = ? Hz",
+        "source": "measured"
+      },
+      "eq_cuts": [
+        {
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "harmonic-envelope hump peak/width; persists across sections",
+          "source": "measured"
+        }
+      ],
+      "compressor_stages": [
+        {
+          "threshold_db": null,
+          "ratio": null,
+          "attack_ms": null,
+          "release_ms": null,
+          "avg_gr_db": null,
+          "why": "phrase spread + articulation check"
+        }
+      ],
+      "deesser": {
+        "band_hz": [
+          null,
+          null
+        ],
+        "threshold": null,
+        "max_cut_db": null,
+        "active_pct": null,
+        "why": "S-spike stats"
+      },
+      "tone_boosts": [
+        {
+          "type": "bell|shelf",
+          "hz": null,
+          "q": null,
+          "db": null,
+          "why": "brightness vs beat/reference"
+        }
+      ],
+      "saturation": {
+        "enabled": false,
+        "why": null
+      },
+      "pan": {
+        "value": null,
+        "why": null
+      },
+      "level_vs_lead_db": {
+        "value": null,
+        "why": null
+      }
+    }
+  },
+  "gate2_space": {
+    "reverb": {
+      "type": null,
+      "decay_s": null,
+      "predelay_ms": null,
+      "send_hpf_hz": null,
+      "send_lpf_hz": null,
+      "duck_db": null,
+      "return_db_under_lead": null,
+      "dry_to_reverb_while_singing_db": null,
+      "why": null
+    },
+    "delays": [
+      {
+        "name": null,
+        "note": null,
+        "ms": null,
+        "samples": null,
+        "feedback": null,
+        "band_hz": [
+          null,
+          null
+        ],
+        "duck_db": null,
+        "why": null
+      }
+    ],
+    "throws": [
+      {
+        "global_sec_range": [
+          null,
+          null
+        ],
+        "note": null,
+        "p_center_sec": null,
+        "collision_check": "pass|fail",
+        "why": "measured line end + gap length"
+      }
+    ],
+    "layers": [
+      {
+        "name": null,
+        "built_from": null,
+        "level_db_under_lead": null,
+        "hpf_hz": null,
+        "detune_cents": null,
+        "delay_ms": null,
+        "pan": null,
+        "sections": [],
+        "approved_by_artist": null
+      }
+    ],
+    "creative_fills": [
+      {
+        "name": null,
+        "approved_by_artist": false,
+        "grid_shift_bars": null
+      }
+    ]
+  },
+  "gate3_balance": {
+    "section_automation": [
+      {
+        "target": null,
+        "range_sec": [
+          null,
+          null
+        ],
+        "db": null,
+        "why": null
+      }
+    ],
+    "hook_lift_lu_target": null,
+    "beat_processing": [
+      {
+        "process": null,
+        "settings": {},
+        "why": null
+      }
+    ],
+    "mix_bus": {
+      "gain_stage_peak_dbfs": -6,
+      "glue": {
+        "ratio": null,
+        "threshold_db": null,
+        "attack_ms": null,
+        "release_ms": null,
+        "sidechain_hpf_hz": null,
+        "avg_gr_db": null
+      },
+      "side_hpf_hz": null,
+      "why": null
+    }
+  },
+  "gate4_master": {
+    "corrective_eq": [],
+    "loudness_target_lufs": {
+      "value": null,
+      "why": "loudest target with limiter GR <= 3-4 dB on loudest 1% hits; matched-loudness reference comparison"
+    },
+    "true_peak_ceiling_dbtp": {
+      "value": null,
+      "why": "-1.0, or -2.0 if louder than -14 LUFS; margin for post-limit stages"
+    },
+    "limiter": {
+      "input_gain_db": null,
+      "attack_ms": null,
+      "release_ms": null,
+      "oversampling": 4,
+      "measured_gr_top1pct_db": null
+    },
+    "post_limit": {
+      "dc_block_hz": null,
+      "verse_dip_db": null,
+      "fade_out": null
+    }
+  },
+  "qc_thresholds_song_specific": {
+    "_note": "Set BEFORE seeing results. Any later change needs a written reason in the report.",
+    "lead_vs_beat_lu_range": [
+      null,
+      null
+    ],
+    "pocket_midband_db_range": [
+      null,
+      null
+    ],
+    "hook_lift_lu_range": [
+      null,
+      null
+    ],
+    "reverb_db_under_lead_range": [
+      null,
+      null
+    ],
+    "dry_to_reverb_while_singing_min_db": null,
+    "stack_db_under_lead_range": [
+      null,
+      null
+    ],
+    "echo_bg_db_under_line_range": [
+      null,
+      null
+    ],
+    "resonance_hump_max_db": null,
+    "brightness_target_db": null,
+    "integrated_lufs_target": null
+  },
+  "revision_log": [
+    {
+      "version": "v1",
+      "requested_by": null,
+      "request": "Gate 0 only: intake, forensics, plan. No processing values set.",
+      "changed_keys": [],
+      "frozen_confirmed": true
+    }
+  ]
+}

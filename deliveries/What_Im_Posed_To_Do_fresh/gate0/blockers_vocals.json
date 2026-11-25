@@ -1,0 +1,145 @@
+{
+ "lead1": {
+  "phrase_ends": 58,
+  "tail_ms_to_minus40_median": 530.0,
+  "tail_ms_p90": 930.0000000000001,
+  "tail_level_100_300ms_median_db": -21.3,
+  "ends_hitting_digital_zero_pct": 78.0,
+  "gate_edges": 27,
+  "gate_edges_louder_than_m40dbfs": 0,
+  "gate_edge_max_dbfs": -59.2,
+  "noise_n_gap_frames": 504,
+  "noise_noise_floor_p10_dbfs": -68.3,
+  "noise_noise_floor_median_dbfs": -58.8,
+  "noise_hum50_prominence_db": 4.2,
+  "noise_hum60_prominence_db": 5.2,
+  "plosives": {
+   "n_events": 0,
+   "times_s": [],
+   "max_lf_dbfs": -30.4
+  },
+  "clicks": {
+   "n": 12,
+   "times_s": [
+    45.08,
+    52.64,
+    52.66,
+    61.32,
+    66.62,
+    89.3,
+    90.2,
+    97.08,
+    101.36,
+    110.46,
+    118.24,
+    123.54
+   ]
+  },
+  "tuned_spikes": {
+   "max_spike_db": 3.7,
+   "at_hz": 4783
+  }
+ },
+ "lead2": {
+  "phrase_ends": 66,
+  "tail_ms_to_minus40_median": 510.0,
+  "tail_ms_p90": 1120.0,
+  "tail_level_100_300ms_median_db": -6.5,
+  "ends_hitting_digital_zero_pct": 68.0,
+  "gate_edges": 28,
+  "gate_edges_louder_than_m40dbfs": 0,
+  "gate_edge_max_dbfs": -66.2,
+  "noise_n_gap_frames": 392,
+  "noise_noise_floor_p10_dbfs": -70.2,
+  "noise_noise_floor_median_dbfs": -62.2,
+  "noise_hum50_prominence_db": 5.7,
+  "noise_hum60_prominence_db": 4.9,
+  "plosives": {
+   "n_events": 0,
+   "times_s": [],
+   "max_lf_dbfs": -31.7
+  },
+  "clicks": {
+   "n": 13,
+   "times_s": [
+    47.78,
+    56.2,
+    56.32,
+    57.18,
+    84.4,
+    92.88,
+    104.68,
+    112.92,
+    113.22,
+    114.1,
+    162.04,
+    163.96,
+    171.04
+   ]
+  },
+  "tuned_spikes": {
+   "max_spike_db": 3.2,
+   "at_hz": 3445
+  }
+ },
+ "bg1": {
+  "phrase_ends": 10,
+  "tail_ms_to_minus40_median": 640.0,
+  "tail_ms_p90": 938.0,
+  "tail_level_100_300ms_median_db": -13.75,
+  "ends_hitting_digital_zero_pct": 80.0,
+  "gate_edges": 4,
+  "gate_edges_louder_than_m40dbfs": 0,
+  "gate_edge_max_dbfs": -72.2,
+  "noise_n_gap_frames": 99,
+  "noise_noise_floor_p10_dbfs": -71.7,
+  "noise_noise_floor_median_dbfs": -65.2,
+  "noise_hum50_prominence_db": 10.2,
+  "noise_hum60_prominence_db": 8.7,
+  "plosives": {
+   "n_events": 0,
+   "times_s": [],
+   "max_lf_dbfs": -35.4
+  },
+  "clicks": {
+   "n": 1,
+   "times_s": [
+    137.8
+   ]
+  },
+  "tuned_spikes": {
+   "max_spike_db": 5.0,
+   "at_hz": 3260
+  }
+ },
+ "bg2": {
+  "phrase_ends": 11,
+  "tail_ms_to_minus40_median": 340.0,
+  "tail_ms_p90": 600.0000000000002,
+  "tail_level_100_300ms_median_db": -23.4,
+  "ends_hitting_digital_zero_pct": 64.0,
+  "gate_edges": 4,
+  "gate_edges_louder_than_m40dbfs": 0,
+  "gate_edge_max_dbfs": -67.4,
+  "noise_n_gap_frames": 35,
+  "noise_noise_floor_p10_dbfs": -66.1,
+  "noise_noise_floor_median_dbfs": -59.6,
+  "noise_hum50_prominence_db": 12.0,
+  "noise_hum60_prominence_db": 4.2,
+  "plosives": {
+   "n_events": 0,
+   "times_s": [],
+   "max_lf_dbfs": -35.8
+  },
+  "clicks": {
+   "n": 1,
+   "times_s": [
+    143.58
+   ]
+  },
+  "tuned_spikes": {
+   "max_spike_db": 4.6,
+   "at_hz": 3203
+  }
+ }
+}

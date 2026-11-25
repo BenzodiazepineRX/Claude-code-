@@ -1,0 +1,73 @@
+{
+  "_readme": "One file per song per version: deliveries/<Song>/session/mix_config_vN.json. EVERY parameter needs value + why (the measurement that justified it, on THIS song) + source (measured | reference | artist_request | carried_from_vN) + since (version it was set/changed). Values here are placeholders (null) on purpose: never copy numbers from another song.",
+  "song": {
+    "title": null,
+    "artist": null,
+    "version": "v1",
+    "status": "draft, not final",
+    "bpm": {"value": null, "why": "detected on beat + 96-bar self-match drift (samples)", "source": "measured"},
+    "grid_t0_sec": {"value": null, "why": "kick/snare transient phase", "source": "measured"},
+    "key": {"value": null, "why": "detection score + sung pitch classes", "source": "measured"},
+    "sections": [{"name": null, "start_sec": null, "end_sec": null}],
+    "reference_tracks": [{"title": null, "integrated_lufs": null, "hook_short_term_lufs": null, "vocal_pocket_delta_db": null, "valid_reason": "no printed-FX / quality issues"}]
+  },
+  "intake_findings": {
+    "printed_fx_on_vocals": null,
+    "lossy_source": null,
+    "copy_pasted_regions": [],
+    "timing_vs_grid_ms_by_section": {},
+    "lowest_sung_note_hz_by_vocal": {},
+    "blockers": []
+  },
+  "gate1_vocals": {
+    "<stem_name>": {
+      "role": null,
+      "edge_fades_ms": {"value": null, "why": null},
+      "working_level_rms_dbfs": {"value": null, "why": null},
+      "rider": {"window_ms": null, "max_db": null, "why": "phrase spread before/after"},
+      "hpf": {"hz": null, "slope_db_oct": null, "why": "lowest sung fundamental = ? Hz", "source": "measured"},
+      "eq_cuts": [{"hz": null, "q": null, "db": null, "why": "harmonic-envelope hump peak/width; persists across sections", "source": "measured"}],
+      "compressor_stages": [{"threshold_db": null, "ratio": null, "attack_ms": null, "release_ms": null, "avg_gr_db": null, "why": "phrase spread + articulation check"}],
+      "deesser": {"band_hz": [null, null], "threshold": null, "max_cut_db": null, "active_pct": null, "why": "S-spike stats"},
+      "tone_boosts": [{"type": "bell|shelf", "hz": null, "q": null, "db": null, "why": "brightness vs beat/reference"}],
+      "saturation": {"enabled": false, "why": null},
+      "pan": {"value": null, "why": null},
+      "level_vs_lead_db": {"value": null, "why": null}
+    },
+    "pocket": {"lead_vs_beat_lu_target": null, "midband_delta_db_target": null, "beat_mid_dip": {"hz": null, "q": null, "max_db": null, "attack_ms": null, "release_ms": null}, "why": "reference delta / artist preference", "source": null}
+  },
+  "gate2_space": {
+    "reverb": {"type": null, "decay_s": null, "predelay_ms": null, "send_hpf_hz": null, "send_lpf_hz": null, "duck_db": null, "return_db_under_lead": null, "dry_to_reverb_while_singing_db": null, "why": null},
+    "delays": [{"name": null, "note": null, "ms": null, "samples": null, "feedback": null, "band_hz": [null, null], "duck_db": null, "why": null}],
+    "throws": [{"global_sec_range": [null, null], "note": null, "p_center_sec": null, "collision_check": "pass|fail", "why": "measured line end + gap length"}],
+    "layers": [{"name": null, "built_from": null, "level_db_under_lead": null, "hpf_hz": null, "detune_cents": null, "delay_ms": null, "pan": null, "sections": [], "approved_by_artist": null}],
+    "creative_fills": [{"name": null, "approved_by_artist": false, "grid_shift_bars": null}]
+  },
+  "gate3_balance": {
+    "section_automation": [{"target": null, "range_sec": [null, null], "db": null, "why": null}],
+    "hook_lift_lu_target": null,
+    "beat_processing": [{"process": null, "settings": {}, "why": null}],
+    "mix_bus": {"gain_stage_peak_dbfs": -6, "glue": {"ratio": null, "threshold_db": null, "attack_ms": null, "release_ms": null, "sidechain_hpf_hz": null, "avg_gr_db": null}, "side_hpf_hz": null, "why": null}
+  },
+  "gate4_master": {
+    "corrective_eq": [],
+    "loudness_target_lufs": {"value": null, "why": "loudest target with limiter GR <= 3-4 dB on loudest 1% hits; matched-loudness reference comparison"},
+    "true_peak_ceiling_dbtp": {"value": null, "why": "-1.0, or -2.0 if louder than -14 LUFS; margin for post-limit stages"},
+    "limiter": {"input_gain_db": null, "attack_ms": null, "release_ms": null, "oversampling": 4, "measured_gr_top1pct_db": null},
+    "post_limit": {"dc_block_hz": null, "verse_dip_db": null, "fade_out": null}
+  },
+  "qc_thresholds_song_specific": {
+    "_note": "Set BEFORE seeing results. Any later change needs a written reason in the report.",
+    "lead_vs_beat_lu_range": [null, null],
+    "pocket_midband_db_range": [null, null],
+    "hook_lift_lu_range": [null, null],
+    "reverb_db_under_lead_range": [null, null],
+    "dry_to_reverb_while_singing_min_db": null,
+    "stack_db_under_lead_range": [null, null],
+    "echo_bg_db_under_line_range": [null, null],
+    "resonance_hump_max_db": null,
+    "brightness_target_db": null,
+    "integrated_lufs_target": null
+  },
+  "revision_log": [{"version": "v1", "requested_by": null, "request": null, "changed_keys": [{"key": null, "before": null, "after": null, "why": null}], "frozen_confirmed": true}]
+}

@@ -66,3 +66,15 @@ Read this at the start of every job.
 4. **Never use a reference that has printed FX** for tone matching.
 5. **Kenshin's voice (this mic):** resonance at 480 Hz (Q 3.5, −5.5 dB), a natural dip at 600 Hz (leave it), very dark top (+2.5 dB @ 3.2k, +4 dB shelf above 6k).
 6. When collaborators (ARMY) push back with measurements, re-test assumptions from the raw. Don't keep stacking fixes on a flawed chain.
+
+## Process lessons (Welcome 2 the Wild Side, Nov 22 2026, v1–v9, Alpha + Beta)
+Source: 2-track beat (lossy-looking, stops ~16.5 kHz, no 808 stem) + one 16-bar lead with printed reverb. Verified 82.5 BPM (file tag said 110). Working files were lost when the bot computer was refreshed; originals are in Kenshin's Dropbox. Status: draft, not final (Kenshin had not approved v9).
+- Pocket is per song: Kenshin heard the lead at -0.43 LU vs beat as "too loud, not clean enough"; v9 sat at about -1.6 LU. (Supersedes treating 0 to +0.5 LU as his fixed preference.)
+- "Not clean" measured as printed reverb pulled up ~3.4 dB between phrases by compression, riding and peak control. A gentle 2:1 downward expander on the tails (up to 6 dB, release one 1/16 note) brought tails back to within ~1 dB of raw. Watch printed-FX tails after every dynamics stage.
+- Loudness was capped by vocal peaks landing on 808 hits (62% vocal / 32% 808 of limiter load). 808-only moves gained 0.4 LU or less.
+- Mix-bus soft clipping to reach -12 LUFS added ~16 dB more 2–8 kHz distortion vs the clean version (the harsh/ampy sound he hates). Measure 2–8 kHz distortion against the previous version before going louder.
+- Analysis-stage loudness estimates ran ~3 LU too optimistic. Measure limiter GR on the real mix.
+- A 1.5 dB lead cut moved the lead only 1.2 LU after mastering, because master gain rose to hold loudness. Over-correct slightly.
+- (Beta) The -14 LUFS cliff: landing just under -14 (-14.31) at a -1.4 dBTP ceiling gave more level than going past -14 at -2.0, which needed about twice the 808-hit limiting. AAC encoding added 0.14–0.20 dB true peak; keep that margin under the ceiling.
+- Push every version's notes, mix_config.json and QC results to the repo as soon as it is rendered; bot computers get refreshed.
+- Ask for beat trackouts/WAV and dry vocals; the 2-track lossy beat was the real limit.

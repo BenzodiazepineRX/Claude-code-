@@ -1,0 +1,621 @@
+{
+ "bg_sections": [
+  {
+   "section": "A1",
+   "source": "lead",
+   "lyric_start_asr": "I've been trying everything these blunts",
+   "candidates": [
+    {
+     "word_index": 5,
+     "word": "these",
+     "asr_start_sec": 44.98,
+     "asr_prob": 0.677,
+     "onset_det_sec": 44.9598,
+     "dip_sec": 44.8673,
+     "dip_db": -65.1,
+     "window_median_db": -32.4
+    },
+    {
+     "word_index": 6,
+     "word": "blunts",
+     "asr_start_sec": 45.26,
+     "asr_prob": 0.957,
+     "onset_det_sec": 45.317,
+     "dip_sec": 45.277,
+     "dip_db": -64.2,
+     "window_median_db": -42.6
+    }
+   ],
+   "chosen": 5,
+   "entry_global_idx": 1978648,
+   "entry_global_sec": 44.8673,
+   "why_choice": "deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)",
+   "next_section_onset": {
+    "word": "What",
+    "dip_sec": 73.0567,
+    "note": "B1 first word (ASR missed it; window = A1 last word end -0.1 .. B1 word 2 onset)"
+   },
+   "end_per_stem": {
+    "lead1": {
+     "end_global_idx": 3221800,
+     "end_global_sec": 73.0567,
+     "rule": "stem sings the next section first word: cut at the dip before it"
+    },
+    "lead2": {
+     "end_global_idx": 3221800,
+     "end_global_sec": 73.0567,
+     "rule": "stem sings the next section first word: cut at the dip before it"
+    }
+   }
+  },
+  {
+   "section": "B1",
+   "source": "lead",
+   "lyric_start_asr": "What I'm supposed to do when",
+   "candidates": [
+    {
+     "word_index": 5,
+     "word": "do",
+     "asr_start_sec": 73.8,
+     "asr_prob": 0.994,
+     "onset_det_sec": 73.7903,
+     "dip_sec": 73.777,
+     "dip_db": -69.1,
+     "window_median_db": -58.7
+    },
+    {
+     "word_index": 6,
+     "word": "when",
+     "asr_start_sec": 74.06,
+     "asr_prob": 0.768,
+     "onset_det_sec": 74.1195,
+     "dip_sec": 73.9572,
+     "dip_db": -30.4,
+     "window_median_db": -30.0
+    }
+   ],
+   "chosen": 5,
+   "entry_global_idx": 3253566,
+   "entry_global_sec": 73.777,
+   "why_choice": "deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)",
+   "next_section_onset": {
+    "word": "But",
+    "dip_sec": 87.1221,
+    "note": "B2 first word"
+   },
+   "end_per_stem": {
+    "lead1": {
+     "end_global_idx": 3842084,
+     "end_global_sec": 87.1221,
+     "rule": "stem sings the next section first word: cut at the dip before it"
+    },
+    "lead2": {
+     "end_global_idx": 3842084,
+     "end_global_sec": 87.1221,
+     "rule": "stem sings the next section first word: cut at the dip before it"
+    }
+   }
+  },
+  {
+   "section": "B2",
+   "source": "lead",
+   "lyric_start_asr": "What I'm supposed to do when",
+   "candidates": [
+    {
+     "word_index": 5,
+     "word": "do",
+     "asr_start_sec": 88.02,
+     "asr_prob": 0.995,
+     "onset_det_sec": 88.014,
+     "dip_sec": 87.997,
+     "dip_db": -67.9,
+     "window_median_db": -57.6
+    },
+    {
+     "word_index": 6,
+     "word": "when",
+     "asr_start_sec": 88.3,
+     "asr_prob": 0.855,
+     "onset_det_sec": 88.2654,
+     "dip_sec": 88.1972,
+     "dip_db": -29.9,
+     "window_median_db": -29.4
+    }
+   ],
+   "chosen": 5,
+   "entry_global_idx": 3880668,
+   "entry_global_sec": 87.997,
+   "why_choice": "deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)",
+   "next_section_onset": {
+    "word": "I've",
+    "dip_sec": 100.807,
+    "note": "A2 first word (ASR missed it; window = B2 last word end .. A2 word 3 onset)"
+   },
+   "end_per_stem": {
+    "lead1": {
+     "end_global_idx": 4445589,
+     "end_global_sec": 100.807,
+     "rule": "stem sings the next section first word: cut at the dip before it"
+    },
+    "lead2": {
+     "end_global_idx": 4445589,
+     "end_global_sec": 100.807,
+     "rule": "stem sings the next section first word: cut at the dip before it"
+    }
+   }
+  },
+  {
+   "section": "A2",
+   "source": "lead",
+   "lyric_start_asr": "I've been trying everything these blunts",
+   "candidates": [
+    {
+     "word_index": 5,
+     "word": "these",
+     "asr_start_sec": 101.88,
+     "asr_prob": 0.483,
+     "onset_det_sec": 101.8126,
+     "dip_sec": 101.7972,
+     "dip_db": -38.5,
+     "window_median_db": -31.6
+    },
+    {
+     "word_index": 6,
+     "word": "blunts",
+     "asr_start_sec": 102.16,
+     "asr_prob": 0.945,
+     "onset_det_sec": 102.084,
+     "dip_sec": 102.1869,
+     "dip_db": -63.6,
+     "window_median_db": -36.8
+    }
+   ],
+   "chosen": 6,
+   "entry_global_idx": 4506442,
+   "entry_global_sec": 102.1869,
+   "why_choice": "deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)",
+   "end_per_stem": {
+    "lead1": {
+     "end_global_idx": 5605961,
+     "end_global_sec": 127.1193,
+     "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+    },
+    "lead2": {
+     "end_global_idx": 5762593,
+     "end_global_sec": 130.671,
+     "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+    }
+   }
+  },
+  {
+   "section": "Bridge",
+   "source": "bg",
+   "lyric_start_asr": "I've been up to no good",
+   "candidates": [
+    {
+     "word_index": 5,
+     "word": "no",
+     "asr_start_sec": 130.62,
+     "asr_prob": 0.975,
+     "onset_det_sec": 130.6491,
+     "dip_sec": 130.637,
+     "dip_db": -40.6,
+     "window_median_db": -39.7
+    },
+    {
+     "word_index": 6,
+     "word": "good",
+     "asr_start_sec": 131.0,
+     "asr_prob": 0.991,
+     "onset_det_sec": 131.0122,
+     "dip_sec": 131.0269,
+     "dip_db": -31.2,
+     "window_median_db": -28.3
+    }
+   ],
+   "chosen": 5,
+   "entry_global_idx": 5761092,
+   "entry_global_sec": 130.637,
+   "why_choice": "deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)",
+   "end_per_stem": {
+    "bg1": {
+     "end_global_idx": 6234185,
+     "end_global_sec": 141.3647,
+     "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+    },
+    "bg2": {
+     "end_global_idx": 6391331,
+     "end_global_sec": 144.9281,
+     "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+    }
+   }
+  },
+  {
+   "section": "B3",
+   "source": "lead",
+   "lyric_start_asr": "What I'm supposed to do when",
+   "candidates": [
+    {
+     "word_index": 5,
+     "word": "do",
+     "asr_start_sec": 159.06,
+     "asr_prob": 0.994,
+     "onset_det_sec": 159.0844,
+     "dip_sec": 159.067,
+     "dip_db": -68.5,
+     "window_median_db": -58.5
+    },
+    {
+     "word_index": 6,
+     "word": "when",
+     "asr_start_sec": 159.38,
+     "asr_prob": 0.785,
+     "onset_det_sec": 159.4476,
+     "dip_sec": 159.402,
+     "dip_db": -31.0,
+     "window_median_db": -30.1
+    }
+   ],
+   "chosen": 5,
+   "entry_global_idx": 7014855,
+   "entry_global_sec": 159.067,
+   "why_choice": "deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)",
+   "end_per_stem": {
+    "lead1": {
+     "end_global_idx": 7458400,
+     "end_global_sec": 169.1247,
+     "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+    },
+    "lead2": {
+     "end_global_idx": 7641340,
+     "end_global_sec": 173.273,
+     "rule": "end of the stem's last region in this section (digital zero, printed tail already ends there)"
+    }
+   }
+  }
+ ],
+ "throws": [
+  {
+   "line_end_sec": 46.18,
+   "next_onset_sec": 46.68,
+   "gap_sec": 0.5,
+   "stem": "lead1",
+   "word_asr_label": "enough",
+   "word_start_idx": 2021646,
+   "word_start_sec": 45.8423,
+   "word_end_idx": 2036538,
+   "p_center_idx": 2028138,
+   "p_center_sec": 45.9895,
+   "p_center_vs_grid16_ms": -14.6,
+   "note_fit": {
+    "1/2": {
+     "repeat1_pc_sec": 46.8784,
+     "in_gap": false,
+     "margin_after_line_end_ms": 698,
+     "margin_before_next_ms": -198
+    },
+    "1/4d": {
+     "repeat1_pc_sec": 46.6562,
+     "in_gap": false,
+     "margin_after_line_end_ms": 476,
+     "margin_before_next_ms": 24
+    },
+    "1/4": {
+     "repeat1_pc_sec": 46.434,
+     "in_gap": true,
+     "margin_after_line_end_ms": 254,
+     "margin_before_next_ms": 246
+    },
+    "1/8d": {
+     "repeat1_pc_sec": 46.3229,
+     "in_gap": true,
+     "margin_after_line_end_ms": 143,
+     "margin_before_next_ms": 357
+    },
+    "1/8": {
+     "repeat1_pc_sec": 46.2117,
+     "in_gap": true,
+     "margin_after_line_end_ms": 32,
+     "margin_before_next_ms": 468
+    },
+    "1/16d": {
+     "repeat1_pc_sec": 46.1562,
+     "in_gap": false,
+     "margin_after_line_end_ms": -24,
+     "margin_before_next_ms": 524
+    },
+    "1/16": {
+     "repeat1_pc_sec": 46.1006,
+     "in_gap": false,
+     "margin_after_line_end_ms": -79,
+     "margin_before_next_ms": 579
+    }
+   }
+  },
+  {
+   "line_end_sec": 58.16,
+   "next_onset_sec": 58.66,
+   "gap_sec": 0.5,
+   "stem": "lead2",
+   "word_asr_label": "song",
+   "word_start_idx": 2547104,
+   "word_start_sec": 57.7575,
+   "word_end_idx": 2564856,
+   "p_center_idx": 2549614,
+   "p_center_sec": 57.8144,
+   "p_center_vs_grid16_ms": 32.5,
+   "note_fit": {
+    "1/2": {
+     "repeat1_pc_sec": 58.7033,
+     "in_gap": false,
+     "margin_after_line_end_ms": 543,
+     "margin_before_next_ms": -43
+    },
+    "1/4d": {
+     "repeat1_pc_sec": 58.481,
+     "in_gap": true,
+     "margin_after_line_end_ms": 321,
+     "margin_before_next_ms": 179
+    },
+    "1/4": {
+     "repeat1_pc_sec": 58.2588,
+     "in_gap": true,
+     "margin_after_line_end_ms": 99,
+     "margin_before_next_ms": 401
+    },
+    "1/8d": {
+     "repeat1_pc_sec": 58.1477,
+     "in_gap": false,
+     "margin_after_line_end_ms": -12,
+     "margin_before_next_ms": 512
+    },
+    "1/8": {
+     "repeat1_pc_sec": 58.0366,
+     "in_gap": false,
+     "margin_after_line_end_ms": -123,
+     "margin_before_next_ms": 623
+    },
+    "1/16d": {
+     "repeat1_pc_sec": 57.981,
+     "in_gap": false,
+     "margin_after_line_end_ms": -179,
+     "margin_before_next_ms": 679
+    },
+    "1/16": {
+     "repeat1_pc_sec": 57.9255,
+     "in_gap": false,
+     "margin_after_line_end_ms": -235,
+     "margin_before_next_ms": 735
+    }
+   }
+  },
+  {
+   "line_end_sec": 103.1,
+   "next_onset_sec": 103.6,
+   "gap_sec": 0.5,
+   "stem": "lead1",
+   "word_asr_label": "ain't",
+   "word_start_idx": 4531818,
+   "word_start_sec": 102.7623,
+   "word_end_idx": 4546710,
+   "p_center_idx": 4538179,
+   "p_center_sec": 102.9066,
+   "p_center_vs_grid16_ms": 13.5,
+   "note_fit": {
+    "1/2": {
+     "repeat1_pc_sec": 103.7954,
+     "in_gap": false,
+     "margin_after_line_end_ms": 695,
+     "margin_before_next_ms": -195
+    },
+    "1/4d": {
+     "repeat1_pc_sec": 103.5732,
+     "in_gap": false,
+     "margin_after_line_end_ms": 473,
+     "margin_before_next_ms": 27
+    },
+    "1/4": {
+     "repeat1_pc_sec": 103.351,
+     "in_gap": true,
+     "margin_after_line_end_ms": 251,
+     "margin_before_next_ms": 249
+    },
+    "1/8d": {
+     "repeat1_pc_sec": 103.2399,
+     "in_gap": true,
+     "margin_after_line_end_ms": 140,
+     "margin_before_next_ms": 360
+    },
+    "1/8": {
+     "repeat1_pc_sec": 103.1288,
+     "in_gap": true,
+     "margin_after_line_end_ms": 29,
+     "margin_before_next_ms": 471
+    },
+    "1/16d": {
+     "repeat1_pc_sec": 103.0732,
+     "in_gap": false,
+     "margin_after_line_end_ms": -27,
+     "margin_before_next_ms": 527
+    },
+    "1/16": {
+     "repeat1_pc_sec": 103.0177,
+     "in_gap": false,
+     "margin_after_line_end_ms": -82,
+     "margin_before_next_ms": 582
+    }
+   }
+  },
+  {
+   "line_end_sec": 115.07,
+   "next_onset_sec": 115.58,
+   "gap_sec": 0.51,
+   "stem": "lead2",
+   "word_asr_label": "song",
+   "word_start_idx": 5057054,
+   "word_start_sec": 114.6724,
+   "word_end_idx": 5074587,
+   "p_center_idx": 5059493,
+   "p_center_sec": 114.7277,
+   "p_center_vs_grid16_ms": -54.2,
+   "note_fit": {
+    "1/2": {
+     "repeat1_pc_sec": 115.6166,
+     "in_gap": false,
+     "margin_after_line_end_ms": 547,
+     "margin_before_next_ms": -37
+    },
+    "1/4d": {
+     "repeat1_pc_sec": 115.3944,
+     "in_gap": true,
+     "margin_after_line_end_ms": 324,
+     "margin_before_next_ms": 186
+    },
+    "1/4": {
+     "repeat1_pc_sec": 115.1722,
+     "in_gap": true,
+     "margin_after_line_end_ms": 102,
+     "margin_before_next_ms": 408
+    },
+    "1/8d": {
+     "repeat1_pc_sec": 115.0611,
+     "in_gap": false,
+     "margin_after_line_end_ms": -9,
+     "margin_before_next_ms": 519
+    },
+    "1/8": {
+     "repeat1_pc_sec": 114.95,
+     "in_gap": false,
+     "margin_after_line_end_ms": -120,
+     "margin_before_next_ms": 630
+    },
+    "1/16d": {
+     "repeat1_pc_sec": 114.8944,
+     "in_gap": false,
+     "margin_after_line_end_ms": -176,
+     "margin_before_next_ms": 686
+    },
+    "1/16": {
+     "repeat1_pc_sec": 114.8388,
+     "in_gap": false,
+     "margin_after_line_end_ms": -231,
+     "margin_before_next_ms": 741
+    }
+   }
+  },
+  {
+   "line_end_sec": 144.49,
+   "next_onset_sec": 158.19,
+   "gap_sec": 13.7,
+   "stem": "bg2",
+   "word_asr_label": "all",
+   "word_start_idx": 6332916,
+   "word_start_sec": 143.6035,
+   "word_end_idx": 6372009,
+   "p_center_idx": 6332925,
+   "p_center_sec": 143.6037,
+   "p_center_vs_grid16_ms": 44.1,
+   "note_fit": {
+    "1/2": {
+     "repeat1_pc_sec": 144.4926,
+     "in_gap": true,
+     "margin_after_line_end_ms": 3,
+     "margin_before_next_ms": 13697
+    },
+    "1/4d": {
+     "repeat1_pc_sec": 144.2704,
+     "in_gap": false,
+     "margin_after_line_end_ms": -220,
+     "margin_before_next_ms": 13920
+    },
+    "1/4": {
+     "repeat1_pc_sec": 144.0482,
+     "in_gap": false,
+     "margin_after_line_end_ms": -442,
+     "margin_before_next_ms": 14142
+    },
+    "1/8d": {
+     "repeat1_pc_sec": 143.9371,
+     "in_gap": false,
+     "margin_after_line_end_ms": -553,
+     "margin_before_next_ms": 14253
+    },
+    "1/8": {
+     "repeat1_pc_sec": 143.826,
+     "in_gap": false,
+     "margin_after_line_end_ms": -664,
+     "margin_before_next_ms": 14364
+    },
+    "1/16d": {
+     "repeat1_pc_sec": 143.7704,
+     "in_gap": false,
+     "margin_after_line_end_ms": -720,
+     "margin_before_next_ms": 14420
+    },
+    "1/16": {
+     "repeat1_pc_sec": 143.7149,
+     "in_gap": false,
+     "margin_after_line_end_ms": -775,
+     "margin_before_next_ms": 14475
+    }
+   }
+  },
+  {
+   "line_end_sec": 172.9,
+   "next_onset_sec": 243.6,
+   "gap_sec": 70.7,
+   "stem": "lead2",
+   "word_asr_label": "Adderall",
+   "word_start_idx": 7585358,
+   "word_start_sec": 172.0036,
+   "word_end_idx": 7624890,
+   "p_center_idx": 7585397,
+   "p_center_sec": 172.0045,
+   "p_center_vs_grid16_ms": 0.3,
+   "note_fit": {
+    "1/2": {
+     "repeat1_pc_sec": 172.8934,
+     "in_gap": false,
+     "margin_after_line_end_ms": -7,
+     "margin_before_next_ms": 70707
+    },
+    "1/4d": {
+     "repeat1_pc_sec": 172.6711,
+     "in_gap": false,
+     "margin_after_line_end_ms": -229,
+     "margin_before_next_ms": 70929
+    },
+    "1/4": {
+     "repeat1_pc_sec": 172.4489,
+     "in_gap": false,
+     "margin_after_line_end_ms": -451,
+     "margin_before_next_ms": 71151
+    },
+    "1/8d": {
+     "repeat1_pc_sec": 172.3378,
+     "in_gap": false,
+     "margin_after_line_end_ms": -562,
+     "margin_before_next_ms": 71262
+    },
+    "1/8": {
+     "repeat1_pc_sec": 172.2267,
+     "in_gap": false,
+     "margin_after_line_end_ms": -673,
+     "margin_before_next_ms": 71373
+    },
+    "1/16d": {
+     "repeat1_pc_sec": 172.1711,
+     "in_gap": false,
+     "margin_after_line_end_ms": -729,
+     "margin_before_next_ms": 71429
+    },
+    "1/16": {
+     "repeat1_pc_sec": 172.1156,
+     "in_gap": false,
+     "margin_after_line_end_ms": -784,
+     "margin_before_next_ms": 71484
+    }
+   }
+  }
+ ]
+}

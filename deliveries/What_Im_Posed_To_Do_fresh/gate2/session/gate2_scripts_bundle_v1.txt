@@ -1,0 +1,800 @@
+##### FILE: g2lib.py #####
+"""Gate 2 library, What I'm Posed To Do (fresh v1). Plugin/Effect Pro, 2026-11-25.
+Float64 DSP; audio-path filters causal sosfilt; analysis filters may be zero-phase (never touch audio)."""
+import json, numpy as np, soundfile as sf
+from scipy.signal import butter, sosfilt, sosfiltfilt, resample_poly, fftconvolve
+import pyloudnorm as pyln
+ROOT='/workspace/songs/Untitled_2026-11-25'; G1=ROOT+'/gate1'; G2=ROOT+'/gate2'
+SR=44100; T0=182; BAR=78400; BEAT=19600
+NOTES={'1/2':39200,'1/4d':29400,'1/4':19600,'1/8d':14700,'1/8':9800,'1/16d':7350,'1/16':4900}
+STEMS={'lead1':'WIPTD_fresh_G1_Lead1_v2_24b-44k.wav','lead2':'WIPTD_fresh_G1_Lead2_v2_24b-44k.wav',
+       'bg1':'WIPTD_fresh_G1_BackgroundLead_v2_24b-44k.wav','bg2':'WIPTD_fresh_G1_BackgroundLead2_v2_24b-44k.wav'}
+BEATF='WIPTD_fresh_G1_Beat_pocket_v1_24b-44k.wav'
+MTR=pyln.Meter(SR)
+def db(v): return 20*np.log10(np.maximum(v,1e-12))
+def pdb(v): return 10*np.log10(np.maximum(v,1e-24))
+def bar_s(n): return (T0+(n-1)*BAR)/SR
+def load_beat():
+    x,sr=sf.read(f'{G1}/{BEATF}',always_2d=True,dtype='float64'); assert sr==SR; return x
+def load_voc(k,N=None):
+    x,sr=sf.read(f'{G1}/{STEMS[k]}',always_2d=True,dtype='float64'); assert sr==SR
+    assert np.array_equal(x[:,0],x[:,1]); m=x[:,0]
+    if N is not None:
+        assert len(m)<=N; m=np.pad(m,(0,N-len(m)))
+    return m
+def bp_an(z,lo,hi,o=4): return sosfiltfilt(butter(o,[lo,hi],'band',fs=SR,output='sos'),z)
+def env_ms(z,ms=10):
+    """RMS per hop of ms (frame i covers [i*h,(i+1)*h))"""
+    h=int(round(SR*ms/1000)); n=len(z)//h
+    return np.sqrt((z[:n*h].reshape(n,h)**2).mean(1)), h
+def movavg(x,w):
+    c=np.concatenate([[0],np.cumsum(x)]); w=max(1,int(w)); i=np.arange(len(x))
+    lo=np.clip(i-w//2,0,len(x)); hi=np.clip(i+w//2+1,0,len(x)); return (c[hi]-c[lo])/(hi-lo)
+def true_peak_db(x):
+    x=x if x.ndim==2 else x[:,None]
+    return float(db(max(np.abs(resample_poly(x[:,c],4,1)).max() for c in range(x.shape[1]))))
+def lufs(x):
+    x=x if x.ndim==2 else x[:,None]
+    v=MTR.integrated_loudness(x); return float(v) if np.isfinite(v) else -99.0
+def rc_fade(n,up=True):
+    t=np.arange(n)/max(n,1); f=0.5-0.5*np.cos(np.pi*t); return f if up else f[::-1]
+def lin(dbv): return 10**(dbv/20)
+
+# ---------- P-center ----------
+def pcenter(m, ws, we, hop_ms=2.0):
+    """Stressed-vowel P-center of the word in samples [ws,we): envelope = 300 Hz-3 kHz band, RMS on hop_ms hops smoothed 10 ms;
+    stressed vowel = envelope max inside the word; P-center = last time before that max where the envelope rises through
+    50% (-6 dB) of the max (half-rise point of the vowel). Returns global sample index."""
+    pad=int(0.05*SR); a=max(0,ws-pad); b=min(len(m),we+pad)
+    z=bp_an(m[a:b],300,3000); h=int(SR*hop_ms/1000)
+    n=len(z)//h; e=np.sqrt((z[:n*h].reshape(n,h)**2).mean(1)); e=movavg(e,max(1,int(10/hop_ms)))
+    i0=(ws-a)//h; i1=min(n,(we-a)//h)
+    if i1<=i0+1: return ws
+    ipk=i0+int(np.argmax(e[i0:i1])); half=0.5*e[ipk]; j=ipk
+    while j>i0 and e[j-1]>=half: j-=1
+    # interpolate crossing between j-1 and j
+    if j>0 and e[j]>e[j-1]:
+        frac=(half-e[j-1])/(e[j]-e[j-1]); t=(j-1+frac)
+    else: t=j
+    return int(a+t*h+h/2)
+
+def lag_xcorr(ref, x, maxlag):
+    """lag (samples) of x relative to ref, band 1-6 kHz, FFT xcorr, |lag|<=maxlag"""
+    r=bp_an(ref,1000,6000); y=bp_an(x,1000,6000)
+    n=1<<int(np.ceil(np.log2(len(r)+len(y))))
+    c=np.fft.irfft(np.fft.rfft(y,n)*np.conj(np.fft.rfft(r,n)),n)
+    c=np.concatenate([c[-maxlag:],c[:maxlag+1]]); return int(np.argmax(c))-maxlag
+
+def pcenter_stressed(m, ws, we, hop_ms=2.0, within_db=3.0):
+    """P-center of the lexically stressed vowel, approximated as the FIRST vowel whose peak is within `within_db` of the word's
+    maximum (so 'e-NOUGH' -> 'nough', 'AD-der-all' -> 'Ad', where 'rall' is louder by <3 dB); P-center = half-rise (50% amplitude)
+    point before that vowel's peak. Envelope: 300 Hz-3 kHz, RMS on 2 ms hops, smoothed 10 ms."""
+    pad=int(0.05*SR); a=max(0,ws-pad); b=min(len(m),we+pad)
+    z=bp_an(m[a:b],300,3000); h=int(SR*hop_ms/1000)
+    n=len(z)//h; e=np.sqrt((z[:n*h].reshape(n,h)**2).mean(1)); e=movavg(e,max(1,int(10/hop_ms)))
+    i0=(ws-a)//h; i1=min(n,(we-a)//h); M=e[i0:i1].max(); thr=M*10**(-within_db/20)
+    i=i0+int(np.argmax(e[i0:i1]>=thr))
+    while i+1<i1 and e[i+1]>=e[i]: i+=1          # climb to that vowel's local peak
+    half=0.5*e[i]; j=i
+    while j>i0 and e[j-1]>=half: j-=1
+    t=(j-1+(half-e[j-1])/(e[j]-e[j-1])) if (j>0 and e[j]>e[j-1]) else j
+    return int(a+t*h+h/2)
+
+##### FILE: metrics_g2.py #####
+import sys; sys.path.insert(0,'.'); from g2lib import *
+def fr(z,ms=10):
+    e,h=env_ms(z,ms); return e
+def dry_to_wet_db(dry,wet,act,lo=None,hi=None):
+    """median over active 10 ms frames of 20log10(dry_rms/wet_rms) (energy-ratio on the pooled active frames)"""
+    if lo: dry=bp_an(dry,lo,hi); wet=bp_an(wet,lo,hi)
+    ed=fr(dry); ew=fr(wet); n=min(len(ed),len(ew),len(act)); a=act[:n]
+    if a.sum()==0: return float('nan')
+    return float(pdb((ed[:n][a]**2).sum())-pdb((ew[:n][a]**2).sum()))
+def under_db(lead,layer,act,lo,hi): return dry_to_wet_db(lead,layer,act,lo,hi)
+def tail_end_dbfs(y,ms=200):
+    y=y if y.ndim==1 else y.max(1) if False else np.abs(y).max(1)
+    n=int(SR*ms/1000); return float(db(np.sqrt(np.mean(y[-n:]**2))))
+def corr(x):
+    L=x[:,0]-x[:,0].mean(); R=x[:,1]-x[:,1].mean(); return float((L*R).sum()/np.sqrt((L*L).sum()*(R*R).sum()+1e-30))
+
+##### FILE: sanity_g2.py #####
+"""Known-answer tests for every new Gate 2 metric (run before trusting them)."""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+rng=np.random.default_rng(1); res={}
+# 1) P-center: noise burst with 20 ms linear attack at 0.5 s -> half-amplitude point 10 ms after onset (RMS env)
+x=np.zeros(SR); on=int(0.5*SR); att=int(0.02*SR); env=np.zeros(SR); env[on:on+att]=np.linspace(0,1,att); env[on+att:on+int(0.3*SR)]=1
+x=rng.standard_normal(SR)*env*0.3
+pc=pcenter(x,on,on+int(0.3*SR)); res['pcenter_known_10ms_after_onset_ms']=round((pc-on)/SR*1000,2)
+# 2) lag_xcorr: noise vs same noise delayed 14700 samples -> 14700
+s=rng.standard_normal(3*SR); d=np.zeros_like(s); d[14700:]=s[:-14700]
+res['xcorr_known_lag_14700']=lag_xcorr(s,d,20000)
+# 3) dry-to-wet ratio metric: lead noise vs 'reverb' = independent noise *0.1 -> 20 dB
+from metrics_g2 import dry_to_wet_db
+a=rng.standard_normal(5*SR); w=rng.standard_normal(5*SR)*0.1; act=np.ones(len(a)//441,bool)
+res['dry_to_wet_known_20dB']=round(dry_to_wet_db(a,w,act),2)
+res['dry_to_wet_zero_wet_gives_large']=round(dry_to_wet_db(a,np.zeros_like(a),act),1)
+# 4) layer dB-under in 1-4 kHz: copy at -15 dB -> 15
+from metrics_g2 import under_db
+res['under_db_known_15']=round(under_db(a,a*lin(-15),act,1000,4000),2)
+# 5) tail level: exp decay 60 dB over 1 s -> level at end of 1.5 s buffer < -60
+t=np.arange(int(1.5*SR))/SR; y=rng.standard_normal(len(t))*10**(-3*t)
+from metrics_g2 import tail_end_dbfs
+res['tail_end_known_below_-60']=round(tail_end_dbfs(y),1)
+# 6) mono correlation: identical L/R -> 1, independent -> ~0
+from metrics_g2 import corr
+res['corr_identical']=round(corr(np.c_[a,a]),3); res['corr_indep']=round(corr(np.c_[a,w]),3)
+print(json.dumps(res,indent=1)); json.dump(res,open(G2+'/session/sanity_g2_v1.json','w'),indent=1)
+# 7) stressed-vowel P-center: weak burst (-12 dB) at 0.2 s then strong burst at 0.5 s -> picks the strong one (~10 ms after 0.5 s)
+x=np.zeros(SR); e1=np.zeros(SR); a1=int(0.2*SR); e1[a1:a1+att]=np.linspace(0,0.25,att); e1[a1+att:a1+int(0.15*SR)]=0.25
+e1[on:on+att]=np.linspace(0,1,att); e1[on+att:on+int(0.3*SR)]=1
+x=rng.standard_normal(SR)*e1*0.3
+res['pcenter_stressed_known_10ms_after_strong_onset_ms']=round((pcenter_stressed(x,a1,on+int(0.3*SR))-on)/SR*1000,2)
+# 8) same but first syllable only 2 dB quieter -> picks the FIRST syllable (~10 ms after 0.2 s)
+e1[a1:a1+att]=np.linspace(0,0.8,att); e1[a1+att:a1+int(0.15*SR)]=0.8; x=rng.standard_normal(SR)*e1*0.3
+res['pcenter_stressed_first_within_3dB_ms_after_0.2s']=round((pcenter_stressed(x,a1,on+int(0.3*SR))-a1)/SR*1000,2)
+print(json.dumps(res,indent=1)); json.dump(res,open(G2+'/session/sanity_g2_v1.json','w'),indent=1)
+
+##### FILE: activity.py #####
+"""Word-activity (not printed tail) per stem on 10 ms frames. Threshold derived from the printed-tail curve (analysis/tails.json):
+printed tail is -23 dB re phrase at 50 ms -> a frame counts as 'singing' if its 300 Hz-4 kHz RMS is within THR dB of the
+stem's p95 singing level. Writes gate2/session/activity_v1.npz"""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+beat=load_beat(); N=len(beat)
+out={}
+for k in STEMS:
+    m=load_voc(k,N); e,h=env_ms(bp_an(m,300,4000),10); edb=db(e)
+    p95=np.percentile(edb[edb>-100],95)
+    out[k+'_edb']=edb; out[k+'_p95']=p95
+    print(k,'p95',round(p95,2),'frames',len(edb))
+np.savez(G2+'/session/activity_v1.npz',**out)
+
+##### FILE: words_sections.py #####
+"""Word timestamps per Gate 0 section from the summed Gate 1 vocals (lead1+lead2; bridge: bg1+bg2), faster-whisper medium.en,
+word_timestamps, no VAD, chunk = section +-0.6 s (each < 30 s so one decoding window). Analysis only.
+Times are converted to global seconds (global_sec = chunk_start + local_sec)."""
+import sys, json, numpy as np, soundfile as sf
+from scipy.signal import resample_poly
+from faster_whisper import WhisperModel
+ROOT='/workspace/songs/Untitled_2026-11-25'; G1=ROOT+'/gate1'
+F={'lead1':'WIPTD_fresh_G1_Lead1_v1_24b-44k.wav','lead2':'WIPTD_fresh_G1_Lead2_v1_24b-44k.wav',
+   'bg1':'WIPTD_fresh_G1_BackgroundLead_v1_24b-44k.wav','bg2':'WIPTD_fresh_G1_BackgroundLead2_v1_24b-44k.wav'}
+N=10742755
+def ld(k):
+    x,sr=sf.read(f'{G1}/{F[k]}',always_2d=True,dtype='float32'); m=x[:,0]; return np.pad(m,(0,N-len(m)))
+lead=ld('lead1')+ld('lead2'); bg=ld('bg1')+ld('bg2')
+SECS=[('A1',42.0,58.4,'lead'),('A1b',58.2,73.6,'lead'),('B1',72.6,87.4,'lead'),('B2',86.9,100.0,'lead'),('A2',99.2,115.4,'lead'),('A2b',115.2,130.2,'lead'),
+      ('Bridge',129.4,146.2,'bg'),('B3',157.6,175.5,'lead')]
+model=WhisperModel('medium.en',device='cpu',compute_type='int8',cpu_threads=6)
+out={}
+for name,a,b,src in SECS:
+    m=(lead if src=='lead' else bg)[int(a*44100):int(b*44100)]
+    y=resample_poly(m,160,441).astype(np.float32); y=y/np.abs(y).max()*0.9
+    segs,_=model.transcribe(y,language='en',word_timestamps=True,vad_filter=False,beam_size=5,condition_on_previous_text=False,temperature=0.0)
+    ws=[]
+    for s in segs:
+        for w in s.words: ws.append({'word':w.word.strip(),'global_start':round(a+w.start,3),'global_end':round(a+w.end,3),'prob':round(w.probability,3)})
+    out[name]={'chunk_global_sec':[a,b],'source':src,'words':ws}
+    print(name,len(ws),' '.join(w['word'] for w in ws),flush=True)
+json.dump(out,open(f'{ROOT}/gate2/words/words_sections_medium_v1.json','w'),indent=1)
+
+##### FILE: words_merge.py #####
+"""Merge section chunks -> one word list per Gate 0 section (dedupe overlaps by keeping the chunk where the word is farther from the chunk edge).
+Independent accuracy check: an energy onset detector (1-8 kHz, 2 ms RMS, steepest rise) near each ASR word start; report |ASR - onset| stats."""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+W=json.load(open(G2+'/words/words_sections_medium_v1.json'))
+SEC=[('A1',42.0,72.893),('B1',72.893,87.115),('B2',87.115,99.56),('A2',99.56,129.782),('Bridge',129.782,145.782),('B3',157.2,174.226+1.5)]
+allw=[]
+for name,c in W.items():
+    a,b=c['chunk_global_sec']
+    for w in c['words']:
+        w=dict(w); w['edge']=min(w['global_start']-a,b-w['global_end']); w['src']=c['source']; allw.append(w)
+allw.sort(key=lambda w:w['global_start'])
+ded=[]
+for w in allw:
+    if ded and abs(w['global_start']-ded[-1]['global_start'])<0.15 and w['src']==ded[-1]['src']:
+        if w['edge']>ded[-1]['edge']: ded[-1]=w
+        continue
+    ded.append(w)
+# onset detector on the summed bus (lead or bg as per source)
+beat=load_beat(); N=len(beat)
+bus={'lead':load_voc('lead1',N)+load_voc('lead2',N),'bg':load_voc('bg1',N)+load_voc('bg2',N)}
+envs={}
+for k,m in bus.items():
+    z=bp_an(m,1000,8000); h=88; n=len(z)//h; e=np.sqrt((z[:n*h].reshape(n,h)**2).mean(1)); envs[k]=db(e)
+def onset_near(src,t,win=0.08):
+    e=envs[src]; h=88; i0=max(1,int((t-win)*SR/h)); i1=int((t+win)*SR/h)
+    d=np.diff(e[i0-1:i1]); j=i0+int(np.argmax(d)); return j*h/SR
+out={}; errs=[]
+for name,a,b in SEC:
+    ws=[w for w in ded if a<=w['global_start']<b]
+    for w in ws:
+        o=onset_near(w['src'],w['global_start']); w['onset_det_sec']=round(o,4); w['asr_minus_onset_ms']=round((w['global_start']-o)*1000,1)
+        errs.append(w['global_start']-o)
+    out[name]=ws
+e=np.abs(np.array(errs))*1000
+acc={'n':len(e),'median_abs_ms':round(float(np.median(e)),1),'p90_abs_ms':round(float(np.percentile(e,90)),1),'within_40ms_pct':round(float((e<=40).mean()*100),1)}
+print(acc)
+json.dump({'method':'faster-whisper medium.en word timestamps per section chunk; dedupe; onset check 1-8 kHz steepest rise +-80 ms','accuracy_vs_onset_detector':acc,'sections':out},open(G2+'/words/words_by_section_v1.json','w'),indent=1)
+for name in out:
+    print(name,' | '.join(f"{i+1}:{w['word']}@{w['global_start']:.2f}({w['asr_minus_onset_ms']:+.0f})" for i,w in enumerate(out[name][:8])),' ... last:',' | '.join(f"{w['word']}@{w['global_start']:.2f}-{w['global_end']:.2f}" for w in out[name][-3:]))
+
+##### FILE: regions.py #####
+import sys; sys.path.insert(0,'.'); from g2lib import *
+def regions(m,min_zero_ms=10):
+    nz=np.abs(m)>0; k=int(SR*min_zero_ms/1000)
+    d=np.diff(np.concatenate([[0],nz.astype(np.int8),[0]])); s=np.flatnonzero(d==1); e=np.flatnonzero(d==-1)
+    out=[]
+    for a,b in zip(s,e):
+        if out and a-out[-1][1]<k: out[-1][1]=b
+        else: out.append([a,b])
+    return [(int(a),int(b)) for a,b in out if b-a>int(0.02*SR)]
+if __name__=='__main__':
+    beat=load_beat(); N=len(beat); R={}
+    for k in STEMS:
+        R[k]=regions(load_voc(k,N)); print(k,len(R[k]),[(round(a/SR,2),round(b/SR,2)) for a,b in R[k]])
+    json.dump(R,open(G2+'/session/regions_v1.json','w'))
+
+##### FILE: plan_gate2.py #####
+"""Gate 2 plan (analysis only): BG entry points (word 5/6), BG per-stem on/off regions, throw candidates with P-centers,
+note-value fit per gap, collision scan, grid-locked alternative. Writes gate2/session/plan_gate2_v1.json"""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+from regions import regions
+beat=load_beat(); N=len(beat)
+V={k:load_voc(k,N) for k in STEMS}
+SRCS={'lead':['lead1','lead2'],'bg':['bg1','bg2']}
+# word activity (singing, not printed tail): 300 Hz-4 kHz 10 ms RMS within 20 dB of the stem's p95 (printed tail is -23 dB at 50 ms)
+ACT={}
+for k in STEMS:
+    e,h=env_ms(bp_an(V[k],300,4000),10); edb=db(e); ACT[k]=edb>np.percentile(edb[edb>-100],95)-20.0
+def active_any(t0,t1,exclude=None):
+    """True if any dry vocal is word-active in [t0,t1) (sec), excluding (stem,[a,b]) source word"""
+    i0=max(0,int(t0*100)); i1=int(np.ceil(t1*100)); hit=[]
+    for k in STEMS:
+        a=ACT[k][i0:i1].copy()
+        if exclude and exclude[0]==k:
+            ea,eb=int(exclude[1]*100),int(np.ceil(exclude[2]*100))
+            for i in range(i0,i1):
+                if ea<=i<eb: a[i-i0]=False
+        if a.any(): hit.append((k,round((i0+int(np.argmax(a)))/100,2)))
+    return hit
+def senv(k,t0,t1,ms=20):
+    """smoothed (ms) 300 Hz-4 kHz envelope in dB on 5 ms hops for stem k in [t0,t1]"""
+    a=int(t0*SR); b=int(t1*SR); z=bp_an(V[k][max(0,a-SR//10):b+SR//10],300,4000)
+    h=220; n=len(z)//h; e=np.sqrt((z[:n*h].reshape(n,h)**2).mean(1)); e=db(movavg(e,ms//5))
+    tt=(max(0,a-SR//10)+np.arange(n)*h+h/2)/SR; m=(tt>=t0)&(tt<=t1); return tt[m],e[m]
+def dip(srcs,t0,t1):
+    best=None
+    for k in srcs:
+        tt,e=senv(k,t0,t1)
+    tot=None
+    for k in srcs:
+        tt,e=senv(k,t0,t1); p=10**(e/10); tot=p if tot is None else tot+p[:len(tot)] if len(p)>=len(tot) else tot[:len(p)]+p
+    tt=tt[:len(tot)]; i=int(np.argmin(tot)); return float(tt[i]), float(10*np.log10(tot[i]+1e-24)), float(10*np.log10(np.median(tot)+1e-24))
+W=json.load(open(G2+'/words/words_by_section_v1.json'))['sections']
+allw=[w for s in W.values() for w in s]
+def word(name,t,src):
+    c=[w for w in allw if w['word'].strip(',.').lower()==name.lower() and w['src']==src and abs(w['global_start']-t)<0.05]
+    assert len(c)==1,(name,t,c); return c[0]
+# ---------------- BG entries (lyric word count; ASR missed some words, counted from the lyric line) ----------------
+SECTIONS=[
+ ('A1','lead',"I've been trying everything these blunts",('these',44.98),('blunts',45.26),('What',72.90,'B1 first word (ASR missed it; window = A1 last word end -0.1 .. B1 word 2 onset)',72.80,73.11)),
+ ('B1','lead',"What I'm supposed to do when",('do',73.80),('when',74.06),('But',87.12,'B2 first word',87.04,87.16)),
+ ('B2','lead',"What I'm supposed to do when",('do',88.02),('when',88.30),("I've",100.75,'A2 first word (ASR missed it; window = B2 last word end .. A2 word 3 onset)',100.69,100.85)),
+ ('A2','lead',"I've been trying everything these blunts",('these',101.88),('blunts',102.16),None),
+ ('Bridge','bg',"I've been up to no good",('no',130.62),('good',131.00),None),
+ ('B3','lead',"What I'm supposed to do when",('do',159.06),('when',159.38),None)]
+REG={k:regions(V[k]) for k in STEMS}
+plan={'bg_sections':[],'throws':[]}
+for name,src,line,w5,w6,nxt in SECTIONS:
+    cand=[]
+    for idx,(wn,wt) in ((5,w5),(6,w6)):
+        w=word(wn,wt,src); t,d_db,med=dip(SRCS[src],w['global_start']-0.12,w['global_start']+0.03)
+        cand.append({'word_index':idx,'word':wn,'asr_start_sec':w['global_start'],'asr_prob':w['prob'],'onset_det_sec':w['onset_det_sec'],
+                     'dip_sec':round(t,4),'dip_db':round(d_db,1),'window_median_db':round(med,1)})
+    ch=min(cand,key=lambda c:(c['dip_db'],c['word_index']))
+    entry=int(round(ch['dip_sec']*SR))
+    sec={'section':name,'source':src,'lyric_start_asr':line,'candidates':cand,'chosen':ch['word_index'],'entry_global_idx':entry,'entry_global_sec':round(entry/SR,4),
+         'why_choice':'deeper energy dip right before the word (cleanest place to fade the copy in, no word cut)'}
+    # end per stem
+    ends={}
+    if nxt:
+        T,dd,_=dip(SRCS[src],nxt[3],nxt[4]); Ti=int(round(T*SR)); sec['next_section_onset']={'word':nxt[0],'dip_sec':round(T,4),'note':nxt[2]}
+        for k in SRCS[src]:
+            starts_next=ACT[k][int(T*100):int(T*100)+15].any()
+            if starts_next: ends[k]={'end_idx':Ti,'rule':'stem sings the next section first word: cut at the dip before it'}
+            else:
+                i=int(T*100); a=ACT[k]
+                while i<len(a)-15 and a[i:i+15].any(): i+=1
+                e_t=i/100
+                # region end (digital zero) if within 0.65 s, else +0.65 s (printed tail length measured 0.4-0.65 s)
+                rend=[b for (aa,b) in REG[k] if aa/SR<=e_t<=b/SR]
+                e_i=min(rend[0],int((e_t+0.65)*SR)) if rend else int((e_t+0.65)*SR)
+                ends[k]={'end_idx':int(e_i),'rule':'stem finishes its own phrase: word activity end then printed tail to digital zero (<=0.65 s)'}
+    else:
+        for k in SRCS[src]:
+            rs=[(a,b) for (a,b) in REG[k] if b>entry]
+            # last region belonging to this section: regions that start before the next vocal section (+ gap)
+            nxt_start={'A2':129.9,'Bridge':150.0,'B3':240.0}[name]
+            rs=[(a,b) for (a,b) in rs if a/SR<nxt_start]
+            ends[k]={'end_idx':int(rs[-1][1]) if rs else entry,'rule':'end of the stem\'s last region in this section (digital zero, printed tail already ends there)'}
+    sec['end_per_stem']={k:{'end_global_idx':v['end_idx'],'end_global_sec':round(v['end_idx']/SR,4),'rule':v['rule']} for k,v in ends.items()}
+    plan['bg_sections'].append(sec)
+    print(name,'entry w%d %s @%.3f'%(ch['word_index'],ch['word'],entry/SR),{k:round(v['end_idx']/SR,3) for k,v in ends.items()},[ (c['word'],c['dip_sec'],c['dip_db']) for c in cand])
+# ---------------- throws ----------------
+# combined-bus gaps >= 0.3 s (line ends followed by a real gap)
+act=np.zeros(len(ACT['lead1']),bool)
+for k in STEMS: act|=ACT[k]
+d=np.diff(np.concatenate([[0],act.astype(int),[0]])); s=np.flatnonzero(d==1); e=np.flatnonzero(d==-1)
+gaps=[(e[i]/100,(s[i+1]/100 if i+1<len(s) else N/SR)) for i in range(len(e)) if (i+1==len(s)) or (s[i+1]-e[i])/100>=0.3]
+def word_start_back(k,t_vowel):
+    """real word start: walk back from the stressed-vowel onset until the smoothed envelope rises >6 dB above the weakest level
+    seen (= previous word body); start = that point + 5 ms. Max 0.40 s back."""
+    tt,en=senv(k,t_vowel-0.40,t_vowel)
+    mn=en[-1]; j=len(en)-1
+    while j>0:
+        mn=min(mn,en[j])
+        if en[j-1]>mn+6: break
+        j-=1
+    return float(tt[j])+0.005
+def grid16(idx): return T0+int(round((idx-T0)/4900))*4900
+for (le,no) in gaps:
+    # stem that ends the line
+    ks=[k for k in STEMS if ACT[k][max(0,int(le*100)-3):int(le*100)].any()]
+    k=ks[0]
+    # stressed vowel: max of the stem envelope in the last 0.45 s before the line end; vowel onset = half-rise before it
+    tt,en=senv(k,le-0.9,le,ms=10)
+    # last voiced syllable = last local block within 12 dB of the max of the final 0.5 s
+    m=tt>=le-0.5; tmax=tt[m][np.argmax(en[m])]
+    ws_s=word_start_back(k,tmax-0.02) if True else None
+    # use ASR word that covers the vowel (label only)
+    lab=[w for w in allw if w['global_start']-0.35<=tmax<=w['global_end']+0.35 and w['src']==('bg' if k.startswith('bg') else 'lead')]
+    lab=min(lab,key=lambda w:abs((w['global_start']+w['global_end'])/2-tmax))['word'] if lab else '?'
+    ws=int(round(ws_s*SR)); we=int(round(le*SR)); pc=pcenter(V[k],ws,we)
+    gap={'line_end_sec':le,'next_onset_sec':round(no,2),'gap_sec':round(no-le,2),'stem':k,'word_asr_label':lab,
+         'word_start_idx':ws,'word_start_sec':round(ws/SR,4),'word_end_idx':we,'p_center_idx':pc,'p_center_sec':round(pc/SR,4),
+         'p_center_vs_grid16_ms':round((pc-grid16(pc))/SR*1000,1)}
+    fits={}
+    for nn,L in NOTES.items():
+        rp=pc+L; ok=(rp/SR>=le+0.0) and (rp/SR<=no-0.05) and (ws+L>=we-int(0.02*SR) or True)
+        fits[nn]={'repeat1_pc_sec':round(rp/SR,4),'in_gap':bool(ok),'margin_after_line_end_ms':round((rp/SR-le)*1000),'margin_before_next_ms':round((no-rp/SR)*1000)}
+    gap['note_fit']=fits
+    plan['throws'].append(gap)
+    print(f"gap {le:.2f}->{no:.2f} ({no-le:.2f}s) {k} '{lab}' ws {ws/SR:.3f} pc {pc/SR:.3f} grid16 {gap['p_center_vs_grid16_ms']}ms fits:",[n for n,f in fits.items() if f['in_gap']])
+json.dump(plan,open(G2+'/session/plan_gate2_v1.json','w'),indent=1)
+
+##### FILE: render_gate2.py #####
+"""Gate 2 render v1 (What I'm Posed To Do, fresh). Plugin/Effect Pro. Reads frozen Gate 1 stems (never re-processed),
+writes Gate 2 stems (24-bit/44.1k stereo, beat length, start 0:00) + params JSON. All values are derived in this file and
+logged with their reason in params_gate2_realized_v1.json -> mix_config_v1_gate2.json."""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+from regions import regions
+OUT=G2; VER='v1'
+beat=load_beat(); N=len(beat); PADN=N+4*SR          # wet buffers = song + 4 s (tail padding), trimmed after verification
+V={k:load_voc(k,N) for k in STEMS}
+SRCS={'lead':['lead1','lead2'],'bg':['bg1','bg2']}
+lead_bus=V['lead1']+V['lead2']+V['bg1']+V['bg2']   # all dry vocals ('the lead' for every Gate 2 metric)
+P={'version':VER,'status':'draft, not final'}
+# ---------- activity (word-active, excludes printed tail) ----------
+ACT={}
+for k in STEMS:
+    e,h=env_ms(bp_an(V[k],300,4000),10); edb=db(e); ACT[k]=edb>np.percentile(edb[edb>-100],95)-20.0
+ACT_ANY=np.zeros(len(ACT['lead1']),bool)
+for k in STEMS: ACT_ANY|=ACT[k]
+def env_db_10(z,lo=300,hi=4000):
+    e,h=env_ms(bp_an(z,lo,hi),10); return db(e)
+def senv(k,t0,t1,ms=10):
+    a=int(t0*SR); b=int(t1*SR); z=bp_an(V[k][a-SR//10:b+SR//10],300,4000)
+    h=441; n=len(z)//h; e=db(movavg(np.sqrt((z[:n*h].reshape(n,h)**2).mean(1)),max(1,ms//10)))
+    tt=(a-SR//10+np.arange(n)*h+h/2)/SR; m=(tt>=t0)&(tt<=t1); return tt[m],e[m]
+def dip_in(k,t0,t1):
+    tt,e=senv(k,t0,t1); i=int(np.argmin(e)); return int(round(tt[i]*SR)), float(e[i])
+# ======================= BG LAYER =======================
+plan=json.load(open(G2+'/session/plan_gate2_v1.json'))
+# transitions: stem that sings the next section's first word, dip window (sec) around that word's onset (measured, segs THR20)
+TRANS={'A1':('lead1',72.78,72.96,'B1 "What" (lead1 activity onset 72.90)'),
+       'B1':('lead1',87.02,87.17,'B2 first word (lead1 activity onset 87.12)'),
+       'B2':('lead1',100.39,100.54,'A2 "I\'ve" (lead1 activity onset 100.49)')}
+REG={k:regions(V[k]) for k in STEMS}
+gk={k:np.zeros(N) for k in STEMS}
+FIN=int(0.010*SR); FOUT=int(0.015*SR)
+bgsec=[]
+for s in plan['bg_sections']:
+    name=s['section']; src=s['source']; entry=s['entry_global_idx']
+    ends={}
+    if name in TRANS:
+        ks,t0,t1,why=TRANS[name]; Ti,_=dip_in(ks,t0,t1)
+        for k in SRCS[src]:
+            if k==ks: ends[k]=(Ti,'sings the next section first word: fade out ends at the energy dip before it (%s)'%why)
+            else:
+                i=int(Ti/SR*100); a=ACT[k]
+                while i<len(a)-15 and a[i:i+15].any(): i+=1
+                e_t=i/100; rend=[b for (aa,b) in REG[k] if aa/SR<=e_t<=b/SR]
+                ends[k]=(min(rend[0],int((e_t+0.65)*SR)) if rend else int((e_t+0.65)*SR),'finishes its own phrase across the boundary: word end + printed tail to digital zero (<=0.65 s, measured tail length)')
+    else:
+        for k in SRCS[src]: ends[k]=(s['end_per_stem'][k]['end_global_idx'],s['end_per_stem'][k]['rule'])
+    for k in SRCS[src]:
+        e_i=ends[k][0]
+        if e_i<=entry: continue
+        g=gk[k]; g[entry:e_i]=1.0
+        g[entry-FIN:entry]=np.maximum(g[entry-FIN:entry],rc_fade(FIN,True))   # fade completes AT the dip, before the word
+        g[e_i-FOUT:e_i]*=rc_fade(FOUT,False)
+    bgsec.append({'section':name,'source_stems':SRCS[src],'entry_word_index':s['chosen'],
+                  'entry_word':[c for c in s['candidates'] if c['word_index']==s['chosen']][0]['word'],
+                  'entry_global_idx':entry,'entry_global_sec':round(entry/SR,4),'candidates':s['candidates'],
+                  'end_per_stem':{k:{'end_global_idx':int(v[0]),'end_global_sec':round(v[0]/SR,4),'rule':v[1]} for k,v in ends.items()},
+                  'fade_in_ms':10,'fade_out_ms':15})
+P['bg_sections']=bgsec
+bg_on=np.zeros(N,bool)
+for k in STEMS: bg_on|=gk[k]>0
+bg_src=sum(gk[k]*V[k] for k in STEMS)
+# telephone band: zero-phase so the copy stays sample-aligned with the lead (Kenshin: 0 offset; 10-30 ms offsets read as tunnel)
+TEL_HP=600.0; TEL_LP=2000.0
+sos_hp=butter(2,TEL_HP,'high',fs=SR,output='sos'); sos_lp=butter(2,TEL_LP,'low',fs=SR,output='sos')
+bg_tel=sosfiltfilt(sos_lp,sosfiltfilt(sos_hp,bg_src))
+assert np.isfinite(bg_tel).all()
+P['bg_telephone']={'hp_hz':TEL_HP,'lp_hz':TEL_LP,'type':'Butterworth 2nd order each, applied forward-backward (zero phase) -> 24 dB/oct, -6 dB at the corners',
+  'why':{'hp':'Gate 1 harmonic envelope: box hump 430-530 Hz (peak 474-480). 600 Hz zero-phase HP puts 480 Hz at about -10.7 dB on the layer, so the copy adds no box (anti-tunnel)',
+         'lp':'Gate 1 masking scan: the beat covers the lead most at 2.0-3.2 kHz (beat over vocal +2.7..+4.0 dB) and the lead presence bell is at 2.8 kHz, so the layer rolls off from 2.0 kHz (2.5 kHz -8.6 dB, 3.2 kHz -16 dB) and leaves the lead words that range',
+         'zero_phase':'a causal band-pass would delay the copy by its group delay (~10-20 samples) = comb with the lead; filtfilt keeps it at 0 samples (verified by xcorr). Gentle 2nd-order sections keep pre-ringing small; checked as the layer is 15-20 dB under the lead',
+         'band_center_hz':round(float(np.sqrt(TEL_HP*TEL_LP)),0)}}
+# ducker keyed by the dry vocal bus (1-4 kHz), gain-only (no delay)
+def duck_gain(key, depth_db, att_ms, rel_ms, hop=44):
+    z=bp_an(key,1000,4000); n=len(z)//hop; e=db(np.sqrt((z[:n*hop].reshape(n,hop)**2).mean(1)))
+    act=e>-100; p95=np.percentile(e[act],95); x=np.clip((e-(p95-20))/10,0,1)*depth_db
+    a=np.exp(-hop/SR/(att_ms/1000)); r=np.exp(-hop/SR/(rel_ms/1000)); y=np.zeros(n); s=0.0
+    for i in range(n):
+        c=a if x[i]>s else r; s=c*s+(1-c)*x[i]; y[i]=s
+    g=np.interp(np.arange(len(key)),np.arange(n)*hop+hop/2,-y); return lin(g)
+BG_DUCK=(3.0,10.0,111.111)
+gduck=duck_gain(lead_bus,*BG_DUCK)
+P['bg_ducker']={'depth_db':3.0,'attack_ms':10.0,'release_ms':111.111,'key':'all dry vocals, 1-4 kHz, depth = 3 dB * clip((env - (p95-20 dB))/10 dB,0,1)',
+  'why':'Kenshin: dip the layer whenever the lead is active. LEARNINGS echo rule 8: duck lightly and fast (3-4 dB, release 80-120 ms); release = 1/16 note (111.1 ms). Capped at 3 dB because ATL showed riding a BG stem lifted tails/breaths ~12 dB (a ducker lifts tails relative to words by at most its depth)'}
+bg_d=bg_tel*gduck
+# level: X dB under the lead in 1-4 kHz on frames where the lead sings and the layer is on
+fr_on=np.array([bg_on[i*441:(i+1)*441].all() for i in range(len(ACT_ANY))]) if False else None
+on10=bg_on[:len(ACT_ANY)*441].reshape(-1,441).all(1)
+sing_on=ACT_ANY&on10
+from metrics_g2 import under_db, dry_to_wet_db, tail_end_dbfs, corr
+u0=under_db(lead_bus,bg_d,sing_on,1000,4000)
+LEVELS={'light':20.0,'fuller':15.0}
+P['bg_levels_target_db_under_lead_1to4k']={'light':20.0,'fuller':15.0,
+  'why':'LEARNINGS (ATL): Kenshin called BGs too loud at 7, 11 and 14 dB under the lead; v4 sat 18 dB under in 1-4 kHz (last version, not rejected). Brief: start LOW. Light = 20 dB (2 dB below the last unrejected value), fuller = 15 dB (5 dB step = clearly different by ear, still under the rejected 14 dB). Measured in 1-4 kHz, the band where he hears them (ATL lesson)'}
+bg={}
+for nm,t in LEVELS.items():
+    gdb=u0-t; bg[nm]=bg_d*lin(gdb); P.setdefault('bg_gain_db',{})[nm]=round(gdb,2)
+# ======================= REVERB (BG layer only) =======================
+RT60=BAR/SR; PRE=4900
+def make_ir(rt60,pre,seed):
+    rng=np.random.default_rng(seed); L=int(rt60*1.3*SR); t=np.arange(L)/SR
+    n=rng.standard_normal(L)*10**(-3*t/rt60); n[:int(0.02*SR)]*=rc_fade(int(0.02*SR),True)
+    n=sosfilt(butter(2,TEL_HP,'high',fs=SR,output='sos'),n); n=sosfilt(butter(2,3000,'low',fs=SR,output='sos'),n)
+    n/=np.sqrt((n**2).sum()); return np.concatenate([np.zeros(pre),n])
+IR=np.c_[make_ir(RT60,PRE,11),make_ir(RT60,PRE,23)]
+P['reverb']={'type':'synthetic stereo hall (decorrelated exponential noise IR, L/R seeds 11/23), on the BG layer ONLY; lead stays dry',
+ 'rt60_s':round(RT60,4),'rt60_note':'1 bar (78400 samples)','predelay_samples':PRE,'predelay_ms':round(PRE/SR*1000,3),'predelay_note':'1/16',
+ 'ir_band_hz':[TEL_HP,3000],'ir_length_s':round(len(IR)/SR,3),
+ 'why':{'decay':'Kenshin asked for dreamy/long: 1 bar (1.78 s) is longer than a 1/2-note plate but the tail is 60 dB down within one bar, so it never stacks over more than one 2-bar call-and-response turn (leads alternate every 2 bars, Gate 0)',
+        'predelay':'printed reverb on the stems is -23 dB at 50 ms and -28 dB at 150 ms (Gate 0 tails.json); 1/32 (55.6 ms) would land on the densest printed tail, 1/16 (111.1 ms) lands after it so words stay ahead of the bloom',
+        'band':'HP 600 Hz keeps the reverb out of the 430-530 Hz box (LEARNINGS v13: box-heavy reverb = tunnel); LP 3 kHz keeps it out of the S zone (de-esser bands 6-10 kHz) and the lead consonant zone',
+        'printed_fx':'stems carry printed ~1.5 s reverb -> the added reverb is on the low BG copy only, not on the lead (far less than for dry vocals)'}}
+def conv_st(x):
+    xp=np.pad(x,(0,PADN-N)); return np.c_[fftconvolve(xp,IR[:,0])[:PADN],fftconvolve(xp,IR[:,1])[:PADN]]
+wet_unit=conv_st(bg['light'])          # reverb of the light layer at unit return
+# return duck keyed by the dry vocals: tail blooms only in gaps
+lead_pad=np.pad(lead_bus,(0,PADN-N))
+gap10=on10&~ACT_ANY
+def rms_frames(z,mask):
+    zz=z if z.ndim==1 else z.mean(1); e,h=env_ms(zz[:N],10); n=min(len(e),len(mask)); return np.sqrt(np.mean(e[:n][mask[:n]]**2))
+from metrics_g2 import dry_to_wet_db as _dw
+# Return level. Attempt 1 rule (reverb in gaps = BG level while singing) gave fuller dry-to-reverb 20.2 dB (FAIL) and a duck-depth
+# sweep 6..16 dB only reached 22.7 dB (the gap rule re-raises the return as the duck deepens; log in versions/render_attempt1).
+# v1 rule: the clarity target sets the return: FULLER level lands at 25 dB dry-to-reverb while singing (24 dB target + 1 dB margin),
+# so light sits 5 dB clearer (30 dB). Duck 6 dB (fast attack, 1/8 release) keeps the tail opening in the gaps.
+REV_DUCK_DB=6.0
+grd=duck_gain(lead_pad,REV_DUCK_DB,10.0,222.222); wet_d=wet_unit*grd[:,None]
+dr0=_dw(lead_bus,(wet_d*lin(LEVELS['light']-LEVELS['fuller'])).mean(1)[:N],ACT_ANY)
+ret_db=float(dr0-25.0)
+P['reverb']['return_duck_sweep_attempt1']=[{'duck_db':6.0,'fuller_dr':20.24},{'duck_db':8.0,'fuller_dr':20.73},{'duck_db':10.0,'fuller_dr':21.22},{'duck_db':12.0,'fuller_dr':21.71},{'duck_db':14.0,'fuller_dr':22.2},{'duck_db':16.0,'fuller_dr':22.7}]
+P['reverb']['return_gain_db']=round(ret_db,2)
+P['reverb']['return_rule']='clarity first: return gain chosen so the FULLER version measures 25 dB dry-to-reverb while singing (target >= 24 dB from LEARNINGS "slight reverb" + Kenshin pro clarity, +1 dB margin); light is then 30 dB. Attempt-1 rule (bloom = BG level) was too wet (fuller 20.2 dB)'
+P['reverb']['return_ducker']={'depth_db':REV_DUCK_DB,'attack_ms':10.0,'release_ms':222.222,
+  'why':'release 1/8 note (222 ms) so the tail opens inside the 0.1-0.5 s turn gaps; 6 dB = clear bloom contrast; deeper ducking did not buy clarity at a fixed bloom level (attempt-1 sweep)'}
+rev={'light':wet_d*lin(ret_db)}
+rev['fuller']=rev['light']*lin(LEVELS['light']-LEVELS['fuller'])
+# ======================= THROWS =======================
+TH_HP=600.0; TH_LP=[3600.0,2550.0,1800.0]
+WS_WIN={0:(45.70,45.80),1:(57.68,57.72),2:(102.62,102.72),3:(114.59,114.63),4:(143.53,143.59),5:(171.37,171.47)}
+NOTES2=dict(NOTES); NOTES2['1/2d']=58800; NOTES2['1/1']=78400
+def grid16(idx): return T0+int(round((idx-T0)/4900))*4900
+def band(z,lp): return sosfiltfilt(butter(2,lp,'low',fs=SR,output='sos'),sosfiltfilt(butter(2,TH_HP,'high',fs=SR,output='sos'),z))
+throws=[]
+for ti,g in enumerate(plan['throws']):
+    k=g['stem']; le=g['line_end_sec']; no=g['next_onset_sec']; we=int(round(le*SR))
+    ws,_=dip_in(k,*WS_WIN[ti]); pc=pcenter_stressed(V[k],ws,we)
+    fits={}
+    for nn,L in NOTES2.items():
+        if L>78400: continue
+        rp=(pc+L)/SR; ok=(rp>=le) and (rp<=no-0.05); fits[nn]={'repeat1_pc_sec':round(rp,4),'in_gap':ok,'after_line_end_ms':round((rp-le)*1000),'before_next_ms':round((no-rp)*1000)}
+    ok=[n for n,f in fits.items() if f['in_gap']]
+    big=(no-le)>2.0
+    if big:   # long gap: the earliest value whose first repeat lands after the word ends ('not too late'); alt = next longer fitting value
+        order=sorted(ok,key=lambda n:NOTES2[n]); main=order[0]; alt=order[1] if len(order)>1 else order[0]
+        rule='gap > 2 s: smallest note value whose first repeat P-center lands after the held word ends (not too late); alt = next longer fitting value'
+    else:     # short gap: value whose first repeat sits most centred in the gap (max of the smaller margin) = not too early, not too late
+        sc=sorted(ok,key=lambda n:-min(fits[n]['after_line_end_ms'],fits[n]['before_next_ms'])); main=sc[0]; alt=sc[1] if len(sc)>1 else sc[0]
+        rule='gap < 2 s: value whose first repeat P-center is most centred between line end and next onset (largest smaller-margin); alt = second best'
+    throws.append({'idx':ti,'stem':k,'word_asr_label':g['word_asr_label'],'word_start_idx':ws,'word_start_sec':round(ws/SR,4),
+                   'word_start_rule':'deepest 10 ms envelope point in the inspected window %s s (between previous word and first phoneme of the throw word)'%(WS_WIN[ti],),
+                   'line_end_sec':le,'word_end_idx':we,'next_onset_sec':no,'gap_sec':round(no-le,3),'p_center_idx':pc,'p_center_sec':round(pc/SR,4),
+                   'p_center_vs_grid16_ms':round((pc-grid16(pc))/SR*1000,1),'note_fit':fits,'main_note':main,'alt_note':alt,'note_rule':rule})
+def collide(t0,t1,excl):
+    """dry-vocal word activity in [t0,t1) excluding the source word span (stem,a,b)"""
+    i0=max(0,int(t0*100)); i1=int(np.ceil(t1*100)); hits=[]
+    for k in STEMS:
+        a=ACT[k][i0:i1].copy()
+        if k==excl[0]:
+            for i in range(i0,i1):
+                if excl[1]*100<=i<excl[2]*100+1: a[i-i0]=False
+        if a.any(): hits.append({'stem':k,'first_active_sec':round((i0+int(np.argmax(a)))/100,2)})
+    return hits
+def build_throws(mode):
+    """mode: 'main' | 'alt' | 'grid' (main note, repeat P-center locked to the 1/16 grid instead of the word)"""
+    out=np.zeros((PADN,2)); log=[]
+    for t in throws:
+        k=t['stem']; ws=t['word_start_idx']; we=t['word_end_idx']; pc=t['p_center_idx']; no=int(t['next_onset_sec']*SR)
+        nn=t['alt_note'] if mode=='alt' else t['main_note']; L=NOTES2[nn]
+        off=(grid16(pc)-pc) if mode=='grid' else 0
+        ce=min(we+int(0.10*SR), ws+L)                       # copy: whole word (+100 ms release), never longer than one repeat interval
+        src=V[k][ws:ce].copy(); n=len(src)
+        src[:int(0.005*SR)]*=rc_fade(int(0.005*SR),True); fo=min(int(0.06*SR),n//3); src[-fo:]*=rc_fade(fo,False)
+        wordband=np.sqrt(np.mean(band(V[k],TH_LP[0])[ws:we]**2))
+        reps=[]
+        for r in (1,2,3):
+            st=ws+r*L+off; rpc=pc+r*L+off
+            if rpc>no-int(0.05*SR): reps.append({'r':r,'kept':False,'why':'P-center would land within 50 ms of / after the next dry word -> omitted (collision gate)'}); break
+            seg=band(src,TH_LP[r-1]); end=st+n; trunc=False
+            if end>no-int(0.02*SR):
+                cut=no-int(0.02*SR)-st; fo2=int(0.015*SR); seg=seg[:cut].copy(); seg[-fo2:]*=rc_fade(fo2,False); trunc=True; end=st+cut
+            hits=collide(st/SR-0.15,end/SR,(k,ws/SR,we/SR))
+            if hits: reps.append({'r':r,'kept':False,'why':'collision scan [t-0.15 s, t+len] hit dry vocal','hits':hits}); break
+            tgt=-12.0-5.0*(r-1)
+            gain=lin(tgt)*wordband/np.sqrt(np.mean(band(V[k],TH_LP[0])[ws:ce][:len(seg)]**2*0+seg**2)+1e-20)
+            pan=[-0.3,0.3,0.0][r-1]; th=(pan+1)*np.pi/4; gl,gr=np.sqrt(2)*np.cos(th),np.sqrt(2)*np.sin(th)
+            out[st:st+len(seg),0]+=seg*gain*gl; out[st:st+len(seg),1]+=seg*gain*gr
+            reps.append({'r':r,'kept':True,'start_idx':int(st),'start_sec':round(st/SR,4),'p_center_idx':int(rpc),'p_center_sec':round(rpc/SR,4),
+                         'delay_samples_from_source':int(r*L+off),'level_db_re_word_band':tgt,'lp_hz':TH_LP[r-1],'pan':pan,'truncated_before_next_word':trunc,
+                         'end_sec':round(end/SR,4),'collision_scan_sec':[round(st/SR-0.15,3),round(end/SR,3)],'collision':'none'})
+        log.append({'throw':t['idx'],'note':nn,'note_samples':L,'grid_offset_samples':int(off),'copy_samples':[int(ws),int(ce)],'repeats':reps})
+    return out,log
+TH={}; THLOG={}
+for mode in ('main','alt','grid'): TH[mode],THLOG[mode]=build_throws(mode)
+P['throws']={'list':throws,'renders':THLOG,'band':{'hp_hz':TH_HP,'lp_hz_per_repeat':TH_LP,'type':'2nd-order Butterworth forward-backward (zero phase, keeps the delay sample-exact)'},
+ 'levels':'repeat 1 = -12 dB re the source word (600 Hz-3.6 kHz band RMS), then -5 dB and darker per repeat',
+ 'why':{'band':'HP 600 Hz above the 430-530 Hz box; LP 3.6 kHz = top of this source\'s usable band (lossy hole 3.6-5 kHz, Gate 1) so repeats sit behind the voice; each later repeat darker (LEARNINGS echo rule 7)',
+        'level':'LEARNINGS: echoes 13-32 dB under the word went unheard (Interstate/Driftin), BG/echo too loud on ATL; -12 dB is the quiet edge of the 3-12 dB audible range = start low, then ask more/less',
+        'copy':'whole word from its real start (LEARNINGS: copies that start mid-word "don\'t catch the words"), capped at one repeat interval so repeats never overlap (echo rule 3)',
+        'pan':'repeat 1 30% L, repeat 2 30% R, repeat 3 centre (melodic-rap band-passed ping-pong; mono-checked)',
+        'collision':'scan [t-0.15 s, t+repeat length] of all dry vocals (word activity, printed tails excluded) except the source word itself; a repeat whose P-center would reach the next word is omitted, a repeat whose tail would reach it is faded out 20 ms before the word'}}
+# ======================= WRITE STEMS =======================
+def tail_ok(x,name):
+    e=tail_end_dbfs(x[-int(0.5*SR):]); return {'stem':name,'padded_buffer_last_200ms_dbfs':round(e,1),'level_at_song_end_dbfs':round(float(db(np.sqrt(np.mean((x[N-int(0.2*SR):N]**2))))),1)}
+TAILS=[]
+def st2(m): return np.c_[m,m]
+def w(name,x):
+    if x.shape[0]==PADN: TAILS.append(tail_ok(x,name)); x=x[:N]
+    assert x.shape==(N,2) and np.isfinite(x).all()
+    f=f'{OUT}/WIPTD_fresh_G2_{name}_{VER}_24b-44k.wav'; sf.write(f,x,SR,subtype='PCM_24'); return f
+files={}
+files['VocalsDry']=w('VocalsDry_passthrough',st2(lead_bus))
+for nm in ('light','fuller'):
+    files['BG_'+nm]=w(f'BGLayer_{nm.capitalize()}',st2(bg[nm]))
+    files['Rev_'+nm]=w(f'ReverbBus_{nm.capitalize()}',rev[nm])
+files['Throws_main']=w('ThrowsBus_Main',TH['main']); files['Throws_alt']=w('ThrowsBus_AltNote',TH['alt']); files['Throws_grid']=w('ThrowsBus_GridLocked',TH['grid'])
+P['files']=files; P['tails']=TAILS
+np.savez(G2+'/session/masks_v1.npz',**{'g_'+k:(gk[k]>0) for k in STEMS},sing_on=sing_on,gap10=gap10,act_any=ACT_ANY,on10=on10)
+json.dump(P,open(G2+'/session/params_gate2_realized_v1.json','w'),indent=1,default=lambda o: o.item() if hasattr(o,'item') else str(o))
+print(json.dumps({'bg_gain_db':P['bg_gain_db'],'u0':u0,'rev_ret':ret_db,'tails':TAILS},indent=0))
+for t in throws: print(t['idx'],t['word_asr_label'],t['word_start_sec'],t['p_center_sec'],t['p_center_vs_grid16_ms'],t['main_note'],t['alt_note'],[n for n,f in t['note_fit'].items() if f['in_gap']])
+for mode in THLOG:
+    for l in THLOG[mode]: print(mode,l['throw'],l['note'],[(r['r'],r['kept'],r.get('start_sec'),r.get('truncated_before_next_word'),r.get('why')) for r in l['repeats']])
+
+##### FILE: previews_gate2.py #####
+"""Gate 2 preview clips (A1 hook 0:42.0-1:12.0), all loudness-matched to the same integrated LUFS; 24-bit WAV + 320k MP3."""
+import sys, subprocess; sys.path.insert(0,'.'); from g2lib import *
+P=json.load(open(G2+'/session/params_gate2_realized_v1.json')); F=P['files']
+A,B=int(42.0*SR),int(72.0*SR); TGT=-20.0
+def rd(f): x,_=sf.read(f,always_2d=True,dtype='float64'); return x[A:B]
+beat=load_beat()[A:B]; dry=rd(F['VocalsDry'])
+S={k:rd(F[k]) for k in ('BG_light','BG_fuller','Rev_light','Rev_fuller','Throws_main','Throws_alt','Throws_grid')}
+clips={'a_BGlight_ThrowsWordTimed':dry+S['BG_light']+S['Rev_light']+S['Throws_main'],
+       'b_BGfuller_ThrowsWordTimed':dry+S['BG_fuller']+S['Rev_fuller']+S['Throws_main'],
+       'c_BGlight_ThrowsAltNote':dry+S['BG_light']+S['Rev_light']+S['Throws_alt'],
+       'd_BGlight_ThrowsGridLocked':dry+S['BG_light']+S['Rev_light']+S['Throws_grid'],
+       'ref_NoEffects_Gate1v2':dry}
+fade=int(0.02*SR); out={}
+for nm,v in clips.items():
+    x=beat+v; g=TGT-lufs(x); x=x*lin(g); x[:fade]*=rc_fade(fade,True)[:,None]; x[-fade:]*=rc_fade(fade,False)[:,None]
+    f=f'{G2}/WIPTD_fresh_G2_Preview_{nm}_0m42-1m12_v1'
+    sf.write(f+'_24b-44k.wav',x,SR,subtype='PCM_24')
+    subprocess.run(['ffmpeg','-y','-loglevel','error','-i',f+'_24b-44k.wav','-c:a','libmp3lame','-b:a','320k',f+'.mp3'],check=True)
+    dec=subprocess.run(['ffmpeg','-loglevel','error','-i',f+'.mp3','-f','f32le','-ac','2','-ar','44100','-'],capture_output=True).stdout
+    d=np.frombuffer(dec,np.float32).reshape(-1,2).astype(np.float64)
+    out[nm]={'wav':f+'_24b-44k.wav','mp3':f+'.mp3','lufs_wav':round(lufs(x),2),'lufs_mp3':round(lufs(d),2),'gain_applied_db':round(g,2),
+             'tp_wav_dbtp':round(true_peak_db(x),2),'tp_mp3_dbtp':round(true_peak_db(d),2),'clip_samples':int((np.abs(x)>=0.999).sum())}
+    print(nm,out[nm])
+json.dump({'window_sec':[42.0,72.0],'matched_lufs':TGT,'lead_level_note':'vocals = Alpha Gate 1 v2 stems (lead -1.5 dB vs v1 after Kenshin said the vocals were too loud); every Gate 2 layer is set in dB relative to that lead, so it moves with any later lead change','clips':out},open(G2+'/session/previews_v1.json','w'),indent=1)
+
+##### FILE: exit_checks_gate2.py #####
+"""Gate 2 exit checks, read from the FROZEN files on disk. Thresholds fixed BEFORE results (see THR). Summary computed from the printed list."""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+from metrics_g2 import dry_to_wet_db, under_db, corr
+THR={'dry_to_reverb_while_singing_min_db':24.0,'bg_under_lead_tol_db':1.0,'mono_corr_vocal_bus_min':0.6,'mono_fold_loss_max_db':1.0,
+     'lead_shift_max_samples':2,'bg_sync_max_samples':2,'tail_max_dbfs':-60.0,'dc_max':1e-4,'throw_audibility_min_db':-10.0,'reverb_lowmid_excess_max_db':0.0}
+P=json.load(open(G2+'/session/params_gate2_realized_v1.json')); F=P['files']; M=np.load(G2+'/session/masks_v1.npz')
+sing_on,gap10,act_any,on10=M['sing_on'],M['gap10'],M['act_any'],M['on10']
+def rd(f): x,_=sf.read(f,always_2d=True,dtype='float64'); return x
+X={k:rd(f) for k,f in F.items()}; beat=load_beat(); N=len(beat)
+dry=X['VocalsDry'][:,0]; checks=[]
+def C(name,ok,val,thr,note=''): checks.append({'check':name,'pass':bool(ok),'value':val,'threshold':thr,'note':note})
+# 1 format
+for k,x in X.items(): C(f'format_{k}',x.shape==(N,2) and sf.info(F[k]).subtype=='PCM_24' and sf.info(F[k]).samplerate==SR,[x.shape[0],sf.info(F[k]).subtype],'beat length, 24-bit, 44.1k, stereo')
+# 2 clipping / DC
+for k,x in X.items():
+    C(f'no_clip_{k}',int((np.abs(x)>=0.999).sum())==0,int((np.abs(x)>=0.999).sum()),'0 samples >= 0.999')
+    dc=float(np.abs(x.mean(0)).max()); C(f'dc_{k}',dc<THR['dc_max'],dc,THR['dc_max'])
+# 3 lead passthrough unchanged (vs sum of the Gate 1 v2 stems) + transient shift
+ref=sum(load_voc(k,N) for k in STEMS)
+md=float(np.abs(dry-ref).max()); C('lead_passthrough_identical',md<2**-22,md,'< 1 LSB (24-bit)')
+lags=[]
+for t in (45.0,60.0,80.0,105.0,135.0,165.0):
+    a,b=int(t*SR),int((t+4)*SR); lags.append(lag_xcorr(ref[a:b],dry[a:b],200))
+C('lead_no_transient_shift',max(abs(l) for l in lags)<=THR['lead_shift_max_samples'],lags,'<= 2 samples (1-6 kHz xcorr)')
+# 4 BG sync (0 offset) in its own band 1-2 kHz
+for nm in ('light','fuller'):
+    bgm=X['BG_'+nm][:,0]; ls=[]
+    for t in (50.0,62.0,76.0,92.0,110.0,133.0,162.0):
+        a,b=int(t*SR),int((t+3)*SR)
+        r=bp_an(ref[a:b],1000,2000); y=bp_an(bgm[a:b],1000,2000); n=1<<int(np.ceil(np.log2(2*len(r))))
+        c=np.fft.irfft(np.fft.rfft(y,n)*np.conj(np.fft.rfft(r,n)),n); c=np.concatenate([c[-300:],c[:301]]); ls.append(int(np.argmax(c))-300)
+    C(f'bg_{nm}_sync_0_offset',max(abs(l) for l in ls)<=THR['bg_sync_max_samples'],ls,'<= 2 samples vs lead (1-2 kHz xcorr)')
+# 5 BG level under lead
+for nm,t in (('light',20.0),('fuller',15.0)):
+    u=under_db(dry,X['BG_'+nm][:,0],sing_on,1000,4000); ub=dry_to_wet_db(dry,X['BG_'+nm][:,0],sing_on)
+    C(f'bg_{nm}_db_under_lead_1to4k',abs(u-t)<=THR['bg_under_lead_tol_db'],round(u,2),f'{t} +-1 dB',f'broadband: {round(ub,2)} dB under')
+# 6 dry-to-reverb while singing (whole song singing frames and BG sections) + bloom in gaps
+for nm in ('light','fuller'):
+    rv=X['Rev_'+nm].mean(1)
+    d1=dry_to_wet_db(dry,rv,act_any); d2=dry_to_wet_db(dry,rv,sing_on)
+    C(f'dry_to_reverb_while_singing_{nm}',min(d1,d2)>=THR['dry_to_reverb_while_singing_min_db'],{'all_singing':round(d1,2),'bg_sections':round(d2,2)},'>= 24 dB')
+    # bloom: reverb in gaps vs reverb while singing (info)
+    e,_=env_ms(rv,10); n=min(len(e),len(gap10))
+    bl=float(db(np.sqrt(np.mean(e[:n][gap10[:n]]**2)))-db(np.sqrt(np.mean(e[:n][sing_on[:n]]**2))))
+    C(f'reverb_{nm}_blooms_in_gaps',bl>0,round(bl,2),'> 0 dB (gap level above singing level)','info: duck + tail')
+    # low-mid share vs dry voice (anti tunnel)
+    def share(z): return pdb(np.mean(bp_an(z,250,600)**2))-pdb(np.mean(bp_an(z,100,8000)**2))
+    sl=float(share(rv[int(42*SR):int(175*SR)])-share(dry[int(42*SR):int(175*SR)]))
+    C(f'reverb_{nm}_lowmid_share_vs_dry',sl<=THR['reverb_lowmid_excess_max_db'],round(sl,2),'<= 0 dB (reverb not box-heavier than the voice)')
+# 7 tails
+for t in P['tails']:
+    C(f"tail_{t['stem']}",t['padded_buffer_last_200ms_dbfs']<THR['tail_max_dbfs'] and t['level_at_song_end_dbfs']<THR['tail_max_dbfs'],t,'< -60 dBFS (buffer end and song end)')
+# 8 throws: delay math, on line ends, first repeat in gap, collisions, audibility
+NOTES2=dict(NOTES); NOTES2['1/2d']=58800; NOTES2['1/1']=78400
+TL={t['idx']:t for t in P['throws']['list']}
+def band(z,lp): return sosfiltfilt(butter(2,lp,'low',fs=SR,output='sos'),sosfiltfilt(butter(2,600.0,'high',fs=SR,output='sos'),z))
+for mode,key in (('main','Throws_main'),('alt','Throws_alt'),('grid','Throws_grid')):
+    th=X[key]; thm=th.mean(1)
+    for l in P['throws']['renders'][mode]:
+        t=TL[l['throw']]; L=NOTES2[l['note']]; kept=[r for r in l['repeats'] if r['kept']]
+        math_ok=all(r['delay_samples_from_source']==r['r']*L+l['grid_offset_samples'] for r in kept) and L==round(NOTES2[l['note']])
+        # measured realized delay: xcorr source copy vs throws stem around repeat 1
+        r1=kept[0]; ws,ce=l['copy_samples']; src=load_voc(t['stem'],N)[ws:ce]
+        st=r1['start_idx']; a=st-3000; seg=thm[a:st+len(src)+3000]
+        ref=np.zeros(len(seg)); ref[3000:3000+len(src)]=band(src,3600.0)
+        n=1<<int(np.ceil(np.log2(2*len(seg)))); c=np.fft.irfft(np.fft.rfft(seg,n)*np.conj(np.fft.rfft(ref,n)),n); c=np.concatenate([c[-500:],c[:501]]); lag=int(np.argmax(c))-500
+        C(f'throw{l["throw"]}_{mode}_delay_math',math_ok and abs(lag)<=1,{'note':l['note'],'samples':L,'grid_offset':l['grid_offset_samples'],'realized_lag_vs_expected':lag},'exact samples; measured lag 0 (+-1)')
+        rp=r1['p_center_sec']; ingap=(rp>=t['line_end_sec']) and (rp<=t['next_onset_sec']-0.05)
+        C(f'throw{l["throw"]}_{mode}_first_repeat_in_gap',ingap,{'line_end':t['line_end_sec'],'repeat1_pc':rp,'next_onset':t['next_onset_sec']},'line end <= repeat-1 P-center <= next onset - 50 ms')
+        # collision: wet frames > -60 dBFS while a dry word (not the source word) is active
+        e,_=env_ms(thm,10); hits=0
+        for r in kept:
+            i0=int(r['start_sec']*100); i1=int(np.ceil(r['end_sec']*100))
+            for i in range(i0,i1):
+                if act_any[i] and not (t['word_start_sec']*100<=i<=t['line_end_sec']*100+1) and db(e[i])>-60: hits+=1
+        C(f'throw{l["throw"]}_{mode}_no_collision',hits==0,hits,'0 wet frames over an active dry word')
+        if mode=='main':
+            for r in kept:
+                a,b=r['start_idx'],int(r['end_sec']*SR)
+                wv=np.sqrt(np.mean(band(thm[a:b],3600.0)**2)); bg=np.sqrt(np.mean(band(beat[a:b].mean(1)+dry[a:b],3600.0)**2))
+                C(f'throw{l["throw"]}_rep{r["r"]}_audibility_vs_everything',db(wv/bg)>=THR['throw_audibility_min_db'],round(float(db(wv/bg)),2),'>= -10 dB vs beat+dry in 600 Hz-3.6 kHz (LEARNINGS: >10 dB under everything = unheard)')
+# 9 vocal bus mono
+for nm in ('light','fuller'):
+    vb=X['VocalsDry']+X['BG_'+nm]+X['Rev_'+nm]+X['Throws_main']; a,b=int(42*SR),int(175*SR); v=vb[a:b]
+    cr=corr(v); loss=float(pdb(np.mean(v.sum(1)**2)/4)-pdb(np.mean((v**2).mean(1))))
+    C(f'vocal_bus_{nm}_mono_corr',cr>=THR['mono_corr_vocal_bus_min'],round(cr,4),'>= 0.6')
+    C(f'vocal_bus_{nm}_mono_fold_loss',abs(loss)<=THR['mono_fold_loss_max_db'],round(loss,3),'<= 1 dB')
+# 10 first words dry: the copy of the stem that opens the section is off from the section's first word to the entry (word 5/6).
+#    (attempt 1 measured the whole BG layer in the 1.2 s before entry; that window includes the PREVIOUS section's last phrase,
+#     which by design keeps its copy to the end of its own section -> metric bug, fixed here; attempt-1 result kept in versions/)
+OPEN={'A1':('lead1',43.15),'B1':('lead1',72.90),'B2':('lead1',87.12),'A2':('lead1',100.49),'Bridge':('bg1',129.38),'B3':('lead1',157.55)}
+for s in P['bg_sections']:
+    k,t0=OPEN[s['section']]; e=s['entry_global_idx']; g=M['g_'+k][int(t0*SR):e-int(0.011*SR)]
+    other=[kk for kk in STEMS if kk!=k and M['g_'+kk][int(t0*SR):e-int(0.011*SR)].any()]
+    C(f"bg_first_words_dry_{s['section']}",not g.any(),int(g.sum()),'0 samples of the %s copy between %.2f s and word %d (%s) at %.3f s'%(k,t0,s['entry_word_index'],s['entry_word'],s['entry_global_sec']),
+      'info: copy of %s still finishing the previous section\'s last phrase in this window'%other if other else '')
+npass=sum(c['pass'] for c in checks); nfail=len(checks)-npass
+for c in checks: print(('PASS' if c['pass'] else 'FAIL'),c['check'],c['value'],c['note'])
+print(f'{npass} pass / {nfail} fail')
+json.dump({'status':'draft, not final','thresholds_fixed_before_results':THR,'n_pass':npass,'n_fail':nfail,'fails':[c['check'] for c in checks if not c['pass']],'checks':checks},
+          open(G2+'/WIPTD_fresh_Gate2_exit_checks_v1.json','w'),indent=1,default=lambda o: o.item() if hasattr(o,'item') else str(o))
+# 11 reverb tail decay after each BG section end that is followed by a gap (bridge -> vocal gap, B3 -> outro): time to fall below -60 dBFS
+for nm in ('light','fuller'):
+    rv=np.abs(X['Rev_'+nm]).max(1); e,_=env_ms(rv,10); edb=db(e)
+    for sec in ('Bridge','B3'):
+        s=[s for s in P['bg_sections'] if s['section']==sec][0]; end=max(v['end_global_sec'] for v in s['end_per_stem'].values())
+        i=int(end*100); j=i
+        while j<len(edb) and edb[j]>=-60: j+=1
+        nxt={'Bridge':158.19,'B3':243.0}[sec]
+        C(f'reverb_{nm}_tail_after_{sec}_below_-60',j/100<nxt,{'layer_end_sec':end,'below_-60_at_sec':round(j/100,2),'decay_s':round(j/100-end,2),'next_vocal_sec':nxt},'< -60 dBFS before the next vocal / song end')
+npass=sum(c['pass'] for c in checks); nfail=len(checks)-npass
+print('FINAL',f'{npass} pass / {nfail} fail',[c['check'] for c in checks if not c['pass']])
+json.dump({'status':'draft, not final','thresholds_fixed_before_results':THR,'n_pass':npass,'n_fail':nfail,'fails':[c['check'] for c in checks if not c['pass']],'checks':checks},
+          open(G2+'/WIPTD_fresh_Gate2_exit_checks_v1.json','w'),indent=1,default=lambda o: o.item() if hasattr(o,'item') else str(o))
+
+##### FILE: make_config_gate2.py #####
+"""session/mix_config_v1_gate2.json = Gate 1 config (Alpha, latest) + gate2_space filled from the realized params, plan, word timing and exit checks."""
+import sys, json, copy, os; sys.path.insert(0,'.'); from g2lib import *
+c=json.load(open(ROOT+'/session/mix_config_v1_gate1.json'))
+P=json.load(open(G2+'/session/params_gate2_realized_v1.json')); X=json.load(open(G2+'/WIPTD_fresh_Gate2_exit_checks_v1.json'))
+Wd=json.load(open(G2+'/words/words_by_section_v1.json')); PV=json.load(open(G2+'/session/previews_v1.json'))
+S='v1 (Gate 2)'
+def V(v,why,src='measured'): return {'value':v,'why':why,'source':src,'since':S}
+g2={}
+g2['input_stems']=V({k:f'gate1/{f}' for k,f in STEMS.items()},'Alpha Gate 1 v2 DRY stems (all four vocals -1.5 dB vs v1 after Kenshin said the vocals were too loud and the beat hard to hear). NOT the v3 leads (they carry a printed lead plate). Gate 1 stems are frozen; nothing re-processed','artist_request + team')
+g2['depth_plan']=V({'front':'dry lead (Lead 1/Lead 2, bridge voices), kick/snare/808 centre - NO reverb added to the lead (Kenshin + printed reverb already on stems)',
+                    'middle':'BG copy (telephone, centre, 15-20 dB under in 1-4 kHz)','back':'BG reverb (1-bar hall, ducked), throws (band-passed, 30% L/R ping-pong)'},'Gate 2 depth plan, same in every vocal section','artist_request')
+g2['word_timing']=V({'method':'faster-whisper medium.en word timestamps per Gate 0 section chunk (summed Gate 1 vocals), deduped; lyric word count done against the ASR line (ASR dropped some words, e.g. "been" in A1). Throw-word starts and line ends from 10 ms energy envelopes (word activity = 300 Hz-4 kHz within 20 dB of the stem p95; the printed tail is -23 dB at 50 ms so it is excluded)',
+   'accuracy_check':Wd['accuracy_vs_onset_detector'],'accuracy_note':'ASR starts are only ~50 ms accurate (median |ASR - energy onset| 51 ms), so every timing that matters (BG entry dips, throw word starts, P-centers, line ends) is taken from the audio envelope, not from ASR. AUDIO ENGINEER & DAW timing_vs_grid.json was NOT used (known ~10 ms late detector, 25-40 ms spread). Lyrics are ASR, Kenshin must confirm',
+   'files':['gate2/words/words_sections_medium_v1.json','gate2/words/words_by_section_v1.json'],'analysis_words_folder':'analysis/words/ (AUDIO ENGINEER & DAW) only had a 6-word low-confidence lead1 file when checked, so it was not used'},'no word timing existed; needed for BG entry at word 5/6 and line ends')
+g2['bg_layer']={'built_from':V('copy of the Gate 1 v2 dry vocals of each section (Lead 1 + Lead 2; bridge: Background lead 1 + 2), 0 samples offset','Kenshin: perfectly in sync, repeating the main vocal; no 10-30 ms offset (LEARNINGS tunnel)','artist_request'),
+ 'entries':V([{k:s[k] for k in ('section','source_stems','entry_word_index','entry_word','entry_global_idx','entry_global_sec','candidates','end_per_stem','fade_in_ms','fade_out_ms')} for s in P['bg_sections']],'Kenshin: comes in about the 5th or 6th word of each verse and follows word for word to the end of the section; of words 5/6 the one with the deeper energy dip before it is used (cleanest fade-in, no word cut)','artist_request + measured'),
+ 'telephone':V(P['bg_telephone'],'telephone tone requested; band derived from this voice (box) and the masking scan'),
+ 'ducker':V(P['bg_ducker'],P['bg_ducker']['why'],'artist_request + LEARNINGS'),
+ 'level_db_under_lead_1to4k':V({'light':20.0,'fuller':15.0},P['bg_levels_target_db_under_lead_1to4k']['why'],'LEARNINGS + brief'),
+ 'gain_db_applied':V(P['bg_gain_db'],'gain that puts the ducked telephone copy at the target under the v2 lead (relative, so it follows any later lead change)'),
+ 'pan':V('centre (dual mono)','one copy of a centred lead; keeps vocal-bus mono correlation ~0.98-0.99')}
+g2['reverb']=V(P['reverb'],'dreamy reverb on the BG copy ONLY (Kenshin + team: no reverb on the main lead, printed reverb already on the stems)','artist_request + measured')
+g2['throws']=V({'list':P['throws']['list'],'renders':P['throws']['renders'],'band':P['throws']['band'],'levels':P['throws']['levels']},P['throws']['why'],'artist_request + measured')
+g2['throw_summary']=[]
+for t in P['throws']['list']:
+    m=[l for l in P['throws']['renders']['main'] if l['throw']==t['idx']][0]
+    g2['throw_summary'].append({'global_sec_word':[t['word_start_sec'],t['line_end_sec']],'word_asr':t['word_asr_label'],'stem':t['stem'],'p_center_sec':t['p_center_sec'],'p_center_vs_grid16_ms':t['p_center_vs_grid16_ms'],
+        'gap_sec':t['gap_sec'],'note_main':t['main_note'],'samples_main':m['note_samples'],'note_alt':t['alt_note'],'repeats_kept':sum(r['kept'] for r in m['repeats']),
+        'repeat_pcs_sec':[r['p_center_sec'] for r in m['repeats'] if r['kept']],'collision':'none (scan [t-0.15 s, t+len])','why':t['note_rule']})
+g2['previews']=V(PV,'15-30 s of the A1 hook, all at the same integrated loudness; every clip uses the v2 DRY lead')
+g2['exit_checks']={'file':'gate2/WIPTD_fresh_Gate2_exit_checks_v1.json','n_pass':X['n_pass'],'n_fail':X['n_fail'],'fails':X['fails']}
+c['gate2_space']=g2
+q=c['qc_thresholds_song_specific']
+q['dry_to_reverb_while_singing_min_db']=24.0; q['echo_bg_db_under_line_range']=[12.0,22.0]; q['stack_db_under_lead_range']=[14.0,21.0]
+q['_gate2_note']='Set before the Gate 2 render (Plugin/Effect Pro): dry-to-reverb while singing >= 24 dB at both BG levels; BG copy 20 (light) / 15 (fuller) +-1 dB under the lead in 1-4 kHz; throw repeat-1 12 dB under its word, later repeats -5 dB each; every repeat >= -10 dB vs beat+dry in its band (audibility); vocal-bus mono corr >= 0.6, fold loss <= 1 dB; BG/lead transient shift <= 2 samples; tails < -60 dBFS.'
+c['song']['echoes']=V({'approach':'throws only on line ends followed by a measured gap, timed from the stressed-vowel P-center + exact note value (main) with grid-locked A/B, 2-3 repeats fading where the gap allows','approved':False},'Kenshin (group chat 2026-11-25): "not too many, not too little", "not too late, not too early, just right"; previews pending his ear','artist_request')
+c['revision_log'].append({'version':'v1 (Gate 2)','requested_by':'Kenshin','request':'BG copy of the lead from word 5-6 with telephone + dreamy reverb, low and ducked; a few echo throws timed just right; main vocal dry and clear','changed_keys':[{'key':'gate2_space','before':'empty','after':'filled (see above)','why':'Gate 2 build'}],'frozen_confirmed':True,'gate1_input':'v2 dry stems'})
+c['song']['status']='draft, not final'
+json.dump(c,open(ROOT+'/session/mix_config_v1_gate2.json','w'),indent=1,default=lambda o: o.item() if hasattr(o,'item') else str(o))
+print('ok',X['n_pass'],X['n_fail'])
+
+##### FILE: audibility_info.py #####
+"""Info (not a pass/fail gate): BG layer and reverb level vs the beat in their own band, BG sections. Written to session/audibility_info_v1.json"""
+import sys; sys.path.insert(0,'.'); from g2lib import *
+M=np.load(G2+'/session/masks_v1.npz'); P=json.load(open(G2+'/session/params_gate2_realized_v1.json')); F=P['files']
+beat=load_beat().mean(1); out={}
+def rd(f): x,_=sf.read(f,always_2d=True,dtype='float64'); return x.mean(1)
+def lvl(z,mask,lo,hi):
+    e,_=env_ms(bp_an(z,lo,hi),10); n=min(len(e),len(mask)); return float(pdb(np.mean(e[:n][mask[:n]]**2)))
+for nm in ('light','fuller'):
+    bg=rd(F['BG_'+nm]); rv=rd(F['Rev_'+nm])
+    out[nm]={'bg_vs_beat_600_2k_while_singing_db':round(lvl(bg,M['sing_on'],600,2000)-lvl(beat,M['sing_on'],600,2000),2),
+             'reverb_vs_beat_600_3k_in_gaps_db':round(lvl(rv,M['gap10'],600,3000)-lvl(beat,M['gap10'],600,3000),2),
+             'reverb_abs_dbfs_rms_in_gaps':round(lvl(rv,M['gap10'],100,8000)/1,2),
+             'reverb_vs_bg_while_singing_db':round(lvl(rv,M['sing_on'],100,8000)-lvl(bg,M['sing_on'],100,8000),2)}
+print(json.dumps(out,indent=1)); json.dump(out,open(G2+'/session/audibility_info_v1.json','w'),indent=1)
+

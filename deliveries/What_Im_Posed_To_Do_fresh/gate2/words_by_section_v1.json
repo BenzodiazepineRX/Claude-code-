@@ -1,0 +1,3473 @@
+{
+ "method": "faster-whisper medium.en word timestamps per section chunk; dedupe; onset check 1-8 kHz steepest rise +-80 ms",
+ "accuracy_vs_onset_detector": {
+  "n": 345,
+  "median_abs_ms": 51.3,
+  "p90_abs_ms": 76.5,
+  "within_40ms_pct": 35.4
+ },
+ "sections": {
+  "A1": [
+   {
+    "word": "I've",
+    "global_start": 43.22,
+    "global_end": 43.8,
+    "prob": 0.481,
+    "edge": 1.2199999999999989,
+    "src": "lead",
+    "onset_det_sec": 43.1479,
+    "asr_minus_onset_ms": 72.1
+   },
+   {
+    "word": "trying",
+    "global_start": 43.92,
+    "global_end": 44.3,
+    "prob": 0.762,
+    "edge": 1.9200000000000017,
+    "src": "lead",
+    "onset_det_sec": 43.8763,
+    "asr_minus_onset_ms": 43.7
+   },
+   {
+    "word": "everything",
+    "global_start": 44.3,
+    "global_end": 44.98,
+    "prob": 0.911,
+    "edge": 2.299999999999997,
+    "src": "lead",
+    "onset_det_sec": 44.2215,
+    "asr_minus_onset_ms": 78.5
+   },
+   {
+    "word": "these",
+    "global_start": 44.98,
+    "global_end": 45.26,
+    "prob": 0.677,
+    "edge": 2.979999999999997,
+    "src": "lead",
+    "onset_det_sec": 44.9598,
+    "asr_minus_onset_ms": 20.2
+   },
+   {
+    "word": "blunts",
+    "global_start": 45.26,
+    "global_end": 45.52,
+    "prob": 0.957,
+    "edge": 3.259999999999998,
+    "src": "lead",
+    "onset_det_sec": 45.317,
+    "asr_minus_onset_ms": -57.0
+   },
+   {
+    "word": "ain't",
+    "global_start": 45.52,
+    "global_end": 45.98,
+    "prob": 0.974,
+    "edge": 3.520000000000003,
+    "src": "lead",
+    "onset_det_sec": 45.4447,
+    "asr_minus_onset_ms": 75.3
+   },
+   {
+    "word": "enough",
+    "global_start": 45.98,
+    "global_end": 46.24,
+    "prob": 0.918,
+    "edge": 3.979999999999997,
+    "src": "lead",
+    "onset_det_sec": 45.9735,
+    "asr_minus_onset_ms": 6.5
+   },
+   {
+    "word": "at",
+    "global_start": 46.24,
+    "global_end": 46.9,
+    "prob": 0.676,
+    "edge": 4.240000000000002,
+    "src": "lead",
+    "onset_det_sec": 46.1671,
+    "asr_minus_onset_ms": 72.9
+   },
+   {
+    "word": "all",
+    "global_start": 46.9,
+    "global_end": 47.2,
+    "prob": 0.997,
+    "edge": 4.899999999999999,
+    "src": "lead",
+    "onset_det_sec": 46.9513,
+    "asr_minus_onset_ms": -51.3
+   },
+   {
+    "word": "And",
+    "global_start": 47.2,
+    "global_end": 47.54,
+    "prob": 0.34,
+    "edge": 5.200000000000003,
+    "src": "lead",
+    "onset_det_sec": 47.1229,
+    "asr_minus_onset_ms": 77.1
+   },
+   {
+    "word": "I've",
+    "global_start": 47.54,
+    "global_end": 47.84,
+    "prob": 0.762,
+    "edge": 5.539999999999999,
+    "src": "lead",
+    "onset_det_sec": 47.5839,
+    "asr_minus_onset_ms": -43.9
+   },
+   {
+    "word": "hangin'",
+    "global_start": 47.96,
+    "global_end": 48.44,
+    "prob": 0.632,
+    "edge": 5.960000000000001,
+    "src": "lead",
+    "onset_det_sec": 48.0328,
+    "asr_minus_onset_ms": -72.8
+   },
+   {
+    "word": "my",
+    "global_start": 48.6,
+    "global_end": 48.88,
+    "prob": 0.992,
+    "edge": 6.600000000000001,
+    "src": "lead",
+    "onset_det_sec": 48.5417,
+    "asr_minus_onset_ms": 58.3
+   },
+   {
+    "word": "demons,",
+    "global_start": 48.88,
+    "global_end": 49.16,
+    "prob": 0.998,
+    "edge": 6.880000000000003,
+    "src": "lead",
+    "onset_det_sec": 48.9049,
+    "asr_minus_onset_ms": -24.9
+   },
+   {
+    "word": "dancin'",
+    "global_start": 49.16,
+    "global_end": 49.78,
+    "prob": 0.836,
+    "edge": 7.159999999999997,
+    "src": "lead",
+    "onset_det_sec": 49.1124,
+    "asr_minus_onset_ms": 47.6
+   },
+   {
+    "word": "the",
+    "global_start": 50.0,
+    "global_end": 50.16,
+    "prob": 0.565,
+    "edge": 8.0,
+    "src": "lead",
+    "onset_det_sec": 49.9944,
+    "asr_minus_onset_ms": 5.6
+   },
+   {
+    "word": "graveyard",
+    "global_start": 50.16,
+    "global_end": 50.64,
+    "prob": 0.53,
+    "edge": 7.759999999999998,
+    "src": "lead",
+    "onset_det_sec": 50.2338,
+    "asr_minus_onset_ms": -73.8
+   },
+   {
+    "word": "You",
+    "global_start": 50.64,
+    "global_end": 51.12,
+    "prob": 0.878,
+    "edge": 7.280000000000001,
+    "src": "lead",
+    "onset_det_sec": 50.5611,
+    "asr_minus_onset_ms": 78.9
+   },
+   {
+    "word": "keep",
+    "global_start": 51.12,
+    "global_end": 51.12,
+    "prob": 0.989,
+    "edge": 7.280000000000001,
+    "src": "lead",
+    "onset_det_sec": 51.1897,
+    "asr_minus_onset_ms": -69.7
+   },
+   {
+    "word": "run",
+    "global_start": 51.48,
+    "global_end": 51.76,
+    "prob": 0.922,
+    "edge": 6.640000000000001,
+    "src": "lead",
+    "onset_det_sec": 51.3992,
+    "asr_minus_onset_ms": 80.8
+   },
+   {
+    "word": "away,",
+    "global_start": 51.76,
+    "global_end": 52.26,
+    "prob": 0.988,
+    "edge": 6.140000000000001,
+    "src": "lead",
+    "onset_det_sec": 51.8003,
+    "asr_minus_onset_ms": -40.3
+   },
+   {
+    "word": "stop",
+    "global_start": 52.44,
+    "global_end": 52.6,
+    "prob": 0.92,
+    "edge": 5.799999999999997,
+    "src": "lead",
+    "onset_det_sec": 52.5007,
+    "asr_minus_onset_ms": -60.7
+   },
+   {
+    "word": "and",
+    "global_start": 52.6,
+    "global_end": 52.92,
+    "prob": 0.948,
+    "edge": 5.479999999999997,
+    "src": "lead",
+    "onset_det_sec": 52.5605,
+    "asr_minus_onset_ms": 39.5
+   },
+   {
+    "word": "turn",
+    "global_start": 52.92,
+    "global_end": 53.1,
+    "prob": 0.986,
+    "edge": 5.299999999999997,
+    "src": "lead",
+    "onset_det_sec": 52.8878,
+    "asr_minus_onset_ms": 32.2
+   },
+   {
+    "word": "around",
+    "global_start": 53.1,
+    "global_end": 53.54,
+    "prob": 0.996,
+    "edge": 4.859999999999999,
+    "src": "lead",
+    "onset_det_sec": 53.1771,
+    "asr_minus_onset_ms": -77.1
+   },
+   {
+    "word": "and",
+    "global_start": 53.54,
+    "global_end": 53.76,
+    "prob": 0.898,
+    "edge": 4.640000000000001,
+    "src": "lead",
+    "onset_det_sec": 53.5623,
+    "asr_minus_onset_ms": -22.3
+   },
+   {
+    "word": "face",
+    "global_start": 53.76,
+    "global_end": 54.14,
+    "prob": 0.924,
+    "edge": 4.259999999999998,
+    "src": "lead",
+    "onset_det_sec": 53.7977,
+    "asr_minus_onset_ms": -37.7
+   },
+   {
+    "word": "yours",
+    "global_start": 54.14,
+    "global_end": 54.44,
+    "prob": 0.933,
+    "edge": 3.960000000000001,
+    "src": "lead",
+    "onset_det_sec": 54.0831,
+    "asr_minus_onset_ms": 56.9
+   },
+   {
+    "word": "You",
+    "global_start": 54.44,
+    "global_end": 54.46,
+    "prob": 0.912,
+    "edge": 3.9399999999999977,
+    "src": "lead",
+    "onset_det_sec": 54.4842,
+    "asr_minus_onset_ms": -44.2
+   },
+   {
+    "word": "tryna",
+    "global_start": 54.66,
+    "global_end": 55.04,
+    "prob": 0.992,
+    "edge": 3.3599999999999994,
+    "src": "lead",
+    "onset_det_sec": 54.7376,
+    "asr_minus_onset_ms": -77.6
+   },
+   {
+    "word": "run",
+    "global_start": 55.04,
+    "global_end": 55.32,
+    "prob": 0.998,
+    "edge": 3.0799999999999983,
+    "src": "lead",
+    "onset_det_sec": 54.9751,
+    "asr_minus_onset_ms": 64.9
+   },
+   {
+    "word": "away,",
+    "global_start": 55.32,
+    "global_end": 55.82,
+    "prob": 0.998,
+    "edge": 2.5799999999999983,
+    "src": "lead",
+    "onset_det_sec": 55.2844,
+    "asr_minus_onset_ms": 35.6
+   },
+   {
+    "word": "stop",
+    "global_start": 55.94,
+    "global_end": 56.14,
+    "prob": 0.996,
+    "edge": 2.259999999999998,
+    "src": "lead",
+    "onset_det_sec": 56.0067,
+    "asr_minus_onset_ms": -66.7
+   },
+   {
+    "word": "and",
+    "global_start": 56.14,
+    "global_end": 56.46,
+    "prob": 0.996,
+    "edge": 1.9399999999999977,
+    "src": "lead",
+    "onset_det_sec": 56.0785,
+    "asr_minus_onset_ms": 61.5
+   },
+   {
+    "word": "turn",
+    "global_start": 56.46,
+    "global_end": 56.66,
+    "prob": 0.998,
+    "edge": 1.740000000000002,
+    "src": "lead",
+    "onset_det_sec": 56.4437,
+    "asr_minus_onset_ms": 16.3
+   },
+   {
+    "word": "around",
+    "global_start": 56.66,
+    "global_end": 57.06,
+    "prob": 0.998,
+    "edge": 1.3399999999999963,
+    "src": "lead",
+    "onset_det_sec": 56.6832,
+    "asr_minus_onset_ms": -23.2
+   },
+   {
+    "word": "and",
+    "global_start": 57.06,
+    "global_end": 57.3,
+    "prob": 0.991,
+    "edge": 1.1000000000000014,
+    "src": "lead",
+    "onset_det_sec": 56.9805,
+    "asr_minus_onset_ms": 79.5
+   },
+   {
+    "word": "say",
+    "global_start": 57.3,
+    "global_end": 57.62,
+    "prob": 0.992,
+    "edge": 0.7800000000000011,
+    "src": "lead",
+    "onset_det_sec": 57.3696,
+    "asr_minus_onset_ms": -69.6
+   },
+   {
+    "word": "song",
+    "global_start": 57.62,
+    "global_end": 58.14,
+    "prob": 0.26,
+    "edge": 0.259999999999998,
+    "src": "lead",
+    "onset_det_sec": 57.643,
+    "asr_minus_onset_ms": -23.0
+   },
+   {
+    "word": "I've",
+    "global_start": 58.2,
+    "global_end": 58.92,
+    "prob": 0.518,
+    "edge": 0.0,
+    "src": "lead",
+    "onset_det_sec": 58.1299,
+    "asr_minus_onset_ms": 70.1
+   },
+   {
+    "word": "up",
+    "global_start": 59.06,
+    "global_end": 59.26,
+    "prob": 0.982,
+    "edge": 0.8599999999999994,
+    "src": "lead",
+    "onset_det_sec": 59.1156,
+    "asr_minus_onset_ms": -55.6
+   },
+   {
+    "word": "to",
+    "global_start": 59.26,
+    "global_end": 59.48,
+    "prob": 0.986,
+    "edge": 1.0599999999999952,
+    "src": "lead",
+    "onset_det_sec": 59.2952,
+    "asr_minus_onset_ms": -35.2
+   },
+   {
+    "word": "no",
+    "global_start": 59.48,
+    "global_end": 59.86,
+    "prob": 0.975,
+    "edge": 1.279999999999994,
+    "src": "lead",
+    "onset_det_sec": 59.4868,
+    "asr_minus_onset_ms": -6.8
+   },
+   {
+    "word": "good",
+    "global_start": 59.86,
+    "global_end": 60.3,
+    "prob": 0.986,
+    "edge": 1.6599999999999966,
+    "src": "lead",
+    "onset_det_sec": 59.84,
+    "asr_minus_onset_ms": 20.0
+   },
+   {
+    "word": "with",
+    "global_start": 60.3,
+    "global_end": 60.64,
+    "prob": 0.782,
+    "edge": 2.0999999999999943,
+    "src": "lead",
+    "onset_det_sec": 60.269,
+    "asr_minus_onset_ms": 31.0
+   },
+   {
+    "word": "all",
+    "global_start": 60.64,
+    "global_end": 60.88,
+    "prob": 0.979,
+    "edge": 2.4399999999999977,
+    "src": "lead",
+    "onset_det_sec": 60.6901,
+    "asr_minus_onset_ms": -50.1
+   },
+   {
+    "word": "the",
+    "global_start": 60.88,
+    "global_end": 61.06,
+    "prob": 0.824,
+    "edge": 2.6799999999999997,
+    "src": "lead",
+    "onset_det_sec": 60.8856,
+    "asr_minus_onset_ms": -5.6
+   },
+   {
+    "word": "forbidden",
+    "global_start": 61.06,
+    "global_end": 61.52,
+    "prob": 0.986,
+    "edge": 2.8599999999999994,
+    "src": "lead",
+    "onset_det_sec": 61.0991,
+    "asr_minus_onset_ms": -39.1
+   },
+   {
+    "word": "ones",
+    "global_start": 61.52,
+    "global_end": 62.16,
+    "prob": 0.987,
+    "edge": 3.3200000000000003,
+    "src": "lead",
+    "onset_det_sec": 61.5641,
+    "asr_minus_onset_ms": -44.1
+   },
+   {
+    "word": "I've",
+    "global_start": 62.16,
+    "global_end": 62.5,
+    "prob": 0.743,
+    "edge": 3.9599999999999937,
+    "src": "lead",
+    "onset_det_sec": 62.0929,
+    "asr_minus_onset_ms": 67.1
+   },
+   {
+    "word": "up",
+    "global_start": 62.62,
+    "global_end": 62.82,
+    "prob": 0.998,
+    "edge": 4.419999999999995,
+    "src": "lead",
+    "onset_det_sec": 62.6935,
+    "asr_minus_onset_ms": -73.5
+   },
+   {
+    "word": "to",
+    "global_start": 62.82,
+    "global_end": 63.04,
+    "prob": 0.995,
+    "edge": 4.619999999999997,
+    "src": "lead",
+    "onset_det_sec": 62.8452,
+    "asr_minus_onset_ms": -25.2
+   },
+   {
+    "word": "no",
+    "global_start": 63.04,
+    "global_end": 63.42,
+    "prob": 0.992,
+    "edge": 4.839999999999996,
+    "src": "lead",
+    "onset_det_sec": 62.9609,
+    "asr_minus_onset_ms": 79.1
+   },
+   {
+    "word": "good",
+    "global_start": 63.42,
+    "global_end": 63.86,
+    "prob": 0.992,
+    "edge": 5.219999999999999,
+    "src": "lead",
+    "onset_det_sec": 63.4618,
+    "asr_minus_onset_ms": -41.8
+   },
+   {
+    "word": "hanging",
+    "global_start": 63.86,
+    "global_end": 64.26,
+    "prob": 0.703,
+    "edge": 5.659999999999997,
+    "src": "lead",
+    "onset_det_sec": 63.8569,
+    "asr_minus_onset_ms": 3.1
+   },
+   {
+    "word": "with",
+    "global_start": 64.26,
+    "global_end": 64.6,
+    "prob": 0.995,
+    "edge": 6.060000000000002,
+    "src": "lead",
+    "onset_det_sec": 64.248,
+    "asr_minus_onset_ms": 12.0
+   },
+   {
+    "word": "the",
+    "global_start": 64.6,
+    "global_end": 64.84,
+    "prob": 0.989,
+    "edge": 6.3999999999999915,
+    "src": "lead",
+    "onset_det_sec": 64.6511,
+    "asr_minus_onset_ms": -51.1
+   },
+   {
+    "word": "hidden",
+    "global_start": 64.84,
+    "global_end": 65.18,
+    "prob": 0.992,
+    "edge": 6.640000000000001,
+    "src": "lead",
+    "onset_det_sec": 64.9085,
+    "asr_minus_onset_ms": -68.5
+   },
+   {
+    "word": "ones",
+    "global_start": 65.18,
+    "global_end": 65.72,
+    "prob": 0.832,
+    "edge": 6.980000000000004,
+    "src": "lead",
+    "onset_det_sec": 65.102,
+    "asr_minus_onset_ms": 78.0
+   },
+   {
+    "word": "Hanging",
+    "global_start": 65.72,
+    "global_end": 66.06,
+    "prob": 0.746,
+    "edge": 7.519999999999996,
+    "src": "lead",
+    "onset_det_sec": 65.7965,
+    "asr_minus_onset_ms": -76.5
+   },
+   {
+    "word": "with",
+    "global_start": 66.06,
+    "global_end": 66.4,
+    "prob": 0.994,
+    "edge": 7.199999999999989,
+    "src": "lead",
+    "onset_det_sec": 66.016,
+    "asr_minus_onset_ms": 44.0
+   },
+   {
+    "word": "the",
+    "global_start": 66.4,
+    "global_end": 66.6,
+    "prob": 0.885,
+    "edge": 7.0,
+    "src": "lead",
+    "onset_det_sec": 66.431,
+    "asr_minus_onset_ms": -31.0
+   },
+   {
+    "word": "perfect",
+    "global_start": 66.6,
+    "global_end": 66.94,
+    "prob": 0.99,
+    "edge": 6.659999999999997,
+    "src": "lead",
+    "onset_det_sec": 66.5248,
+    "asr_minus_onset_ms": 75.2
+   },
+   {
+    "word": "game",
+    "global_start": 66.94,
+    "global_end": 67.24,
+    "prob": 0.8,
+    "edge": 6.359999999999999,
+    "src": "lead",
+    "onset_det_sec": 66.9179,
+    "asr_minus_onset_ms": 22.1
+   },
+   {
+    "word": "in",
+    "global_start": 67.24,
+    "global_end": 67.46,
+    "prob": 0.386,
+    "edge": 6.140000000000001,
+    "src": "lead",
+    "onset_det_sec": 67.317,
+    "asr_minus_onset_ms": -77.0
+   },
+   {
+    "word": "fun",
+    "global_start": 67.46,
+    "global_end": 67.7,
+    "prob": 0.48,
+    "edge": 5.8999999999999915,
+    "src": "lead",
+    "onset_det_sec": 67.4108,
+    "asr_minus_onset_ms": 49.2
+   },
+   {
+    "word": "like",
+    "global_start": 67.7,
+    "global_end": 67.92,
+    "prob": 0.721,
+    "edge": 5.679999999999993,
+    "src": "lead",
+    "onset_det_sec": 67.756,
+    "asr_minus_onset_ms": -56.0
+   },
+   {
+    "word": "to",
+    "global_start": 67.92,
+    "global_end": 68.14,
+    "prob": 0.741,
+    "edge": 5.459999999999994,
+    "src": "lead",
+    "onset_det_sec": 67.9595,
+    "asr_minus_onset_ms": -39.5
+   },
+   {
+    "word": "fun",
+    "global_start": 68.14,
+    "global_end": 68.5,
+    "prob": 0.758,
+    "edge": 5.099999999999994,
+    "src": "lead",
+    "onset_det_sec": 68.0673,
+    "asr_minus_onset_ms": 72.7
+   },
+   {
+    "word": "like",
+    "global_start": 68.5,
+    "global_end": 68.86,
+    "prob": 0.903,
+    "edge": 4.739999999999995,
+    "src": "lead",
+    "onset_det_sec": 68.4405,
+    "asr_minus_onset_ms": 59.5
+   },
+   {
+    "word": "at",
+    "global_start": 68.86,
+    "global_end": 69.12,
+    "prob": 0.968,
+    "edge": 4.47999999999999,
+    "src": "lead",
+    "onset_det_sec": 68.9114,
+    "asr_minus_onset_ms": -51.4
+   },
+   {
+    "word": "all.",
+    "global_start": 69.12,
+    "global_end": 69.34,
+    "prob": 0.984,
+    "edge": 4.259999999999991,
+    "src": "lead",
+    "onset_det_sec": 69.1169,
+    "asr_minus_onset_ms": 3.1
+   },
+   {
+    "word": "It's",
+    "global_start": 69.34,
+    "global_end": 69.52,
+    "prob": 0.65,
+    "edge": 4.079999999999998,
+    "src": "lead",
+    "onset_det_sec": 69.3863,
+    "asr_minus_onset_ms": -46.3
+   },
+   {
+    "word": "my",
+    "global_start": 69.52,
+    "global_end": 69.68,
+    "prob": 0.994,
+    "edge": 3.9199999999999875,
+    "src": "lead",
+    "onset_det_sec": 69.5459,
+    "asr_minus_onset_ms": -25.9
+   },
+   {
+    "word": "time.",
+    "global_start": 69.68,
+    "global_end": 69.94,
+    "prob": 0.99,
+    "edge": 3.6599999999999966,
+    "src": "lead",
+    "onset_det_sec": 69.6158,
+    "asr_minus_onset_ms": 64.2
+   },
+   {
+    "word": "I",
+    "global_start": 70.08,
+    "global_end": 70.12,
+    "prob": 0.953,
+    "edge": 3.4799999999999898,
+    "src": "lead",
+    "onset_det_sec": 70.0388,
+    "asr_minus_onset_ms": 41.2
+   },
+   {
+    "word": "inside",
+    "global_start": 70.42,
+    "global_end": 70.8,
+    "prob": 0.934,
+    "edge": 2.799999999999997,
+    "src": "lead",
+    "onset_det_sec": 70.4619,
+    "asr_minus_onset_ms": -41.9
+   },
+   {
+    "word": "the",
+    "global_start": 70.8,
+    "global_end": 71.02,
+    "prob": 0.99,
+    "edge": 2.5799999999999983,
+    "src": "lead",
+    "onset_det_sec": 70.851,
+    "asr_minus_onset_ms": -51.0
+   },
+   {
+    "word": "dark",
+    "global_start": 71.02,
+    "global_end": 71.44,
+    "prob": 0.996,
+    "edge": 2.1599999999999966,
+    "src": "lead",
+    "onset_det_sec": 71.0944,
+    "asr_minus_onset_ms": -74.4
+   },
+   {
+    "word": "I",
+    "global_start": 71.44,
+    "global_end": 71.76,
+    "prob": 0.67,
+    "edge": 1.8399999999999892,
+    "src": "lead",
+    "onset_det_sec": 71.4297,
+    "asr_minus_onset_ms": 10.3
+   },
+   {
+    "word": "enjoyed",
+    "global_start": 71.76,
+    "global_end": 72.2,
+    "prob": 0.979,
+    "edge": 1.3999999999999915,
+    "src": "lead",
+    "onset_det_sec": 71.6811,
+    "asr_minus_onset_ms": 78.9
+   },
+   {
+    "word": "it",
+    "global_start": 72.2,
+    "global_end": 72.46,
+    "prob": 0.998,
+    "edge": 1.1400000000000006,
+    "src": "lead",
+    "onset_det_sec": 72.2398,
+    "asr_minus_onset_ms": -39.8
+   },
+   {
+    "word": "all",
+    "global_start": 72.46,
+    "global_end": 72.9,
+    "prob": 0.668,
+    "edge": 0.6999999999999886,
+    "src": "lead",
+    "onset_det_sec": 72.4633,
+    "asr_minus_onset_ms": -3.3
+   }
+  ],
+  "B1": [
+   {
+    "word": "I'm",
+    "global_start": 73.08,
+    "global_end": 73.32,
+    "prob": 0.953,
+    "edge": 0.480000000000004,
+    "src": "lead",
+    "onset_det_sec": 73.1198,
+    "asr_minus_onset_ms": -39.8
+   },
+   {
+    "word": "supposed",
+    "global_start": 73.32,
+    "global_end": 73.52,
+    "prob": 0.371,
+    "edge": 0.7199999999999989,
+    "src": "lead",
+    "onset_det_sec": 73.3633,
+    "asr_minus_onset_ms": -43.3
+   },
+   {
+    "word": "to",
+    "global_start": 73.52,
+    "global_end": 73.8,
+    "prob": 0.987,
+    "edge": 0.9200000000000017,
+    "src": "lead",
+    "onset_det_sec": 73.5768,
+    "asr_minus_onset_ms": -56.8
+   },
+   {
+    "word": "do",
+    "global_start": 73.8,
+    "global_end": 74.06,
+    "prob": 0.994,
+    "edge": 1.2000000000000028,
+    "src": "lead",
+    "onset_det_sec": 73.7903,
+    "asr_minus_onset_ms": 9.7
+   },
+   {
+    "word": "when",
+    "global_start": 74.06,
+    "global_end": 74.44,
+    "prob": 0.768,
+    "edge": 1.460000000000008,
+    "src": "lead",
+    "onset_det_sec": 74.1195,
+    "asr_minus_onset_ms": -59.5
+   },
+   {
+    "word": "the",
+    "global_start": 74.44,
+    "global_end": 74.6,
+    "prob": 0.956,
+    "edge": 1.8400000000000034,
+    "src": "lead",
+    "onset_det_sec": 74.4727,
+    "asr_minus_onset_ms": -32.7
+   },
+   {
+    "word": "blunts",
+    "global_start": 74.6,
+    "global_end": 74.86,
+    "prob": 0.755,
+    "edge": 2.0,
+    "src": "lead",
+    "onset_det_sec": 74.5186,
+    "asr_minus_onset_ms": 81.4
+   },
+   {
+    "word": "ain't",
+    "global_start": 74.86,
+    "global_end": 75.14,
+    "prob": 0.977,
+    "edge": 2.260000000000005,
+    "src": "lead",
+    "onset_det_sec": 74.8858,
+    "asr_minus_onset_ms": -25.8
+   },
+   {
+    "word": "nothing",
+    "global_start": 75.14,
+    "global_end": 75.34,
+    "prob": 0.438,
+    "edge": 2.5400000000000063,
+    "src": "lead",
+    "onset_det_sec": 75.0893,
+    "asr_minus_onset_ms": 50.7
+   },
+   {
+    "word": "like",
+    "global_start": 75.34,
+    "global_end": 75.9,
+    "prob": 0.663,
+    "edge": 2.740000000000009,
+    "src": "lead",
+    "onset_det_sec": 75.2989,
+    "asr_minus_onset_ms": 41.1
+   },
+   {
+    "word": "at",
+    "global_start": 75.9,
+    "global_end": 76.2,
+    "prob": 0.697,
+    "edge": 3.3000000000000114,
+    "src": "lead",
+    "onset_det_sec": 75.8376,
+    "asr_minus_onset_ms": 62.4
+   },
+   {
+    "word": "all",
+    "global_start": 76.2,
+    "global_end": 76.46,
+    "prob": 0.989,
+    "edge": 3.6000000000000085,
+    "src": "lead",
+    "onset_det_sec": 76.1868,
+    "asr_minus_onset_ms": 13.2
+   },
+   {
+    "word": "Only",
+    "global_start": 76.46,
+    "global_end": 76.72,
+    "prob": 0.24,
+    "edge": 3.8599999999999994,
+    "src": "lead",
+    "onset_det_sec": 76.3784,
+    "asr_minus_onset_ms": 81.6
+   },
+   {
+    "word": "time",
+    "global_start": 76.72,
+    "global_end": 77.04,
+    "prob": 0.991,
+    "edge": 4.1200000000000045,
+    "src": "lead",
+    "onset_det_sec": 76.6777,
+    "asr_minus_onset_ms": 42.3
+   },
+   {
+    "word": "I'm",
+    "global_start": 77.04,
+    "global_end": 77.34,
+    "prob": 0.98,
+    "edge": 4.440000000000012,
+    "src": "lead",
+    "onset_det_sec": 77.0868,
+    "asr_minus_onset_ms": -46.8
+   },
+   {
+    "word": "feeling",
+    "global_start": 77.34,
+    "global_end": 77.6,
+    "prob": 0.951,
+    "edge": 4.740000000000009,
+    "src": "lead",
+    "onset_det_sec": 77.3482,
+    "asr_minus_onset_ms": -8.2
+   },
+   {
+    "word": "like",
+    "global_start": 77.6,
+    "global_end": 77.92,
+    "prob": 0.987,
+    "edge": 5.0,
+    "src": "lead",
+    "onset_det_sec": 77.5298,
+    "asr_minus_onset_ms": 70.2
+   },
+   {
+    "word": "myself",
+    "global_start": 77.92,
+    "global_end": 78.38,
+    "prob": 0.972,
+    "edge": 5.320000000000007,
+    "src": "lead",
+    "onset_det_sec": 77.8551,
+    "asr_minus_onset_ms": 64.9
+   },
+   {
+    "word": "is",
+    "global_start": 78.38,
+    "global_end": 78.62,
+    "prob": 0.962,
+    "edge": 5.780000000000001,
+    "src": "lead",
+    "onset_det_sec": 78.4417,
+    "asr_minus_onset_ms": -61.7
+   },
+   {
+    "word": "off",
+    "global_start": 78.62,
+    "global_end": 78.9,
+    "prob": 0.893,
+    "edge": 6.02000000000001,
+    "src": "lead",
+    "onset_det_sec": 78.6932,
+    "asr_minus_onset_ms": -73.2
+   },
+   {
+    "word": "this",
+    "global_start": 78.9,
+    "global_end": 79.12,
+    "prob": 0.757,
+    "edge": 6.300000000000011,
+    "src": "lead",
+    "onset_det_sec": 78.8787,
+    "asr_minus_onset_ms": 21.3
+   },
+   {
+    "word": "Adderall",
+    "global_start": 79.12,
+    "global_end": 80.0,
+    "prob": 0.689,
+    "edge": 6.52000000000001,
+    "src": "lead",
+    "onset_det_sec": 79.1302,
+    "asr_minus_onset_ms": -10.2
+   },
+   {
+    "word": "I",
+    "global_start": 80.0,
+    "global_end": 80.22,
+    "prob": 0.634,
+    "edge": 7.180000000000007,
+    "src": "lead",
+    "onset_det_sec": 79.9523,
+    "asr_minus_onset_ms": 47.7
+   },
+   {
+    "word": "threw",
+    "global_start": 80.22,
+    "global_end": 80.44,
+    "prob": 0.56,
+    "edge": 6.960000000000008,
+    "src": "lead",
+    "onset_det_sec": 80.1957,
+    "asr_minus_onset_ms": 24.3
+   },
+   {
+    "word": "back",
+    "global_start": 80.44,
+    "global_end": 80.64,
+    "prob": 0.853,
+    "edge": 6.760000000000005,
+    "src": "lead",
+    "onset_det_sec": 80.4911,
+    "asr_minus_onset_ms": -51.1
+   },
+   {
+    "word": "a",
+    "global_start": 80.64,
+    "global_end": 80.84,
+    "prob": 0.876,
+    "edge": 6.560000000000002,
+    "src": "lead",
+    "onset_det_sec": 80.6647,
+    "asr_minus_onset_ms": -24.7
+   },
+   {
+    "word": "Xan,",
+    "global_start": 80.84,
+    "global_end": 81.24,
+    "prob": 0.488,
+    "edge": 6.160000000000011,
+    "src": "lead",
+    "onset_det_sec": 80.7904,
+    "asr_minus_onset_ms": 49.6
+   },
+   {
+    "word": "it's",
+    "global_start": 81.42,
+    "global_end": 81.54,
+    "prob": 0.931,
+    "edge": 5.859999999999999,
+    "src": "lead",
+    "onset_det_sec": 81.3491,
+    "asr_minus_onset_ms": 70.9
+   },
+   {
+    "word": "only",
+    "global_start": 81.68,
+    "global_end": 82.04,
+    "prob": 0.996,
+    "edge": 5.359999999999999,
+    "src": "lead",
+    "onset_det_sec": 81.6285,
+    "asr_minus_onset_ms": 51.5
+   },
+   {
+    "word": "way",
+    "global_start": 82.04,
+    "global_end": 82.38,
+    "prob": 0.997,
+    "edge": 5.02000000000001,
+    "src": "lead",
+    "onset_det_sec": 81.9956,
+    "asr_minus_onset_ms": 44.4
+   },
+   {
+    "word": "to",
+    "global_start": 82.38,
+    "global_end": 82.58,
+    "prob": 0.995,
+    "edge": 4.820000000000007,
+    "src": "lead",
+    "onset_det_sec": 82.4566,
+    "asr_minus_onset_ms": -76.6
+   },
+   {
+    "word": "sleep",
+    "global_start": 82.58,
+    "global_end": 82.88,
+    "prob": 0.988,
+    "edge": 4.52000000000001,
+    "src": "lead",
+    "onset_det_sec": 82.5005,
+    "asr_minus_onset_ms": 79.5
+   },
+   {
+    "word": "it",
+    "global_start": 82.88,
+    "global_end": 83.12,
+    "prob": 0.997,
+    "edge": 4.280000000000001,
+    "src": "lead",
+    "onset_det_sec": 82.8896,
+    "asr_minus_onset_ms": -9.6
+   },
+   {
+    "word": "off",
+    "global_start": 83.12,
+    "global_end": 83.5,
+    "prob": 0.974,
+    "edge": 3.9000000000000057,
+    "src": "lead",
+    "onset_det_sec": 83.165,
+    "asr_minus_onset_ms": -45.0
+   },
+   {
+    "word": "Hanging",
+    "global_start": 83.5,
+    "global_end": 83.88,
+    "prob": 0.915,
+    "edge": 3.5200000000000102,
+    "src": "lead",
+    "onset_det_sec": 83.5761,
+    "asr_minus_onset_ms": -76.1
+   },
+   {
+    "word": "with",
+    "global_start": 83.88,
+    "global_end": 84.16,
+    "prob": 0.993,
+    "edge": 3.240000000000009,
+    "src": "lead",
+    "onset_det_sec": 83.8534,
+    "asr_minus_onset_ms": 26.6
+   },
+   {
+    "word": "the",
+    "global_start": 84.16,
+    "global_end": 84.36,
+    "prob": 0.783,
+    "edge": 3.0400000000000063,
+    "src": "lead",
+    "onset_det_sec": 84.0809,
+    "asr_minus_onset_ms": 79.1
+   },
+   {
+    "word": "perfect",
+    "global_start": 84.36,
+    "global_end": 84.72,
+    "prob": 0.982,
+    "edge": 2.680000000000007,
+    "src": "lead",
+    "onset_det_sec": 84.4042,
+    "asr_minus_onset_ms": -44.2
+   },
+   {
+    "word": "game,",
+    "global_start": 84.72,
+    "global_end": 85.02,
+    "prob": 0.518,
+    "edge": 2.3800000000000097,
+    "src": "lead",
+    "onset_det_sec": 84.6676,
+    "asr_minus_onset_ms": 52.4
+   },
+   {
+    "word": "it's",
+    "global_start": 85.14,
+    "global_end": 85.34,
+    "prob": 0.59,
+    "edge": 2.0600000000000023,
+    "src": "lead",
+    "onset_det_sec": 85.0946,
+    "asr_minus_onset_ms": 45.4
+   },
+   {
+    "word": "fun",
+    "global_start": 85.34,
+    "global_end": 85.46,
+    "prob": 0.927,
+    "edge": 1.940000000000012,
+    "src": "lead",
+    "onset_det_sec": 85.3241,
+    "asr_minus_onset_ms": 15.9
+   },
+   {
+    "word": "too",
+    "global_start": 85.7,
+    "global_end": 85.9,
+    "prob": 0.327,
+    "edge": 1.5,
+    "src": "lead",
+    "onset_det_sec": 85.7272,
+    "asr_minus_onset_ms": -27.2
+   },
+   {
+    "word": "fun,",
+    "global_start": 85.9,
+    "global_end": 86.28,
+    "prob": 0.94,
+    "edge": 1.1200000000000045,
+    "src": "lead",
+    "onset_det_sec": 85.8349,
+    "asr_minus_onset_ms": 65.1
+   },
+   {
+    "word": "like",
+    "global_start": 86.28,
+    "global_end": 86.62,
+    "prob": 0.992,
+    "edge": 0.7800000000000011,
+    "src": "lead",
+    "onset_det_sec": 86.2081,
+    "asr_minus_onset_ms": 71.9
+   },
+   {
+    "word": "at",
+    "global_start": 86.62,
+    "global_end": 86.9,
+    "prob": 0.848,
+    "edge": 0.5,
+    "src": "lead",
+    "onset_det_sec": 86.697,
+    "asr_minus_onset_ms": -77.0
+   },
+   {
+    "word": "all",
+    "global_start": 86.9,
+    "global_end": 87.12,
+    "prob": 0.995,
+    "edge": 0.28000000000000114,
+    "src": "lead",
+    "onset_det_sec": 86.8925,
+    "asr_minus_onset_ms": 7.5
+   }
+  ],
+  "B2": [
+   {
+    "word": "But",
+    "global_start": 87.12,
+    "global_end": 87.3,
+    "prob": 0.436,
+    "edge": 0.10000000000000853,
+    "src": "lead",
+    "onset_det_sec": 87.116,
+    "asr_minus_onset_ms": 4.0
+   },
+   {
+    "word": "I'm",
+    "global_start": 87.3,
+    "global_end": 87.56,
+    "prob": 0.953,
+    "edge": 0.3999999999999915,
+    "src": "lead",
+    "onset_det_sec": 87.3335,
+    "asr_minus_onset_ms": -33.5
+   },
+   {
+    "word": "supposed",
+    "global_start": 87.56,
+    "global_end": 87.72,
+    "prob": 0.329,
+    "edge": 0.6599999999999966,
+    "src": "lead",
+    "onset_det_sec": 87.547,
+    "asr_minus_onset_ms": 13.0
+   },
+   {
+    "word": "to",
+    "global_start": 87.72,
+    "global_end": 88.02,
+    "prob": 0.988,
+    "edge": 0.8199999999999932,
+    "src": "lead",
+    "onset_det_sec": 87.7745,
+    "asr_minus_onset_ms": -54.5
+   },
+   {
+    "word": "do",
+    "global_start": 88.02,
+    "global_end": 88.3,
+    "prob": 0.995,
+    "edge": 1.1199999999999903,
+    "src": "lead",
+    "onset_det_sec": 88.014,
+    "asr_minus_onset_ms": 6.0
+   },
+   {
+    "word": "when",
+    "global_start": 88.3,
+    "global_end": 88.66,
+    "prob": 0.855,
+    "edge": 1.3999999999999915,
+    "src": "lead",
+    "onset_det_sec": 88.2654,
+    "asr_minus_onset_ms": 34.6
+   },
+   {
+    "word": "the",
+    "global_start": 88.66,
+    "global_end": 88.84,
+    "prob": 0.95,
+    "edge": 1.759999999999991,
+    "src": "lead",
+    "onset_det_sec": 88.6964,
+    "asr_minus_onset_ms": -36.4
+   },
+   {
+    "word": "blunts",
+    "global_start": 88.84,
+    "global_end": 89.1,
+    "prob": 0.744,
+    "edge": 1.9399999999999977,
+    "src": "lead",
+    "onset_det_sec": 88.872,
+    "asr_minus_onset_ms": -32.0
+   },
+   {
+    "word": "ain't",
+    "global_start": 89.1,
+    "global_end": 89.36,
+    "prob": 0.976,
+    "edge": 2.1999999999999886,
+    "src": "lead",
+    "onset_det_sec": 89.1095,
+    "asr_minus_onset_ms": -9.5
+   },
+   {
+    "word": "nothing",
+    "global_start": 89.36,
+    "global_end": 89.58,
+    "prob": 0.376,
+    "edge": 2.4599999999999937,
+    "src": "lead",
+    "onset_det_sec": 89.313,
+    "asr_minus_onset_ms": 47.0
+   },
+   {
+    "word": "like",
+    "global_start": 89.58,
+    "global_end": 90.14,
+    "prob": 0.719,
+    "edge": 2.6799999999999926,
+    "src": "lead",
+    "onset_det_sec": 89.5046,
+    "asr_minus_onset_ms": 75.4
+   },
+   {
+    "word": "at",
+    "global_start": 90.14,
+    "global_end": 90.42,
+    "prob": 0.677,
+    "edge": 3.239999999999995,
+    "src": "lead",
+    "onset_det_sec": 90.213,
+    "asr_minus_onset_ms": -73.0
+   },
+   {
+    "word": "all",
+    "global_start": 90.42,
+    "global_end": 90.68,
+    "prob": 0.984,
+    "edge": 3.519999999999996,
+    "src": "lead",
+    "onset_det_sec": 90.4205,
+    "asr_minus_onset_ms": -0.5
+   },
+   {
+    "word": "Only",
+    "global_start": 90.68,
+    "global_end": 90.96,
+    "prob": 0.309,
+    "edge": 3.780000000000001,
+    "src": "lead",
+    "onset_det_sec": 90.6021,
+    "asr_minus_onset_ms": 77.9
+   },
+   {
+    "word": "time",
+    "global_start": 90.96,
+    "global_end": 91.28,
+    "prob": 0.993,
+    "edge": 4.059999999999988,
+    "src": "lead",
+    "onset_det_sec": 90.8894,
+    "asr_minus_onset_ms": 70.6
+   },
+   {
+    "word": "I'm",
+    "global_start": 91.28,
+    "global_end": 91.58,
+    "prob": 0.979,
+    "edge": 4.3799999999999955,
+    "src": "lead",
+    "onset_det_sec": 91.3165,
+    "asr_minus_onset_ms": -36.5
+   },
+   {
+    "word": "feeling",
+    "global_start": 91.58,
+    "global_end": 91.82,
+    "prob": 0.94,
+    "edge": 4.679999999999993,
+    "src": "lead",
+    "onset_det_sec": 91.5779,
+    "asr_minus_onset_ms": 2.1
+   },
+   {
+    "word": "like",
+    "global_start": 91.82,
+    "global_end": 92.14,
+    "prob": 0.988,
+    "edge": 4.9199999999999875,
+    "src": "lead",
+    "onset_det_sec": 91.8493,
+    "asr_minus_onset_ms": -29.3
+   },
+   {
+    "word": "myself",
+    "global_start": 92.14,
+    "global_end": 92.62,
+    "prob": 0.959,
+    "edge": 5.239999999999995,
+    "src": "lead",
+    "onset_det_sec": 92.0668,
+    "asr_minus_onset_ms": 73.2
+   },
+   {
+    "word": "is",
+    "global_start": 92.62,
+    "global_end": 92.84,
+    "prob": 0.953,
+    "edge": 5.719999999999999,
+    "src": "lead",
+    "onset_det_sec": 92.6834,
+    "asr_minus_onset_ms": -63.4
+   },
+   {
+    "word": "off",
+    "global_start": 92.84,
+    "global_end": 93.1,
+    "prob": 0.888,
+    "edge": 5.939999999999998,
+    "src": "lead",
+    "onset_det_sec": 92.9128,
+    "asr_minus_onset_ms": -72.8
+   },
+   {
+    "word": "this",
+    "global_start": 93.1,
+    "global_end": 93.32,
+    "prob": 0.873,
+    "edge": 6.199999999999989,
+    "src": "lead",
+    "onset_det_sec": 93.1563,
+    "asr_minus_onset_ms": -56.3
+   },
+   {
+    "word": "Adderall",
+    "global_start": 93.32,
+    "global_end": 94.24,
+    "prob": 0.733,
+    "edge": 5.760000000000005,
+    "src": "lead",
+    "onset_det_sec": 93.3399,
+    "asr_minus_onset_ms": -19.9
+   },
+   {
+    "word": "I",
+    "global_start": 94.24,
+    "global_end": 94.42,
+    "prob": 0.776,
+    "edge": 5.579999999999998,
+    "src": "lead",
+    "onset_det_sec": 94.162,
+    "asr_minus_onset_ms": 78.0
+   },
+   {
+    "word": "threw",
+    "global_start": 94.42,
+    "global_end": 94.68,
+    "prob": 0.733,
+    "edge": 5.319999999999993,
+    "src": "lead",
+    "onset_det_sec": 94.3735,
+    "asr_minus_onset_ms": 46.5
+   },
+   {
+    "word": "back",
+    "global_start": 94.68,
+    "global_end": 94.86,
+    "prob": 0.827,
+    "edge": 5.140000000000001,
+    "src": "lead",
+    "onset_det_sec": 94.7546,
+    "asr_minus_onset_ms": -74.6
+   },
+   {
+    "word": "a",
+    "global_start": 94.86,
+    "global_end": 95.06,
+    "prob": 0.861,
+    "edge": 4.939999999999998,
+    "src": "lead",
+    "onset_det_sec": 94.8863,
+    "asr_minus_onset_ms": -26.3
+   },
+   {
+    "word": "Xan,",
+    "global_start": 95.06,
+    "global_end": 95.48,
+    "prob": 0.543,
+    "edge": 4.519999999999996,
+    "src": "lead",
+    "onset_det_sec": 95.0121,
+    "asr_minus_onset_ms": 47.9
+   },
+   {
+    "word": "it's",
+    "global_start": 95.64,
+    "global_end": 95.76,
+    "prob": 0.938,
+    "edge": 4.239999999999995,
+    "src": "lead",
+    "onset_det_sec": 95.5608,
+    "asr_minus_onset_ms": 79.2
+   },
+   {
+    "word": "only",
+    "global_start": 95.9,
+    "global_end": 96.28,
+    "prob": 0.998,
+    "edge": 3.719999999999999,
+    "src": "lead",
+    "onset_det_sec": 95.8402,
+    "asr_minus_onset_ms": 59.8
+   },
+   {
+    "word": "way",
+    "global_start": 96.28,
+    "global_end": 96.6,
+    "prob": 0.997,
+    "edge": 3.4000000000000057,
+    "src": "lead",
+    "onset_det_sec": 96.2173,
+    "asr_minus_onset_ms": 62.7
+   },
+   {
+    "word": "to",
+    "global_start": 96.6,
+    "global_end": 96.8,
+    "prob": 0.996,
+    "edge": 3.200000000000003,
+    "src": "lead",
+    "onset_det_sec": 96.5186,
+    "asr_minus_onset_ms": 81.4
+   },
+   {
+    "word": "sleep",
+    "global_start": 96.8,
+    "global_end": 97.1,
+    "prob": 0.985,
+    "edge": 2.9000000000000057,
+    "src": "lead",
+    "onset_det_sec": 96.7341,
+    "asr_minus_onset_ms": 65.9
+   },
+   {
+    "word": "it",
+    "global_start": 97.1,
+    "global_end": 97.36,
+    "prob": 0.998,
+    "edge": 2.6400000000000006,
+    "src": "lead",
+    "onset_det_sec": 97.1013,
+    "asr_minus_onset_ms": -1.3
+   },
+   {
+    "word": "off",
+    "global_start": 97.36,
+    "global_end": 97.72,
+    "prob": 0.987,
+    "edge": 2.280000000000001,
+    "src": "lead",
+    "onset_det_sec": 97.2809,
+    "asr_minus_onset_ms": 79.1
+   },
+   {
+    "word": "Only",
+    "global_start": 97.72,
+    "global_end": 98.02,
+    "prob": 0.928,
+    "edge": 1.980000000000004,
+    "src": "lead",
+    "onset_det_sec": 97.7498,
+    "asr_minus_onset_ms": -29.8
+   },
+   {
+    "word": "time",
+    "global_start": 98.02,
+    "global_end": 98.36,
+    "prob": 0.998,
+    "edge": 1.6400000000000006,
+    "src": "lead",
+    "onset_det_sec": 97.9713,
+    "asr_minus_onset_ms": 48.7
+   },
+   {
+    "word": "I'm",
+    "global_start": 98.36,
+    "global_end": 98.64,
+    "prob": 0.995,
+    "edge": 1.3599999999999994,
+    "src": "lead",
+    "onset_det_sec": 98.3984,
+    "asr_minus_onset_ms": -38.4
+   },
+   {
+    "word": "feeling",
+    "global_start": 98.64,
+    "global_end": 98.9,
+    "prob": 0.984,
+    "edge": 1.0999999999999943,
+    "src": "lead",
+    "onset_det_sec": 98.6598,
+    "asr_minus_onset_ms": -19.8
+   },
+   {
+    "word": "like",
+    "global_start": 98.9,
+    "global_end": 99.26,
+    "prob": 0.998,
+    "edge": 0.7399999999999949,
+    "src": "lead",
+    "onset_det_sec": 98.9312,
+    "asr_minus_onset_ms": -31.2
+   },
+   {
+    "word": "myself",
+    "global_start": 99.26,
+    "global_end": 99.72,
+    "prob": 0.989,
+    "edge": 0.28000000000000114,
+    "src": "lead",
+    "onset_det_sec": 99.1926,
+    "asr_minus_onset_ms": 67.4
+   }
+  ],
+  "A2": [
+   {
+    "word": "is",
+    "global_start": 99.72,
+    "global_end": 99.92,
+    "prob": 0.878,
+    "edge": 0.519999999999996,
+    "src": "lead",
+    "onset_det_sec": 99.7533,
+    "asr_minus_onset_ms": -33.3
+   },
+   {
+    "word": "off",
+    "global_start": 99.92,
+    "global_end": 100.18,
+    "prob": 0.752,
+    "edge": 0.7199999999999989,
+    "src": "lead",
+    "onset_det_sec": 99.9947,
+    "asr_minus_onset_ms": -74.7
+   },
+   {
+    "word": "this",
+    "global_start": 100.18,
+    "global_end": 100.38,
+    "prob": 0.715,
+    "edge": 0.980000000000004,
+    "src": "lead",
+    "onset_det_sec": 100.1963,
+    "asr_minus_onset_ms": -16.3
+   },
+   {
+    "word": "Adderall",
+    "global_start": 100.38,
+    "global_end": 100.74,
+    "prob": 0.669,
+    "edge": 1.1799999999999926,
+    "src": "lead",
+    "onset_det_sec": 100.4397,
+    "asr_minus_onset_ms": -59.7
+   },
+   {
+    "word": "trying",
+    "global_start": 100.88,
+    "global_end": 101.22,
+    "prob": 0.566,
+    "edge": 1.6799999999999926,
+    "src": "lead",
+    "onset_det_sec": 100.8209,
+    "asr_minus_onset_ms": 59.1
+   },
+   {
+    "word": "everything",
+    "global_start": 101.22,
+    "global_end": 101.88,
+    "prob": 0.863,
+    "edge": 2.019999999999996,
+    "src": "lead",
+    "onset_det_sec": 101.1521,
+    "asr_minus_onset_ms": 67.9
+   },
+   {
+    "word": "these",
+    "global_start": 101.88,
+    "global_end": 102.16,
+    "prob": 0.483,
+    "edge": 2.6799999999999926,
+    "src": "lead",
+    "onset_det_sec": 101.8126,
+    "asr_minus_onset_ms": 67.4
+   },
+   {
+    "word": "blunts",
+    "global_start": 102.16,
+    "global_end": 102.46,
+    "prob": 0.945,
+    "edge": 2.9599999999999937,
+    "src": "lead",
+    "onset_det_sec": 102.084,
+    "asr_minus_onset_ms": 76.0
+   },
+   {
+    "word": "ain't",
+    "global_start": 102.46,
+    "global_end": 103.16,
+    "prob": 0.957,
+    "edge": 3.259999999999991,
+    "src": "lead",
+    "onset_det_sec": 102.531,
+    "asr_minus_onset_ms": -71.0
+   },
+   {
+    "word": "enough",
+    "global_start": 103.16,
+    "global_end": 103.16,
+    "prob": 0.947,
+    "edge": 3.9599999999999937,
+    "src": "lead",
+    "onset_det_sec": 103.0877,
+    "asr_minus_onset_ms": 72.3
+   },
+   {
+    "word": "all",
+    "global_start": 103.8,
+    "global_end": 104.12,
+    "prob": 0.998,
+    "edge": 4.599999999999994,
+    "src": "lead",
+    "onset_det_sec": 103.828,
+    "asr_minus_onset_ms": -28.0
+   },
+   {
+    "word": "And",
+    "global_start": 104.12,
+    "global_end": 104.42,
+    "prob": 0.738,
+    "edge": 4.920000000000002,
+    "src": "lead",
+    "onset_det_sec": 104.0395,
+    "asr_minus_onset_ms": 80.5
+   },
+   {
+    "word": "I've",
+    "global_start": 104.42,
+    "global_end": 104.78,
+    "prob": 0.81,
+    "edge": 5.219999999999999,
+    "src": "lead",
+    "onset_det_sec": 104.4905,
+    "asr_minus_onset_ms": -70.5
+   },
+   {
+    "word": "hanging",
+    "global_start": 104.88,
+    "global_end": 105.2,
+    "prob": 0.91,
+    "edge": 5.679999999999993,
+    "src": "lead",
+    "onset_det_sec": 104.9495,
+    "asr_minus_onset_ms": -69.5
+   },
+   {
+    "word": "with",
+    "global_start": 105.2,
+    "global_end": 105.5,
+    "prob": 0.983,
+    "edge": 6.0,
+    "src": "lead",
+    "onset_det_sec": 105.1929,
+    "asr_minus_onset_ms": 7.1
+   },
+   {
+    "word": "my",
+    "global_start": 105.5,
+    "global_end": 105.78,
+    "prob": 0.987,
+    "edge": 6.299999999999997,
+    "src": "lead",
+    "onset_det_sec": 105.4324,
+    "asr_minus_onset_ms": 67.6
+   },
+   {
+    "word": "demons,",
+    "global_start": 105.78,
+    "global_end": 106.12,
+    "prob": 0.995,
+    "edge": 6.579999999999998,
+    "src": "lead",
+    "onset_det_sec": 105.8215,
+    "asr_minus_onset_ms": -41.5
+   },
+   {
+    "word": "dancing",
+    "global_start": 106.18,
+    "global_end": 106.58,
+    "prob": 0.961,
+    "edge": 6.980000000000004,
+    "src": "lead",
+    "onset_det_sec": 106.2505,
+    "asr_minus_onset_ms": -70.5
+   },
+   {
+    "word": "in",
+    "global_start": 106.58,
+    "global_end": 106.92,
+    "prob": 0.989,
+    "edge": 7.3799999999999955,
+    "src": "lead",
+    "onset_det_sec": 106.5099,
+    "asr_minus_onset_ms": 70.1
+   },
+   {
+    "word": "gray",
+    "global_start": 107.06,
+    "global_end": 107.5,
+    "prob": 0.338,
+    "edge": 7.859999999999999,
+    "src": "lead",
+    "onset_det_sec": 107.1205,
+    "asr_minus_onset_ms": -60.5
+   },
+   {
+    "word": "You",
+    "global_start": 107.5,
+    "global_end": 107.76,
+    "prob": 0.716,
+    "edge": 7.640000000000001,
+    "src": "lead",
+    "onset_det_sec": 107.4698,
+    "asr_minus_onset_ms": 30.2
+   },
+   {
+    "word": "keep",
+    "global_start": 107.76,
+    "global_end": 108.0,
+    "prob": 0.986,
+    "edge": 7.400000000000006,
+    "src": "lead",
+    "onset_det_sec": 107.7531,
+    "asr_minus_onset_ms": 6.9
+   },
+   {
+    "word": "trying",
+    "global_start": 108.0,
+    "global_end": 108.24,
+    "prob": 0.665,
+    "edge": 7.160000000000011,
+    "src": "lead",
+    "onset_det_sec": 108.0764,
+    "asr_minus_onset_ms": -76.4
+   },
+   {
+    "word": "to",
+    "global_start": 108.24,
+    "global_end": 108.5,
+    "prob": 0.982,
+    "edge": 6.900000000000006,
+    "src": "lead",
+    "onset_det_sec": 108.1582,
+    "asr_minus_onset_ms": 81.8
+   },
+   {
+    "word": "run",
+    "global_start": 108.5,
+    "global_end": 108.68,
+    "prob": 0.99,
+    "edge": 6.719999999999999,
+    "src": "lead",
+    "onset_det_sec": 108.4854,
+    "asr_minus_onset_ms": 14.6
+   },
+   {
+    "word": "away,",
+    "global_start": 108.68,
+    "global_end": 109.16,
+    "prob": 0.993,
+    "edge": 6.240000000000009,
+    "src": "lead",
+    "onset_det_sec": 108.7049,
+    "asr_minus_onset_ms": -24.9
+   },
+   {
+    "word": "stop",
+    "global_start": 109.34,
+    "global_end": 109.52,
+    "prob": 0.734,
+    "edge": 5.88000000000001,
+    "src": "lead",
+    "onset_det_sec": 109.3954,
+    "asr_minus_onset_ms": -55.4
+   },
+   {
+    "word": "and",
+    "global_start": 109.52,
+    "global_end": 109.82,
+    "prob": 0.965,
+    "edge": 5.5800000000000125,
+    "src": "lead",
+    "onset_det_sec": 109.577,
+    "asr_minus_onset_ms": -57.0
+   },
+   {
+    "word": "turn",
+    "global_start": 109.82,
+    "global_end": 110.02,
+    "prob": 0.964,
+    "edge": 5.38000000000001,
+    "src": "lead",
+    "onset_det_sec": 109.7945,
+    "asr_minus_onset_ms": 25.5
+   },
+   {
+    "word": "around",
+    "global_start": 110.02,
+    "global_end": 110.46,
+    "prob": 0.995,
+    "edge": 4.940000000000012,
+    "src": "lead",
+    "onset_det_sec": 109.9601,
+    "asr_minus_onset_ms": 59.9
+   },
+   {
+    "word": "and",
+    "global_start": 110.46,
+    "global_end": 110.66,
+    "prob": 0.896,
+    "edge": 4.740000000000009,
+    "src": "lead",
+    "onset_det_sec": 110.4689,
+    "asr_minus_onset_ms": -8.9
+   },
+   {
+    "word": "face",
+    "global_start": 110.66,
+    "global_end": 111.0,
+    "prob": 0.951,
+    "edge": 4.400000000000006,
+    "src": "lead",
+    "onset_det_sec": 110.7124,
+    "asr_minus_onset_ms": -52.4
+   },
+   {
+    "word": "yours",
+    "global_start": 111.0,
+    "global_end": 111.18,
+    "prob": 0.711,
+    "edge": 4.219999999999999,
+    "src": "lead",
+    "onset_det_sec": 110.9977,
+    "asr_minus_onset_ms": 2.3
+   },
+   {
+    "word": "You",
+    "global_start": 111.18,
+    "global_end": 111.32,
+    "prob": 0.883,
+    "edge": 4.0800000000000125,
+    "src": "lead",
+    "onset_det_sec": 111.1673,
+    "asr_minus_onset_ms": 12.7
+   },
+   {
+    "word": "trying",
+    "global_start": 111.58,
+    "global_end": 111.82,
+    "prob": 0.978,
+    "edge": 3.5800000000000125,
+    "src": "lead",
+    "onset_det_sec": 111.6502,
+    "asr_minus_onset_ms": -70.2
+   },
+   {
+    "word": "to",
+    "global_start": 111.82,
+    "global_end": 112.0,
+    "prob": 0.997,
+    "edge": 3.4000000000000057,
+    "src": "lead",
+    "onset_det_sec": 111.8418,
+    "asr_minus_onset_ms": -21.8
+   },
+   {
+    "word": "run",
+    "global_start": 112.0,
+    "global_end": 112.24,
+    "prob": 0.999,
+    "edge": 3.160000000000011,
+    "src": "lead",
+    "onset_det_sec": 112.0513,
+    "asr_minus_onset_ms": -51.3
+   },
+   {
+    "word": "away,",
+    "global_start": 112.24,
+    "global_end": 112.72,
+    "prob": 0.999,
+    "edge": 2.680000000000007,
+    "src": "lead",
+    "onset_det_sec": 112.179,
+    "asr_minus_onset_ms": 61.0
+   },
+   {
+    "word": "stop",
+    "global_start": 112.94,
+    "global_end": 113.08,
+    "prob": 0.998,
+    "edge": 2.3200000000000074,
+    "src": "lead",
+    "onset_det_sec": 112.9194,
+    "asr_minus_onset_ms": 20.6
+   },
+   {
+    "word": "turn",
+    "global_start": 113.36,
+    "global_end": 113.56,
+    "prob": 0.998,
+    "edge": 1.8400000000000034,
+    "src": "lead",
+    "onset_det_sec": 113.3464,
+    "asr_minus_onset_ms": 13.6
+   },
+   {
+    "word": "around",
+    "global_start": 113.56,
+    "global_end": 113.98,
+    "prob": 0.998,
+    "edge": 1.4200000000000017,
+    "src": "lead",
+    "onset_det_sec": 113.6377,
+    "asr_minus_onset_ms": -77.7
+   },
+   {
+    "word": "and",
+    "global_start": 113.98,
+    "global_end": 114.22,
+    "prob": 0.988,
+    "edge": 1.1800000000000068,
+    "src": "lead",
+    "onset_det_sec": 113.9351,
+    "asr_minus_onset_ms": 44.9
+   },
+   {
+    "word": "say",
+    "global_start": 114.22,
+    "global_end": 114.5,
+    "prob": 0.991,
+    "edge": 0.9000000000000057,
+    "src": "lead",
+    "onset_det_sec": 114.2922,
+    "asr_minus_onset_ms": -72.2
+   },
+   {
+    "word": "song",
+    "global_start": 114.5,
+    "global_end": 115.02,
+    "prob": 0.505,
+    "edge": 0.38000000000000966,
+    "src": "lead",
+    "onset_det_sec": 114.5656,
+    "asr_minus_onset_ms": -65.6
+   },
+   {
+    "word": "I've",
+    "global_start": 115.2,
+    "global_end": 115.84,
+    "prob": 0.589,
+    "edge": 0.0,
+    "src": "lead",
+    "onset_det_sec": 115.266,
+    "asr_minus_onset_ms": -66.0
+   },
+   {
+    "word": "up",
+    "global_start": 115.98,
+    "global_end": 116.18,
+    "prob": 0.987,
+    "edge": 0.7800000000000011,
+    "src": "lead",
+    "onset_det_sec": 116.0363,
+    "asr_minus_onset_ms": -56.3
+   },
+   {
+    "word": "to",
+    "global_start": 116.18,
+    "global_end": 116.4,
+    "prob": 0.99,
+    "edge": 0.980000000000004,
+    "src": "lead",
+    "onset_det_sec": 116.2079,
+    "asr_minus_onset_ms": -27.9
+   },
+   {
+    "word": "no",
+    "global_start": 116.4,
+    "global_end": 116.78,
+    "prob": 0.986,
+    "edge": 1.2000000000000028,
+    "src": "lead",
+    "onset_det_sec": 116.3196,
+    "asr_minus_onset_ms": 80.4
+   },
+   {
+    "word": "good",
+    "global_start": 116.78,
+    "global_end": 117.22,
+    "prob": 0.991,
+    "edge": 1.5799999999999983,
+    "src": "lead",
+    "onset_det_sec": 116.7606,
+    "asr_minus_onset_ms": 19.4
+   },
+   {
+    "word": "with",
+    "global_start": 117.22,
+    "global_end": 117.54,
+    "prob": 0.709,
+    "edge": 2.019999999999996,
+    "src": "lead",
+    "onset_det_sec": 117.2176,
+    "asr_minus_onset_ms": 2.4
+   },
+   {
+    "word": "all",
+    "global_start": 117.54,
+    "global_end": 117.78,
+    "prob": 0.994,
+    "edge": 2.3400000000000034,
+    "src": "lead",
+    "onset_det_sec": 117.6127,
+    "asr_minus_onset_ms": -72.7
+   },
+   {
+    "word": "the",
+    "global_start": 117.78,
+    "global_end": 117.96,
+    "prob": 0.822,
+    "edge": 2.5799999999999983,
+    "src": "lead",
+    "onset_det_sec": 117.8282,
+    "asr_minus_onset_ms": -48.2
+   },
+   {
+    "word": "forbidden",
+    "global_start": 117.96,
+    "global_end": 118.46,
+    "prob": 0.988,
+    "edge": 2.759999999999991,
+    "src": "lead",
+    "onset_det_sec": 118.0118,
+    "asr_minus_onset_ms": -51.8
+   },
+   {
+    "word": "ones",
+    "global_start": 118.46,
+    "global_end": 119.1,
+    "prob": 0.998,
+    "edge": 3.259999999999991,
+    "src": "lead",
+    "onset_det_sec": 118.5306,
+    "asr_minus_onset_ms": -70.6
+   },
+   {
+    "word": "I've",
+    "global_start": 119.1,
+    "global_end": 119.4,
+    "prob": 0.81,
+    "edge": 3.8999999999999915,
+    "src": "lead",
+    "onset_det_sec": 119.1532,
+    "asr_minus_onset_ms": -53.2
+   },
+   {
+    "word": "up",
+    "global_start": 119.54,
+    "global_end": 119.72,
+    "prob": 0.998,
+    "edge": 4.340000000000003,
+    "src": "lead",
+    "onset_det_sec": 119.5563,
+    "asr_minus_onset_ms": -16.3
+   },
+   {
+    "word": "to",
+    "global_start": 119.72,
+    "global_end": 119.98,
+    "prob": 0.997,
+    "edge": 4.519999999999996,
+    "src": "lead",
+    "onset_det_sec": 119.7578,
+    "asr_minus_onset_ms": -37.8
+   },
+   {
+    "word": "no",
+    "global_start": 119.98,
+    "global_end": 120.32,
+    "prob": 0.997,
+    "edge": 4.780000000000001,
+    "src": "lead",
+    "onset_det_sec": 120.0532,
+    "asr_minus_onset_ms": -73.2
+   },
+   {
+    "word": "good",
+    "global_start": 120.32,
+    "global_end": 120.78,
+    "prob": 0.996,
+    "edge": 5.11999999999999,
+    "src": "lead",
+    "onset_det_sec": 120.2746,
+    "asr_minus_onset_ms": 45.4
+   },
+   {
+    "word": "hanging",
+    "global_start": 120.78,
+    "global_end": 121.16,
+    "prob": 0.623,
+    "edge": 5.579999999999998,
+    "src": "lead",
+    "onset_det_sec": 120.7775,
+    "asr_minus_onset_ms": 2.5
+   },
+   {
+    "word": "with",
+    "global_start": 121.16,
+    "global_end": 121.52,
+    "prob": 0.991,
+    "edge": 5.959999999999994,
+    "src": "lead",
+    "onset_det_sec": 121.1407,
+    "asr_minus_onset_ms": 19.3
+   },
+   {
+    "word": "the",
+    "global_start": 121.52,
+    "global_end": 121.76,
+    "prob": 0.992,
+    "edge": 6.319999999999993,
+    "src": "lead",
+    "onset_det_sec": 121.5617,
+    "asr_minus_onset_ms": -41.7
+   },
+   {
+    "word": "hidden",
+    "global_start": 121.76,
+    "global_end": 122.08,
+    "prob": 0.997,
+    "edge": 6.560000000000002,
+    "src": "lead",
+    "onset_det_sec": 121.8291,
+    "asr_minus_onset_ms": -69.1
+   },
+   {
+    "word": "ones",
+    "global_start": 122.08,
+    "global_end": 122.64,
+    "prob": 0.982,
+    "edge": 6.8799999999999955,
+    "src": "lead",
+    "onset_det_sec": 122.0147,
+    "asr_minus_onset_ms": 65.3
+   },
+   {
+    "word": "Hanging",
+    "global_start": 122.64,
+    "global_end": 123.0,
+    "prob": 0.908,
+    "edge": 7.199999999999989,
+    "src": "lead",
+    "onset_det_sec": 122.5674,
+    "asr_minus_onset_ms": 72.6
+   },
+   {
+    "word": "with",
+    "global_start": 123.0,
+    "global_end": 123.32,
+    "prob": 0.995,
+    "edge": 6.8799999999999955,
+    "src": "lead",
+    "onset_det_sec": 122.9286,
+    "asr_minus_onset_ms": 71.4
+   },
+   {
+    "word": "the",
+    "global_start": 123.32,
+    "global_end": 123.52,
+    "prob": 0.937,
+    "edge": 6.679999999999993,
+    "src": "lead",
+    "onset_det_sec": 123.3437,
+    "asr_minus_onset_ms": -23.7
+   },
+   {
+    "word": "perfect",
+    "global_start": 123.52,
+    "global_end": 123.84,
+    "prob": 0.993,
+    "edge": 6.359999999999985,
+    "src": "lead",
+    "onset_det_sec": 123.5472,
+    "asr_minus_onset_ms": -27.2
+   },
+   {
+    "word": "ain't",
+    "global_start": 123.84,
+    "global_end": 124.24,
+    "prob": 0.741,
+    "edge": 5.959999999999994,
+    "src": "lead",
+    "onset_det_sec": 123.8485,
+    "asr_minus_onset_ms": -8.5
+   },
+   {
+    "word": "been",
+    "global_start": 124.24,
+    "global_end": 124.38,
+    "prob": 0.991,
+    "edge": 5.819999999999993,
+    "src": "lead",
+    "onset_det_sec": 124.2297,
+    "asr_minus_onset_ms": 10.3
+   },
+   {
+    "word": "like",
+    "global_start": 124.62,
+    "global_end": 124.82,
+    "prob": 0.606,
+    "edge": 5.3799999999999955,
+    "src": "lead",
+    "onset_det_sec": 124.6886,
+    "asr_minus_onset_ms": -68.6
+   },
+   {
+    "word": "too",
+    "global_start": 124.82,
+    "global_end": 125.04,
+    "prob": 0.733,
+    "edge": 5.159999999999982,
+    "src": "lead",
+    "onset_det_sec": 124.8722,
+    "asr_minus_onset_ms": -52.2
+   },
+   {
+    "word": "fun",
+    "global_start": 125.04,
+    "global_end": 125.44,
+    "prob": 0.982,
+    "edge": 4.759999999999991,
+    "src": "lead",
+    "onset_det_sec": 124.97,
+    "asr_minus_onset_ms": 70.0
+   },
+   {
+    "word": "like",
+    "global_start": 125.44,
+    "global_end": 125.74,
+    "prob": 0.622,
+    "edge": 4.459999999999994,
+    "src": "lead",
+    "onset_det_sec": 125.3731,
+    "asr_minus_onset_ms": 66.9
+   },
+   {
+    "word": "at",
+    "global_start": 125.74,
+    "global_end": 126.02,
+    "prob": 0.961,
+    "edge": 4.179999999999993,
+    "src": "lead",
+    "onset_det_sec": 125.7223,
+    "asr_minus_onset_ms": 17.7
+   },
+   {
+    "word": "all",
+    "global_start": 126.02,
+    "global_end": 126.26,
+    "prob": 0.994,
+    "edge": 3.9399999999999835,
+    "src": "lead",
+    "onset_det_sec": 125.9458,
+    "asr_minus_onset_ms": 74.2
+   },
+   {
+    "word": "Most",
+    "global_start": 126.26,
+    "global_end": 126.4,
+    "prob": 0.458,
+    "edge": 3.799999999999983,
+    "src": "lead",
+    "onset_det_sec": 126.2291,
+    "asr_minus_onset_ms": 30.9
+   },
+   {
+    "word": "time",
+    "global_start": 126.64,
+    "global_end": 126.84,
+    "prob": 0.996,
+    "edge": 3.359999999999985,
+    "src": "lead",
+    "onset_det_sec": 126.5703,
+    "asr_minus_onset_ms": 69.7
+   },
+   {
+    "word": "I",
+    "global_start": 126.84,
+    "global_end": 127.04,
+    "prob": 0.924,
+    "edge": 3.1599999999999824,
+    "src": "lead",
+    "onset_det_sec": 126.8996,
+    "asr_minus_onset_ms": -59.6
+   },
+   {
+    "word": "spent",
+    "global_start": 127.04,
+    "global_end": 127.3,
+    "prob": 0.821,
+    "edge": 2.8999999999999915,
+    "src": "lead",
+    "onset_det_sec": 126.9595,
+    "asr_minus_onset_ms": 80.5
+   },
+   {
+    "word": "inside",
+    "global_start": 127.3,
+    "global_end": 127.7,
+    "prob": 0.971,
+    "edge": 2.499999999999986,
+    "src": "lead",
+    "onset_det_sec": 127.3745,
+    "asr_minus_onset_ms": -74.5
+   },
+   {
+    "word": "the",
+    "global_start": 127.7,
+    "global_end": 127.94,
+    "prob": 0.993,
+    "edge": 2.259999999999991,
+    "src": "lead",
+    "onset_det_sec": 127.6279,
+    "asr_minus_onset_ms": 72.1
+   },
+   {
+    "word": "dark",
+    "global_start": 127.94,
+    "global_end": 128.34,
+    "prob": 0.998,
+    "edge": 1.8599999999999852,
+    "src": "lead",
+    "onset_det_sec": 128.0071,
+    "asr_minus_onset_ms": -67.1
+   },
+   {
+    "word": "I",
+    "global_start": 128.34,
+    "global_end": 128.66,
+    "prob": 0.745,
+    "edge": 1.539999999999992,
+    "src": "lead",
+    "onset_det_sec": 128.2645,
+    "asr_minus_onset_ms": 75.5
+   },
+   {
+    "word": "enjoyed",
+    "global_start": 128.66,
+    "global_end": 129.08,
+    "prob": 0.96,
+    "edge": 1.1199999999999761,
+    "src": "lead",
+    "onset_det_sec": 128.5937,
+    "asr_minus_onset_ms": 66.3
+   },
+   {
+    "word": "it",
+    "global_start": 129.08,
+    "global_end": 129.38,
+    "prob": 0.997,
+    "edge": 0.8199999999999932,
+    "src": "lead",
+    "onset_det_sec": 129.1425,
+    "asr_minus_onset_ms": -62.5
+   },
+   {
+    "word": "all",
+    "global_start": 129.38,
+    "global_end": 129.78,
+    "prob": 0.947,
+    "edge": 0.4199999999999875,
+    "src": "lead",
+    "onset_det_sec": 129.378,
+    "asr_minus_onset_ms": 2.0
+   },
+   {
+    "word": "I've",
+    "global_start": 129.4,
+    "global_end": 130.1,
+    "prob": 0.351,
+    "edge": 0.0,
+    "src": "bg",
+    "onset_det_sec": 129.38,
+    "asr_minus_onset_ms": 20.0
+   }
+  ],
+  "Bridge": [
+   {
+    "word": "up",
+    "global_start": 130.2,
+    "global_end": 130.42,
+    "prob": 0.976,
+    "edge": 0.799999999999983,
+    "src": "bg",
+    "onset_det_sec": 130.1302,
+    "asr_minus_onset_ms": 69.8
+   },
+   {
+    "word": "to",
+    "global_start": 130.42,
+    "global_end": 130.62,
+    "prob": 0.976,
+    "edge": 1.0199999999999818,
+    "src": "bg",
+    "onset_det_sec": 130.3458,
+    "asr_minus_onset_ms": 74.2
+   },
+   {
+    "word": "no",
+    "global_start": 130.62,
+    "global_end": 131.0,
+    "prob": 0.975,
+    "edge": 1.2199999999999989,
+    "src": "bg",
+    "onset_det_sec": 130.6491,
+    "asr_minus_onset_ms": -29.1
+   },
+   {
+    "word": "good",
+    "global_start": 131.0,
+    "global_end": 131.48,
+    "prob": 0.991,
+    "edge": 1.5999999999999943,
+    "src": "bg",
+    "onset_det_sec": 131.0122,
+    "asr_minus_onset_ms": -12.2
+   },
+   {
+    "word": "with",
+    "global_start": 131.48,
+    "global_end": 131.78,
+    "prob": 0.598,
+    "edge": 2.079999999999984,
+    "src": "bg",
+    "onset_det_sec": 131.4692,
+    "asr_minus_onset_ms": 10.8
+   },
+   {
+    "word": "all",
+    "global_start": 131.78,
+    "global_end": 132.02,
+    "prob": 0.987,
+    "edge": 2.3799999999999955,
+    "src": "bg",
+    "onset_det_sec": 131.7925,
+    "asr_minus_onset_ms": -12.5
+   },
+   {
+    "word": "the",
+    "global_start": 132.02,
+    "global_end": 132.22,
+    "prob": 0.87,
+    "edge": 2.6200000000000045,
+    "src": "bg",
+    "onset_det_sec": 131.998,
+    "asr_minus_onset_ms": 22.0
+   },
+   {
+    "word": "forbidden",
+    "global_start": 132.22,
+    "global_end": 132.7,
+    "prob": 0.986,
+    "edge": 2.819999999999993,
+    "src": "bg",
+    "onset_det_sec": 132.2854,
+    "asr_minus_onset_ms": -65.4
+   },
+   {
+    "word": "ones",
+    "global_start": 132.7,
+    "global_end": 133.36,
+    "prob": 0.998,
+    "edge": 3.299999999999983,
+    "src": "bg",
+    "onset_det_sec": 132.7283,
+    "asr_minus_onset_ms": -28.3
+   },
+   {
+    "word": "I've",
+    "global_start": 133.36,
+    "global_end": 133.66,
+    "prob": 0.82,
+    "edge": 3.960000000000008,
+    "src": "bg",
+    "onset_det_sec": 133.4307,
+    "asr_minus_onset_ms": -70.7
+   },
+   {
+    "word": "been",
+    "global_start": 133.66,
+    "global_end": 133.82,
+    "prob": 0.999,
+    "edge": 4.259999999999991,
+    "src": "bg",
+    "onset_det_sec": 133.6143,
+    "asr_minus_onset_ms": 45.7
+   },
+   {
+    "word": "up",
+    "global_start": 133.82,
+    "global_end": 133.98,
+    "prob": 0.998,
+    "edge": 4.4199999999999875,
+    "src": "bg",
+    "onset_det_sec": 133.8378,
+    "asr_minus_onset_ms": -17.8
+   },
+   {
+    "word": "to",
+    "global_start": 133.98,
+    "global_end": 134.22,
+    "prob": 0.997,
+    "edge": 4.579999999999984,
+    "src": "bg",
+    "onset_det_sec": 134.0074,
+    "asr_minus_onset_ms": -27.4
+   },
+   {
+    "word": "no",
+    "global_start": 134.22,
+    "global_end": 134.58,
+    "prob": 0.997,
+    "edge": 4.819999999999993,
+    "src": "bg",
+    "onset_det_sec": 134.2968,
+    "asr_minus_onset_ms": -76.8
+   },
+   {
+    "word": "good",
+    "global_start": 134.58,
+    "global_end": 135.04,
+    "prob": 0.997,
+    "edge": 5.180000000000007,
+    "src": "bg",
+    "onset_det_sec": 134.5083,
+    "asr_minus_onset_ms": 71.7
+   },
+   {
+    "word": "hanging",
+    "global_start": 135.04,
+    "global_end": 135.42,
+    "prob": 0.578,
+    "edge": 5.639999999999986,
+    "src": "bg",
+    "onset_det_sec": 135.0211,
+    "asr_minus_onset_ms": 18.9
+   },
+   {
+    "word": "with",
+    "global_start": 135.42,
+    "global_end": 135.78,
+    "prob": 0.986,
+    "edge": 6.019999999999982,
+    "src": "bg",
+    "onset_det_sec": 135.3943,
+    "asr_minus_onset_ms": 25.7
+   },
+   {
+    "word": "the",
+    "global_start": 135.78,
+    "global_end": 136.02,
+    "prob": 0.99,
+    "edge": 6.3799999999999955,
+    "src": "bg",
+    "onset_det_sec": 135.8153,
+    "asr_minus_onset_ms": -35.3
+   },
+   {
+    "word": "hidden",
+    "global_start": 136.02,
+    "global_end": 136.34,
+    "prob": 0.997,
+    "edge": 6.6200000000000045,
+    "src": "bg",
+    "onset_det_sec": 136.0847,
+    "asr_minus_onset_ms": -64.7
+   },
+   {
+    "word": "ones",
+    "global_start": 136.34,
+    "global_end": 136.9,
+    "prob": 0.98,
+    "edge": 6.939999999999998,
+    "src": "bg",
+    "onset_det_sec": 136.2703,
+    "asr_minus_onset_ms": 69.7
+   },
+   {
+    "word": "Hanging",
+    "global_start": 136.9,
+    "global_end": 137.22,
+    "prob": 0.91,
+    "edge": 7.5,
+    "src": "bg",
+    "onset_det_sec": 136.9747,
+    "asr_minus_onset_ms": -74.7
+   },
+   {
+    "word": "with",
+    "global_start": 137.22,
+    "global_end": 137.56,
+    "prob": 0.994,
+    "edge": 7.819999999999993,
+    "src": "bg",
+    "onset_det_sec": 137.1742,
+    "asr_minus_onset_ms": 45.8
+   },
+   {
+    "word": "the",
+    "global_start": 137.56,
+    "global_end": 137.78,
+    "prob": 0.952,
+    "edge": 8.159999999999997,
+    "src": "bg",
+    "onset_det_sec": 137.5973,
+    "asr_minus_onset_ms": -37.3
+   },
+   {
+    "word": "perfect",
+    "global_start": 137.78,
+    "global_end": 138.12,
+    "prob": 0.989,
+    "edge": 8.079999999999984,
+    "src": "bg",
+    "onset_det_sec": 137.8567,
+    "asr_minus_onset_ms": -76.7
+   },
+   {
+    "word": "ain't",
+    "global_start": 138.12,
+    "global_end": 138.5,
+    "prob": 0.711,
+    "edge": 7.699999999999989,
+    "src": "bg",
+    "onset_det_sec": 138.0662,
+    "asr_minus_onset_ms": 53.8
+   },
+   {
+    "word": "been",
+    "global_start": 138.5,
+    "global_end": 138.62,
+    "prob": 0.984,
+    "edge": 7.579999999999984,
+    "src": "bg",
+    "onset_det_sec": 138.4853,
+    "asr_minus_onset_ms": 14.7
+   },
+   {
+    "word": "like",
+    "global_start": 138.86,
+    "global_end": 139.06,
+    "prob": 0.656,
+    "edge": 7.139999999999986,
+    "src": "bg",
+    "onset_det_sec": 138.9362,
+    "asr_minus_onset_ms": -76.2
+   },
+   {
+    "word": "too",
+    "global_start": 139.06,
+    "global_end": 139.3,
+    "prob": 0.748,
+    "edge": 6.899999999999977,
+    "src": "bg",
+    "onset_det_sec": 139.1198,
+    "asr_minus_onset_ms": -59.8
+   },
+   {
+    "word": "fun",
+    "global_start": 139.3,
+    "global_end": 139.72,
+    "prob": 0.979,
+    "edge": 6.47999999999999,
+    "src": "bg",
+    "onset_det_sec": 139.2376,
+    "asr_minus_onset_ms": 62.4
+   },
+   {
+    "word": "Like",
+    "global_start": 139.72,
+    "global_end": 140.0,
+    "prob": 0.205,
+    "edge": 6.199999999999989,
+    "src": "bg",
+    "onset_det_sec": 139.7763,
+    "asr_minus_onset_ms": -56.3
+   },
+   {
+    "word": "at",
+    "global_start": 140.0,
+    "global_end": 140.28,
+    "prob": 0.908,
+    "edge": 5.9199999999999875,
+    "src": "bg",
+    "onset_det_sec": 140.0717,
+    "asr_minus_onset_ms": -71.7
+   },
+   {
+    "word": "all",
+    "global_start": 140.28,
+    "global_end": 140.5,
+    "prob": 0.991,
+    "edge": 5.699999999999989,
+    "src": "bg",
+    "onset_det_sec": 140.3251,
+    "asr_minus_onset_ms": -45.1
+   },
+   {
+    "word": "Most",
+    "global_start": 140.5,
+    "global_end": 140.66,
+    "prob": 0.709,
+    "edge": 5.539999999999992,
+    "src": "bg",
+    "onset_det_sec": 140.4887,
+    "asr_minus_onset_ms": 11.3
+   },
+   {
+    "word": "my",
+    "global_start": 140.66,
+    "global_end": 140.88,
+    "prob": 0.675,
+    "edge": 5.319999999999993,
+    "src": "bg",
+    "onset_det_sec": 140.7142,
+    "asr_minus_onset_ms": -54.2
+   },
+   {
+    "word": "time",
+    "global_start": 140.88,
+    "global_end": 141.1,
+    "prob": 0.996,
+    "edge": 5.099999999999994,
+    "src": "bg",
+    "onset_det_sec": 140.818,
+    "asr_minus_onset_ms": 62.0
+   },
+   {
+    "word": "I",
+    "global_start": 141.1,
+    "global_end": 141.3,
+    "prob": 0.931,
+    "edge": 4.899999999999977,
+    "src": "bg",
+    "onset_det_sec": 141.1492,
+    "asr_minus_onset_ms": -49.2
+   },
+   {
+    "word": "spent",
+    "global_start": 141.3,
+    "global_end": 141.54,
+    "prob": 0.833,
+    "edge": 4.659999999999997,
+    "src": "bg",
+    "onset_det_sec": 141.219,
+    "asr_minus_onset_ms": 81.0
+   },
+   {
+    "word": "inside",
+    "global_start": 141.54,
+    "global_end": 141.98,
+    "prob": 0.979,
+    "edge": 4.219999999999999,
+    "src": "bg",
+    "onset_det_sec": 141.5922,
+    "asr_minus_onset_ms": -52.2
+   },
+   {
+    "word": "the",
+    "global_start": 141.98,
+    "global_end": 142.18,
+    "prob": 0.94,
+    "edge": 4.019999999999982,
+    "src": "bg",
+    "onset_det_sec": 141.9354,
+    "asr_minus_onset_ms": 44.6
+   },
+   {
+    "word": "dark",
+    "global_start": 142.18,
+    "global_end": 142.54,
+    "prob": 0.815,
+    "edge": 3.6599999999999966,
+    "src": "bg",
+    "onset_det_sec": 142.099,
+    "asr_minus_onset_ms": 81.0
+   },
+   {
+    "word": "I",
+    "global_start": 142.54,
+    "global_end": 142.96,
+    "prob": 0.761,
+    "edge": 3.2399999999999807,
+    "src": "bg",
+    "onset_det_sec": 142.4782,
+    "asr_minus_onset_ms": 61.8
+   },
+   {
+    "word": "enjoyed",
+    "global_start": 142.96,
+    "global_end": 143.34,
+    "prob": 0.947,
+    "edge": 2.859999999999985,
+    "src": "bg",
+    "onset_det_sec": 142.8793,
+    "asr_minus_onset_ms": 80.7
+   },
+   {
+    "word": "it",
+    "global_start": 143.34,
+    "global_end": 143.66,
+    "prob": 0.996,
+    "edge": 2.539999999999992,
+    "src": "bg",
+    "onset_det_sec": 143.3981,
+    "asr_minus_onset_ms": -58.1
+   },
+   {
+    "word": "all",
+    "global_start": 143.66,
+    "global_end": 144.46,
+    "prob": 0.967,
+    "edge": 1.7399999999999807,
+    "src": "bg",
+    "onset_det_sec": 143.6236,
+    "asr_minus_onset_ms": 36.4
+   }
+  ],
+  "B3": [
+   {
+    "word": "What",
+    "global_start": 157.6,
+    "global_end": 158.34,
+    "prob": 0.345,
+    "edge": 0.0,
+    "src": "lead",
+    "onset_det_sec": 157.538,
+    "asr_minus_onset_ms": 62.0
+   },
+   {
+    "word": "I'm",
+    "global_start": 158.34,
+    "global_end": 158.64,
+    "prob": 0.922,
+    "edge": 0.7400000000000091,
+    "src": "lead",
+    "onset_det_sec": 158.396,
+    "asr_minus_onset_ms": -56.0
+   },
+   {
+    "word": "to",
+    "global_start": 158.78,
+    "global_end": 159.06,
+    "prob": 0.987,
+    "edge": 1.1800000000000068,
+    "src": "lead",
+    "onset_det_sec": 158.847,
+    "asr_minus_onset_ms": -67.0
+   },
+   {
+    "word": "do",
+    "global_start": 159.06,
+    "global_end": 159.38,
+    "prob": 0.994,
+    "edge": 1.460000000000008,
+    "src": "lead",
+    "onset_det_sec": 159.0844,
+    "asr_minus_onset_ms": -24.4
+   },
+   {
+    "word": "when",
+    "global_start": 159.38,
+    "global_end": 159.74,
+    "prob": 0.785,
+    "edge": 1.7800000000000011,
+    "src": "lead",
+    "onset_det_sec": 159.4476,
+    "asr_minus_onset_ms": -67.6
+   },
+   {
+    "word": "the",
+    "global_start": 159.74,
+    "global_end": 159.92,
+    "prob": 0.952,
+    "edge": 2.140000000000015,
+    "src": "lead",
+    "onset_det_sec": 159.7669,
+    "asr_minus_onset_ms": -26.9
+   },
+   {
+    "word": "blunts",
+    "global_start": 159.92,
+    "global_end": 160.14,
+    "prob": 0.694,
+    "edge": 2.319999999999993,
+    "src": "lead",
+    "onset_det_sec": 159.9824,
+    "asr_minus_onset_ms": -62.4
+   },
+   {
+    "word": "ain't",
+    "global_start": 160.14,
+    "global_end": 160.42,
+    "prob": 0.962,
+    "edge": 2.539999999999992,
+    "src": "lead",
+    "onset_det_sec": 160.18,
+    "asr_minus_onset_ms": -40.0
+   },
+   {
+    "word": "nothing",
+    "global_start": 160.42,
+    "global_end": 160.64,
+    "prob": 0.275,
+    "edge": 2.819999999999993,
+    "src": "lead",
+    "onset_det_sec": 160.3835,
+    "asr_minus_onset_ms": 36.5
+   },
+   {
+    "word": "like",
+    "global_start": 160.64,
+    "global_end": 161.22,
+    "prob": 0.765,
+    "edge": 3.039999999999992,
+    "src": "lead",
+    "onset_det_sec": 160.593,
+    "asr_minus_onset_ms": 47.0
+   },
+   {
+    "word": "at",
+    "global_start": 161.22,
+    "global_end": 161.54,
+    "prob": 0.505,
+    "edge": 3.6200000000000045,
+    "src": "lead",
+    "onset_det_sec": 161.2834,
+    "asr_minus_onset_ms": -63.4
+   },
+   {
+    "word": "all",
+    "global_start": 161.54,
+    "global_end": 161.74,
+    "prob": 0.984,
+    "edge": 3.9399999999999977,
+    "src": "lead",
+    "onset_det_sec": 161.5907,
+    "asr_minus_onset_ms": -50.7
+   },
+   {
+    "word": "Only",
+    "global_start": 161.74,
+    "global_end": 162.02,
+    "prob": 0.333,
+    "edge": 4.140000000000015,
+    "src": "lead",
+    "onset_det_sec": 161.6726,
+    "asr_minus_onset_ms": 67.4
+   },
+   {
+    "word": "feeling",
+    "global_start": 162.02,
+    "global_end": 162.88,
+    "prob": 0.977,
+    "edge": 4.420000000000016,
+    "src": "lead",
+    "onset_det_sec": 161.9619,
+    "asr_minus_onset_ms": 58.1
+   },
+   {
+    "word": "like",
+    "global_start": 162.88,
+    "global_end": 163.22,
+    "prob": 0.989,
+    "edge": 5.280000000000001,
+    "src": "lead",
+    "onset_det_sec": 162.9217,
+    "asr_minus_onset_ms": -41.7
+   },
+   {
+    "word": "myself",
+    "global_start": 163.22,
+    "global_end": 163.7,
+    "prob": 0.938,
+    "edge": 5.6200000000000045,
+    "src": "lead",
+    "onset_det_sec": 163.1392,
+    "asr_minus_onset_ms": 80.8
+   },
+   {
+    "word": "is",
+    "global_start": 163.7,
+    "global_end": 163.94,
+    "prob": 0.921,
+    "edge": 6.099999999999994,
+    "src": "lead",
+    "onset_det_sec": 163.7558,
+    "asr_minus_onset_ms": -55.8
+   },
+   {
+    "word": "off",
+    "global_start": 163.94,
+    "global_end": 164.18,
+    "prob": 0.877,
+    "edge": 6.340000000000003,
+    "src": "lead",
+    "onset_det_sec": 163.9853,
+    "asr_minus_onset_ms": -45.3
+   },
+   {
+    "word": "this",
+    "global_start": 164.18,
+    "global_end": 164.44,
+    "prob": 0.795,
+    "edge": 6.5800000000000125,
+    "src": "lead",
+    "onset_det_sec": 164.1709,
+    "asr_minus_onset_ms": 9.1
+   },
+   {
+    "word": "Adderall",
+    "global_start": 164.44,
+    "global_end": 164.72,
+    "prob": 0.75,
+    "edge": 6.840000000000003,
+    "src": "lead",
+    "onset_det_sec": 164.4223,
+    "asr_minus_onset_ms": 17.7
+   },
+   {
+    "word": "I",
+    "global_start": 165.28,
+    "global_end": 165.52,
+    "prob": 0.882,
+    "edge": 7.680000000000007,
+    "src": "lead",
+    "onset_det_sec": 165.1985,
+    "asr_minus_onset_ms": 81.5
+   },
+   {
+    "word": "threw",
+    "global_start": 165.52,
+    "global_end": 165.7,
+    "prob": 0.643,
+    "edge": 7.920000000000016,
+    "src": "lead",
+    "onset_det_sec": 165.4759,
+    "asr_minus_onset_ms": 44.1
+   },
+   {
+    "word": "back",
+    "global_start": 165.7,
+    "global_end": 165.92,
+    "prob": 0.81,
+    "edge": 8.099999999999994,
+    "src": "lead",
+    "onset_det_sec": 165.6276,
+    "asr_minus_onset_ms": 72.4
+   },
+   {
+    "word": "a",
+    "global_start": 165.92,
+    "global_end": 166.16,
+    "prob": 0.883,
+    "edge": 8.319999999999993,
+    "src": "lead",
+    "onset_det_sec": 165.9528,
+    "asr_minus_onset_ms": -32.8
+   },
+   {
+    "word": "Xan,",
+    "global_start": 166.16,
+    "global_end": 166.54,
+    "prob": 0.403,
+    "edge": 8.560000000000002,
+    "src": "lead",
+    "onset_det_sec": 166.2242,
+    "asr_minus_onset_ms": -64.2
+   },
+   {
+    "word": "it's",
+    "global_start": 166.66,
+    "global_end": 166.82,
+    "prob": 0.934,
+    "edge": 8.680000000000007,
+    "src": "lead",
+    "onset_det_sec": 166.6353,
+    "asr_minus_onset_ms": 24.7
+   },
+   {
+    "word": "the",
+    "global_start": 166.82,
+    "global_end": 166.98,
+    "prob": 0.994,
+    "edge": 8.52000000000001,
+    "src": "lead",
+    "onset_det_sec": 166.8448,
+    "asr_minus_onset_ms": -24.8
+   },
+   {
+    "word": "only",
+    "global_start": 166.98,
+    "global_end": 167.38,
+    "prob": 0.997,
+    "edge": 8.120000000000005,
+    "src": "lead",
+    "onset_det_sec": 167.0523,
+    "asr_minus_onset_ms": -72.3
+   },
+   {
+    "word": "way",
+    "global_start": 167.38,
+    "global_end": 167.68,
+    "prob": 0.996,
+    "edge": 7.819999999999993,
+    "src": "lead",
+    "onset_det_sec": 167.3038,
+    "asr_minus_onset_ms": 76.2
+   },
+   {
+    "word": "to",
+    "global_start": 167.68,
+    "global_end": 167.88,
+    "prob": 0.994,
+    "edge": 7.6200000000000045,
+    "src": "lead",
+    "onset_det_sec": 167.635,
+    "asr_minus_onset_ms": 45.0
+   },
+   {
+    "word": "sleep",
+    "global_start": 167.88,
+    "global_end": 168.16,
+    "prob": 0.983,
+    "edge": 7.340000000000003,
+    "src": "lead",
+    "onset_det_sec": 167.7986,
+    "asr_minus_onset_ms": 81.4
+   },
+   {
+    "word": "it",
+    "global_start": 168.16,
+    "global_end": 168.44,
+    "prob": 0.997,
+    "edge": 7.060000000000002,
+    "src": "lead",
+    "onset_det_sec": 168.2217,
+    "asr_minus_onset_ms": -61.7
+   },
+   {
+    "word": "off",
+    "global_start": 168.44,
+    "global_end": 168.8,
+    "prob": 0.988,
+    "edge": 6.699999999999989,
+    "src": "lead",
+    "onset_det_sec": 168.4112,
+    "asr_minus_onset_ms": 28.8
+   },
+   {
+    "word": "Only",
+    "global_start": 168.8,
+    "global_end": 169.1,
+    "prob": 0.934,
+    "edge": 6.400000000000006,
+    "src": "lead",
+    "onset_det_sec": 168.8742,
+    "asr_minus_onset_ms": -74.2
+   },
+   {
+    "word": "time",
+    "global_start": 169.1,
+    "global_end": 169.44,
+    "prob": 0.996,
+    "edge": 6.060000000000002,
+    "src": "lead",
+    "onset_det_sec": 169.0438,
+    "asr_minus_onset_ms": 56.2
+   },
+   {
+    "word": "I'm",
+    "global_start": 169.44,
+    "global_end": 169.72,
+    "prob": 0.984,
+    "edge": 5.780000000000001,
+    "src": "lead",
+    "onset_det_sec": 169.4788,
+    "asr_minus_onset_ms": -38.8
+   },
+   {
+    "word": "feeling",
+    "global_start": 169.72,
+    "global_end": 169.96,
+    "prob": 0.963,
+    "edge": 5.539999999999992,
+    "src": "lead",
+    "onset_det_sec": 169.7322,
+    "asr_minus_onset_ms": -12.2
+   },
+   {
+    "word": "like",
+    "global_start": 169.96,
+    "global_end": 170.32,
+    "prob": 0.993,
+    "edge": 5.180000000000007,
+    "src": "lead",
+    "onset_det_sec": 169.8999,
+    "asr_minus_onset_ms": 60.1
+   },
+   {
+    "word": "myself",
+    "global_start": 170.32,
+    "global_end": 170.74,
+    "prob": 0.994,
+    "edge": 4.759999999999991,
+    "src": "lead",
+    "onset_det_sec": 170.3668,
+    "asr_minus_onset_ms": -46.8
+   },
+   {
+    "word": "is",
+    "global_start": 170.74,
+    "global_end": 171.02,
+    "prob": 0.989,
+    "edge": 4.47999999999999,
+    "src": "lead",
+    "onset_det_sec": 170.6661,
+    "asr_minus_onset_ms": 73.9
+   },
+   {
+    "word": "off",
+    "global_start": 171.02,
+    "global_end": 171.26,
+    "prob": 0.99,
+    "edge": 4.240000000000009,
+    "src": "lead",
+    "onset_det_sec": 171.0612,
+    "asr_minus_onset_ms": -41.2
+   },
+   {
+    "word": "this",
+    "global_start": 171.26,
+    "global_end": 171.5,
+    "prob": 0.996,
+    "edge": 4.0,
+    "src": "lead",
+    "onset_det_sec": 171.2628,
+    "asr_minus_onset_ms": -2.8
+   },
+   {
+    "word": "Adderall",
+    "global_start": 171.5,
+    "global_end": 173.02,
+    "prob": 0.995,
+    "edge": 2.4799999999999898,
+    "src": "lead",
+    "onset_det_sec": 171.4883,
+    "asr_minus_onset_ms": 11.7
+   }
+  ]
+ }
+}

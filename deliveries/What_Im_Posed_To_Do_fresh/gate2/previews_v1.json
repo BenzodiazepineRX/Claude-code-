@@ -1,0 +1,60 @@
+{
+ "window_sec": [
+  42.0,
+  72.0
+ ],
+ "matched_lufs": -20.0,
+ "lead_level_note": "vocals = Alpha Gate 1 v2 stems (lead -1.5 dB vs v1 after Kenshin said the vocals were too loud); every Gate 2 layer is set in dB relative to that lead, so it moves with any later lead change",
+ "clips": {
+  "a_BGlight_ThrowsWordTimed": {
+   "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_a_BGlight_ThrowsWordTimed_0m42-1m12_v1_24b-44k.wav",
+   "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_a_BGlight_ThrowsWordTimed_0m42-1m12_v1.mp3",
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "gain_applied_db": 3.18,
+   "tp_wav_dbtp": -2.0,
+   "tp_mp3_dbtp": -1.99,
+   "clip_samples": 0
+  },
+  "b_BGfuller_ThrowsWordTimed": {
+   "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_b_BGfuller_ThrowsWordTimed_0m42-1m12_v1_24b-44k.wav",
+   "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_b_BGfuller_ThrowsWordTimed_0m42-1m12_v1.mp3",
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "gain_applied_db": 3.05,
+   "tp_wav_dbtp": -2.0,
+   "tp_mp3_dbtp": -2.0,
+   "clip_samples": 0
+  },
+  "c_BGlight_ThrowsAltNote": {
+   "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_c_BGlight_ThrowsAltNote_0m42-1m12_v1_24b-44k.wav",
+   "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_c_BGlight_ThrowsAltNote_0m42-1m12_v1.mp3",
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "gain_applied_db": 3.18,
+   "tp_wav_dbtp": -2.0,
+   "tp_mp3_dbtp": -1.99,
+   "clip_samples": 0
+  },
+  "d_BGlight_ThrowsGridLocked": {
+   "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_d_BGlight_ThrowsGridLocked_0m42-1m12_v1_24b-44k.wav",
+   "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_d_BGlight_ThrowsGridLocked_0m42-1m12_v1.mp3",
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "gain_applied_db": 3.18,
+   "tp_wav_dbtp": -2.0,
+   "tp_mp3_dbtp": -1.99,
+   "clip_samples": 0
+  },
+  "ref_NoEffects_Gate1v2": {
+   "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_ref_NoEffects_Gate1v2_0m42-1m12_v1_24b-44k.wav",
+   "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_ref_NoEffects_Gate1v2_0m42-1m12_v1.mp3",
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "gain_applied_db": 3.33,
+   "tp_wav_dbtp": -1.96,
+   "tp_mp3_dbtp": -1.96,
+   "clip_samples": 0
+  }
+ }
+}

@@ -1,5 +1,7 @@
 # Mix & Master Lessons Notebook
 
+> Part of the Pro Mix & Master Standard (`AGENTS.md`, `.claude/skills/pro-mix-master/`). **Read this before every song; add to it after every song and every round of artist feedback.** Artist-profile settings below are hypotheses to re-measure, never presets.
+
 Read this at the start of every job.
 
 ## Artist voice profile (Kenshin)

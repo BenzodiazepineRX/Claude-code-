@@ -1,0 +1,1742 @@
+{
+  "A1": {
+    "section": "A1",
+    "type": "A",
+    "bars": [
+      25,
+      41
+    ],
+    "section_start_s": 42.67079365079365,
+    "pickup_s": 42.59079365079365,
+    "count_rule": "Word 5/6 are counted from the first new phrase at or just after the official section start (80 ms pickup). Leftover tails that cross the bar with no pause are skipped.",
+    "per_stem": {
+      "lead1": {
+        "n_lexical_words_in_opening_phrase": 45,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "I've",
+            "onset_s": 43.584263038548755,
+            "onset_samples": 1922066,
+            "timecode": "0:43.584",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "been",
+            "onset_s": 43.80689342403628,
+            "onset_samples": 1931884,
+            "timecode": "0:43.807",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "trying",
+            "onset_s": 43.970340136054425,
+            "onset_samples": 1939092,
+            "timecode": "0:43.970",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "everything",
+            "onset_s": 44.283537414965984,
+            "onset_samples": 1952904,
+            "timecode": "0:44.284",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "these",
+            "onset_s": 44.91006802721088,
+            "onset_samples": 1980534,
+            "timecode": "0:44.910",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "blunts",
+            "onset_s": 45.345668934240365,
+            "onset_samples": 1999744,
+            "timecode": "0:45.346",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "these",
+          "onset_s": 44.91006802721088,
+          "onset_samples": 1980534,
+          "grid_offset_ms": 17.052,
+          "bar": 26,
+          "beat": 2.0384,
+          "asr_prob": 0.6211994886398315,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "0:44.910",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "blunts",
+          "onset_s": 45.345668934240365,
+          "onset_samples": 1999744,
+          "grid_offset_ms": 8.209,
+          "bar": 26,
+          "beat": 3.0185,
+          "asr_prob": 0.8866702318191528,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "0:45.346",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "I've been trying everything these blunts ain't enough You keep trying to run away, stop and"
+      },
+      "lead2": {
+        "n_lexical_words_in_opening_phrase": 47,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "And",
+            "onset_s": 46.69063492063492,
+            "onset_samples": 2059057,
+            "timecode": "0:46.691",
+            "low_confidence": true
+          },
+          {
+            "i": 2,
+            "word": "I",
+            "onset_s": 46.94235827664399,
+            "onset_samples": 2070158,
+            "timecode": "0:46.942",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "been",
+            "onset_s": 47.103356009070296,
+            "onset_samples": 2077258,
+            "timecode": "0:47.103",
+            "low_confidence": true
+          },
+          {
+            "i": 4,
+            "word": "hangin'",
+            "onset_s": 47.90446712018141,
+            "onset_samples": 2112587,
+            "timecode": "0:47.904",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "with",
+            "onset_s": 48.50843537414966,
+            "onset_samples": 2139222,
+            "timecode": "0:48.508",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "my",
+            "onset_s": 48.53437641723356,
+            "onset_samples": 2140366,
+            "timecode": "0:48.534",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "with",
+          "onset_s": 48.50843537414966,
+          "onset_samples": 2139222,
+          "grid_offset_ms": -51.247,
+          "bar": 28,
+          "beat": 2.1347,
+          "asr_prob": 0.9437472820281982,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "0:48.508",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "my",
+          "onset_s": 48.53437641723356,
+          "onset_samples": 2140366,
+          "grid_offset_ms": -25.306,
+          "bar": 28,
+          "beat": 2.1931,
+          "asr_prob": 0.9733201265335083,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "0:48.534",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "And I been hangin' with my demons, dancin' in the graveyard You keep tryin' to run"
+      },
+      "bg1": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      },
+      "bg2": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      }
+    },
+    "combined": {
+      "stems": [
+        "lead1",
+        "lead2"
+      ],
+      "n_lexical_words_in_opening_phrase": 92,
+      "first_six": [
+        {
+          "i": 1,
+          "word": "I've",
+          "stem": "lead1",
+          "onset_s": 43.584263038548755,
+          "onset_samples": 1922066,
+          "timecode": "0:43.584",
+          "low_confidence": false
+        },
+        {
+          "i": 2,
+          "word": "been",
+          "stem": "lead1",
+          "onset_s": 43.80689342403628,
+          "onset_samples": 1931884,
+          "timecode": "0:43.807",
+          "low_confidence": false
+        },
+        {
+          "i": 3,
+          "word": "trying",
+          "stem": "lead1",
+          "onset_s": 43.970340136054425,
+          "onset_samples": 1939092,
+          "timecode": "0:43.970",
+          "low_confidence": false
+        },
+        {
+          "i": 4,
+          "word": "everything",
+          "stem": "lead1",
+          "onset_s": 44.283537414965984,
+          "onset_samples": 1952904,
+          "timecode": "0:44.284",
+          "low_confidence": false
+        },
+        {
+          "i": 5,
+          "word": "these",
+          "stem": "lead1",
+          "onset_s": 44.91006802721088,
+          "onset_samples": 1980534,
+          "timecode": "0:44.910",
+          "low_confidence": false
+        },
+        {
+          "i": 6,
+          "word": "blunts",
+          "stem": "lead1",
+          "onset_s": 45.345668934240365,
+          "onset_samples": 1999744,
+          "timecode": "0:45.346",
+          "low_confidence": false
+        }
+      ],
+      "word_5": {
+        "word": "these",
+        "onset_s": 44.91006802721088,
+        "onset_samples": 1980534,
+        "grid_offset_ms": 17.052,
+        "bar": 26,
+        "beat": 2.0384,
+        "asr_prob": 0.6211994886398315,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "0:44.910",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 5,
+        "stem": "lead1"
+      },
+      "word_6": {
+        "word": "blunts",
+        "onset_s": 45.345668934240365,
+        "onset_samples": 1999744,
+        "grid_offset_ms": 8.209,
+        "bar": 26,
+        "beat": 3.0185,
+        "asr_prob": 0.8866702318191528,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "0:45.346",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 6,
+        "stem": "lead1"
+      },
+      "opening_phrase_text": "lead1:I've lead1:been lead1:trying lead1:everything lead1:these lead1:blunts lead1:ain't lead1:enough lead2:And lead2:I lead2:been lead2:hangin' lead2:with lead2:my lead2:demons, lead2:dancin'"
+    }
+  },
+  "B1": {
+    "section": "B1",
+    "type": "B",
+    "bars": [
+      42,
+      49
+    ],
+    "section_start_s": 72.89301587301587,
+    "pickup_s": 72.81301587301587,
+    "count_rule": "Word 5/6 are counted from the first new phrase at or just after the official section start (80 ms pickup). Leftover tails that cross the bar with no pause are skipped.",
+    "per_stem": {
+      "lead1": {
+        "n_lexical_words_in_opening_phrase": 26,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "What",
+            "onset_s": 72.90174603174603,
+            "onset_samples": 3214967,
+            "timecode": "1:12.902",
+            "low_confidence": true
+          },
+          {
+            "i": 2,
+            "word": "I'm",
+            "onset_s": 73.09496598639456,
+            "onset_samples": 3223488,
+            "timecode": "1:13.095",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "supposed",
+            "onset_s": 73.37256235827664,
+            "onset_samples": 3235730,
+            "timecode": "1:13.373",
+            "low_confidence": true
+          },
+          {
+            "i": 4,
+            "word": "to",
+            "onset_s": 73.57757369614512,
+            "onset_samples": 3244771,
+            "timecode": "1:13.578",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "do",
+            "onset_s": 73.80369614512472,
+            "onset_samples": 3254743,
+            "timecode": "1:13.804",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "when",
+            "onset_s": 74.06945578231293,
+            "onset_samples": 3266463,
+            "timecode": "1:14.069",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "do",
+          "onset_s": 73.80369614512472,
+          "onset_samples": 3254743,
+          "grid_offset_ms": 21.791,
+          "bar": 42,
+          "beat": 3.049,
+          "asr_prob": 0.9912986159324646,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:13.804",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "when",
+          "onset_s": 74.06945578231293,
+          "onset_samples": 3266463,
+          "grid_offset_ms": -45.782,
+          "bar": 42,
+          "beat": 3.647,
+          "asr_prob": 0.80979984998703,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:14.069",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "What I'm supposed to do when the blunts ain't nothing like that at all threw back"
+      },
+      "lead2": {
+        "n_lexical_words_in_opening_phrase": 24,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "Only",
+            "onset_s": 76.45020408163265,
+            "onset_samples": 3371454,
+            "timecode": "1:16.450",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "time",
+            "onset_s": 76.67857142857143,
+            "onset_samples": 3381525,
+            "timecode": "1:16.679",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "I'm",
+            "onset_s": 77.01272108843537,
+            "onset_samples": 3396261,
+            "timecode": "1:17.013",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "feeling",
+            "onset_s": 77.3647619047619,
+            "onset_samples": 3411786,
+            "timecode": "1:17.365",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "like",
+            "onset_s": 77.58430839002267,
+            "onset_samples": 3421468,
+            "timecode": "1:17.584",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "myself",
+            "onset_s": 77.87360544217687,
+            "onset_samples": 3434226,
+            "timecode": "1:17.874",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "like",
+          "onset_s": 77.58430839002267,
+          "onset_samples": 3421468,
+          "grid_offset_ms": 24.626,
+          "bar": 44,
+          "beat": 3.5554,
+          "asr_prob": 0.9835866093635559,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:17.584",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "myself",
+          "onset_s": 77.87360544217687,
+          "onset_samples": 3434226,
+          "grid_offset_ms": -19.41,
+          "bar": 44,
+          "beat": 4.2063,
+          "asr_prob": 0.9864656329154968,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:17.874",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "Only time I'm feeling like myself is out this Adderall Hanging with the perfect ain't been"
+      },
+      "bg1": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      },
+      "bg2": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      }
+    },
+    "combined": {
+      "stems": [
+        "lead1",
+        "lead2"
+      ],
+      "n_lexical_words_in_opening_phrase": 50,
+      "first_six": [
+        {
+          "i": 1,
+          "word": "What",
+          "stem": "lead1",
+          "onset_s": 72.90174603174603,
+          "onset_samples": 3214967,
+          "timecode": "1:12.902",
+          "low_confidence": true
+        },
+        {
+          "i": 2,
+          "word": "I'm",
+          "stem": "lead1",
+          "onset_s": 73.09496598639456,
+          "onset_samples": 3223488,
+          "timecode": "1:13.095",
+          "low_confidence": false
+        },
+        {
+          "i": 3,
+          "word": "supposed",
+          "stem": "lead1",
+          "onset_s": 73.37256235827664,
+          "onset_samples": 3235730,
+          "timecode": "1:13.373",
+          "low_confidence": true
+        },
+        {
+          "i": 4,
+          "word": "to",
+          "stem": "lead1",
+          "onset_s": 73.57757369614512,
+          "onset_samples": 3244771,
+          "timecode": "1:13.578",
+          "low_confidence": false
+        },
+        {
+          "i": 5,
+          "word": "do",
+          "stem": "lead1",
+          "onset_s": 73.80369614512472,
+          "onset_samples": 3254743,
+          "timecode": "1:13.804",
+          "low_confidence": false
+        },
+        {
+          "i": 6,
+          "word": "when",
+          "stem": "lead1",
+          "onset_s": 74.06945578231293,
+          "onset_samples": 3266463,
+          "timecode": "1:14.069",
+          "low_confidence": false
+        }
+      ],
+      "word_5": {
+        "word": "do",
+        "onset_s": 73.80369614512472,
+        "onset_samples": 3254743,
+        "grid_offset_ms": 21.791,
+        "bar": 42,
+        "beat": 3.049,
+        "asr_prob": 0.9912986159324646,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "1:13.804",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 5,
+        "stem": "lead1"
+      },
+      "word_6": {
+        "word": "when",
+        "onset_s": 74.06945578231293,
+        "onset_samples": 3266463,
+        "grid_offset_ms": -45.782,
+        "bar": 42,
+        "beat": 3.647,
+        "asr_prob": 0.80979984998703,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "1:14.069",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 6,
+        "stem": "lead1"
+      },
+      "opening_phrase_text": "lead1:What lead1:I'm lead1:supposed lead1:to lead1:do lead1:when lead1:the lead1:blunts lead1:ain't lead1:nothing lead1:like lead1:that lead1:at lead1:all lead2:Only lead2:time"
+    }
+  },
+  "B2": {
+    "section": "B2",
+    "type": "B",
+    "bars": [
+      50,
+      56
+    ],
+    "section_start_s": 87.1152380952381,
+    "pickup_s": 87.0352380952381,
+    "count_rule": "Word 5/6 are counted from the first new phrase at or just after the official section start (80 ms pickup). Leftover tails that cross the bar with no pause are skipped.",
+    "per_stem": {
+      "lead1": {
+        "n_lexical_words_in_opening_phrase": 27,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "What",
+            "onset_s": 87.12340136054422,
+            "onset_samples": 3842142,
+            "timecode": "1:27.123",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "I'm",
+            "onset_s": 87.32557823129251,
+            "onset_samples": 3851058,
+            "timecode": "1:27.326",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "supposed",
+            "onset_s": 87.59458049886621,
+            "onset_samples": 3862921,
+            "timecode": "1:27.595",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "to",
+            "onset_s": 87.6549433106576,
+            "onset_samples": 3865583,
+            "timecode": "1:27.655",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "do",
+            "onset_s": 88.02643990929705,
+            "onset_samples": 3881966,
+            "timecode": "1:28.026",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "when",
+            "onset_s": 88.29251700680273,
+            "onset_samples": 3893700,
+            "timecode": "1:28.293",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "do",
+          "onset_s": 88.02643990929705,
+          "onset_samples": 3881966,
+          "grid_offset_ms": 22.313,
+          "bar": 50,
+          "beat": 3.0502,
+          "asr_prob": 0.9944973587989807,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:28.026",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "when",
+          "onset_s": 88.29251700680273,
+          "onset_samples": 3893700,
+          "grid_offset_ms": -44.943,
+          "bar": 50,
+          "beat": 3.6489,
+          "asr_prob": 0.7611170411109924,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:28.293",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "What I'm supposed to do when the blunt say nuh nuh, like at all I threw"
+      },
+      "lead2": {
+        "n_lexical_words_in_opening_phrase": 16,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "Only",
+            "onset_s": 90.66054421768708,
+            "onset_samples": 3998130,
+            "timecode": "1:30.661",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "time",
+            "onset_s": 90.89963718820862,
+            "onset_samples": 4008674,
+            "timecode": "1:30.900",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "I'm",
+            "onset_s": 91.24199546485261,
+            "onset_samples": 4023772,
+            "timecode": "1:31.242",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "feeling",
+            "onset_s": 91.5941723356009,
+            "onset_samples": 4039303,
+            "timecode": "1:31.594",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "like",
+            "onset_s": 91.80467120181406,
+            "onset_samples": 4048586,
+            "timecode": "1:31.805",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "myself",
+            "onset_s": 92.10292517006803,
+            "onset_samples": 4061739,
+            "timecode": "1:32.103",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "like",
+          "onset_s": 91.80467120181406,
+          "onset_samples": 4048586,
+          "grid_offset_ms": 22.766,
+          "bar": 52,
+          "beat": 3.5512,
+          "asr_prob": 0.9815906286239624,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:31.805",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "myself",
+          "onset_s": 92.10292517006803,
+          "onset_samples": 4061739,
+          "grid_offset_ms": -12.313,
+          "bar": 52,
+          "beat": 4.2223,
+          "asr_prob": 0.9907615780830383,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:32.103",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "Only time I'm feeling like myself is out this Adderall Only time I'm feeling like myself"
+      },
+      "bg1": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      },
+      "bg2": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      }
+    },
+    "combined": {
+      "stems": [
+        "lead1",
+        "lead2"
+      ],
+      "n_lexical_words_in_opening_phrase": 43,
+      "first_six": [
+        {
+          "i": 1,
+          "word": "What",
+          "stem": "lead1",
+          "onset_s": 87.12340136054422,
+          "onset_samples": 3842142,
+          "timecode": "1:27.123",
+          "low_confidence": false
+        },
+        {
+          "i": 2,
+          "word": "I'm",
+          "stem": "lead1",
+          "onset_s": 87.32557823129251,
+          "onset_samples": 3851058,
+          "timecode": "1:27.326",
+          "low_confidence": false
+        },
+        {
+          "i": 3,
+          "word": "supposed",
+          "stem": "lead1",
+          "onset_s": 87.59458049886621,
+          "onset_samples": 3862921,
+          "timecode": "1:27.595",
+          "low_confidence": false
+        },
+        {
+          "i": 4,
+          "word": "to",
+          "stem": "lead1",
+          "onset_s": 87.6549433106576,
+          "onset_samples": 3865583,
+          "timecode": "1:27.655",
+          "low_confidence": false
+        },
+        {
+          "i": 5,
+          "word": "do",
+          "stem": "lead1",
+          "onset_s": 88.02643990929705,
+          "onset_samples": 3881966,
+          "timecode": "1:28.026",
+          "low_confidence": false
+        },
+        {
+          "i": 6,
+          "word": "when",
+          "stem": "lead1",
+          "onset_s": 88.29251700680273,
+          "onset_samples": 3893700,
+          "timecode": "1:28.293",
+          "low_confidence": false
+        }
+      ],
+      "word_5": {
+        "word": "do",
+        "onset_s": 88.02643990929705,
+        "onset_samples": 3881966,
+        "grid_offset_ms": 22.313,
+        "bar": 50,
+        "beat": 3.0502,
+        "asr_prob": 0.9944973587989807,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "1:28.026",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 5,
+        "stem": "lead1"
+      },
+      "word_6": {
+        "word": "when",
+        "onset_s": 88.29251700680273,
+        "onset_samples": 3893700,
+        "grid_offset_ms": -44.943,
+        "bar": 50,
+        "beat": 3.6489,
+        "asr_prob": 0.7611170411109924,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "1:28.293",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 6,
+        "stem": "lead1"
+      },
+      "opening_phrase_text": "lead1:What lead1:I'm lead1:supposed lead1:to lead1:do lead1:when lead1:the lead1:blunt lead1:say lead1:nuh lead1:nuh, lead1:like lead1:at lead1:all lead2:Only lead2:time"
+    }
+  },
+  "A2": {
+    "section": "A2",
+    "type": "A",
+    "bars": [
+      57,
+      73
+    ],
+    "section_start_s": 99.55968253968254,
+    "pickup_s": 99.47968253968254,
+    "count_rule": "Word 5/6 are counted from the first new phrase at or just after the official section start (80 ms pickup). Leftover tails that cross the bar with no pause are skipped.",
+    "per_stem": {
+      "lead1": {
+        "n_lexical_words_in_opening_phrase": 46,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "I've",
+            "onset_s": 100.49238095238096,
+            "onset_samples": 4431714,
+            "timecode": "1:40.492",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "been",
+            "onset_s": 100.73160997732427,
+            "onset_samples": 4442264,
+            "timecode": "1:40.732",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "trying,",
+            "onset_s": 100.88689342403629,
+            "onset_samples": 4449112,
+            "timecode": "1:40.887",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "everything",
+            "onset_s": 101.47555555555556,
+            "onset_samples": 4475072,
+            "timecode": "1:41.476",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "these",
+            "onset_s": 101.82006802721088,
+            "onset_samples": 4490265,
+            "timecode": "1:41.820",
+            "low_confidence": true
+          },
+          {
+            "i": 6,
+            "word": "blunts",
+            "onset_s": 102.24732426303855,
+            "onset_samples": 4509107,
+            "timecode": "1:42.247",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "these",
+          "onset_s": 101.82006802721088,
+          "onset_samples": 4490265,
+          "grid_offset_ms": 38.163,
+          "bar": 58,
+          "beat": 2.0859,
+          "asr_prob": 0.4561721086502075,
+          "low_confidence": true,
+          "confidence_notes": [
+            "asr_prob=0.46<0.5"
+          ],
+          "timecode": "1:41.820",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "blunts",
+          "onset_s": 102.24732426303855,
+          "onset_samples": 4509107,
+          "grid_offset_ms": 20.975,
+          "bar": 58,
+          "beat": 3.0472,
+          "asr_prob": 0.900017112493515,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:42.247",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "I've been trying, everything these blunts ain't enough You keep trying to run away, stop and"
+      },
+      "lead2": {
+        "n_lexical_words_in_opening_phrase": 30,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "At",
+            "onset_s": 103.60396825396825,
+            "onset_samples": 4568935,
+            "timecode": "1:43.604",
+            "low_confidence": true
+          },
+          {
+            "i": 2,
+            "word": "all,",
+            "onset_s": 103.85963718820862,
+            "onset_samples": 4580210,
+            "timecode": "1:43.860",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "and",
+            "onset_s": 104.32498866213152,
+            "onset_samples": 4600732,
+            "timecode": "1:44.325",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "I've",
+            "onset_s": 104.49151927437642,
+            "onset_samples": 4608076,
+            "timecode": "1:44.492",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "been",
+            "onset_s": 104.75866213151927,
+            "onset_samples": 4619857,
+            "timecode": "1:44.759",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "hanging",
+            "onset_s": 104.84333333333333,
+            "onset_samples": 4623591,
+            "timecode": "1:44.843",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "been",
+          "onset_s": 104.75866213151927,
+          "onset_samples": 4619857,
+          "grid_offset_ms": -23.243,
+          "bar": 59,
+          "beat": 4.6977,
+          "asr_prob": 0.99481600522995,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:44.759",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "hanging",
+          "onset_s": 104.84333333333333,
+          "onset_samples": 4623591,
+          "grid_offset_ms": -49.683,
+          "bar": 59,
+          "beat": 4.8882,
+          "asr_prob": 0.8889850378036499,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "1:44.843",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "At all, and I've been hanging with my demons, dancing in the graveyard You keep trying"
+      },
+      "bg1": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      },
+      "bg2": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      }
+    },
+    "combined": {
+      "stems": [
+        "lead1",
+        "lead2"
+      ],
+      "n_lexical_words_in_opening_phrase": 76,
+      "first_six": [
+        {
+          "i": 1,
+          "word": "I've",
+          "stem": "lead1",
+          "onset_s": 100.49238095238096,
+          "onset_samples": 4431714,
+          "timecode": "1:40.492",
+          "low_confidence": false
+        },
+        {
+          "i": 2,
+          "word": "been",
+          "stem": "lead1",
+          "onset_s": 100.73160997732427,
+          "onset_samples": 4442264,
+          "timecode": "1:40.732",
+          "low_confidence": false
+        },
+        {
+          "i": 3,
+          "word": "trying,",
+          "stem": "lead1",
+          "onset_s": 100.88689342403629,
+          "onset_samples": 4449112,
+          "timecode": "1:40.887",
+          "low_confidence": false
+        },
+        {
+          "i": 4,
+          "word": "everything",
+          "stem": "lead1",
+          "onset_s": 101.47555555555556,
+          "onset_samples": 4475072,
+          "timecode": "1:41.476",
+          "low_confidence": false
+        },
+        {
+          "i": 5,
+          "word": "these",
+          "stem": "lead1",
+          "onset_s": 101.82006802721088,
+          "onset_samples": 4490265,
+          "timecode": "1:41.820",
+          "low_confidence": true
+        },
+        {
+          "i": 6,
+          "word": "blunts",
+          "stem": "lead1",
+          "onset_s": 102.24732426303855,
+          "onset_samples": 4509107,
+          "timecode": "1:42.247",
+          "low_confidence": false
+        }
+      ],
+      "word_5": {
+        "word": "these",
+        "onset_s": 101.82006802721088,
+        "onset_samples": 4490265,
+        "grid_offset_ms": 38.163,
+        "bar": 58,
+        "beat": 2.0859,
+        "asr_prob": 0.4561721086502075,
+        "low_confidence": true,
+        "confidence_notes": [
+          "asr_prob=0.46<0.5"
+        ],
+        "timecode": "1:41.820",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 5,
+        "stem": "lead1"
+      },
+      "word_6": {
+        "word": "blunts",
+        "onset_s": 102.24732426303855,
+        "onset_samples": 4509107,
+        "grid_offset_ms": 20.975,
+        "bar": 58,
+        "beat": 3.0472,
+        "asr_prob": 0.900017112493515,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "1:42.247",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 6,
+        "stem": "lead1"
+      },
+      "opening_phrase_text": "lead1:I've lead1:been lead1:trying, lead1:everything lead1:these lead1:blunts lead1:ain't lead1:enough lead2:At lead2:all, lead2:and lead2:I've lead2:been lead2:hanging lead2:with lead2:my"
+    }
+  },
+  "Bridge": {
+    "section": "Bridge",
+    "type": "Bridge",
+    "bars": [
+      74,
+      82
+    ],
+    "section_start_s": 129.78190476190477,
+    "pickup_s": 129.70190476190476,
+    "count_rule": "Word 5/6 are counted from the first new phrase at or just after the official section start (80 ms pickup). Leftover tails that cross the bar with no pause are skipped.",
+    "per_stem": {
+      "bg1": {
+        "n_lexical_words_in_opening_phrase": 24,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "I've",
+            "onset_s": 129.8691836734694,
+            "onset_samples": 5727231,
+            "timecode": "2:09.869",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "been",
+            "onset_s": 130.09666666666666,
+            "onset_samples": 5737263,
+            "timecode": "2:10.097",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "up",
+            "onset_s": 130.29471655328797,
+            "onset_samples": 5745997,
+            "timecode": "2:10.295",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "to",
+            "onset_s": 130.46142857142857,
+            "onset_samples": 5753349,
+            "timecode": "2:10.461",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "no",
+            "onset_s": 130.63743764172335,
+            "onset_samples": 5761111,
+            "timecode": "2:10.637",
+            "low_confidence": true
+          },
+          {
+            "i": 6,
+            "word": "good",
+            "onset_s": 130.97807256235828,
+            "onset_samples": 5776133,
+            "timecode": "2:10.978",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "no",
+          "onset_s": 130.63743764172335,
+          "onset_samples": 5761111,
+          "grid_offset_ms": -33.356,
+          "bar": 74,
+          "beat": 2.9249,
+          "asr_prob": 0.9792158007621765,
+          "low_confidence": true,
+          "confidence_notes": [
+            "onset:weak_rise"
+          ],
+          "timecode": "2:10.637",
+          "onset_reason": "weak_rise",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "good",
+          "onset_s": 130.97807256235828,
+          "onset_samples": 5776133,
+          "grid_offset_ms": -26.054,
+          "bar": 74,
+          "beat": 3.6914,
+          "asr_prob": 0.9913111925125122,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:10.978",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "I've been up to no good with all the forbidden ones Hanging with the perfect ain't"
+      },
+      "bg2": {
+        "n_lexical_words_in_opening_phrase": 22,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "been",
+            "onset_s": 133.65065759637187,
+            "onset_samples": 5893994,
+            "timecode": "2:13.651",
+            "low_confidence": false
+          },
+          {
+            "i": 2,
+            "word": "up",
+            "onset_s": 133.83020408163264,
+            "onset_samples": 5901912,
+            "timecode": "2:13.830",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "to",
+            "onset_s": 134.0418820861678,
+            "onset_samples": 5911247,
+            "timecode": "2:14.042",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "no",
+            "onset_s": 134.21954648526076,
+            "onset_samples": 5919082,
+            "timecode": "2:14.220",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "good",
+            "onset_s": 134.55063492063493,
+            "onset_samples": 5933683,
+            "timecode": "2:14.551",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "hangin'",
+            "onset_s": 135.00399092970522,
+            "onset_samples": 5953676,
+            "timecode": "2:15.004",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "good",
+          "onset_s": 134.55063492063493,
+          "onset_samples": 5933683,
+          "grid_offset_ms": -9.048,
+          "bar": 76,
+          "beat": 3.7296,
+          "asr_prob": 0.9910531640052795,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:14.551",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "hangin'",
+          "onset_s": 135.00399092970522,
+          "onset_samples": 5953676,
+          "grid_offset_ms": -0.136,
+          "bar": 76,
+          "beat": 4.7497,
+          "asr_prob": 0.5753794685006142,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:15.004",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "been up to no good hangin' with the hidden ones Most my time I spent inside"
+      }
+    },
+    "combined": {
+      "stems": [
+        "bg1",
+        "bg2"
+      ],
+      "n_lexical_words_in_opening_phrase": 46,
+      "first_six": [
+        {
+          "i": 1,
+          "word": "I've",
+          "stem": "bg1",
+          "onset_s": 129.8691836734694,
+          "onset_samples": 5727231,
+          "timecode": "2:09.869",
+          "low_confidence": false
+        },
+        {
+          "i": 2,
+          "word": "been",
+          "stem": "bg1",
+          "onset_s": 130.09666666666666,
+          "onset_samples": 5737263,
+          "timecode": "2:10.097",
+          "low_confidence": false
+        },
+        {
+          "i": 3,
+          "word": "up",
+          "stem": "bg1",
+          "onset_s": 130.29471655328797,
+          "onset_samples": 5745997,
+          "timecode": "2:10.295",
+          "low_confidence": false
+        },
+        {
+          "i": 4,
+          "word": "to",
+          "stem": "bg1",
+          "onset_s": 130.46142857142857,
+          "onset_samples": 5753349,
+          "timecode": "2:10.461",
+          "low_confidence": false
+        },
+        {
+          "i": 5,
+          "word": "no",
+          "stem": "bg1",
+          "onset_s": 130.63743764172335,
+          "onset_samples": 5761111,
+          "timecode": "2:10.637",
+          "low_confidence": true
+        },
+        {
+          "i": 6,
+          "word": "good",
+          "stem": "bg1",
+          "onset_s": 130.97807256235828,
+          "onset_samples": 5776133,
+          "timecode": "2:10.978",
+          "low_confidence": false
+        }
+      ],
+      "word_5": {
+        "word": "no",
+        "onset_s": 130.63743764172335,
+        "onset_samples": 5761111,
+        "grid_offset_ms": -33.356,
+        "bar": 74,
+        "beat": 2.9249,
+        "asr_prob": 0.9792158007621765,
+        "low_confidence": true,
+        "confidence_notes": [
+          "onset:weak_rise"
+        ],
+        "timecode": "2:10.637",
+        "onset_reason": "weak_rise",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 5,
+        "stem": "bg1"
+      },
+      "word_6": {
+        "word": "good",
+        "onset_s": 130.97807256235828,
+        "onset_samples": 5776133,
+        "grid_offset_ms": -26.054,
+        "bar": 74,
+        "beat": 3.6914,
+        "asr_prob": 0.9913111925125122,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "2:10.978",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 6,
+        "stem": "bg1"
+      },
+      "opening_phrase_text": "bg1:I've bg1:been bg1:up bg1:to bg1:no bg1:good bg1:with bg1:all bg1:the bg1:forbidden bg1:ones bg2:been bg2:up bg2:to bg2:no bg2:good"
+    }
+  },
+  "B3": {
+    "section": "B3",
+    "type": "B",
+    "bars": [
+      90,
+      98
+    ],
+    "section_start_s": 158.2263492063492,
+    "pickup_s": 158.14634920634919,
+    "count_rule": "Word 5/6 are counted from the first new phrase at or just after the official section start (80 ms pickup). Leftover tails that cross the bar with no pause are skipped.",
+    "per_stem": {
+      "lead1": {
+        "n_lexical_words_in_opening_phrase": 27,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "What",
+            "onset_s": 158.1928117913832,
+            "onset_samples": 6976303,
+            "timecode": "2:38.193",
+            "low_confidence": true
+          },
+          {
+            "i": 2,
+            "word": "I'm",
+            "onset_s": 158.32487528344672,
+            "onset_samples": 6982127,
+            "timecode": "2:38.325",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "supposed",
+            "onset_s": 158.66639455782314,
+            "onset_samples": 6997188,
+            "timecode": "2:38.666",
+            "low_confidence": true
+          },
+          {
+            "i": 4,
+            "word": "to",
+            "onset_s": 158.72698412698412,
+            "onset_samples": 6999860,
+            "timecode": "2:38.727",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "do",
+            "onset_s": 159.09755102040816,
+            "onset_samples": 7016202,
+            "timecode": "2:39.098",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "when",
+            "onset_s": 159.36331065759637,
+            "onset_samples": 7027922,
+            "timecode": "2:39.363",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "do",
+          "onset_s": 159.09755102040816,
+          "onset_samples": 7016202,
+          "grid_offset_ms": -17.687,
+          "bar": 90,
+          "beat": 2.9602,
+          "asr_prob": 0.9955959916114807,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:39.098",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "when",
+          "onset_s": 159.36331065759637,
+          "onset_samples": 7027922,
+          "grid_offset_ms": 25.85,
+          "bar": 90,
+          "beat": 3.5582,
+          "asr_prob": 0.8116016983985901,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:39.363",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "What I'm supposed to do when the blunt say nuh nuh, like at all I threw"
+      },
+      "lead2": {
+        "n_lexical_words_in_opening_phrase": 10,
+        "first_six": [
+          {
+            "i": 1,
+            "word": "Only",
+            "onset_s": 161.7328798185941,
+            "onset_samples": 7132420,
+            "timecode": "2:41.733",
+            "low_confidence": true
+          },
+          {
+            "i": 2,
+            "word": "time",
+            "onset_s": 161.97142857142856,
+            "onset_samples": 7142940,
+            "timecode": "2:41.971",
+            "low_confidence": false
+          },
+          {
+            "i": 3,
+            "word": "I'm",
+            "onset_s": 162.3143083900227,
+            "onset_samples": 7158061,
+            "timecode": "2:42.314",
+            "low_confidence": false
+          },
+          {
+            "i": 4,
+            "word": "feeling",
+            "onset_s": 162.66630385487528,
+            "onset_samples": 7173584,
+            "timecode": "2:42.666",
+            "low_confidence": false
+          },
+          {
+            "i": 5,
+            "word": "like",
+            "onset_s": 162.87721088435373,
+            "onset_samples": 7182885,
+            "timecode": "2:42.877",
+            "low_confidence": false
+          },
+          {
+            "i": 6,
+            "word": "myself",
+            "onset_s": 163.1756009070295,
+            "onset_samples": 7196044,
+            "timecode": "2:43.176",
+            "low_confidence": false
+          }
+        ],
+        "word_5": {
+          "word": "like",
+          "onset_s": 162.87721088435373,
+          "onset_samples": 7182885,
+          "grid_offset_ms": -15.805,
+          "bar": 92,
+          "beat": 3.4644,
+          "asr_prob": 0.9913651943206787,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:42.877",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 5
+        },
+        "word_6": {
+          "word": "myself",
+          "onset_s": 163.1756009070295,
+          "onset_samples": 7196044,
+          "grid_offset_ms": -50.748,
+          "bar": 92,
+          "beat": 4.1358,
+          "asr_prob": 0.9868273735046387,
+          "low_confidence": false,
+          "confidence_notes": [],
+          "timecode": "2:43.176",
+          "onset_reason": "ok",
+          "forward_snapped": false,
+          "word_index_in_section_stem": 6
+        },
+        "opening_phrase_text": "Only time I'm feeling like myself is out this Adderall"
+      },
+      "bg1": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      },
+      "bg2": {
+        "n_lexical_words_in_opening_phrase": 0,
+        "first_six": [],
+        "word_5": null,
+        "word_6": null,
+        "opening_phrase_text": ""
+      }
+    },
+    "combined": {
+      "stems": [
+        "lead1",
+        "lead2"
+      ],
+      "n_lexical_words_in_opening_phrase": 37,
+      "first_six": [
+        {
+          "i": 1,
+          "word": "What",
+          "stem": "lead1",
+          "onset_s": 158.1928117913832,
+          "onset_samples": 6976303,
+          "timecode": "2:38.193",
+          "low_confidence": true
+        },
+        {
+          "i": 2,
+          "word": "I'm",
+          "stem": "lead1",
+          "onset_s": 158.32487528344672,
+          "onset_samples": 6982127,
+          "timecode": "2:38.325",
+          "low_confidence": false
+        },
+        {
+          "i": 3,
+          "word": "supposed",
+          "stem": "lead1",
+          "onset_s": 158.66639455782314,
+          "onset_samples": 6997188,
+          "timecode": "2:38.666",
+          "low_confidence": true
+        },
+        {
+          "i": 4,
+          "word": "to",
+          "stem": "lead1",
+          "onset_s": 158.72698412698412,
+          "onset_samples": 6999860,
+          "timecode": "2:38.727",
+          "low_confidence": false
+        },
+        {
+          "i": 5,
+          "word": "do",
+          "stem": "lead1",
+          "onset_s": 159.09755102040816,
+          "onset_samples": 7016202,
+          "timecode": "2:39.098",
+          "low_confidence": false
+        },
+        {
+          "i": 6,
+          "word": "when",
+          "stem": "lead1",
+          "onset_s": 159.36331065759637,
+          "onset_samples": 7027922,
+          "timecode": "2:39.363",
+          "low_confidence": false
+        }
+      ],
+      "word_5": {
+        "word": "do",
+        "onset_s": 159.09755102040816,
+        "onset_samples": 7016202,
+        "grid_offset_ms": -17.687,
+        "bar": 90,
+        "beat": 2.9602,
+        "asr_prob": 0.9955959916114807,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "2:39.098",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 5,
+        "stem": "lead1"
+      },
+      "word_6": {
+        "word": "when",
+        "onset_s": 159.36331065759637,
+        "onset_samples": 7027922,
+        "grid_offset_ms": 25.85,
+        "bar": 90,
+        "beat": 3.5582,
+        "asr_prob": 0.8116016983985901,
+        "low_confidence": false,
+        "confidence_notes": [],
+        "timecode": "2:39.363",
+        "onset_reason": "ok",
+        "forward_snapped": false,
+        "word_index_in_section_combined": 6,
+        "stem": "lead1"
+      },
+      "opening_phrase_text": "lead1:What lead1:I'm lead1:supposed lead1:to lead1:do lead1:when lead1:the lead1:blunt lead1:say lead1:nuh lead1:nuh, lead1:like lead1:at lead1:all lead2:Only lead2:time"
+    }
+  }
+}

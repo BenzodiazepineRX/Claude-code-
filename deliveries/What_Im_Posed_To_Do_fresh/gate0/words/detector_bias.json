@@ -1,0 +1,155 @@
+{
+  "method": "1-8 kHz 2nd-order bandpass, causal 2 ms RMS envelope (window ends at the sample, no look-ahead). Steepest rise in +/-60 ms of the ASR time, backtrack to 15% of (peak-floor) above the 20th-percentile floor of the 25 ms before the rise.",
+  "window_ms": 60.0,
+  "measured_bias_ms": 0.03401360544217685,
+  "bias_definition": "median (detected - true) onset error in ms, on clean impulses and 2 ms bursts, combining exact ASR times and ASR times jittered uniformly in +/-40 ms. Positive = detector late.",
+  "summaries": [
+    {
+      "label": "clean_exact_asr",
+      "n": 20,
+      "all": {
+        "n": 20,
+        "mean_ms": 0.7120181405895691,
+        "median_ms": 0.5215419501133787,
+        "std_ms": 1.4243973140272344,
+        "mae_ms": 1.0748299319727892,
+        "min_ms": -0.45351473922902497,
+        "max_ms": 3.4240362811791383
+      },
+      "by_kind": {
+        "impulse": {
+          "n": 8,
+          "mean_ms": -0.45351473922902497,
+          "median_ms": -0.45351473922902497,
+          "std_ms": 0.0,
+          "mae_ms": 0.45351473922902497
+        },
+        "burst_2ms": {
+          "n": 8,
+          "mean_ms": 0.5215419501133787,
+          "median_ms": 0.5215419501133787,
+          "std_ms": 0.0,
+          "mae_ms": 0.5215419501133787
+        },
+        "burst_8ms": {
+          "n": 4,
+          "mean_ms": 3.4240362811791383,
+          "median_ms": 3.4240362811791383,
+          "std_ms": 0.0,
+          "mae_ms": 3.4240362811791383
+        }
+      }
+    },
+    {
+      "label": "clean_asr_jitter_pm40ms",
+      "n": 20,
+      "all": {
+        "n": 20,
+        "mean_ms": 0.7120181405895691,
+        "median_ms": 0.5215419501133787,
+        "std_ms": 1.4243973140272344,
+        "mae_ms": 1.0748299319727892,
+        "min_ms": -0.45351473922902497,
+        "max_ms": 3.4240362811791383
+      },
+      "by_kind": {
+        "impulse": {
+          "n": 8,
+          "mean_ms": -0.45351473922902497,
+          "median_ms": -0.45351473922902497,
+          "std_ms": 0.0,
+          "mae_ms": 0.45351473922902497
+        },
+        "burst_2ms": {
+          "n": 8,
+          "mean_ms": 0.5215419501133787,
+          "median_ms": 0.5215419501133787,
+          "std_ms": 0.0,
+          "mae_ms": 0.5215419501133787
+        },
+        "burst_8ms": {
+          "n": 4,
+          "mean_ms": 3.4240362811791383,
+          "median_ms": 3.4240362811791383,
+          "std_ms": 0.0,
+          "mae_ms": 3.4240362811791383
+        }
+      }
+    },
+    {
+      "label": "noisy_-40dBFS_exact_asr",
+      "n": 20,
+      "all": {
+        "n": 20,
+        "mean_ms": 0.653061224489796,
+        "median_ms": 0.5215419501133787,
+        "std_ms": 1.3197707483826757,
+        "mae_ms": 1.015873015873016,
+        "min_ms": -0.45351473922902497,
+        "max_ms": 3.4467120181405897
+      },
+      "by_kind": {
+        "impulse": {
+          "n": 8,
+          "mean_ms": -0.45351473922902497,
+          "median_ms": -0.45351473922902497,
+          "std_ms": 0.0,
+          "mae_ms": 0.45351473922902497
+        },
+        "burst_2ms": {
+          "n": 8,
+          "mean_ms": 0.5215419501133787,
+          "median_ms": 0.5215419501133787,
+          "std_ms": 0.0,
+          "mae_ms": 0.5215419501133787
+        },
+        "burst_8ms": {
+          "n": 4,
+          "mean_ms": 3.129251700680272,
+          "median_ms": 3.129251700680272,
+          "std_ms": 0.30633233755343076,
+          "mae_ms": 3.129251700680272
+        }
+      }
+    },
+    {
+      "label": "noisy_-40dBFS_asr_jitter_pm40ms",
+      "n": 20,
+      "all": {
+        "n": 20,
+        "mean_ms": 0.653061224489796,
+        "median_ms": 0.5215419501133787,
+        "std_ms": 1.3197707483826757,
+        "mae_ms": 1.015873015873016,
+        "min_ms": -0.45351473922902497,
+        "max_ms": 3.4467120181405897
+      },
+      "by_kind": {
+        "impulse": {
+          "n": 8,
+          "mean_ms": -0.45351473922902497,
+          "median_ms": -0.45351473922902497,
+          "std_ms": 0.0,
+          "mae_ms": 0.45351473922902497
+        },
+        "burst_2ms": {
+          "n": 8,
+          "mean_ms": 0.5215419501133787,
+          "median_ms": 0.5215419501133787,
+          "std_ms": 0.0,
+          "mae_ms": 0.5215419501133787
+        },
+        "burst_8ms": {
+          "n": 4,
+          "mean_ms": 3.129251700680272,
+          "median_ms": 3.129251700680272,
+          "std_ms": 0.30633233755343076,
+          "mae_ms": 3.129251700680272
+        }
+      }
+    }
+  ],
+  "n_truth_events": 20,
+  "seed": 20261125,
+  "sr": 44100
+}

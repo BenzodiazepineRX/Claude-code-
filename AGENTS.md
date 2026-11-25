@@ -6,6 +6,13 @@
 
 The goal is **radio-ready, stream-ready, major-label-quality mixes and masters, every song, every time.** "Good enough", "pretty close" and "fine for a demo" never count as finished.
 
+## Owner corrections (2026-11-25; these override anything older)
+
+- **Echoes: there is no default.** Echoes are different on every song. Before applying any echo, ask Kenshin how he wants them on this song (which words, timing, repeats, levels, tone). The old "last word only" rule is wrong and must not be used.
+- **Reference track: picked per song.** "Top8 (Extended Network)" is not a default reference. Ask Kenshin which reference(s) to use for each song.
+- **No fixed numbers carry over.** Old fixed loudness ranges and fixed vocal/adlib levels are superseded; loudness and levels come from this song's measurements, its reference and Kenshin's ears.
+- **Push every version as soon as it is rendered.** Each version's notes, `mix_config.json` and QC results go to `main` right away, not when the song is done. Agent computers get refreshed and unpushed work is lost. Pull `main` before editing shared files.
+
 ---
 
 ## Rule 0: Every song is a new project

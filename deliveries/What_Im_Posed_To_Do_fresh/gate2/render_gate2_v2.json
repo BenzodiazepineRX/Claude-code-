@@ -1,0 +1,46 @@
+{
+ "preview_rematch": {
+  "20": {
+   "lufs_wav": -20.03,
+   "lufs_mp3": -20.03,
+   "tp_wav_dbtp": -2.03,
+   "tp_mp3_dbtp": -2.02,
+   "gain_applied_db": 3.15
+  },
+  "17": {
+   "lufs_wav": -20.03,
+   "lufs_mp3": -20.03,
+   "tp_wav_dbtp": -2.03,
+   "tp_mp3_dbtp": -2.01,
+   "gain_applied_db": 3.08
+  },
+  "15": {
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "tp_wav_dbtp": -2.0,
+   "tp_mp3_dbtp": -2.0,
+   "gain_applied_db": 3.05
+  },
+  "13": {
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "tp_wav_dbtp": -2.01,
+   "tp_mp3_dbtp": -2.01,
+   "gain_applied_db": 2.97
+  },
+  "11": {
+   "lufs_wav": -20.0,
+   "lufs_mp3": -20.0,
+   "tp_wav_dbtp": -2.02,
+   "tp_mp3_dbtp": -2.02,
+   "gain_applied_db": 2.87
+  }
+ },
+ "stems": {
+  "bg": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_BGLayer_17dBunder_v2_24b-44k.wav",
+  "reverb": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_ReverbBus_17dBunder_v2_24b-44k.wav",
+  "gain_on_v1_light_db": 3.0,
+  "under_1to4k": 17.0,
+  "dry_to_reverb": 27.0
+ }
+}

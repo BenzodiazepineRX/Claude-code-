@@ -1,0 +1,86 @@
+{
+ "status": "draft, not final",
+ "version": "v3",
+ "request": "Kenshin picked 13 dB-under, then 'turn 13 up a little more'",
+ "bg_target_db_under_lead_1to4k": 11.0,
+ "bg_used_db_under_lead_1to4k": 11.0,
+ "bg_gain_vs_v1_light_db": 9.0,
+ "bg_gain_vs_13_db": 2.0,
+ "reverb_gain_vs_v1_light_db": 5.75,
+ "reverb_gain_vs_13_db": -1.25,
+ "reverb_rule": "not raised above the 13-version return; lowered by the smallest step (0.25 dB grid) that brings dry-to-reverb while singing to >= 24.0 dB",
+ "reverb_sweep": [
+  {
+   "rev_gain_vs_v1_light_db": 7.0,
+   "rev_vs_13_db": 0.0,
+   "d2r_all_singing": 23.0,
+   "d2r_bg_sections": 22.92,
+   "d2r_hook": 23.33
+  },
+  {
+   "rev_gain_vs_v1_light_db": 6.75,
+   "rev_vs_13_db": -0.25,
+   "d2r_all_singing": 23.25,
+   "d2r_bg_sections": 23.17,
+   "d2r_hook": 23.58
+  },
+  {
+   "rev_gain_vs_v1_light_db": 6.5,
+   "rev_vs_13_db": -0.5,
+   "d2r_all_singing": 23.5,
+   "d2r_bg_sections": 23.42,
+   "d2r_hook": 23.83
+  },
+  {
+   "rev_gain_vs_v1_light_db": 6.25,
+   "rev_vs_13_db": -0.75,
+   "d2r_all_singing": 23.75,
+   "d2r_bg_sections": 23.67,
+   "d2r_hook": 24.08
+  },
+  {
+   "rev_gain_vs_v1_light_db": 6.0,
+   "rev_vs_13_db": -1.0,
+   "d2r_all_singing": 24.0,
+   "d2r_bg_sections": 23.92,
+   "d2r_hook": 24.33
+  },
+  {
+   "rev_gain_vs_v1_light_db": 5.75,
+   "rev_vs_13_db": -1.25,
+   "d2r_all_singing": 24.25,
+   "d2r_bg_sections": 24.17,
+   "d2r_hook": 24.58
+  }
+ ],
+ "measurements": {
+  "bg_db_under_lead_1to4k_full": 11.0,
+  "bg_db_under_lead_1to4k_hook": 10.98,
+  "bg_db_under_lead_broadband_full": 15.35,
+  "lead_vs_beat_plus_BG_800_4k_full_db": 4.1,
+  "lead_vs_beat_plus_BG_800_4k_hook_db": 3.94,
+  "dry_to_reverb_while_singing_full_db": 24.25,
+  "dry_to_reverb_while_singing_bg_sections_db": 24.17,
+  "dry_to_reverb_while_singing_hook_db": 24.58,
+  "bg_vs_beat_600_2k_full_db": -3.25,
+  "bg_vs_beat_600_2k_hook_db": -3.76,
+  "clarity_pass": true,
+  "dry_to_reverb_pass": true
+ },
+ "preview": {
+  "wav": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_BGup_11dBunder_0m42-1m12_v3_24b-44k.wav",
+  "mp3": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_Preview_BGup_11dBunder_0m42-1m12_v3.mp3",
+  "lufs_wav": -20.0,
+  "lufs_mp3": -20.0,
+  "tp_wav_dbtp": -2.01,
+  "tp_mp3_dbtp": -2.01,
+  "gain_applied_db": 2.89,
+  "clip_samples": 0
+ },
+ "stems": {
+  "bg": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_BGLayer_11dBunder_v3_24b-44k.wav",
+  "reverb": "/workspace/songs/Untitled_2026-11-25/gate2/WIPTD_fresh_G2_ReverbBus_11dBunder_v3_24b-44k.wav"
+ },
+ "unchanged": "duck, telephone 600 Hz-2 kHz, entry points, word-timed throws, Gate 1 v2 dry lead (no lead reverb)",
+ "mono_corr_song": 0.9925
+}
